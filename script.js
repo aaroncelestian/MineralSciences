@@ -296,3 +296,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Toggle collapsible sections
+function toggleSection(sectionId) {
+    const content = document.getElementById(sectionId);
+    const button = event.currentTarget;
+    const icon = button.querySelector('.toggle-icon');
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.textContent = '−';
+        button.classList.add('active');
+    } else {
+        content.style.display = 'none';
+        icon.textContent = '+';
+        button.classList.remove('active');
+    }
+}

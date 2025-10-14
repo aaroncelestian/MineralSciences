@@ -15,7 +15,9 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
+                <li><a href="#media">Media</a></li>
                 <li><a href="#visualizations">Data</a></li>
+                <li><a href="cv.html">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -168,7 +170,11 @@
         <div class="container">
             <h2>Publications</h2>
             
-            <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-top: 2rem; margin-bottom: 1.5rem;">Recent Publications</h3>
+            <button class="collapsible-btn active" onclick="toggleSection('recent-pubs')">
+                <span>Recent Publications</span>
+                <span class="toggle-icon">−</span>
+            </button>
+            <div id="recent-pubs" class="collapsible-content" style="display: block;">
             
             <div class="publication">
                 <p class="pub-title">Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data</p>
@@ -209,8 +215,13 @@
                     <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:ukw-9cB-YDkC" target="_blank" class="btn-small">Google Scholar</a>
                 </div>
             </div>
+            </div>
 
-            <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">Top Publications by Citations</h3>
+            <button class="collapsible-btn active" onclick="toggleSection('top-pubs')" style="margin-top: 2rem;">
+                <span>Top Publications by Citations</span>
+                <span class="toggle-icon">−</span>
+            </button>
+            <div id="top-pubs" class="collapsible-content" style="display: block;">
             
             <div class="publication">
                 <p class="pub-title">Similarities in 2-and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</p>
@@ -295,10 +306,100 @@
             <div style="margin-top: 2rem; text-align: center;">
                 <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small" style="padding: 0.6rem 1.5rem; font-size: 1rem;">View All Publications on Google Scholar</a>
             </div>
+            </div>
         </div>
     </section>
 
-    <section id="visualizations" class="section section-alt">
+    <section id="media" class="section section-alt">
+        <div class="container">
+            <h2>Media & Outreach</h2>
+            <p class="section-intro">
+                Videos, podcasts, interviews, and media appearances discussing mineral sciences, astrobiology, and research.
+            </p>
+
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.5rem;">Videos</h3>
+            
+            <div class="project-card">
+                <h4>Meet the Scientist: Dr. Aaron Celestian, Mineral Sciences</h4>
+                <p class="project-meta">Natural History Museum of Los Angeles County</p>
+                <div style="margin-top: 1rem;">
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/L8qd5wVQvbs" 
+                            title="Meet the Scientist" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen style="border-radius: 8px;"></iframe>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h4>Happy Hour with Dr. Aaron Celestian</h4>
+                <p class="project-meta">Natural History Museum of Los Angeles County</p>
+                <p>
+                    Life is being discovered in many new and incredible environments on Earth, even inside minerals that we did not think possible. 
+                    Join Dr. Aaron Celestian for an exploration of incredible research suggesting that life can persist even in the coldest 
+                    environments, such as deep underground mines and polar ice caps.
+                </p>
+                <div class="pub-links" style="margin-top: 1rem;">
+                    <a href="https://nhmlac.org/video-happy-hour-dr-aaron-celestian" target="_blank" class="btn-small">Watch Video</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h4>Mineral Talks LIVE - Episode 66</h4>
+                <p class="project-meta">Curator Interview</p>
+                <div style="margin-top: 1rem;">
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/NioMWKuqYGI" 
+                            title="Mineral Talks LIVE" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen style="border-radius: 8px;"></iframe>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Podcast</h3>
+            
+            <div class="project-card">
+                <h4>Pocketful of Xtals Podcast</h4>
+                <p class="project-meta">Host & Creator | Available on Spotify, Apple Podcasts, and iHeart</p>
+                <p>
+                    Exploring the interaction of art, science, and culture and how we can think differently about our planet. 
+                    Each episode delves into fascinating topics like radioactive waste cleanup, mineral detective work, and the 
+                    intersection of mineralogy with everyday life.
+                </p>
+                <div class="pub-links" style="margin-top: 1rem;">
+                    <a href="https://open.spotify.com/show/7tNXYPxuSJ1jImArLYZzAS" target="_blank" class="btn-small">Spotify</a>
+                    <a href="https://podcasts.apple.com/za/podcast/pocketful-of-xtals/id1738038033" target="_blank" class="btn-small">Apple Podcasts</a>
+                    <a href="https://aaroncelestian.substack.com/podcast" target="_blank" class="btn-small">Substack</a>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Articles & Features</h3>
+            
+            <div class="project-card">
+                <h4>Aaron Celestian Talks Life on Mars</h4>
+                <p class="project-meta">Natural History Museum Feature</p>
+                <p>
+                    One scientist working on this quest is NHMLAC's own Curator of Mineral Sciences, Dr. Aaron Celestian, who is also 
+                    an affiliate research scientist at NASA's Jet Propulsion Laboratory (JPL). Depending on the outcome of his experiments 
+                    on Mars, Dr. Celestian and his team would be among the first people to discover life on another planet.
+                </p>
+                <div class="pub-links" style="margin-top: 1rem;">
+                    <a href="https://nhm.org/stories/aaron-celestian-talks-life-mars" target="_blank" class="btn-small">Read Article</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h4>Members Q&A with Dr. Aaron Celestian</h4>
+                <p class="project-meta">Natural History Museum of Los Angeles County</p>
+                <p>
+                    Interactive Q&A session covering mineral science research, crystal growth, and current projects at the museum.
+                </p>
+                <div class="pub-links" style="margin-top: 1rem;">
+                    <a href="https://nhmlac.org/members-qa-dr-aaron-celestian" target="_blank" class="btn-small">View Q&A</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visualizations" class="section">
         <div class="container">
             <h2>Data Visualizations</h2>
             <p class="section-intro">
