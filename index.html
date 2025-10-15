@@ -6,6 +6,7 @@
     <title>Research Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -369,16 +370,17 @@
             </p>
             
             <div class="viz-card">
-                <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%; margin-bottom: 1rem;">
-                    <iframe src="https://lacnhm.maps.arcgis.com/apps/mapviewer/index.html?webmap=bd266656bb4b47a2b13f556bb1a9b717" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 8px;"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <p class="viz-caption">
-                    Interactive Story Map: Global field work locations spanning multiple research projects including 
+                <arcgis-embedded-map style="height:600px;width:100%;border-radius:8px;" 
+                                     item-id="bd266656bb4b47a2b13f556bb1a9b717" 
+                                     theme="dark" 
+                                     center="-126.57483938323588,36.630813466483325" 
+                                     scale="36978595.474472" 
+                                     portal-url="https://lacnhm.maps.arcgis.com">
+                </arcgis-embedded-map>
+                <p class="viz-caption" style="margin-top: 1rem;">
+                    Interactive Map: Global field work locations spanning multiple research projects including 
                     astrobiology studies, environmental research sites, and cultural heritage investigations. 
-                    Click through the story map to explore each location and learn about the research conducted there.
+                    Click on markers to explore each location and learn about the research conducted there.
                 </p>
             </div>
         </div>
