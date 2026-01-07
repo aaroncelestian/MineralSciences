@@ -1,0 +1,9 @@
+{
+  "name": "research-portfolio",
+  "version": "1.0.0",
+  "description": "Research portfolio site with auto-populated publications from ORCID",
+  "scripts": {
+    "fetch:pubs": "node fetch-publications.js"
+  },
+  "private": true
+}

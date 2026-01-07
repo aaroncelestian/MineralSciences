@@ -303,7 +303,7 @@ function toggleSection(sectionId) {
     const button = event.currentTarget;
     const icon = button.querySelector('.toggle-icon');
     
-    if (content.style.display === 'none') {
+    if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
         icon.textContent = '−';
         button.classList.add('active');
@@ -313,7 +313,6 @@ function toggleSection(sectionId) {
         button.classList.remove('active');
     }
 }
-<<<<<<< HEAD
 
 // Render publications from JSON
 async function renderPublications() {
@@ -329,8 +328,20 @@ async function renderPublications() {
         recentEl.innerHTML = recent.map(pub => renderPub(pub)).join('');
     } catch (e) {
         console.warn('Could not load publications:', e);
-        // Optionally show a fallback message
-        document.getElementById('recent-pubs').innerHTML = '<p class="pub-venue">Publications could not be loaded. Ensure publications.json is present.</p>';
+        // Show helpful error message
+        const recentEl = document.getElementById('recent-pubs');
+        recentEl.innerHTML = `
+            <div class="publication">
+                <p class="pub-title">Unable to load publications</p>
+                <p class="pub-venue">
+                    To view publications, please run a local web server:<br><br>
+                    <code style="background: rgba(0,0,0,0.05); padding: 0.5rem; border-radius: 4px; display: block; margin: 0.5rem 0;">
+                    python3 -m http.server 8000
+                    </code>
+                    Then open: <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>
+                </p>
+            </div>
+        `;
     }
 }
 
@@ -361,29 +372,5 @@ document.addEventListener('DOMContentLoaded', () => {
     createTimeSeriesPlot();
     createDistributionPlot();
     createHeatmapPlot();
-    initScrollAnimations();
 });
 
-// Entrance animations on scroll
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Animate child cards after section appears
-                const cards = entry.target.querySelectorAll('.project-card, .publication, .video-card');
-                cards.forEach((card, i) => {
-                    setTimeout(() => card.classList.add('visible'), i * 80);
-                });
-            }
-        });
-    }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px -40px 0px'
-    });
-
-    // Observe all sections except those already visible
-    document.querySelectorAll('.section:not(.visible)').forEach(section => observer.observe(section));
-}
-=======
->>>>>>> parent of 05bcb43 (pages updates)
