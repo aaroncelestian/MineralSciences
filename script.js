@@ -303,7 +303,7 @@ function toggleSection(sectionId) {
     const button = event.currentTarget;
     const icon = button.querySelector('.toggle-icon');
     
-    if (content.style.display === 'none' || content.style.display === '') {
+    if (content.style.display === 'none') {
         content.style.display = 'block';
         icon.textContent = '−';
         button.classList.add('active');
@@ -377,10 +377,10 @@ function initScrollAnimations() {
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -60px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     });
 
-    // Observe all sections
-    document.querySelectorAll('.section').forEach(section => observer.observe(section));
+    // Observe all sections except those already visible
+    document.querySelectorAll('.section:not(.visible)').forEach(section => observer.observe(section));
 }
