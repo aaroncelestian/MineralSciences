@@ -54,16 +54,13 @@ body {
 
 /* Navigation */
 .navbar {
-    background: rgba(255, 255, 255, 0.70);
-    color: var(--text-color);
+    background: var(--primary-color);
+    color: var(--white);
     padding: 0.9rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 25px rgba(2, 6, 23, 0.25);
 }
 
 .navbar .container {
