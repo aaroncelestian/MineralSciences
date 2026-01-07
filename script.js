@@ -313,3 +313,74 @@ function toggleSection(sectionId) {
         button.classList.remove('active');
     }
 }
+
+// Render publications from JSON
+async function renderPublications() {
+    try {
+        const resp = await fetch('./publications.json');
+        if (!resp.ok) throw new Error('Failed to fetch publications.json');
+        const data = await resp.json();
+        const works = data.works || [];
+
+        // Recent: first 10
+        const recent = works.slice(0, 10);
+        const recentEl = document.getElementById('recent-pubs');
+        recentEl.innerHTML = recent.map(pub => renderPub(pub)).join('');
+    } catch (e) {
+        console.warn('Could not load publications:', e);
+        // Optionally show a fallback message
+        document.getElementById('recent-pubs').innerHTML = '<p class="pub-venue">Publications could not be loaded. Ensure publications.json is present.</p>';
+    }
+}
+
+function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+}
+
+function renderPub(pub) {
+    const { title, journal, year, url, authors } = pub;
+    const cleanTitle = stripHtml(title);
+    const venue = journal && year ? `${journal}, ${year}` : year || journal || '';
+    const link = url ? `<a href="${url}" target="_blank" class="btn-small">View</a>` : '';
+    return `
+        <div class="publication">
+            <p class="pub-title">${cleanTitle}</p>
+            ${venue ? `<p class="pub-venue"><em>${venue}</em></p>` : ''}
+            ${authors ? `<p class="pub-abstract">${authors}</p>` : ''}
+            ${link ? `<div class="pub-links">${link}</div>` : ''}
+        </div>
+    `;
+}
+
+// Load publications on page load
+document.addEventListener('DOMContentLoaded', () => {
+    renderPublications();
+    createTimeSeriesPlot();
+    createDistributionPlot();
+    createHeatmapPlot();
+    initScrollAnimations();
+});
+
+// Entrance animations on scroll
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Animate child cards after section appears
+                const cards = entry.target.querySelectorAll('.project-card, .publication, .video-card');
+                cards.forEach((card, i) => {
+                    setTimeout(() => card.classList.add('visible'), i * 80);
+                });
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(section => observer.observe(section));
+}
