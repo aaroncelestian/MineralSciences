@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
@@ -39,23 +36,28 @@
         <div class="container">
             <h2>About</h2>
             <div class="about-content">
-                <div class="about-text about-wrap">
-                    <img src="images/aaron2.jpeg" alt="Aaron Celestian" class="portrait portrait-float">
-                    <p>
-                        I am a researcher focused on the ways minerals interact with their environments and living systems, 
-                        and how these interactions can be harnessed to address global challenges such as climate change, 
-                        pollution, and disease. My work lies at the intersection of science, art, and culture, with a 
-                        particular interest in rethinking how we relate to and understand our planet.
-                    </p>
-                    <p>
-                        As Curator of Mineral Sciences at the Natural History Museum of Los Angeles County, I employ 
-                        advanced analytical techniques including X-ray diffraction, Raman spectroscopy, and high-resolution 
-                        imaging to investigate mineral-environment interactions. My research spans from searching for 
-                        biosignatures in salt crystals to developing sustainable lithium extraction methods.
-                    </p>
-                    <p>
-                        <strong>Research Interests:</strong> Astrobiology • Environmental Solutions • Energy Materials • Cultural Heritage • PharmaMineralogy
-                    </p>
+                <div style="display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 0 0 250px;">
+                        <img src="images/aaron2.jpeg" alt="Aaron Celestian" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="about-text" style="flex: 1; min-width: 300px;">
+                        <p>
+                            I am a researcher focused on the ways minerals interact with their environments and living systems, 
+                            and how these interactions can be harnessed to address global challenges such as climate change, 
+                            pollution, and disease. My work lies at the intersection of science, art, and culture, with a 
+                            particular interest in rethinking how we relate to and understand our planet.
+                        </p>
+                        <p>
+                            As Curator of Mineral Sciences at the Natural History Museum of Los Angeles County, I employ 
+                            advanced analytical techniques including X-ray diffraction, Raman spectroscopy, and high-resolution 
+                            imaging to investigate mineral-environment interactions. My research spans from searching for 
+                            biosignatures in salt crystals to developing sustainable lithium extraction methods.
+                        </p>
+                        <p>
+                            <strong>Research Interests:</strong> Astrobiology • Environmental Solutions • Energy Materials • Cultural Heritage • PharmaMineralogy
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,11 +73,12 @@
             <div class="project-card">
                 <h3>Sustainable Lithium Extraction from Brines</h3>
                 <p class="project-meta">Funding: Department of Energy | Status: Ongoing</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/brine.jpeg" alt="Brine lithium extraction research" class="card-image">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 0 0 300px;">
+                        <img src="images/brine.jpeg" alt="Brine lithium extraction research" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     </div>
-                    <div class="split-body">
+                    <div style="flex: 1; min-width: 300px;">
                         <p>
                             Developing low-energy lithium extraction methods using lithium manganese oxide (LMO) for geothermal brines, 
                             oil field wastewater, and desalination streams. This sustainable approach addresses global lithium demand 
@@ -94,11 +97,12 @@
             <div class="project-card">
                 <h3>Kidney Stone Formation & Disease</h3>
                 <p class="project-meta">Status: Ongoing</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/cross-section-kidneystone.jpeg" alt="Kidney stone cross-section" class="card-image">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 0 0 300px;">
+                        <img src="images/cross-section-kidneystone.jpeg" alt="Kidney stone cross-section" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     </div>
-                    <div class="split-body">
+                    <div style="flex: 1; min-width: 300px;">
                         <p>
                             Investigating how bacteria contribute to calcium oxalate kidney stone formation using high-resolution imaging. 
                             Understanding these microbiological factors is crucial for developing prevention strategies and improving 
@@ -117,11 +121,12 @@
             <div class="project-card">
                 <h3>Photocatalytic Degradation & Ion Exchange in Mineral Systems</h3>
                 <p class="project-meta">Collaborations: La Brea Tar Pits, Prospering Backyards Project</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/zeolite.jpeg" alt="Zeolite framework research" class="card-image">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 0 0 300px;">
+                        <img src="images/zeolite.jpeg" alt="Zeolite framework research" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     </div>
-                    <div class="split-body">
+                    <div style="flex: 1; min-width: 300px;">
                         <p>
                             Characterizing mineral-mediated photocatalytic pathways for degradation of polycyclic aromatic hydrocarbons 
                             and pharmaceutical compounds. Investigating ion exchange mechanisms in zeolite frameworks for selective metal 
@@ -148,12 +153,138 @@
                 <span>Recent Publications</span>
                 <span class="toggle-icon">−</span>
             </button>
-            <div id="recent-pubs" class="collapsible-content">
-                <!-- Recent publications will be rendered here by JS -->
+            <div id="recent-pubs" class="collapsible-content" style="display: none;">
+            
+            <div class="publication">
+                <p class="pub-title">Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data</p>
+                <p class="pub-venue"><em>Recent Publication</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:MDX3w3dAD3YC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
             </div>
 
-            <div class="center-cta">
-                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small btn-large">View All Publications on Google Scholar</a>
+            <div class="publication">
+                <p class="pub-title">RamanLab: A Comprehensive Cross-Platform Software Suite for Advanced Raman Spectroscopy Analysis</p>
+                <p class="pub-venue"><em>Recent Publication</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:i_7YvbSbtFEC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Exploring Mechanisms of Microbialite Texture Formation through mapping in situ CaCO3 precipitation and Microbial Cell Position</p>
+                <p class="pub-venue"><em>Recent Publication</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:V_vSwabWVtYC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">MP21-12 BIOFILM-FORMING BACTERIA FOUND WITHIN CALCIUM-BASED KIDNEY STONES</p>
+                <p class="pub-venue"><em>Recent Publication</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:e84hm74t-eoC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Machine Learning Strategies to Distinguish Iron Sulfide, Oxide, and (Oxy) hydroxide Minerals Using Raman and LIBS Spectroscopy</p>
+                <p class="pub-venue"><em>Recent Publication</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&sortby=pubdate&citation_for_view=Yp2uw-0AAAAJ:ukw-9cB-YDkC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+            </div>
+
+            <button class="collapsible-btn" onclick="toggleSection('top-pubs')" style="margin-top: 2rem;">
+                <span>Top Publications by Citations</span>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div id="top-pubs" class="collapsible-content" style="display: none;">
+            
+            <div class="publication">
+                <p class="pub-title">Similarities in 2-and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</p>
+                <p class="pub-venue"><em>Cited by 186</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:u5HHmVD_uO8C" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate</p>
+                <p class="pub-venue"><em>Cited by 172</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:UeHWp8X0CEIC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Solid-state structural characterization of a rigid framework of lacunary heteropolyniobates</p>
+                <p class="pub-venue"><em>Cited by 94</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:u-x6o8ySG0sC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Measurements of light-absorbing particles on the glaciers in the Cordillera Blanca, Peru</p>
+                <p class="pub-venue"><em>Cited by 64</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:hvmnpdAuIbkC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">High-pressure neutron diffraction study of superhydrated natrolite</p>
+                <p class="pub-venue"><em>Cited by 57</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:d1gkVwhDpl0C" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Aragonite dissolution kinetics and calcite/aragonite ratios in sinking and suspended particles in the North Pacific</p>
+                <p class="pub-venue"><em>Cited by 56</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:PQEM9vzQD9gC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Phosphor imaging as a tool for in situ mapping of ppm levels of uranium and thorium in rocks and minerals</p>
+                <p class="pub-venue"><em>Cited by 56</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:2osOgNQ5qMEC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Synthesis and characterization of two-and three-dimensional calcium coordination polymers built with benzene-1, 3, 5-tricarboxylate and/or pyrazine-2-carboxylate</p>
+                <p class="pub-venue"><em>Cited by 54</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:mVmsd5A6BfQC" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">The origin of ion exchange selectivity in a porous framework titanium silicate</p>
+                <p class="pub-venue"><em>Cited by 54</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:YsMSGLbcyi4C" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <p class="pub-title">Crystallization of sodium titanium silicate with sitinakite topology: Evolution from the sodium nonatitanate phase</p>
+                <p class="pub-venue"><em>Cited by 41</em></p>
+                <div class="pub-links">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Yp2uw-0AAAAJ&citation_for_view=Yp2uw-0AAAAJ:IjCSPb-OGe4C" target="_blank" class="btn-small">Google Scholar</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small" style="padding: 0.6rem 1.5rem; font-size: 1rem;">View All Publications on Google Scholar</a>
+            </div>
             </div>
         </div>
     </section>
@@ -165,14 +296,15 @@
                 Videos, podcasts, interviews, and media appearances discussing mineral sciences, astrobiology, and research.
             </p>
 
-            <h3 class="section-subhead">Podcast</h3>
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.5rem;">Podcast</h3>
             
             <div class="project-card">
-                <div class="split">
-                    <div class="split-media">
-                        <img src="images/pox.jpeg" alt="Pocketful of Xtals Podcast Cover" class="card-image">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 0 0 200px;">
+                        <img src="images/pox.jpeg" alt="Pocketful of Xtals Podcast Cover" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     </div>
-                    <div class="split-body">
+                    <div style="flex: 1; min-width: 300px;">
                         <h4>Pocketful of Xtals Podcast</h4>
                         <p class="project-meta">Host & Creator | Available on Spotify, Apple Podcasts, and iHeart</p>
                         <p>
@@ -180,7 +312,7 @@
                             Each episode delves into fascinating topics like radioactive waste cleanup, mineral detective work, and the 
                             intersection of mineralogy with everyday life.
                         </p>
-                        <div class="pub-links media-links">
+                        <div class="pub-links" style="margin-top: 1rem;">
                             <a href="https://open.spotify.com/show/7tNXYPxuSJ1jImArLYZzAS" target="_blank" class="btn-small">Spotify</a>
                             <a href="https://podcasts.apple.com/za/podcast/pocketful-of-xtals/id1738038033" target="_blank" class="btn-small">Apple Podcasts</a>
                             <a href="https://aaroncelestian.substack.com/podcast" target="_blank" class="btn-small">Substack</a>
@@ -189,7 +321,7 @@
                 </div>
             </div>
 
-            <h3 class="section-subhead section-gap-lg">Videos</h3>
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Videos</h3>
             
             <div class="video-grid">
                 <div class="video-card">
@@ -197,9 +329,9 @@
                         <iframe width="100%" height="250" src="https://www.youtube.com/embed/44BXfaC_6R8" 
                                 title="Countyology: Searching for Life in Salt Crystals" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                                allowfullscreen style="border-radius: 8px;"></iframe>
                     </div>
-                    <h4 class="video-title">Countyology: Searching for Life in Salt Crystals</h4>
+                    <h4 style="margin-top: 1rem; font-size: 1.1rem;">Countyology: Searching for Life in Salt Crystals</h4>
                     <p class="project-meta">Mineral Sciences Research</p>
                 </div>
 
@@ -208,9 +340,9 @@
                         <iframe width="100%" height="250" src="https://www.youtube.com/embed/0IV9etG1jcQ" 
                                 title="Museum Exhibit Feature" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                                allowfullscreen style="border-radius: 8px;"></iframe>
                     </div>
-                    <h4 class="video-title">Museum Exhibit Feature</h4>
+                    <h4 style="margin-top: 1rem; font-size: 1.1rem;">Museum Exhibit Feature</h4>
                     <p class="project-meta">Natural History Museum of LA County</p>
                 </div>
 
@@ -219,18 +351,18 @@
                         <iframe width="100%" height="250" src="https://www.youtube.com/embed/t-wZ2SBcFIw" 
                                 title="Marine Minerals Research" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                                allowfullscreen style="border-radius: 8px;"></iframe>
                     </div>
-                    <h4 class="video-title">Marine Minerals Research</h4>
+                    <h4 style="margin-top: 1rem; font-size: 1.1rem;">Marine Minerals Research</h4>
                     <p class="project-meta">Oceanographic Mineralogy</p>
                 </div>
             </div>
 
-            <button class="collapsible-btn section-gap-lg" onclick="toggleSection('articles')">
+            <button class="collapsible-btn" onclick="toggleSection('articles')" style="margin-top: 3rem;">
                 <span>Articles & Features</span>
                 <span class="toggle-icon">+</span>
             </button>
-            <div id="articles" class="collapsible-content">
+            <div id="articles" class="collapsible-content" style="display: none;">
             
             <div class="project-card">
                 <h4>Aaron Celestian Talks Life on Mars</h4>
@@ -240,7 +372,7 @@
                     an affiliate research scientist at NASA's Jet Propulsion Laboratory (JPL). Depending on the outcome of his experiments 
                     on Mars, Dr. Celestian and his team would be among the first people to discover life on another planet.
                 </p>
-                <div class="pub-links media-links">
+                <div class="pub-links" style="margin-top: 1rem;">
                     <a href="https://nhm.org/stories/aaron-celestian-talks-life-mars" target="_blank" class="btn-small">Read Article</a>
                 </div>
             </div>
@@ -251,7 +383,7 @@
                 <p>
                     Interactive Q&A session covering mineral science research, crystal growth, and current projects at the museum.
                 </p>
-                <div class="pub-links media-links">
+                <div class="pub-links" style="margin-top: 1rem;">
                     <a href="https://nhmlac.org/members-qa-dr-aaron-celestian" target="_blank" class="btn-small">View Q&A</a>
                 </div>
             </div>
@@ -268,14 +400,14 @@
             </p>
             
             <div class="viz-card">
-                <arcgis-embedded-map class="embedded-map" 
+                <arcgis-embedded-map style="height:600px;width:100%;border-radius:8px;" 
                                      item-id="bd266656bb4b47a2b13f556bb1a9b717" 
                                      theme="dark" 
                                      center="-126.57483938323588,36.630813466483325" 
                                      scale="36978595.474472" 
                                      portal-url="https://lacnhm.maps.arcgis.com">
                 </arcgis-embedded-map>
-                <p class="viz-caption viz-caption-top">
+                <p class="viz-caption" style="margin-top: 1rem;">
                     Interactive Map: Global field work locations spanning multiple research projects including 
                     astrobiology studies, environmental research sites, and cultural heritage investigations. 
                     Click on markers to explore each location and learn about the research conducted there.

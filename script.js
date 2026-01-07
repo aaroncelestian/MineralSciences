@@ -313,6 +313,7 @@ function toggleSection(sectionId) {
         button.classList.remove('active');
     }
 }
+<<<<<<< HEAD
 
 // Render publications from JSON
 async function renderPublications() {
@@ -384,3 +385,5 @@ function initScrollAnimations() {
     // Observe all sections except those already visible
     document.querySelectorAll('.section:not(.visible)').forEach(section => observer.observe(section));
 }
+=======
+>>>>>>> parent of 05bcb43 (pages updates)
