@@ -731,3 +731,102 @@ html {
         margin-top: 0.25rem;
     }
 }
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+        animation: none !important;
+        color: #000;
+        font-size: 11pt;
+        line-height: 1.4;
+    }
+    
+    .navbar {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .section {
+        padding: 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    h1 {
+        font-size: 24pt !important;
+        color: #000 !important;
+        margin-bottom: 8pt !important;
+    }
+    
+    h2.cv-heading {
+        font-size: 14pt !important;
+        color: #000 !important;
+        border-bottom: 2pt solid #000 !important;
+        margin-top: 16pt !important;
+        margin-bottom: 8pt !important;
+        page-break-after: avoid;
+    }
+    
+    h3 {
+        font-size: 12pt !important;
+        color: #000 !important;
+        margin-top: 12pt !important;
+        margin-bottom: 6pt !important;
+        page-break-after: avoid;
+    }
+    
+    .cv-section {
+        background: white !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin-bottom: 12pt !important;
+    }
+    
+    .cv-item {
+        page-break-inside: avoid;
+        margin-bottom: 8pt !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+    
+    .cv-item-header {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+    
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    a {
+        color: #000 !important;
+        text-decoration: none !important;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666;
+    }
+    
+    button, .btn-small {
+        display: none !important;
+    }
+    
+    div[style*="background-color"] {
+        background: white !important;
+        border-left: 3pt solid #ccc !important;
+        padding: 8pt !important;
+    }
+    
+    @page {
+        margin: 0.75in;
+        size: letter;
+    }
+}
