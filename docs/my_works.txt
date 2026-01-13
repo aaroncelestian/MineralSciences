@@ -1,0 +1,1621 @@
+@article{michel2007similarities,
+  title={Similarities in 2-and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering},
+  author={Michel, FM and Ehm, L and Liu, G and Han, WQ and Antao, SM and Chupas, PJ and Lee, PL and Knorr, Karsten and Eulert, H and Kim, J and others},
+  journal={Chemistry of Materials},
+  volume={19},
+  number={6},
+  pages={1489--1496},
+  year={2007},
+  publisher={American Chemical Society}
+}
+
+@article{nyman2006solid,
+  title={Solid-state structural characterization of a rigid framework of lacunary heteropolyniobates},
+  author={Nyman, May and Celestian, Aaron J and Parise, John B and Holland, Gregory P and Alam, Todd M},
+  journal={Inorganic chemistry},
+  volume={45},
+  number={3},
+  pages={1043--1052},
+  year={2006},
+  publisher={ACS Publications}
+}
+
+@article{colligan2005high,
+  title={High-pressure neutron diffraction study of superhydrated natrolite},
+  author={Colligan, Marek and Lee, Yongjae and Vogt, Thomas and Celestian, Aaron J and Parise, John B and Marshall, William G and Hriljac, Joseph A},
+  journal={The Journal of Physical Chemistry B},
+  volume={109},
+  number={39},
+  pages={18223--18225},
+  year={2005},
+  publisher={ACS Publications}
+}
+
+@article{celestian2004time,
+  title={Time-Resolved Diffraction Studies of Ion Exchange: K+ and Na+ Exchange into (Al, Ge) Gismondine (GIS) Na24Al24Ge24O96⊙ 40H2O and K8Al8Ge8O32⊙ 8H2O},
+  author={Celestian, Aaron J and Parise, John B and Goodell, Carmen and Tripathi, Akhilesh and Hanson, Jonathan},
+  journal={Chemistry of materials},
+  volume={16},
+  number={11},
+  pages={2244--2254},
+  year={2004},
+  publisher={ACS Publications}
+}
+
+@article{cole2003phosphor,
+  title={Phosphor imaging as a tool for in situ mapping of ppm levels of uranium and thorium in rocks and minerals},
+  author={Cole, Jennifer M and Nienstedt, Jessica and Spataro, Glenn and Rasbury, E Troy and Lanzirotti, Antonio and Celestian, Aaron J and Nilsson, Melanie and Hanson, Gilbert N},
+  journal={Chemical Geology},
+  volume={193},
+  number={1-2},
+  pages={127--136},
+  year={2003},
+  publisher={Elsevier}
+}
+
+@article{celestian2005optimizing,
+  title={Optimizing synthesis of Na2Ti2SiO7{\textperiodcentered} 2H2O (Na-CST) and ion exchange pathways for Cs0. 4H1. 6Ti2SiO7{\textperiodcentered} H2O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction},
+  author={Celestian, AJ and Medvedev, DG and Tripathi, A and Parise, JB and Clearfield, A},
+  journal={Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms},
+  volume={238},
+  number={1-4},
+  pages={61--69},
+  year={2005},
+  publisher={North-Holland}
+}
+
+@article{celestian2008mechanism,
+  title={The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate},
+  author={Celestian, Aaron J and Kubicki, James D and Hanson, Jonathon and Clearfield, Abraham and Parise, John B},
+  journal={Journal of the American Chemical Society},
+  volume={130},
+  number={35},
+  pages={11689--11694},
+  year={2008},
+  publisher={American Chemical Society}
+}
+
+@article{medvedev2004crystallization,
+  title={Crystallization of sodium titanium silicate with sitinakite topology: Evolution from the sodium nonatitanate phase},
+  author={Medvedev, Dmitri G and Tripathi, Akhilesh and Clearfield, Abraham and Celestian, Aaron J and Parise, John B and Hanson, Jonathan},
+  journal={Chemistry of materials},
+  volume={16},
+  number={19},
+  pages={3659--3666},
+  year={2004},
+  publisher={ACS Publications}
+}
+
+@article{zhang2002new,
+  title={A new polymorph of eucryptite (LiAlSiO4), $\varepsilon$-eucryptite, and thermal expansion of $\alpha$-and $\varepsilon$-eucryptite at high pressure},
+  author={Zhang, Jianzhong and Celestian, Aaron and Parise, John B and Xu, Hongwu and Heaney, Peter J},
+  journal={American Mineralogist},
+  volume={87},
+  number={4},
+  pages={566--571},
+  year={2002},
+  publisher={Mineralogical Society of America}
+}
+
+@article{bonhomme2005tribasic,
+  title={Tribasic lead maleate and lead maleate: Synthesis and structural and spectroscopic characterizations},
+  author={Bonhomme, Fran{\c{c}}ois and Alam, Todd M and Celestian, Aaron J and Tallant, David R and Boyle, Timothy J and Cherry, Brian R and Tissot, Ralph G and Rodriguez, Mark A and Parise, John B and Nyman, May},
+  journal={Inorganic chemistry},
+  volume={44},
+  number={21},
+  pages={7394--7402},
+  year={2005},
+  publisher={ACS Publications}
+}
+
+@article{celestian2007role,
+  title={Role of the Hydroxyl- Water Hydrogen-Bond Network in Structural Transitions and Selectivity toward Cesium in Cs0. 38 (D1. 08H0. 54) SiTi2O7⊙(D0. 86H0. 14) 2O Crystalline Silicotitanate},
+  author={Celestian, Aaron J and Parise, John B and Smith, Ronald I and Toby, Brian H and Clearfield, Abraham},
+  journal={Inorganic Chemistry},
+  volume={46},
+  number={4},
+  pages={1081--1089},
+  year={2007},
+  publisher={American Chemical Society}
+}
+
+@article{clearfield2006situ,
+  title={In situ type study of hydrothermally prepared titanates and silicotitanates},
+  author={Clearfield, A and Tripathi, A and Medvedev, D and Celestian, AJ and Parise, JB},
+  journal={Journal of materials science},
+  volume={41},
+  number={5},
+  pages={1325--1333},
+  year={2006},
+  publisher={Kluwer Academic Publishers Boston}
+}
+
+@article{celestian2007origin,
+  title={The origin of ion exchange selectivity in a porous framework titanium silicate},
+  author={Celestian, Aaron J and Clearfield, Abraham},
+  journal={Journal of Materials Chemistry},
+  volume={17},
+  number={46},
+  pages={4839--4842},
+  year={2007},
+  publisher={Royal Society of Chemistry}
+}
+
+@article{lee2007dehydration,
+  title={Dehydration-induced water disordering in a synthetic potassium gallosilicate natrolite},
+  author={Lee, Yongjae and Kim, Sun Jin and Bull, Ivor and Celestian, Aaron J and Parise, John B and Kao, Chi-Chang and Vogt, Thomas},
+  journal={Journal of the American Chemical Society},
+  volume={129},
+  number={44},
+  pages={13744--13748},
+  year={2007},
+  publisher={ACS Publications}
+}
+
+@phdthesis{celestian2002ion,
+  title={Ion Exchange of (KAlGeO32. 8H2O) and (Na24Al24Ge24O96. 40H2O) Gismondine},
+  author={Celestian, Aaron Joseph},
+  year={2002},
+  school={State University of New York at Stony Brook}
+}
+
+@article{celestian2003k4li4,
+  title={(K4Li4) Al8Ge8O32{\textperiodcentered} 8H2O: an Li\^{}+-exchanged potassium aluminogermanate with the zeolite gismondine (GIS) topology},
+  author={Celestian, Aaron J and Parise, John B and Tripathi, Akhilesh and Kvick, {\AA}ke and Vaughan, Gavin MB},
+  journal={Crystal Structure Communications},
+  volume={59},
+  number={8},
+  pages={i74--i76},
+  year={2003},
+  publisher={International Union of Crystallography}
+}
+
+@incollection{celestian2010crystal,
+  title={Crystal growth and ion exchange in titanium silicates},
+  author={Celestian, Aaron J and Parise, John B and Clearfield, Abraham},
+  booktitle={Springer Handbook of Crystal Growth},
+  pages={1637--1662},
+  year={2010},
+  publisher={Springer Berlin Heidelberg Berlin, Heidelberg}
+}
+
+@inproceedings{flynn2012identifying,
+  title={IDENTIFYING TYPES OF ZONING IN MINERALS USING RAMAN MICROSCOPY},
+  author={FLYNN, Elaine D and WULFF, AH and CELESTIAN, Aaron J and RUCKS, Melinda J},
+  booktitle={Geological Society of America Abstracts with Programs,},
+  volume={44},
+  number={4},
+  pages={68},
+  year={2012}
+}
+
+@article{northrup2007technical,
+  title={Technical Report: Growth of Environmental Science at the NSLS},
+  author={Northrup, Paul and Lanzirotti, Antonio and Celestian, Aaron},
+  journal={Synchrotron Radiation News},
+  volume={20},
+  number={3},
+  pages={6--13},
+  year={2007},
+  publisher={Taylor \& Francis Group}
+}
+
+@article{fewox2011situ,
+  title={In situ X-ray diffraction study of cesium exchange in synthetic umbite},
+  author={Fewox, Christopher S and Clearfield, Abraham and Celestian, Aaron J},
+  journal={Inorganic Chemistry},
+  volume={50},
+  number={8},
+  pages={3596--3604},
+  year={2011},
+  publisher={American Chemical Society}
+}
+
+@inproceedings{parise2001phase,
+  title={Phase Transformations in the GIS Structure upon Ion Exchange},
+  author={Parise, J and Goodell, C and Celestian, A and Trpathi, A},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2001},
+  pages={V32A--0956},
+  year={2001}
+}
+
+@article{celestian2006influence,
+  title={Influence of hydroxyl-water interaction on structural transformations during Cs+ exchange in microporous H-CST},
+  author={Celestian, AJ and Parise, JB and Narayan, J and Kubicki, JD and Clearfield, A},
+  journal={Geochimica et Cosmochimica Acta},
+  volume={70},
+  number={18},
+  pages={A91},
+  year={2006},
+  publisher={Pergamon}
+}
+
+@inproceedings{celestian2004situ,
+  title={In situ X-ray diffraction study of Cs ion exchange into H-TS},
+  author={Celestian, Aaron J and MEDVEDEV, Dmitri G and TRIPATHI, Akhilesh and PARISE, John B and CLEARFIELD, Abraham},
+  booktitle={2004 Denver Annual Meeting},
+  year={2004}
+}
+
+@article{zhang2002instability,
+  title={INSTABILITY OF BETA-EUCRYPTITE UNDER PRESSURE AND THERMAL EXPANSION OF E-LIALSIO4 AT 1.9 GPA},
+  author={Zhang, Jn and CELESTIAN, A and PARISE, J and XU, H and HEANEY, P},
+  journal={American Mineralogist},
+  volume={877},
+  number={BNL-74038-2005-JA},
+  year={2002},
+  publisher={Brookhaven National Laboratory, National Synchrotron Light Source (US)}
+}
+
+@article{nienstedtincorporation,
+  title={Incorporation of U and Th in Phosphatized Fossils},
+  author={Nienstedt, J and Drayer, C and Lanzirotti, A and Rasbury, T and Celestian, A and Forester, C}
+}
+
+@article{parisesitu,
+  title={In situ and time resolved studies of microporous materials},
+  author={Parise, J and Lee, Y and Hriljac, J and Vogt, T and Hanson, J and Park, S and Kleinsorge, M and Celestian, A}
+}
+
+@techreport{rodriguez2005tribasic,
+  title={Tribasic lead maleate and lead maleate: synthesis, structural and spectroscopic characterizations.},
+  author={Rodriguez, Mark Andrew and Celestian, Aaron J and Cherry, Brian Ray and Bonhomme, Francois R and Parise, John B and Alam, Todd Michael and Nyman, May Devan and Tallant, David Robert and Boyle, Timothy J},
+  year={2005},
+  institution={Sandia National Laboratories (SNL), Albuquerque, NM, and Livermore, CA~…}
+}
+
+@inproceedings{celestian2010situ,
+  title={IN SITU X-RAY DIFFRACTION STUDY OF CS+ ION EXCHANGE IN UMBITE},
+  author={CELESTIAN, Aaron J and CLEARFIELD, Abraham and FEWOX, Christopher},
+  booktitle={2010 GSA Denver Annual Meeting},
+  year={2010}
+}
+
+@misc{celestian2008time,
+  title={Time-resolved structural characterization of microporous silicotitanates and niobium silicotitanates},
+  author={Celestian, Aaron Joseph},
+  journal={Dissertation Abstracts International},
+  volume={69},
+  number={10},
+  year={2008}
+}
+
+@article{tripathistructural,
+  title={Structural Investigation of the Origin of Selectivity for Cs and Sr in the Nb-Substituted Titanosilicate with the Mineral Sitinakite Topology},
+  author={Tripathi, A and Medvedev, D and Clearfield, A and Celestian, A and Parise, JB and Hanson, J}
+}
+
+@article{celestiantime,
+  title={Time Resolved X-ray Diffraction Studies of K, Na, and Li Exchanged (Al, Ge)-GIS},
+  author={Celestian, A and Parise, J and Hanson, J}
+}
+
+@inproceedings{kramer2008strontium,
+  title={Strontium ion exchange mechanism in synthetic sitinakite from time resolved studies},
+  author={Kramer, S and Celestian, AJ},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2008},
+  pages={V13A--2107},
+  year={2008}
+}
+
+@article{kramer2012effects,
+  title={Effects of hydration during strontium exchange into nanoporous hydrogen niobium titanium silicate},
+  author={Kramer, Samantha and Celestian, Aaron J},
+  journal={Inorganic chemistry},
+  volume={51},
+  number={11},
+  pages={6251--6258},
+  year={2012},
+  publisher={American Chemical Society}
+}
+
+@article{vakiti2012synthesis,
+  title={Synthesis and characterization of two-and three-dimensional calcium coordination polymers built with benzene-1, 3, 5-tricarboxylate and/or pyrazine-2-carboxylate},
+  author={Vakiti, Raj Kishore and Garabato, Brady D and Schieber, Natalie P and Rucks, Melinda J and Cao, Yan and Webb, Cathleen and Maddox, Jeremy B and Celestian, Aaron and Pan, Wei-Ping and Yan, Bangbo},
+  journal={Crystal growth \& design},
+  volume={12},
+  number={8},
+  pages={3937--3943},
+  year={2012},
+  publisher={American Chemical Society}
+}
+
+@inproceedings{celestian2012optical,
+  title={OPTICAL, RAMAN, AND MORPHOLOGICAL CHARACTERIZATION OF ROCK THIN SECTIONS FROM THE ARNOLD PIT FORMER TALC MINE NEAR BALMAT, NEW YORK FOR ASBESTIFORM MINERALS},
+  author={CELESTIAN, Aaron J},
+  booktitle={Geological Society of America Abstracts with Programs},
+  volume={44},
+  number={7},
+  pages={161},
+  year={2012}
+}
+
+@inproceedings{all2012new,
+  title={New measurements of particulates in glacial snow and ice in the Cordillera Blanca mountains of Peru},
+  author={All, John and Schmitt, Carl and Celestian, Aaron J and Rucks, Melinda and Arnott, William P and Cole, Rebecca},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2012},
+  pages={GC11A--0970},
+  year={2012}
+}
+
+@inproceedings{celestian2004synchrotron,
+  title={Synchrotron time resolved X-ray diffraction of Cs exchange into molecular sieve H-CST.},
+  author={Celestian, Aaron J and Medvedev, D and Tripathi, A and Parise, JB and Clearfield, A and Hanson, JC},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={227},
+  pages={U1515--U1515},
+  year={2004},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@inproceedings{galloway2006temperature,
+  title={Temperature stability of a molecular sieve crystalline silicotitanate with the mineral sitinakite topology},
+  author={Galloway, Melissa M and Celestian, Aaron J and Parise, John B and Clearfield, Abraham and Perry, Houston P},
+  booktitle={Abstracts of Papers of the American Chemical Society},
+  volume={231},
+  year={2006},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@inproceedings{tripathi2003situ,
+  title={In situ synchrotron X-ray structural studies of crystal growth and ion exchange in tunnel-type titanosilicates.},
+  author={Tripathi, A and Medvedev, D and Clearfield, A and Celestian, AJ and Parise, JB and Nyman, M and Hanson, J},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={225},
+  pages={U93--U94},
+  year={2003},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@inproceedings{leftwich2010cs,
+  title={Cs sequestration into a microporous gallosilicate framework},
+  author={Leftwich, KM and Celestian, AJ},
+  booktitle={GEOCHIMICA ET COSMOCHIMICA ACTA},
+  volume={74},
+  number={12},
+  pages={A577--A577},
+  year={2010},
+  organization={PERGAMON-ELSEVIER SCIENCE LTD THE BOULEVARD, LANGFORD LANE, KIDLINGTON~…}
+}
+
+@inproceedings{medvedev2004time,
+  title={Time resolved diffraction studies on titanosilicate with mineral sitinakite topology: From crystallization to ion-exchange.},
+  author={Medvedev, D and Tripathi, A and Clearfield, A and Celestian, AJ and Parise, JB and Hanson, JC},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={227},
+  pages={U1235--U1235},
+  year={2004},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@inproceedings{kramer2010mechanisms,
+  title={The mechanisms of Sr ion exchange into partially niobium substituted sitinakite},
+  author={Kramer, Samantha and Celestian, Aaron},
+  booktitle={Twentieth Annual Goldschmidt Conference},
+  pages={538},
+  year={2010}
+}
+
+@inproceedings{celestian2005situ,
+  title={In situ neutron and X-ray scattering studies of Cs+ ion exchange sequestration into the crystalline silicotitanate (CST) molecular sieve},
+  author={Celestian, AJ and Parise, JB and Smith, RI and Park, HS and Clearfield, A},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={230},
+  pages={U1769--U1770},
+  year={2005},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@inproceedings{michel2006geoc,
+  title={GEOC 133-Size and structure of ferrihydrite from PDF analysis},
+  author={Michel, F Marc and Antao, Sytle M and Celestian, Aaron J and Schoonen, Martin A and Parise, John B and Liu, Gang and Strongin, Daniel R and Lee, Peter L and Chupas, Peter J},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={232},
+  year={2006},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@article{celestian2013situ,
+  title={In situ Raman spectroscopic study of transient polyhedral distortions during cesium ion exchange into sitinakite},
+  author={Celestian, Aaron J and Powers, Michael and Rader, Shelby},
+  journal={American Mineralogist},
+  volume={98},
+  number={7},
+  pages={1153--1161},
+  year={2013},
+  publisher={Mineralogical Society of America}
+}
+
+@inproceedings{celestiancharacterizing,
+  title={Characterizing Synthesis and Ion Transport in Microporous Mixed-Polyhedral Frameworks},
+  author={Celestian, Aaron},
+  booktitle={57th Annual Report on Research Under Sponsorship of The American Chemical Society Petroleum Research Fund},
+  organization={Petroleum Research Fund}
+}
+
+@inproceedings{neeper2013geochemical,
+  title={GEOCHEMICAL AND MINERALOGICAL ANALYSIS OF CAVE DEPOSITS TO RECONSTRUCT CLIMATE CHANGE IN BARBADOS FOR WATER RESOURCE MANAGEMENT},
+  author={NEEPER, Lowell and POLK, Jason and OUELLETTE Jr, Gilman Reno and CELESTIAN, Aaron J and ASMEROM, Yemane and POLYAK, Victor J},
+  booktitle={2013 GSA Annual Meeting in Denver},
+  year={2013}
+}
+
+@article{celestian2013synthesis,
+  title={Synthesis and ion exchange studies of porous nano-crystalline materials},
+  author={Celestian, Aaron},
+  journal={Bulletin of the American Physical Society},
+  volume={58},
+  year={2013},
+  publisher={American Physical Society}
+}
+
+@article{andrew2013analysis,
+  title={Analysis of Fiber Structure in a Concrete Matrix from EBS Coupled to Raman Spectra},
+  author={Andrew, Keith and Palmquest, Shane and Kintzel, Edward and Celestian, Aaron and Arbuckle, Gregory and Palmer, Jahi},
+  journal={Bulletin of the American Physical Society},
+  volume={58},
+  year={2013},
+  publisher={American Physical Society}
+}
+
+@inproceedings{shockley2012using,
+  title={Using confocal Raman spectroscopy to analyze nitrate structure at and near the air-water interface},
+  author={Shockley, Heather C and Nee, Matthew J and Celestian, Aaron},
+  booktitle={ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY},
+  volume={243},
+  year={2012},
+  organization={AMER CHEMICAL SOC 1155 16TH ST, NW, WASHINGTON, DC 20036 USA}
+}
+
+@article{yan2014self,
+  title={Self-assembled hybrid solids of luminescent Ru (II) polypyridyl complexes and polyoxometalates},
+  author={Yan, Bangbo and Li, Yanfen and Calhoun, Steven R and Cottrell, Nicholas G and Lella, Divya Jyothi and Celestian, Aaron J},
+  journal={Inorganic Chemistry Communications},
+  volume={43},
+  pages={23--26},
+  year={2014},
+  publisher={Elsevier}
+}
+
+@inproceedings{polk2013novel,
+  title={A Novel Multiproxy Approach to High-resolution Speleothem Paleoclimate Reconstruction in the Caribbean Region During the Late Holocene},
+  author={Polk, J and Ouellette, G and Celestian, AJ and Kintzel, E and Cole, J and Asmerom, Y and Polyak, VJ and Durkee, J},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2013},
+  pages={PP23D--02},
+  year={2013}
+}
+
+@article{schmitt2014linking,
+  title={Linking remote and in-situ detection of black carbon on tropical glaciers},
+  author={Schmitt, Carl G and All, John and Cole, Rebecca J and Celestian, Aaron and Arnott, W Pat},
+  journal={Photogramm Eng Remote Sens},
+  volume={80},
+  number={5},
+  pages={385--390},
+  year={2014}
+}
+
+@article{schmitt2014measurements,
+  title={Measurements of light absorbing particulates on the glaciers in the Cordillera Blanca, Peru.},
+  author={Schmitt, CG and All, JD and Schwarz, JP and Arnott, WP and Cole, RJ and Lapham, E and Celestian, A},
+  journal={Cryosphere Discussions},
+  volume={8},
+  number={5},
+  year={2014}
+}
+
+@article{schmitt2015measurements,
+  title={Measurements of light-absorbing particles on the glaciers in the Cordillera Blanca, Peru},
+  author={Schmitt, Carl G and All, John D and Schwarz, JP and Arnott, W Patrick and Cole, RJ and Lapham, E and Celestian, A},
+  journal={The Cryosphere},
+  volume={9},
+  number={1},
+  pages={331--340},
+  year={2015},
+  publisher={Copernicus GmbH}
+}
+
+@inproceedings{schmitt2014measurements,
+  title={Measurements of Light Absorbing Particles on Tropical South American Glaciers},
+  author={Schmitt, Carl G and All, John and Schwarz, Joshua Peter and Arnott, William P and Warthon, Julio and Andrade, Marcos and Celestian, Aaron J and Hoffmann, Dirk and Cole, Rebecca J and Lapham, Ellen and others},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2014},
+  pages={C24A--06},
+  year={2014}
+}
+
+@article{celestian2016structure,
+  title={Structure determination and time-resolved raman spectroscopy of yttrium ion exchange into microporous titanosilicate ETS-4},
+  author={Celestian, Aaron J and Chappell, Caleb J and Rucks, Melinda J and Norris, Pauline},
+  journal={Inorganic Chemistry},
+  volume={55},
+  number={21},
+  pages={11057--11063},
+  year={2016},
+  publisher={American Chemical Society}
+}
+
+@article{goman2018preliminary,
+  title={Preliminary results from Laguna Minuc{\'u}a: a potentially annually resolved record of climate and environmental change for the past~ 5000 years in the Mixteca Alta of Oaxaca, Mexico},
+  author={Goman, Michelle and Joyce, Arthur and Lund, Steve and Pearson, Charlotte and Guerra, William and Dale, Darren and Hammond, Douglas E and Celestian, Aaron J},
+  journal={Quaternary International},
+  volume={469},
+  pages={85--95},
+  year={2018},
+  publisher={Pergamon}
+}
+
+@article{kampf2017rowleyite,
+  title={Rowleyite,[Na (NH4, K) 9Cl4][V25+, 4+(P, As) O8] 6⋅ n [H2O, Na, NH4, K, Cl], a new mineral with a microporous framework structure},
+  author={Kampf, Anthony R and Cooper, Mark A and Nash, Barbara P and Cerling, Thure E and Marty, Joe and Hummer, Daniel R and Celestian, Aaron J and Rose, Timothy P and Trebisky, Thomas J},
+  journal={American Mineralogist},
+  volume={102},
+  number={5},
+  pages={1037--1044},
+  year={2017},
+  publisher={De Gruyter}
+}
+
+@article{celestian1994synthesis,
+  title={SYNTHESIS AND IN SITU ION EXCHANGE STUDIES OF NANO CRYSTALLINE NANOPOROUS MATERIALS FOR APPLICATIONS IN CATALYSIS},
+  author={Celestian, Aaron J and Baker, Tucker and Powers, Michael},
+  journal={Catalysis},
+  volume={85},
+  pages={587--631},
+  year={1994}
+}
+
+@inproceedings{perl2017geobiological,
+  title={Geobiological Comparisons of Preservation Potential within Hypersaline Mineral-Microbe Systems},
+  author={Perl, Scott M and Celestian, Aaron J and Vaishampayan, Parag and Seuylemezian, Arman and Mahseredjian, Taleen and Baxter, Bonnie and Corsetti, Frank A},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2017},
+  pages={P41B--2838},
+  year={2017}
+}
+
+@inproceedings{smith2017raman,
+  title={Raman and FTIR spectroscopy of methane in olivine},
+  author={Smith, Annika and Oze, Christopher and Rossman, George R and Celestian, Aaron J},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2017},
+  pages={V43C--0545},
+  year={2017}
+}
+
+@article{kampf2018barwoodite,
+  title={Barwoodite, Mn2+ 6 (Nb5+,□) 2 (SiO4) 2 (O, OH) 6, a New Member of the Welinite Group from Granite Mountain, Arkansas},
+  author={Kampf, Anthony R and Celestian, Aaron J and Nash, Barbara P},
+  journal={The Canadian Mineralogist},
+  volume={56},
+  number={5},
+  pages={799--809},
+  year={2018},
+  publisher={Mineralogical Association of Canada}
+}
+
+@article{perl2018permian,
+  title={Permian evaporite preservation of chemical biomarkers: Implications for in-situ hydrated mineral and hypersaline brine systems},
+  author={Perl, Scott and Vaishampayan, Parag and Cockell, Charles and Seuylemezian, Arman and Celestian, Aaron and Baxter, Bonnie and Corsetti, Frank},
+  journal={42nd COSPAR Scientific Assembly},
+  volume={42},
+  pages={F3--6},
+  year={2018}
+}
+
+@article{wilmeth2019neoarchean,
+  title={Neoarchean (2.7 Ga) lacustrine stromatolite deposits in the Hartbeesfontein Basin, Ventersdorp Supergroup, South Africa: implications for oxygen oases},
+  author={Wilmeth, DT and Corsetti, FA and Beukes, NJ and Awramik, SM and Petryshyn, Victoria and Spear, JR and Celestian, AJ},
+  journal={Precambrian Research},
+  volume={320},
+  pages={291--302},
+  year={2019},
+  publisher={Elsevier}
+}
+
+@article{celestian2019situ,
+  title={In situ Cs and H exchange into gaidonnayite and proposed mechanisms of ion diffusion},
+  author={Celestian, Aaron J and Lively, Jason and Xu, Wenqian},
+  journal={Inorganic Chemistry},
+  volume={58},
+  number={3},
+  pages={1919--1928},
+  year={2019},
+  publisher={American Chemical Society}
+}
+
+@article{celestian2005optimizing,
+  title={Optimizing synthesis of Na $\{$sub 2$\}$ Ti $\{$sub 2$\}$ SiO $\{$sub 7$\}$. 2H $\{$sub 2$\}$ O (Na-CST) and ion exchange pathways for Cs $\{$sub 0.4$\}$ H $\{$sub 1.6$\}$ Ti $\{$sub 2$\}$ SiO $\{$sub 7$\}$. H $\{$sub 2$\}$ O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction},
+  author={Celestian, AJ and Medvedev, DG and Tripathi, A and Parise, JB and Clearfield, A},
+  journal={Nuclear Instruments and Methods in Physics Research. Section B, Beam Interactions with Materials and Atoms},
+  volume={238},
+  year={2005}
+}
+
+@article{celestian2008eld,
+  title={eld and JB Parise},
+  author={Celestian, AJ and Kubicki, JD and Hanson, J and Clear, A},
+  journal={J. Am. Chem. Soc},
+  volume={130},
+  pages={11689--11694},
+  year={2008}
+}
+
+@inproceedings{mahseredjian2018investigation,
+  title={Investigation of Laminae Formation in Eocene Green River Formation Stromatolites Through Combined Micro-X-Ray Fluorescence Spectroscopy and Petrography},
+  author={Mahseredjian, Taleen and Frantz, Carie and Celestian, Aaron J and Paradis, Olivia Piazza and Berelson, William and Petryshyn, Victoria A and Corsetti, Frank A},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2018},
+  pages={PP41E--1900},
+  year={2018}
+}
+
+@article{dong2019aragonite,
+  title={Aragonite dissolution kinetics and calcite/aragonite ratios in sinking and suspended particles in the North Pacific},
+  author={Dong, Sijia and Berelson, William M and Rollins, Nick E and Subhas, Adam V and Naviaux, John D and Celestian, Aaron J and Liu, Xuewu and Turaga, Nitya and Kemnitz, Nathaniel J and Byrne, Robert H and others},
+  journal={Earth and Planetary Science Letters},
+  volume={515},
+  pages={1--12},
+  year={2019},
+  publisher={Elsevier}
+}
+
+@inproceedings{perl2019chemical,
+  title={Chemical Biomarker Robustness in Martian Planetary Analogue Evaporite Mineralogy},
+  author={Perl, Scott M and Celestian, Aaron J and Baxter, BK and Tasoff, Preston},
+  booktitle={50th Annual Lunar and Planetary Science Conference},
+  number={2132},
+  pages={2930},
+  year={2019}
+}
+
+@article{kampf2019camanchacaite,
+  title={Camanchacaite, chinchorroite, espadaite, magnesiofluckite, picaite and r{\'\i}osecoite: six new hydrogen-arsenate minerals from the Torrecillas mine, Iquique Province, Chile},
+  author={Kampf, Anthony R and Nash, Barbara P and Celestian, Aaron J and Dini, Maurizio and Molina Donoso, Arturo A},
+  journal={Mineralogical Magazine},
+  volume={83},
+  number={5},
+  pages={655--671},
+  year={2019},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@article{celestian2019agate,
+  title={Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance Determination},
+  author={Celestian, Aaron and Heginbotham, Arlen and Greenberger, Rebecca and Ehlmann, Bethany and Samanta, Bibek and Morgan, Alyssa and Mamedov, Sergey and O'Donnell, Bridget},
+  year={2019}
+}
+
+@article{kampf2019phoxite,
+  title={Phoxite,(NH4) 2Mg2 (C2O4)(PO3OH) 2 (H2O) 4, the first phosphate-oxalate mineral},
+  author={Kampf, Anthony R and Celestian, Aaron J and Nash, Barbara P and Marty, Joe},
+  journal={American Mineralogist},
+  volume={104},
+  number={7},
+  pages={973--979},
+  year={2019},
+  publisher={Mineralogical Society of America}
+}
+
+@article{perl2019mineral,
+  title={Mineral preservation and photoprotective attributes of halophilic bacteria and archaea in modern and Permian lakebed environments.},
+  author={Perl, Scott M and Baxter, Bonnie K and Celestian, Aaron J},
+  journal={Studia Universitatis Babe{\c{s}}-Bolyai, Biologia},
+  volume={64},
+  number={1},
+  year={2019}
+}
+
+@article{plotinskayaferdinando,
+  title={FERDINANDO BOSI, FR{\'E}D{\'E}RIC HATERT, ULF H{\AA}LENIUS, MARCO PASERO, RITSURO MIYAWAKI and STUART J. MILLS: On the application of the IMA- CNMNC dominant-valency rule to complex mineral compositions 627 IGOR V. PEKOV, INNA S. LYKOVA, VASILIY O. YAPASKURT, DMITRY I. BELAKOVSKIY, ANNA G. TURCHKOVA, SERGEY N. BRITVIN, EVGENY G. SIDOROV and KATHARINA S. SCHEIDL: New arsenate minerals from the},
+  author={PLOTINSKAYA, OLGA Y and SHILOVSKIKH, VLADIMIR V and NAJORKA, JENS and KOVALCHUK, ELENA V and SELTMANN, REIMAR and GU, XIANGPING and YANG, HEXIONG and XIE, XIANDE and VAN NIEUWENHUIZEN, JACO J and DOWNS, ROBERT T and others}
+}
+
+@inproceedings{perl2019mineral,
+  title={Mineral preservation and photoprotective attributes of halophilic organisms in planetary analogue lake bed environments (Screen 2)},
+  author={Perl, Scott M and Baxter, Bonnie and Celestian, Aaron J and Cockell, Charles S and Sessions, Alex L and Tasoff, Preston and Crucilla, Sarah Josephine and Corsetti, Frank A},
+  booktitle={The Astrobiology Science Conference (AbSciCon) 2019},
+  pages={333--292},
+  year={2019}
+}
+
+@article{larina2019uppermost,
+  title={Uppermost Triassic phosphorites from Williston Lake, Canada: link to fluctuating euxinic-anoxic conditions in northeastern Panthalassa before the end-Triassic mass extinction},
+  author={Larina, Ekaterina and Bottjer, David J and Corsetti, Frank A and Zonneveld, John-Paul and Celestian, Aaron J and Bailey, Jake V},
+  journal={Scientific Reports},
+  volume={9},
+  number={1},
+  pages={18790},
+  year={2019},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{hwang2019pressure,
+  title={Pressure-induced hydration and formation of bilayer ice in nacrite, a kaolin-group clay},
+  author={Hwang, Huijeong and Choi, Jinhyuk and Liu, Zhenxian and Kim, Duck-Young and He, Yu and Celestian, Aaron J and Vogt, Thomas and Lee, Yongjae},
+  journal={ACS Earth and Space Chemistry},
+  volume={4},
+  number={2},
+  pages={183--188},
+  year={2019},
+  publisher={American Chemical Society}
+}
+
+@article{perl2019hypersaline,
+  title={Hypersaline and Sedimentological Advantages on the Preservation of Extant Biological Activity in Modern Martian Analogue Settings},
+  author={Perl, SM and Baxter, BK and Celestian, AJ},
+  journal={Mars Extant Life: What's Next?},
+  volume={2108},
+  pages={5031},
+  year={2019}
+}
+
+@article{perl2019photobiology,
+  title={Photobiology and Biogenic Preservation Comparisons Between Pleistocene Evaporite Beds and Buried Permian Brines},
+  author={Perl, SM and Baxter, BK and Celestian, AJ and Cockell, CS and Sessions, AL and Tasoff, P and Crucilla, SJ and Corsetti, FA},
+  journal={The First Billion Years: Habitability},
+  volume={2134},
+  pages={1034},
+  year={2019}
+}
+
+@inproceedings{dong2018situ,
+  title={In Situ Aragonite Dissolution in North Pacific: Rate and Role in Modern Ocean Carbon Budget},
+  author={Dong, Sijia and Rollins, Nick and Subhas, Adam and Naviaux, John and Celestian, Aaron J and Adkins, Jess F and Kemnitz, Nathaniel James and Adkins, Jess F and Berelson, William},
+  booktitle={American Geophysical Union, Ocean Sciences Meeting},
+  number={456},
+  pages={OC24B--0456},
+  year={2018}
+}
+
+@article{turner2016potential,
+  title={Potential Evidence for Arsenic Mineralization in Mussel Shells in the Upper Green River Basin, Kentucky},
+  author={Turner, Autumn and Groves, Chris and Celestian, Aaron and Meier, Albert},
+  year={2016}
+}
+
+@inproceedings{celestian2016mineralogical,
+  title={Mineralogical Crystallography},
+  author={Celestian, Aaron and Valdez, Nichole},
+  booktitle={66th Annual Meeting},
+  year={2016},
+  organization={ACA}
+}
+
+@inproceedings{lively2016situ,
+  title={In Situ Ion Exchange in Nanoporous Zirconium Silicates},
+  author={Lively, Jason and Celestian, Aaron and Yan, Bangbo},
+  booktitle={66th Annual Meeting},
+  year={2016},
+  organization={ACA}
+}
+
+@article{kampfrevision,
+  title={Revision 1},
+  author={Kampf, Anthony R and CELESTIAN, AARON J and NASH, BARBARA P and Marty, Joe}
+}
+
+@article{celestian2019unlocking,
+  title={Unlocking the Collections: getting comfortable with next-level access to museum minerals},
+  author={Celestian, Aaron J},
+  journal={Authorea Preprints},
+  year={2019},
+  publisher={Authorea}
+}
+
+@article{celestian2019locking,
+  title={Locking away toxic metals into tiny holes},
+  author={Celestian, Aaron J},
+  journal={Authorea Preprints},
+  year={2019},
+  publisher={Authorea}
+}
+
+@inproceedings{corsetti2020examining,
+  title={Examining the role of Fe-cycling in microbial mat lithification and stromatolite abundance through Earth history},
+  author={Corsetti, Frank A and Berelson, William and Celestian, Aaron J and John, PS and Petryshyn, Victoria A and Rasmussen, Kalen and Spear, John R and Stevenson, Bradley S and Yang, Shun-Chung},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2020},
+  pages={PP013--01},
+  year={2020}
+}
+
+@article{kampf2021jasonsmithite,
+  title={Jasonsmithite, a new phosphate mineral with a complex microporous framework, from the Foote mine, North Carolina, USA},
+  author={Kampf, Anthony R and Celestian, Aaron J and Nash, Barbara P},
+  journal={American Mineralogist},
+  volume={106},
+  number={2},
+  pages={174--179},
+  year={2021},
+  publisher={De Gruyter}
+}
+
+@inproceedings{cady2019relevance,
+  title={The Relevance of Hydrothermal Spherules in Astrobiological Exploration of Rocky Planets},
+  author={Cady, Sherry L and Carrizo, Daniel and S{\'a}nchez-Garc{\'\i}a, Laura and Sobron, Pablo and Perl, Scott M and Demergasso, Cecilia and Kendall, Shana L and Celestian, Aaron J and Sarrazin, Philippe and Cabrol, Nathalie A and others},
+  booktitle={The Astrobiology Science Conference (AbSciCon) 2019},
+  pages={321--227},
+  year={2019}
+}
+
+@article{kampf2021thebaite,
+  title={Thebaite-(NH4),(NH4, K) 3Al (C2O4)(PO3OH) 2 (H2O), a new phosphate--oxalate mineral from the Rowley mine, Arizona, USA},
+  author={Kampf, Anthony R and Cooper, Mark A and Celestian, Aaron J and Nash, Barbara P and Marty, Joe},
+  journal={Mineralogical Magazine},
+  volume={85},
+  number={3},
+  pages={379--386},
+  year={2021},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@techreport{dall2021geochemistry,
+  title={Geochemistry of Chromium-Silicate Minerals},
+  author={Dall, Jacqueline and Oze, Christopher and Celestian, Aaron and Rossman, George},
+  year={2021},
+  institution={Copernicus Meetings}
+}
+
+@article{clause2021plastic,
+  title={Plastic ingestion by freshwater turtles: a review and call to action},
+  author={Clause, Adam G and Celestian, Aaron J and Pauly, Gregory B},
+  journal={Scientific Reports},
+  volume={11},
+  number={1},
+  pages={5672},
+  year={2021},
+  publisher={Nature Publishing Group UK London}
+}
+
+@techreport{osorio2021comparison,
+  title={Comparison of Microporous Minerals for Potential Contaminant Uptake},
+  author={Osorio, Marvin and Oze, Christopher and Celestian, Aaron},
+  year={2021},
+  institution={Copernicus Meetings}
+}
+
+@article{perl2021salty,
+  title={Salty Environments: The importance of evaporites and brine environments as habitats and preservers of biosignatures},
+  author={Perl, Scott and Adeli, Solmaz and Basu, Chhandak and Baxter, Bonnie K and Bowman, Jeff and Boyd, Eric and Cable, Morgan and Celestian, Aaron J and Cockell, Charles S and Corsetti, Frank A and others},
+  journal={Bulletin of the American Astronomical Society},
+  volume={53},
+  number={4},
+  pages={240},
+  year={2021}
+}
+
+@article{kampf2021allantoin,
+  title={Allantoin and natrosulfatourea, two new bat-guano minerals from the Rowley mine, Maricopa County, Arizona, USA},
+  author={Kampf, Anthony R and Celestian, Aaron J and Nash, Barbara P and Marty, Joe},
+  journal={The Canadian Mineralogist},
+  volume={59},
+  number={3},
+  pages={603--616},
+  year={2021},
+  publisher={Mineralogical Association of Canada}
+}
+
+@article{perl2021proposed,
+  title={A proposed geobiology-driven nomenclature for astrobiological in situ observations and sample analyses},
+  author={Perl, Scott M and Celestian, Aaron J and Cockell, Charles S and Corsetti, Frank A and Barge, Laura M and Bottjer, David and Filiberto, Justin and Baxter, Bonnie K and Kanik, Isik and Potter-McIntyre, Sally and others},
+  journal={Astrobiology},
+  volume={21},
+  number={8},
+  pages={954--967},
+  year={2021},
+  publisher={Mary Ann Liebert, Inc., publishers 140 Huguenot Street, 3rd Floor New~…}
+}
+
+@article{mors2022assessing,
+  title={Assessing the origin of pisoids within a travertine system in the border of Puna Plateau, Argentina},
+  author={Mors, R Agustin and Gomez, Fernando J and Astini, Ricardo A and Celestian, Aaron J and Corsetti, Frank A},
+  journal={Sedimentology},
+  volume={69},
+  number={3},
+  pages={1252--1275},
+  year={2022}
+}
+
+@article{perl2021preservation,
+  title={Preservation of Dynamic Biological Processes from Extant Halophilic Life: In-Situ Lessons Learned from Planetary Analogue Brines and Evaporites},
+  author={Perl, SM and Celestian, AJ and Cockell, CS and Basu, C and Filiberto, J and Potter-McIntyre, S and Olsson-Francis, K and Schwenzer, SP and Crandall, JR and Baxter, BK and others},
+  journal={Brines in the Solar System: Modern Brines},
+  volume={2614},
+  pages={6048},
+  year={2021}
+}
+
+@article{celestian2021new,
+  title={New Mineral Names: Diamonds, Dumps, and Fumaroles},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={106},
+  number={12},
+  pages={2028--2030},
+  year={2021},
+  publisher={Mineralogical Society of America}
+}
+
+@article{kampf2022relianceite,
+  title={Relianceite-(K), a new phosphate--oxalate mineral related to davidbrownite-(NH4) from the Rowley mine, Arizona, USA},
+  author={Kampf, Anthony R and Cooper, Mark A and Celestian, Aaron J and Ma, Chi and Marty, Joe},
+  journal={Mineralogical Magazine},
+  volume={86},
+  number={4},
+  pages={539--547},
+  year={2022},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@article{kampf2022dendoraite,
+  title={Dendoraite-(NH4), a new phosphate--oxalate mineral related to thebaite-(NH4) from the Rowley mine, Arizona, USA},
+  author={Kampf, Anthony R and Cooper, Mark A and Celestian, Aaron J and Ma, Chi and Marty, Joe},
+  journal={Mineralogical Magazine},
+  volume={86},
+  number={4},
+  pages={531--538},
+  year={2022},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@article{celestian2005optimizing,
+  title={Optimizing synthesis of Na2Ti2SiO7 center dot 2H (2) O (Na-CST) and ion exchange pathways for Cs0. 4H1. 6Ti2SiO7 center dot H2O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction},
+  author={Celestian, AJ and Medvedev, DG and Tripathi, A and Parise, JB and Clearfield, A},
+  journal={Nuclear Instruments \& Methods in Physics Research Section B-Beam Interactions with Materials and Atoms},
+  volume={238},
+  number={1-4},
+  pages={61--69},
+  year={2005},
+  publisher={ELSEVIER SCIENCE BV PO BOX 211, 1000 AE AMSTERDAM, NETHERLANDS}
+}
+
+@article{celestian2022new,
+  title={New Mineral Names: Alteration Products},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={107},
+  number={2},
+  pages={318--320},
+  year={2022},
+  publisher={Mineralogical Society of America}
+}
+
+@misc{celestian2020new,
+  title={New emerald locality in Southern California},
+  author={Celestian, Aaron J},
+  year={2020},
+  publisher={GEMOLOGICAL INST AMER 5345 ARMADA DR, CARLSBAD, CA 92008 USA}
+}
+
+@article{cooperdock2022rapid,
+  title={Rapid phase identification of apatite and zircon grains for geochronology using X-ray micro-computed tomography},
+  author={Cooperdock, Emily HG and Hofmann, Florian and Tibbetts, Ryley MC and Carrera, Anahi and Takase, Aya and Celestian, Aaron J},
+  journal={Geochronology},
+  volume={4},
+  number={2},
+  pages={501--515},
+  year={2022},
+  publisher={Copernicus Publications G{\"o}ttingen, Germany}
+}
+
+@article{celestian2022new,
+  title={New Mineral Names: High-Pressure and Precious Minerals},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={107},
+  number={4},
+  pages={778--780},
+  year={2022},
+  publisher={Mineralogical Society of America}
+}
+
+@article{kampf2022flaggite,
+  title={Flaggite, Pb4Cu2+ 4Te6+ 2 (SO4) 2O11 (OH) 2 (H2O), a new mineral with stair-step-like HCP layers from Tombstone, Arizona, USA},
+  author={Kampf, Anthony R and Mills, Stuart J and Celestian, Aaron J and Ma, Chi and Yang, Hexiong and Thorne, Brent},
+  journal={Mineralogical Magazine},
+  volume={86},
+  number={3},
+  pages={397--404},
+  year={2022},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@inproceedings{sheppard2022diagenesis,
+  title={Diagenesis and Subsurface Habitable Environments I Online Session},
+  author={Sheppard, Rachel and Perl, Scott M and Celestian, Aaron J and Horgan, Briony HN and Potter-McIntyre, Sally L},
+  booktitle={2022 Astrobiology Science Conference},
+  year={2022},
+  organization={AGU}
+}
+
+@article{wilmeth2022evidence,
+  title={Evidence for benthic oxygen production in Neoarchean lacustrine stromatolites},
+  author={Wilmeth, Dylan T and Lalonde, Stefan V and Berelson, William M and Petryshyn, Victoria and Celestian, Aaron J and Beukes, Nicolas J and Awramik, Stanley M and Spear, John R and Mahseredjian, Taleen and Corsetti, Frank A},
+  journal={Geology},
+  volume={50},
+  number={8},
+  pages={907--911},
+  year={2022},
+  publisher={Geological Society of America}
+}
+
+@inproceedings{cribb2022geobiological,
+  title={Geobiological impacts of Earth’s early complex bioturbators during the Ediacaran-Cambrian transition},
+  author={Cribb, Alison T and van de Velde, Sebastiaan and Celestian, Aaron J and Berelson, William M and Bottjer, David J and Corsetti, Frank A},
+  booktitle={2022 Goldschmidt Conference},
+  year={2022},
+  organization={GOLDSCHMIDT}
+}
+
+@article{celestian2022new,
+  title={New Mineral Names: Hydrous Minerals},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={107},
+  number={8},
+  pages={1656--1658},
+  year={2022},
+  publisher={Mineralogical Society of America}
+}
+
+@inproceedings{cooperdock2022rapid,
+  title={Rapid phase identification of apatite and zircon grains for geochronology using micro-computed tomography},
+  author={Cooperdock, Emily HG and Hofmann, Florian and Collins, Ryley M and Carrera, Anahi and Takase, Aya and Celestian, Aaron J},
+  booktitle={2022 Goldschmidt Conference},
+  year={2022},
+  organization={GOLDSCHMIDT}
+}
+
+@inproceedings{wilmeth2022biogenic,
+  title={Biogenic stromatolites as lacustrine oxygen oases\~{} 2.7 Ga: synthesizing textural and geochemical data},
+  author={Wilmeth, Dylan T and Lalonde, Stefan V and Berelson, William M and Petryshyn, Victoria A and Celestian, Aaron J and Beukes, Nicolas and Awramik, Stanley and Spear, John and Mahseredjian, Taleen and Corsetti, Frank A},
+  booktitle={2022 Goldschmidt Conference},
+  year={2022},
+  organization={GOLDSCHMIDT}
+}
+
+@article{celestian2010springer,
+  title={Springer Handbook of Crystal Growth},
+  author={Celestian, AJ and Parise, JB and Clearfield, A},
+  journal={Dhanaraj, G},
+  pages={1637--1632},
+  year={2010}
+}
+
+@article{celestian2023rare,
+  title={Rare Earth: Crystalline Treasures—Exhibition at the Santa Barbara Museum of Natural History},
+  author={Celestian, Aaron J},
+  journal={Rocks \& Minerals},
+  volume={98},
+  number={2},
+  pages={148--159},
+  year={2023},
+  publisher={Taylor \& Francis}
+}
+
+@article{dyar2016interlaboratory,
+  title={Interlaboratory and cross-instrument comparison of Raman spectra of 96 minerals},
+  author={Dyar, MD and Breitenfeld, LB and Carey, CJ and Bartholomew, P and Tague Jr, TJ and Wang, P and Mertzmann, S and Byrne, SA and Crowley, MC and Leight, C and others},
+  journal={Lunar Planet. Sci},
+  volume={46},
+  pages={2240},
+  year={2016}
+}
+
+@article{celestian2023new,
+  title={New Mineral Names: Arsenic and Lead},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={108},
+  number={3},
+  pages={634--636},
+  year={2023},
+  publisher={Mineralogical Society of America}
+}
+
+@inproceedings{cassady2023micro,
+  title={Micro-elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature and Remnant of a Lithification Mechanism},
+  author={Cassady, Victoria C and Levene, Dylan R and Celestian, Aaron J and Petryshyn, Victoria A and Berelson, William M and Rasmussen, Kalen and Stevenson, Bradley S and Spear, John and Corsetti, Frank A},
+  booktitle={Goldschmidt 2023 Conference},
+  year={2023},
+  organization={GOLDSCHMIDT}
+}
+
+@inproceedings{perl2023microbial,
+  title={Microbial Pigment Robustness in Martian and Ocean Worlds Brines and Evaporites},
+  author={Perl, SM and Celestian, AJ and Cockell, CS and Corsetti, FA and Basu, C and Nisson, DM and Garner, M and Valera, J and Javier, BM},
+  booktitle={54th Lunar and Planetary Science Conference},
+  volume={2806},
+  pages={2434},
+  year={2023}
+}
+
+@inproceedings{javier2023detection,
+  title={Detection and Preservation of Extremophile Biosignatures in Lithium-Bearing Evaporites for Life Detection},
+  author={Javier, BM and Perl, SM and Basu, C and Fischer, W and Celestian, AJ},
+  booktitle={54th Lunar and Planetary Science Conference},
+  volume={2806},
+  pages={2825},
+  year={2023}
+}
+
+@article{celestian2023new,
+  title={New Mineral Names: Heavy metal and minerals from China},
+  author={Celestian, Aaron J},
+  journal={American Mineralogist},
+  volume={108},
+  number={10},
+  pages={1993--1994},
+  year={2023},
+  publisher={Mineralogical Society of America}
+}
+
+@article{cribbutilization,
+  title={Utilization of the trace fossil record to understand bioturbators’ ecosystem engineering impact over the last 560 million years},
+  author={Cribb, Alison and Van De Velde, Sebastiaan and Celestian, Aaron and Berelson, William and Bottjer, David and Corsetti, Frank}
+}
+
+@article{francis2024signature,
+  title={Signature Specimen: Elbaite from the Cruzeiro Pegmatite Minas Gerais, Brazil: At the Natural History Museum of Los Angeles County},
+  author={Francis, Carl A and Celestian, Aaron},
+  journal={Rocks \& Minerals},
+  volume={99},
+  number={1},
+  pages={86--88},
+  year={2024},
+  publisher={Taylor \& Francis}
+}
+
+@article{paradis2024radiocarbon,
+  title={Radiocarbon Chronology/Growth Rates of Ooids from Great Salt Lake, Utah.},
+  author={Paradis, Olivia P and Corsetti, Frank A and Bardsley, Audra and Hammond, Douglas E and Berelson, William and Walker, Jennifer and Celestian, Aaron and others},
+  journal={Utah Geological Association Publication},
+  year={2024}
+}
+
+@article{perl2023rate,
+  title={Rate-Dependent Preservation of Psychrotolerant Halophiles within Cryobrine Systems},
+  author={Perl, SM and Cockell, CS and Celestian, AJ and Javier, BJ and Basu, C},
+  journal={Brines Across the Solar System: Ancient and Future Brines},
+  volume={2689},
+  pages={2041},
+  year={2023}
+}
+
+@article{javier2023biosignature,
+  title={Biosignature Preservation Potential of Li-Containing Hypersaline Environments},
+  author={Javier, BM and Perl, SM and Basu, C and Fischer, W and Celestian, AJ},
+  journal={Brines Across the Solar System: Ancient and Future Brines},
+  volume={2689},
+  pages={2018},
+  year={2023}
+}
+
+@article{lively2024situ,
+  title={In situ potassium and hydrogen ion exchange into a cubic zirconium silicate microporous material},
+  author={Lively, Jason and Celestian, Aaron J},
+  journal={Plos one},
+  volume={19},
+  number={3},
+  pages={e0298661},
+  year={2024},
+  publisher={Public Library of Science San Francisco, CA USA}
+}
+
+@article{cribbecological,
+  title={Ecological and Geochemical Characterization of Early Cambrian Bioturbation Ecosystem Engineering Behaviors in the Deep Spring Formation, California, USA},
+  author={Cribb, Alison and Godbold, Amanda and van de Velde, Sebastiaan and Celestian, Aaron and Bottjer, David and Corsetti, Frank},
+  journal={California, USA}
+}
+
+@article{celestianh2ti2o3,
+  title={H2Ti2O3 (SiO4)∙ 1.5 H2O},
+  author={Celestian, AJ and others}
+}
+
+@article{celestian2018agate,
+  title={Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance.},
+  author={Celestian, Aaron and Heginbotham, Arlen and Greenberger, Rebecca and Ehlmann, Bethany and Samanta, Bibek and Morgan, Alyssa and Mamedov, Sergey},
+  journal={Gems \& Gemology},
+  volume={54},
+  number={3},
+  year={2018}
+}
+
+@article{nazarian2024mp63,
+  title={MP63-13 BACTERIA TRIGGER CALCIUM OXALATE CRYSTAL FORMATION},
+  author={Nazarian, Reyhaneh and Lin, Neil and Celestian, Aaron and Gelb, Jeff and O'Toole, George and Wong, Gerard and Scotland, Kymora B},
+  journal={Journal of Urology},
+  volume={211},
+  number={5S},
+  pages={e1036},
+  year={2024},
+  publisher={LWW}
+}
+
+@article{mousavi2024pd63,
+  title={PD63-06 EXPLORING BACTERIAL ROLES IN CALCIUM OXALATE STONE FORMATION THROUGH HIGH-RESOLUTION IMAGING},
+  author={Mousavi, Ava and Nazarian, Reyhaneh and Schmidt, William C and Thaker, Karan and Prieto III, Javier and Wong, Gerard CL and Celestian, Aaron and Chen, Qian and Li, Jiahui and Scotland, Kymora B},
+  journal={Journal of Urology},
+  volume={211},
+  number={5S},
+  pages={e1294},
+  year={2024},
+  publisher={LWW}
+}
+
+@article{celestian2020colored,
+  title={COLORED STONES AND ORGANIC MATERIALS.},
+  author={Celestian, Aaron J and Edley, Richard},
+  journal={Gems \& Gemology},
+  volume={56},
+  number={4},
+  year={2020}
+}
+
+@inproceedings{perl2024biology,
+  title={The Biology of Biosignature Detection-Year One: Building the Experimental Framework for Extant and Extinct Life Measurements},
+  author={Perl, Scott M and Cockell, Charles S and Fischer, Woodward W and Lloyd, Karen G and Karunatillake, Suniti and Foreman, Christine M and Corsetti, Frank A and Freedman, Kevin and Wilhelm, Mary Beth and Bywaters, Kathryn and others},
+  booktitle={2024 Astrobiology Science Conference},
+  year={2024},
+  organization={AGU}
+}
+
+@inproceedings{cooperdock2024increasing,
+  title={Increasing equitable access to meaningful research experiences through undergraduate mineralogy and earth materials classes},
+  author={Cooperdock, Emily HG and Grabiec, Justine G and Rojas, Alexia and Celestian, Aaron J},
+  booktitle={2024 Goldschmidt Conference},
+  year={2024},
+  organization={GOLDSCHMIDT}
+}
+
+@inproceedings{carman2024mineralogy,
+  title={The Mineralogy of Laboratory Simulated Hydrothermal Vents as Analogs to Saponite-Rich Hydrothermal Environments on Early Earth and Mars},
+  author={Carman, Nancy and Hausrath, Elisabeth and Celestian, Aaron J and Chavez, Julia and Hermis, Ninos and LaRowe, Douglas and Fraeman, Abigail and Sheppard, Rachel Y and Adcock, Christopher T and Tschauner, Oliver D and others},
+  booktitle={The Astrobiology Science Conference (AbSciCon) 2024},
+  number={84},
+  pages={421--084},
+  year={2024}
+}
+
+@article{perl2024biology,
+  title={The Biology of Biosignature Detection: Framework, Experiments, and Science Mission Concepts for Extant and Extinct Life Validation},
+  author={Perl, SM and Cockell, CS and Fischer, WW and Lloyd, K and Karunatillake, S and Wilhelm, MB and Foreman, C and Corsetti, FA and Freedman, K and Bywaters, K and others},
+  journal={LPI Contributions},
+  volume={3007},
+  pages={3526},
+  year={2024}
+}
+
+@article{carman2024fe,
+  title={Fe/Mg-silicate chemical gardens as analogs to silicate-rich hydrothermal chimneys on early Earth and Mars},
+  author={Carman, Nancy A and Hausrath, Elisabeth M and Celestian, Aaron and Chavez, Julia and Hermis, Ninos and LaRowe, Douglas E and Fraeman, Abigail A and Sheppard, Rachel Y and Adcock, Christopher T and Tschauner, Oliver and others},
+  journal={ACS Earth and Space Chemistry},
+  volume={8},
+  number={10},
+  pages={1982--1996},
+  year={2024},
+  publisher={American Chemical Society}
+}
+
+@article{rasmussen2024living,
+  title={Living to Lithified: Construction and Preservation of Silicified Biomarkers},
+  author={Rasmussen, Kalen L and Thieringer, Patrick H and Nevadomski, Sophia and Martinez, Aaron M and Dawson, Katherine S and Corsetti, Frank A and Zheng, Xin-Yuan and Lv, Yiwen and Chen, Xinyang and Celestian, Aaron J and others},
+  journal={Geobiology},
+  volume={22},
+  number={5},
+  pages={e12620},
+  year={2024}
+}
+
+@inproceedings{plattner2024tale,
+  title={A Tale of Two Seasons: The Geochemical Evolution of Acidic Hypersaline Lakes in Western Australia},
+  author={Plattner, Taylor and Schmidt, Britney and Fernandez, Nicole MM and Jamison, Hunter Thomas and Weber, Jessica and Celestian, Aaron and Birmingham, Margaret and Doran, Peter T and Ingall, Ellery D and Bowman, Jeff Shovlowsky and others},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2024},
+  pages={EP52A--06},
+  year={2024}
+}
+
+@inproceedings{mcnamee2018integrated,
+  title={Integrated Optical, Micro-Raman and Compositional Analysis of Rock Samples from Former Talc Mines in the Gouverneur Mining District, New York},
+  author={McNamee, Brittani D and Celestian, Aaron J},
+  booktitle={Geological Society of America Abstracts},
+  volume={50},
+  pages={322067},
+  year={2018}
+}
+
+@inproceedings{celestian2021mineralogy,
+  title={Mineralogy and History of Semi-Precious Gemstones on the Borghese-Windsor Cabinet},
+  author={Celestian, Aaron and Heginbotham, Arlen and Ehlmann, Bethany and Greenberger, Rebecca N and Morgan, Alyssa},
+  booktitle={Geological Society of America Abstracts},
+  volume={53},
+  pages={368743},
+  year={2021}
+}
+
+@inproceedings{lamm2021classification,
+  title={Classification of Iron (oxy) hydroxides and Sulfides Using Mission-Ready Spectroscopic Techniques and Machine Learning},
+  author={Lamm, Sarah and Rodriguez, Laura E and Rodriguez, Laura E and Shepard, Rachel Y and Shepard, Rachel Y and Perl, Scott M and Perl, Scott M and Celestian, Aaron J and Celestian, Aaron J and Barge, Laura M and others},
+  booktitle={Geological Society of America Abstracts},
+  volume={53},
+  pages={368733},
+  year={2021}
+}
+
+@inproceedings{petryshyn2023examining,
+  title={Examining Fe-Cycling in Microbial Mats as a Lithification Mechanism},
+  author={Petryshyn, Victoria and Berelson, Will and Spear, John and Cassady, Victoria and Levene, Dylan and Stevenson, Bradley and Rasmussen, Kalen L and Yang, Shun-Chung and John, Seth and Celestian, Aaron and others},
+  booktitle={Geological Society of America Abstracts},
+  volume={55},
+  pages={393626},
+  year={2023}
+}
+
+@inproceedings{wilmeth2018evidence,
+  title={Evidence for Rapid Rates of Oxygenic Photosynthesis Within Neoarchean Stromatolites},
+  author={Wilmeth, Dylan T and Corsetti, Frank A and Berelson, William M and Beukes, Nicolas J and Awramik, Stanley M and Petryshyn, Victoria A and Spear, John R and Celestian, Aaron J},
+  booktitle={Geological Society of America Abstracts},
+  volume={50},
+  pages={318717},
+  year={2018}
+}
+
+@inproceedings{cassady2024insight,
+  title={Insight Into Mineral Fabrics, Biofabrics, and Channel Architecture to Comprehensively Characterize Microbialite Texture},
+  author={Cassady, Victoria and Petryshyn, Victoria A and Bernhard, Joan M and Hofmann, Florian and Celestian, Aaron and Berelson, Will and Cooperdock, Emily HG and Bottjer, David and Corsetti, Frank},
+  booktitle={Geological Society of America Abstracts},
+  volume={56},
+  pages={405114},
+  year={2024}
+}
+
+@inproceedings{bonilla2024unveiling,
+  title={Unveiling Hosts for Nitrogen Transportation and Storage in Meta-Serpentinites},
+  author={Bonilla, Ailani and Grabiec, Justine G and Cooperdock, Emily HG and Bustos Moreno, Juan Felipe and Celestian, Aaron and Mallik, Ananya and Bebout, Gray E},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2024},
+  number={3132},
+  pages={V41B--3132},
+  year={2024}
+}
+
+@inproceedings{grabiec2024nitrogen,
+  title={Nitrogen in Ultramafic and Sedimentary M{\'E}LANGE Matrices and its Implications for Subduction Zone Nitrogen Budgets},
+  author={Grabiec, Justine and Bonilla, Ailani and Cooperdock, Emily HG and Bustos-Moreno, Juan Felipe and Rebaza, Anna M and Mallik, Ananya and Bebout, Gray E and Celestian, Aaron J},
+  booktitle={Geological Society of America Abstracts},
+  volume={56},
+  pages={403278},
+  year={2024}
+}
+
+@inproceedings{nguyen2024tracking,
+  title={Tracking Composition of Searles Lake Brines and Mineral Fluid Inclusions with Progressive Evaporation via Raman and Laser Induced Breakdown Spectroscopy},
+  author={Nguyen, Melonie and Celestian, Aaron and Perl, Scott M and Corsetti, Frank},
+  booktitle={Geological Society of America Abstracts},
+  volume={56},
+  pages={404422},
+  year={2024}
+}
+
+@inproceedings{koostra2016using,
+  title={Using Raman Spectroscopy to Analyze Oxygen Isotope Ratios in Calcite Speleothems},
+  author={Koostra, Caleb and Polk, Jason and Celestian, Aaron J and Lively, Jason and Ouellette, Gilman Reno},
+  booktitle={Geological Society of America Abstracts},
+  volume={48},
+  pages={281303},
+  year={2016}
+}
+
+@inproceedings{leftwich2024beyond,
+  title={Beyond the Stones: the Transformative Impact of Mineral Collections at the Natural History Museum of LOS Angeles County},
+  author={Leftwich, Kristin and Kampf, Anthony R and Celestian, Aaron},
+  booktitle={Geological Society of America Abstracts},
+  volume={56},
+  pages={404729},
+  year={2024}
+}
+
+@inproceedings{larina2019record,
+  title={The Record of Environmental Change in Northeastern Panthalassa Directly Preceding the End-Triassic Mass Extinction Event},
+  author={Larina, Ekaterina and Bottjer, David J and Corsetti, Frank A and Berelson, William M and Zonneveld, John-Paul and Celestian, Aaron J and Bailey, Jake V and West, A Joshua and Yager, Joyce A},
+  booktitle={Geological Society of America Abstracts},
+  volume={51},
+  pages={340665},
+  year={2019}
+}
+
+@inproceedings{larina2018genesis,
+  title={Genesis of Upper Triassic Phosphatic Ooid Beds from Williston Lake, Canada: Microbial or Abiotic Mineralization?},
+  author={Larina, Ekaterina and Bottjer, David J and Corsetti, Frank A and Celestian, Aaron J and Zonneveld, John-Paul},
+  booktitle={Geological Society of America Abstracts},
+  volume={50},
+  pages={321035},
+  year={2018}
+}
+
+@inproceedings{cassady2024characterization,
+  title={Characterization of mineral fabrics, biofabrics, and channel architecture in incipient microbialites may explain texture in ancient equivalents},
+  author={Cassady, Victoria and Petryshyn, Victoria A and Bernhard, Joan M and Hofmann, Florian and Celestian, Aaron and Berelson, William and Cooperdock, Emily HG and Bottjer, David J and Corsetti, Frank A},
+  booktitle={AGU Fall Meeting Abstracts},
+  volume={2024},
+  pages={B53J--08},
+  year={2024}
+}
+
+@article{yager2025evidence,
+  title={Evidence for Low Dissolved Silica in mid-Mesozoic Oceans},
+  author={Yager, Joyce A and West, A Joshua and Trower, Elizabeth J and Fischer, Woodward W and Ritterbush, Kathleen and Rosas, Silvia and Bottjer, David J and Celestian, Aaron J and Berelson, William M and Corsetti, Frank A},
+  journal={American Journal of Science},
+  volume={325},
+  pages={1},
+  year={2025},
+  publisher={American Journal of Science}
+}
+
+@article{perl2024biology,
+  title={The Biology of Biosignature Detection: Rationale and Experimental Frameworks for Biological Validation},
+  author={Perl, Scott and Cockell, Charles and Fischer, Woodward and Sharma, Sunanda and Drake, Henrik and Lloyd, Karen and Karunatillake, Suniti and Wilhelm, Mary Beth and Foreman, Christine and Corsetti, Frank and others},
+  year={2024}
+}
+
+@article{kampf2025svornostite,
+  title={Svornostite-(NH4),(NH4) 2Mg (UO2) 2 (SO4) 4 (H2O) 8, a new mineral from the Blue Lizard mine, San Juan County, Utah, USA, and the establishment of the svornostite mineral group},
+  author={Kampf, Anthony R and Olds, Travis A and Pl{\'a}{\v{s}}il, Jakub and Ma, Chi and Celestian, Aaron J and Marty, Joe},
+  journal={Mineralogical Magazine},
+  volume={89},
+  number={5},
+  pages={609--617},
+  year={2025},
+  publisher={Cambridge University Press Cambridge, UK}
+}
+
+@article{mousavi2025mp21,
+  title={MP21-12 BIOFILM-FORMING BACTERIA FOUND WITHIN CALCIUM-BASED KIDNEY STONES},
+  author={Mousavi, Ava and Schmidt, William C and Li, Jiahui and Yang, Rena and Gonzalez-Marin, Gerson and Wong, Gerard CL and Celestian, Aaron and Scotland, Kymora B},
+  journal={The Journal of Urology},
+  volume={213},
+  number={5S},
+  pages={e709},
+  year={2025},
+  publisher={Wolters Kluwer Philadelphia, PA}
+}
+
+@inproceedings{cassady2025exploring,
+  title={Exploring Mechanisms of Microbialite Texture Formation through mapping in situ CaCO 3 precipitation and Microbial Cell Position},
+  author={Cassady, Victoria C and Petryshyn, Victoria A and Bernhard, Joan M and Celestian, Aaron J and Berelson, William M and Bottjer, David J and Corsetti, Frank A},
+  booktitle={Goldschmidt 2025 Conference},
+  year={2025},
+  organization={GOLDSCHMIDT}
+}
+
+@article{celestian2025mechanism,
+  title={Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide},
+  author={Celestian, Aaron J and Bourcier, William and Camir{\'e}, Christopher L and Kumar, Jayanthi and Paranthaman, Mariappan Parans},
+  journal={Journal of Raman Spectroscopy},
+  year={2025}
+}
+
+@article{cassadyspatially,
+  title={Spatially Resolved Deconvolution of Texture Formation and Initial Diagenetic Mechanisms in Carbonate Dendrolitic Microbialites},
+  author={Cassady, Victoria and Petryshyn, Victoria A and Bernhard, Joan M and Celestian, Aaron and Liu, Mengshi and McCormack, Ariel and Perez, Kelsey and Berelson, William and Bottjer, David J and Corsetti, Frank A},
+  journal={AGU25},
+  publisher={AGU}
+}
+
+@article{chencritical,
+  title={Critical zone structure and evolution across a topographic gradient of the Nepal Himalaya: insights from multiscale observations},
+  author={Chen, Chan-Mao and Blunts, Parker and Zekkos, Dimitrios and Okaya, David A and Keating, Sally and Clark, Marin Kristen and Chamlagain, Deepak and Bickle, Michael and Tipper, Edward and Celestian, Aaron and others},
+  journal={AGU25},
+  publisher={AGU}
+}
+
+@article{plattner2025evidence,
+  title={Evidence for Acidic Bleaching and Dominant Groundwater Processes in Endmember Hypersaline and Acidic Lakes in Western Australia},
+  author={Plattner, TA and Schmidt, BE and Fernandez, N and Jamison, H and Russo, K and Weber, JM and Celestian, A and Birmingham, MA and Doran, P and Ingall, E and others},
+  journal={LPI Contributions},
+  volume={3090},
+  pages={2811},
+  year={2025}
+}
+
+@article{lamm2025machine,
+  title={Machine Learning Strategies to Distinguish Iron Sulfide, Oxide, and (Oxy) hydroxide Minerals Using Raman and LIBS Spectroscopy},
+  author={Lamm, SN and Sheppard, RY and Yanchilina, A and Marshall, CP and Celestian, AJ and Lacroix, B and Sobron, P and Barge, LM and Rodriguez, LE},
+  journal={LPI Contributions},
+  volume={3090},
+  pages={2702},
+  year={2025}
+}
+
+@article{celestian2025ramanlab,
+  title={RamanLab: A Comprehensive Cross-Platform Software Suite for Advanced Raman Spectroscopy Analysis},
+  author={Celestian, Aaron J},
+  journal={Authorea Preprints},
+  year={2025},
+  publisher={Authorea}
+}
+
+@article{grant2025mapping,
+  title={Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data},
+  author={Grant, Kathleen and Brodrick, Philip Gregory and Garc{\'\i}a-Pando, Carlos P{\'e}rez and Ageitos, Mar{\'\i}a Gon{\c{c}}alves and Celestian, Aaron and West, A Joshua},
+  journal={Authorea Preprints},
+  year={2025},
+  publisher={Authorea}
+}
+
+@inproceedings{celestian2012heavy,
+  title={Heavy Metal Sequestration in Nanoporous Minerals},
+  author={Celestian, Aaron and Powers, Michael and Rader, Shelby},
+  booktitle={Twenty-second Annual Goldschmidt Conference},
+  pages={1554},
+  year={2012}
+}
+
+@inproceedings{dong2018new,
+  title={A New Study on PIC Dissolution and Sinking Fluxes, Concentrations and Calcite/Aragonite Ratios in the North Pacific},
+  author={Dong, Sijia and Celestian, Aaron and Turaga, Nitya and Rollins, Nick and Naviaux, John and Subhas, Adam and Adkins, Jess and Berelson, Will},
+  booktitle={Twenty-eighth Annual Goldschmidt Conference},
+  pages={591},
+  year={2018}
+}
+
+@inproceedings{leftwich2010cesium,
+  title={Cesium Sequestration into a Microporous Gallosilicate Framework},
+  author={Leftwich, Kristin and Celestian, Aaron},
+  booktitle={Twentieth Annual Goldschmidt Conference},
+  pages={577},
+  year={2010}
+}
+
+@inproceedings{rasmussen2023micro,
+  title={Micro-Elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature and Remnant of a Lithification Mechanism},
+  author={Rasmussen, Kalen and Levene, Dylan R and Celestian, Aaron J and Petryshyn, Victoria A and Berelson, William M and Cassady, Victoria C and Stevenson, Bradley S and Spear, John and Corsetti, Frank A},
+  booktitle={Thirty-third Annual Goldschmidt Conference},
+  pages={20694},
+  year={2023}
+}
+
+@inproceedings{lalonde2022biogenic,
+  title={Biogenic Stromatolites as Lacustrine Oxygen Oases\~{} 2.7 Ga: Synthesizing Textural and Geochemical Data},
+  author={Lalonde, Stefan V and Wilmeth, Dylan T and Petryshyn, Victoria A and Berelson, William M and Celestian, Aaron J and Beukes, Nicolas and Awramik, Stanley and Spear, John and Mahseredjian, Taleen and Corsetti, Frank A},
+  booktitle={Thirty-second Annual Goldschmidt Conference},
+  pages={10982},
+  year={2022}
+}
+
+@inproceedings{celestian2014modeling,
+  title={Modeling the Crystal Structure and Ion Exchange Mechanisms in Zorite Using Time-Resolved Raman Spectroscopy},
+  author={Celestian, Aaron and Chappell, Caleb},
+  booktitle={Twenty-fourth Annual Goldschmidt Conference},
+  pages={368},
+  year={2014}
+}
+
+@article{kampfdendoraite,
+  title={Dendoraite-(NH₄), a new phosphate-oxalate mineral related to thebaite-(NH₄) from the Rowley mine, Arizona, USA},
+  author={Kampf, Anthony R and Cooper, Mark A and Celestian, Aaron J and Ma, Chi and Marty, Joe}
+}
+
+@article{perl2025evaporitic,
+  title={Evaporitic Preservation of Modern Carotenoid Biomarkers and Halophilic Microorganisms in Mars Analog Hypersaline Environments},
+  author={Perl, Scott M and Baxter, Bonnie K and Celestian, Aaron J and Tasoff, Preston and Seuylemezian, Arman and Vaishampayan, Parag A and Corsetti, Frank A},
+  journal={Astrobiology},
+  pages={15311074251392173},
+  year={2025},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+
+@article{cooperdock2025whole,
+  title={Whole rock and mineral separate nitrogen concentration and isotopic data for meta-ultramafic rocks},
+  author={Cooperdock, Emily and Bonilla, Ailani and Grabiec, Justine and Bustos-Moreno, Juan and Celestian, Aaron and Mallik, Ananya and Bebout, Gray},
+  journal={Interdisciplinary Earth Data Alliance (IEDA) dataset},
+  pages={237},
+  year={2025}
+}
