@@ -1,6 +1,16 @@
 {
-  "updated": "2026-01-07T20:54:50.144Z",
+  "updated": "2026-04-15T18:11:35.763Z",
   "works": [
+    {
+      "title": "Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide",
+      "journal": "Journal of Raman Spectroscopy",
+      "year": "2026",
+      "month": "01",
+      "day": "",
+      "doi": "10.1002/jrs.70013",
+      "authors": "",
+      "url": "https://doi.org/10.1002/jrs.70013"
+    },
     {
       "title": "Unearthed: Raw Beauty by Robert A. Lavinsky, Stuart Mills, and Monica Kitt with Eugene Meieran and Aaron Celestian. The Arkenstone (available through Amazon.com). 127 pages; 2025; $35 (hardbound).",
       "journal": "Rocks &amp; Minerals",
@@ -50,16 +60,6 @@
       "doi": "10.6084/m9.figshare.29482199",
       "authors": "",
       "url": "https://doi.org/10.6084/m9.figshare.29482199"
-    },
-    {
-      "title": "Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide",
-      "journal": "Journal of Raman Spectroscopy",
-      "year": "2025",
-      "month": "07",
-      "day": "02",
-      "doi": "10.1002/jrs.70013",
-      "authors": "",
-      "url": "https://doi.org/10.1002/jrs.70013"
     },
     {
       "title": "ClaritySpectra: Raman spectra analysis tool",
@@ -230,36 +230,6 @@
       "doi": "10.2138/am-2022-nmn107813",
       "authors": "",
       "url": "https://doi.org/10.2138/am-2022-nmn107813"
-    },
-    {
-      "title": "New Mineral Names: High-Pressure and Precious Minerals",
-      "journal": "American Mineralogist",
-      "year": "2022",
-      "month": "04",
-      "day": "01",
-      "doi": "10.2138/am-2022-nmn107411",
-      "authors": "",
-      "url": "https://doi.org/10.2138/am-2022-nmn107411"
-    },
-    {
-      "title": "Assessing the origin of pisoids within a travertine system in the border of Puna Plateau, Argentina",
-      "journal": "Sedimentology",
-      "year": "2022",
-      "month": "04",
-      "day": "",
-      "doi": "10.1111/sed.12946",
-      "authors": "",
-      "url": "https://doi.org/10.1111/sed.12946"
-    },
-    {
-      "title": "New Mineral Names: Alteration Products",
-      "journal": "American Mineralogist",
-      "year": "2022",
-      "month": "02",
-      "day": "01",
-      "doi": "10.2138/am-2022-nmn107228",
-      "authors": "",
-      "url": "https://doi.org/10.2138/am-2022-nmn107228"
     }
   ]
 }
