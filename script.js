@@ -368,7 +368,7 @@ function renderPub(pub) {
 
 // Load publications on page load
 document.addEventListener('DOMContentLoaded', () => {
-    renderPublications();
+    // renderPublications(); // Disabled - using manual HTML updates from RIS file
     createTimeSeriesPlot();
     createDistributionPlot();
     createHeatmapPlot();
