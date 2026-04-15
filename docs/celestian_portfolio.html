@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Celestian PhD — Research Portfolio</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f8f7f4;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  /* ── EXPORT BUTTON ── */
+  .export-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-export {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1.5px solid #1a1a1a;
+    background: #1a1a1a;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-export:hover { background: #333; }
+
+  /* ── HEADER ── */
+  .header {
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .header-name {
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+
+  .header-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+
+  .header-pills {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    color: #555;
+    background: #fff;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 8px;
+    margin-bottom: 1.75rem;
+  }
+
+  .legend-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .legend-item {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ldot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 1.75rem; }
+
+  .section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #888;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #d8d5d0;
+    margin-bottom: 12px;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .card.highlight { border: 2px solid #378ADD; }
+  .card.endowed   { border: 2px solid #1D9E75; }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+
+  .card-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+
+  .badge {
+    flex-shrink: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  .b-green    { background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+  .b-blue     { background: #E6F1FB; color: #0C447C; border: 1px solid #B5D4F4; }
+  .b-amber    { background: #FAEEDA; color: #633806; border: 1px solid #FAC775; }
+  .b-pink     { background: #FBEAF0; color: #72243E; border: 1px solid #F4C0D1; }
+  .b-teal     { background: #E1F5EE; color: #085041; border: 1px solid #5DCAA5; }
+
+  .card-desc {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .card-tags {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: #888;
+    background: #f4f3f0;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* ── ENDOWMENT BOX ── */
+  .endowment-box {
+    border: 2px solid #1D9E75;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    margin-bottom: 1.75rem;
+  }
+
+  .endowment-title {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+
+  .endowment-body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .endowment-footer {
+    border-top: 1px solid #e0ddd8;
+    padding-top: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #888;
+  }
+
+  .endowment-footer strong {
+    color: #444;
+    font-weight: 600;
+  }
+
+  .endow-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .endow-pill {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+    background: #E1F5EE;
+    color: #085041;
+    border: 1px solid #5DCAA5;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    border-top: 1px solid #d8d5d0;
+    padding-top: 1rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.65;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    body { background: #fff; font-size: 11px; }
+    .export-bar { display: none; }
+    .page-wrap { padding: 1rem 1.5rem; max-width: 100%; }
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .card { padding: 10px 12px; border-radius: 6px; page-break-inside: avoid; }
+    .card-title { font-size: 11px; }
+    .card-desc { font-size: 10px; }
+    .badge { font-size: 9px; }
+    .tag { font-size: 9px; }
+    .header-name { font-size: 24px; }
+    .section { margin-bottom: 1.25rem; }
+    .endowment-box { page-break-inside: avoid; }
+    .legend { gap: 10px; padding: 8px 12px; }
+    .legend-item { font-size: 10px; }
+    @page { margin: 1.5cm; size: A4; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="export-bar">
+    <button class="btn-export" onclick="window.print()">Export to PDF</button>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-name">Aaron Celestian, PhD</div>
+    <div class="header-title">Curator &amp; Department Head, Mineral Sciences &nbsp;&middot;&nbsp; Natural History Museum of Los Angeles County</div>
+    <div class="header-pills">
+      <span class="pill">Adjunct Professor, West LA College</span>
+      <span class="pill">Adjunct Assoc. Professor, USC Earth Sciences</span>
+      <span class="pill">~10&ndash;15 peer-reviewed publications / year</span>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-label">Maturity</span>
+    <span class="legend-item"><span class="ldot" style="background:#639922;"></span>Commercially deployed</span>
+    <span class="legend-item"><span class="ldot" style="background:#378ADD;"></span>Advanced / patent-stage</span>
+    <span class="legend-item"><span class="ldot" style="background:#BA7517;"></span>Mid-stage / funded</span>
+    <span class="legend-item"><span class="ldot" style="background:#D4537E;"></span>Early / pipeline</span>
+    <span class="legend-item"><span class="ldot" style="background:#1D9E75;"></span>Endowment-sustained</span>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-label">Critical materials &amp; energy security</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">LMO electrochemical lithium sequestration</div>
+          <span class="badge b-blue">Patent &middot; ORNL</span>
+        </div>
+        <div class="card-desc">Selective Li<sup>+</sup> recovery from geothermal brines and seawater via &lambda;-MnO<sub>2</sub> spinel intercalation. Demonstrated selectivity over Na<sup>+</sup>, Mg<sup>2+</sup>, Ca<sup>2+</sup>. Prior DOE funding. Direct relevance to domestic battery supply chain security.</div>
+        <div class="card-tags"><span class="tag">DOE-aligned</span><span class="tag">Battery materials</span><span class="tag">Oak Ridge NL</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Halophile biomining of lithium &amp; critical elements</div>
+          <span class="badge b-blue">Patent &middot; Brine Works</span>
+        </div>
+        <div class="card-desc">Halophilic microbial consortia for selective sequestration of Li, REEs, and strategic elements from mining effluent and brine waste. Converts waste streams into recoverable resource. Provisional patent filed 2025.</div>
+        <div class="card-tags"><span class="tag">Biotechnology</span><span class="tag">Brine recovery</span><span class="tag">Brine Works</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Critical element recovery platform</div>
+          <span class="badge b-pink">DOE seed</span>
+        </div>
+        <div class="card-desc">Mineral-based selective sorption and precipitation for recovery of Sr, Mg, REEs, and nationally strategic materials from industrial fluid streams. Extensible from LMO crystal-chemical selectivity framework.</div>
+        <div class="card-tags"><span class="tag">REE recovery</span><span class="tag">Supply chain</span><span class="tag">DOE developing</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Asphaltene-to-carbon fiber conversion</div>
+          <span class="badge b-amber">ORNL collaboration</span>
+        </div>
+        <div class="card-desc">Mineral-catalyzed decomposition of asphaltene (heavy petroleum byproduct) to generate high-value carbon fiber precursor feedstocks. Converts oil production waste into a strategic industrial material.</div>
+        <div class="card-tags"><span class="tag">Carbon materials</span><span class="tag">Circular economy</span><span class="tag">Oak Ridge NL</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-label">Environmental science &amp; pollution intervention</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Lead entombment in urban soils</div>
+          <span class="badge b-green">Field-deployed</span>
+        </div>
+        <div class="card-desc">Zeolite-based in-situ entombment of bioavailable Pb in contaminated urban soils. Deployed in Los Angeles communities with Getty Museum funding. Platform scalable to post-industrial brownfield abatement.</div>
+        <div class="card-tags"><span class="tag">Environmental justice</span><span class="tag">Getty funded</span><span class="tag">Zeolite platform</span></div>
+      </div>
+
+      <div class="card highlight">
+        <div class="card-top">
+          <div class="card-title">CST Ionsieve &mdash; radioactive cesium entombment</div>
+          <span class="badge b-green">Deployed &middot; Fukushima</span>
+        </div>
+        <div class="card-desc">Crystal chemistry characterization of crystalline silicotitanate (CST), the Honeywell UOP Ionsieve product, enabling selective Cs<sup>+</sup> entombment from radioactive wastewater. Conducted in partnership with AstraZeneca. CST remains in active deployment at Fukushima Daiichi &mdash; among the most consequential nuclear wastewater treatment operations in history.</div>
+        <div class="card-tags"><span class="tag">Nuclear treatment</span><span class="tag">Honeywell UOP</span><span class="tag">AstraZeneca</span><span class="tag">Active deployment</span></div>
+      </div>
+
+      <div class="card endowed">
+        <div class="card-top">
+          <div class="card-title">Magn&eacute;li phase pollution markers</div>
+          <span class="badge b-teal">Endowment-sustained</span>
+        </div>
+        <div class="card-desc">Ti suboxides (Ti<sub>n</sub>O<sub>2n&minus;1</sub>) as novel mineralogical fingerprints of industrial combustion in environmental records. Emerging framework for regulatory stratigraphic monitoring and environmental forensics. Anthropocene mineral marker candidate; manuscript targeting <em>American Mineralogist</em>.</div>
+        <div class="card-tags"><span class="tag">Anthropocene</span><span class="tag">Environmental forensics</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Microplastics in marine food webs</div>
+          <span class="badge b-amber">NOAA Sea Grant</span>
+        </div>
+        <div class="card-desc">Bioaccumulation of microplastics in fish tissues using NHMLAC natural history collections as a temporal archive extending decades before modern monitoring. Applications in regulatory compliance and environmental liability assessment.</div>
+        <div class="card-tags"><span class="tag">NOAA funded</span><span class="tag">Collections science</span></div>
+      </div>
+
+      <div class="card endowed">
+        <div class="card-top">
+          <div class="card-title">Plastics in cultural artifacts as pollution proxies</div>
+          <span class="badge b-teal">Endowment-sustained</span>
+        </div>
+        <div class="card-desc">Extension of microplastic monitoring into fine art and archival materials using NHMLAC museum collections as a longitudinal record. Dataset has no analogue elsewhere. Applications in art insurance, conservation, and environmental compliance.</div>
+        <div class="card-tags"><span class="tag">Art conservation</span><span class="tag">Insurance</span><span class="tag">NHMLAC collections</span></div>
+      </div>
+
+      <div class="card endowed">
+        <div class="card-top">
+          <div class="card-title">Community toxin monitoring platform</div>
+          <span class="badge b-teal">Endowment-sustained</span>
+        </div>
+        <div class="card-desc">Partnership with artist Maru Garcia developing low-cost, self-sufficient community-deployable systems for environmental toxin monitoring. Environmental justice focus; replicable and scalable community science model.</div>
+        <div class="card-tags"><span class="tag">Community science</span><span class="tag">Public health</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-label">Biomedical &amp; pharmaceutical</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Kidney stone disease biomineralization</div>
+          <span class="badge b-blue">Science Advances target</span>
+        </div>
+        <div class="card-desc">First discovery of bio-mineral interactions between urinary crystals and bacterial biofilms likely at the root of kidney stone disease &mdash; opening entirely new treatment pathways currently under development. UCLA collaboration. UMAP clustering reveals two dominant pathological pathways. PNAS companion paper published 2026.</div>
+        <div class="card-tags"><span class="tag">UCLA</span><span class="tag">PNAS 2026</span><span class="tag">First discovery</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Gd<sup>3+</sup> mineral complexes for MRI contrast enhancement</div>
+          <span class="badge b-amber">LLNL &middot; Cedars-Sinai validated</span>
+        </div>
+        <div class="card-desc">Mineral-based Gd<sup>3+</sup> complexes validated at Lawrence Livermore National Laboratory and Cedars-Sinai MRI facilities. Relaxivity exceeds current commercial agents; current work tunes nuclear spin-state relaxation kinetics for clinically optimal T<sub>1</sub> release windows. Addresses toxicity liabilities of approved linear Gd-chelate agents.</div>
+        <div class="card-tags"><span class="tag">LLNL</span><span class="tag">Cedars-Sinai</span><span class="tag">Radiology</span></div>
+      </div>
+
+      <div class="card endowed">
+        <div class="card-top">
+          <div class="card-title">Targeted chemotherapy delivery via novel minerals</div>
+          <span class="badge b-teal">Endowment-sustained</span>
+        </div>
+        <div class="card-desc">Drug delivery platform using newly described minerals (rowleyite, jasonsmithite) and MOF minerals as selective, biocompatible carriers for targeted cancer therapy. Crystal channel geometry exploited for controlled drug release. Active collaboration interest from Huntsman Cancer Institute, University of Utah.</div>
+        <div class="card-tags"><span class="tag">Oncology</span><span class="tag">Huntsman / Utah</span><span class="tag">MOF minerals</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Lokelma / zeolite pharmaceutical lineage</div>
+          <span class="badge b-green">FDA approved analog</span>
+        </div>
+        <div class="card-desc">Crystal chemistry research directly contributed to development of Lokelma (sodium zirconium cyclosilicate), FDA-approved for hyperkalemia. Establishes proof-of-concept for a mineral-to-drug translational pathway and a prior commercial exit analog for the platform.</div>
+        <div class="card-tags"><span class="tag">AstraZeneca</span><span class="tag">Prior exit analog</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-label">Astrobiology &amp; space science</div>
+    <div class="grid">
+
+      <div class="card endowed">
+        <div class="card-top">
+          <div class="card-title">Halophile &amp; cryophile biosignatures for ocean worlds</div>
+          <span class="badge b-teal">Endowment-sustained</span>
+        </div>
+        <div class="card-desc">Characterization of extremophile microbial communities and mineral biosignatures applicable to life-detection on Europa, Enceladus, and Mars analog environments. NASA JPL collaboration. Accepted <em>Astrobiology</em> 2026.</div>
+        <div class="card-tags"><span class="tag">NASA JPL</span><span class="tag">Europa / Enceladus</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <div class="section-label">Open-source scientific software &amp; community infrastructure</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">RamanLab</div>
+          <span class="badge b-green">Public release</span>
+        </div>
+        <div class="card-desc">Open-source Raman spectral analysis, search-match, and mineral identification platform. Actively used by research and industry communities worldwide. Licensing or SaaS pathway available.</div>
+        <div class="card-tags"><span class="tag">Open source</span><span class="tag">Licensing potential</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">XRDmatch</div>
+          <span class="badge b-green">Public release</span>
+        </div>
+        <div class="card-desc">Open-source X-ray diffraction search-match and phase identification tool. Broadens access to quantitative mineralogy for under-resourced laboratories globally. Companion to RamanLab; same licensing potential.</div>
+        <div class="card-tags"><span class="tag">Open source</span><span class="tag">Global access</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">SpecimenPro</div>
+          <span class="badge b-green">App Store</span>
+        </div>
+        <div class="card-desc">iOS application for professional specimen collection management, documentation, and provenance tracking. Applicable to natural history collections, private collectors, and institutional cataloguing workflows.</div>
+        <div class="card-tags"><span class="tag">iOS</span><span class="tag">Collections</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ENDOWMENT BOX -->
+  <div class="endowment-box">
+    <div class="endowment-title">Named endowment partnerships &mdash; a legacy opportunity</div>
+    <div class="endowment-body">
+      Several research programs in this portfolio are currently sustained through endowment support, allowing them to remain independent, long-horizon, and responsive to emerging science rather than federal funding cycles. Named endowments at the Natural History Museum of Los Angeles County carry permanent recognition: the donor&rsquo;s name appears on every publication produced under that endowment, in museum materials, and in perpetuity within the institution&rsquo;s records. For families seeking a legacy at the intersection of human health, planetary science, and environmental stewardship, a named endowment represents one of the most direct and durable forms of scientific patronage available.
+    </div>
+    <div class="endowment-footer">
+      <strong>Current endowment supporters sustaining active research:</strong>
+      <div class="endow-pills">
+        <span class="endow-pill">Trelawney Endowment</span>
+        <span class="endow-pill">Bandy Endowment</span>
+        <span class="endow-pill">Gem &amp; Mineral Council</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote">
+    Patent interests held through Oak Ridge National Laboratory (LMO sequestration) and Brine Works (biomining). Software tools independently developed and open-source. Prior federal funding: DOE, NASA, NOAA, Getty Foundation. CST/Ionsieve characterization conducted in partnership with AstraZeneca; material deployed by Honeywell UOP. All research conducted through NHMLAC Mineral Sciences or in collaboration with partner institutions.
+  </div>
+
+</div>
+</body>
+</html>

@@ -42,6 +42,9 @@ if current_pub and current_pub.get('title'):
 # Filter out publications without titles
 publications = [p for p in publications if p.get('title')]
 
+# Sort by year descending (2026 first, then 2025, etc.)
+publications.sort(key=lambda x: int(x.get('year', '0')), reverse=True)
+
 # Generate HTML
 html_output = []
 
