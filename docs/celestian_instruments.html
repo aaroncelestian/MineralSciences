@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Celestian PhD — Instrumentation Portfolio</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f8f7f4;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  /* ── EXPORT BUTTON ── */
+  .export-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-export {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1.5px solid #1a1a1a;
+    background: #1a1a1a;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.15s;
+  }
+  .btn-export:hover { background: #333; }
+
+  /* ── HEADER ── */
+  .header {
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .header-name {
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+
+  .header-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+
+  .header-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ── SUMMARY STATS ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .stat-card {
+    background: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .stat-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .stat-value.red   { color: #A32D2D; }
+  .stat-value.amber { color: #854F0B; }
+  .stat-value.green { color: #27500A; }
+  .stat-value.blue  { color: #0C447C; }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 8px;
+    margin-bottom: 1.75rem;
+  }
+
+  .legend-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .legend-item {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ldot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 1.75rem; }
+
+  .section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #888;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #d8d5d0;
+    margin-bottom: 12px;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .card.urgent  { border: 2px solid #E24B4A; }
+  .card.wish    { border: 2px solid #378ADD; }
+  .card.have    { border: 2px solid #1D9E75; }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+
+  .card-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+
+  .badge {
+    flex-shrink: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  .b-red    { background: #FCEBEB; color: #791F1F; border: 1px solid #F09595; }
+  .b-green  { background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+  .b-blue   { background: #E6F1FB; color: #0C447C; border: 1px solid #B5D4F4; }
+  .b-amber  { background: #FAEEDA; color: #633806; border: 1px solid #FAC775; }
+  .b-teal   { background: #E1F5EE; color: #085041; border: 1px solid #5DCAA5; }
+  .b-purple { background: #EEEDFE; color: #3C3489; border: 1px solid #AFA9EC; }
+
+  .cost {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+
+  .cost.red   { color: #A32D2D; }
+  .cost.blue  { color: #185FA5; }
+  .cost.amber { color: #854F0B; }
+
+  .card-desc {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  .card-tags {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: #888;
+    background: #f4f3f0;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* ── TOTAL BOX ── */
+  .total-box {
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .total-item { text-align: center; }
+
+  .total-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+
+  .total-value {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .total-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    border-top: 1px solid #d8d5d0;
+    padding-top: 1rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.65;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .export-bar { display: none; }
+    .page-wrap { padding: 0; max-width: 100%; }
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .card { padding: 9px 11px; page-break-inside: avoid; break-inside: avoid; min-width: 0; }
+    .card-top { flex-wrap: wrap; gap: 4px; }
+    .card-title { font-size: 10.5px; flex: 1 1 0; min-width: 0; word-break: break-word; }
+    .badge { font-size: 8px; padding: 1px 5px; max-width: 90px; white-space: normal; word-break: break-word; text-align: center; line-height: 1.3; flex-shrink: 0; }
+    .cost { font-size: 15px; margin-bottom: 4px; }
+    .card-desc { font-size: 9.5px; }
+    .tag { font-size: 8.5px; }
+    .card-tags { margin-top: 5px; gap: 3px; }
+    .header-name { font-size: 24px; }
+    .section { margin-bottom: 1.1rem; }
+    .section-label { font-size: 9px; margin-bottom: 8px; }
+    .legend { gap: 8px; padding: 6px 10px; margin-bottom: 1rem; }
+    .legend-item { font-size: 9.5px; }
+    .legend-label { font-size: 9px; }
+    .ldot { width: 7px; height: 7px; }
+    .stats-row { gap: 8px; margin-bottom: 1rem; }
+    .stat-card { padding: 8px 10px; }
+    .stat-value { font-size: 16px; }
+    .stat-label { font-size: 9px; }
+    .total-box { padding: 0.9rem 1.2rem; margin-bottom: 1rem; }
+    .total-value { font-size: 18px; }
+    .total-label { font-size: 9px; }
+    .footnote { font-size: 9.5px; padding-top: 8px; }
+    @page { margin: 1.4cm 1.5cm; size: A4; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="export-bar">
+    <button class="btn-export" onclick="window.print()">Export to PDF</button>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-name">Aaron Celestian, PhD &mdash; Instrumentation Portfolio</div>
+    <div class="header-title">Mineral Sciences Department &nbsp;&middot;&nbsp; Natural History Museum of Los Angeles County</div>
+    <div class="header-sub">Current capabilities, upgrade needs, field expansion, and strategic acquisitions supporting translational mineralogy research</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Urgent upgrades</div>
+      <div class="stat-value red">$750k</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Field expansion</div>
+      <div class="stat-value amber">$90k</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Strategic wish list</div>
+      <div class="stat-value blue">$345k</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total investment opportunity</div>
+      <div class="stat-value">$1.185M</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-label">Status</span>
+    <span class="legend-item"><span class="ldot" style="background:#E24B4A;"></span>Urgent replacement needed</span>
+    <span class="legend-item"><span class="ldot" style="background:#1D9E75;"></span>Current capability (operational)</span>
+    <span class="legend-item"><span class="ldot" style="background:#378ADD;"></span>Wish list / new acquisition</span>
+  </div>
+
+  <!-- SECTION 1: URGENT -->
+  <div class="section">
+    <div class="section-label">Urgent upgrades &amp; replacements</div>
+    <div class="grid">
+
+      <div class="card urgent">
+        <div class="card-top">
+          <div class="card-title">Single crystal X-ray diffractometer</div>
+          <span class="badge b-red">Replacement needed</span>
+        </div>
+        <div class="cost red">$500,000</div>
+        <div class="card-desc">Gold-standard instrument for definitive crystal structure determination of new minerals, holotype characterization, pharmaceutical mineral geometry, and MOF drug delivery scaffolds. Current instrument end-of-life; NSF proposal ($490k) in review. Loss of this capability would halt new mineral description work entirely.</div>
+        <div class="card-tags">
+          <span class="tag">New mineral discovery</span>
+          <span class="tag">Drug delivery</span>
+          <span class="tag">Holotype work</span>
+          <span class="tag">NSF in review</span>
+        </div>
+      </div>
+
+      <div class="card urgent">
+        <div class="card-top">
+          <div class="card-title">Raman spectrometer</div>
+          <span class="badge b-red">Replacement needed</span>
+        </div>
+        <div class="cost red">$150,000</div>
+        <div class="card-desc">Primary identification and characterization tool supporting RamanLab software development, Magn&eacute;li phase discrimination, kidney stone analysis, astrobiology biosignature work, and microplastic identification. Current instrument aging; reduced sensitivity compromises data quality across virtually all active projects.</div>
+        <div class="card-tags">
+          <span class="tag">RamanLab</span>
+          <span class="tag">Magn&eacute;li phases</span>
+          <span class="tag">Kidney stones</span>
+          <span class="tag">Astrobiology</span>
+          <span class="tag">Microplastics</span>
+        </div>
+      </div>
+
+      <div class="card urgent">
+        <div class="card-top">
+          <div class="card-title">Polarized light microscope (PLM)</div>
+          <span class="badge b-red">Update needed</span>
+        </div>
+        <div class="cost red">$100,000</div>
+        <div class="card-desc">Essential for optical mineralogy, thin section petrography, and kidney stone phase identification. PLM remains irreplaceable for birefringence characterization of urinary minerals and biomineralization studies. Current system requires modernization including digital imaging integration and automated stage.</div>
+        <div class="card-tags">
+          <span class="tag">Kidney stones</span>
+          <span class="tag">Biomineralization</span>
+          <span class="tag">Petrography</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 2: CURRENT -->
+  <div class="section">
+    <div class="section-label">Current capabilities (operational)</div>
+    <div class="grid">
+
+      <div class="card have">
+        <div class="card-top">
+          <div class="card-title">Powder X-ray diffractometer (PXRD)</div>
+          <span class="badge b-teal">Operational</span>
+        </div>
+        <div class="card-desc">Phase identification, Rietveld refinement, and quantitative mineralogy. Workhorse instrument for LMO characterization, environmental mineral identification, holotype benchmark work (NH<sub>4</sub>Br), and XRDmatch software validation.</div>
+        <div class="card-tags">
+          <span class="tag">LMO work</span>
+          <span class="tag">XRDmatch</span>
+          <span class="tag">Phase ID</span>
+          <span class="tag">Rietveld</span>
+        </div>
+      </div>
+
+      <div class="card have">
+        <div class="card-top">
+          <div class="card-title">X-ray fluorescence (XRF) microscope</div>
+          <span class="badge b-teal">Operational</span>
+        </div>
+        <div class="card-desc">Elemental mapping and bulk chemistry of minerals, soils, and environmental samples. Supports Pb entombment studies, REE recovery work, and CST characterization. Non-destructive analysis enables collections-based research.</div>
+        <div class="card-tags">
+          <span class="tag">Pb sequestration</span>
+          <span class="tag">REE recovery</span>
+          <span class="tag">Non-destructive</span>
+        </div>
+      </div>
+
+      <div class="card have">
+        <div class="card-top">
+          <div class="card-title">LIBS (laser-induced breakdown spectroscopy)</div>
+          <span class="badge b-teal">Operational</span>
+        </div>
+        <div class="card-desc">Rapid elemental analysis with minimal sample preparation. Supports field-analogous measurements, critical element screening in brine samples, and community toxin monitoring platform development. Unique capability for in-situ screening workflows.</div>
+        <div class="card-tags">
+          <span class="tag">Critical elements</span>
+          <span class="tag">Brine screening</span>
+          <span class="tag">Community science</span>
+        </div>
+      </div>
+
+      <div class="card have">
+        <div class="card-top">
+          <div class="card-title">Micro-CT scanner</div>
+          <span class="badge b-teal">NHM facility</span>
+        </div>
+        <div class="card-desc">3D internal structure visualization without destructive sectioning. Critical for kidney stone 3D morphology, internal porosity of MOF mineral drug carriers, and internal structure of fossil specimens including coprolite feather preservation work.</div>
+        <div class="card-tags">
+          <span class="tag">Kidney stones</span>
+          <span class="tag">Drug delivery</span>
+          <span class="tag">Paleontology</span>
+        </div>
+      </div>
+
+      <div class="card have">
+        <div class="card-top">
+          <div class="card-title">SEM-EDS</div>
+          <span class="badge b-teal">NHM facility</span>
+        </div>
+        <div class="card-desc">Scanning electron microscopy with energy-dispersive spectroscopy for high-resolution imaging and elemental analysis. Supports Magn&eacute;li phase characterization, biofilm-mineral interface imaging in kidney stone work, and new mineral morphology documentation.</div>
+        <div class="card-tags">
+          <span class="tag">Magn&eacute;li phases</span>
+          <span class="tag">Biofilm interfaces</span>
+          <span class="tag">New minerals</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3: FIELD -->
+  <div class="section">
+    <div class="section-label">Field instrumentation &mdash; new acquisitions</div>
+    <div class="grid">
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Portable Raman spectrometer</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$45,000</div>
+        <div class="card-desc">Field-deployable Raman for in-situ mineral identification at brine extraction sites, Mars analog field sites, and community toxin monitoring locations. Directly extends RamanLab capabilities into field workflows. Essential for astrobiology analog work and LMO brine site characterization.</div>
+        <div class="card-tags">
+          <span class="tag">Field work</span>
+          <span class="tag">Astrobiology</span>
+          <span class="tag">Brine sites</span>
+          <span class="tag">RamanLab</span>
+        </div>
+      </div>
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Portable XRF analyzer</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$45,000</div>
+        <div class="card-desc">Handheld elemental analysis for rapid field screening of Pb contamination in urban soils, REE content in brine deposits, and community environmental monitoring. Enables non-laboratory workflows for the Maru Garcia community science platform and citizen science deployments.</div>
+        <div class="card-tags">
+          <span class="tag">Field work</span>
+          <span class="tag">Pb monitoring</span>
+          <span class="tag">Community science</span>
+          <span class="tag">REE screening</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4: WISH LIST -->
+  <div class="section">
+    <div class="section-label">Strategic wish list &mdash; new capabilities</div>
+    <div class="grid">
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Hyperspectral camera</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$75,000</div>
+        <div class="card-desc">Imaging spectroscopy across hundreds of wavelength bands simultaneously. Transformative for microplastic mapping in fish tissue and artwork, mineral mapping of museum specimens and brine evaporite deposits, and biosignature spatial distribution in extremophile samples.</div>
+        <div class="card-tags">
+          <span class="tag">Microplastics</span>
+          <span class="tag">Mineral mapping</span>
+          <span class="tag">Biosignatures</span>
+          <span class="tag">Collections</span>
+        </div>
+      </div>
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">UV-Vis spectrophotometer</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$40,000</div>
+        <div class="card-desc">Optical absorption spectroscopy for monitoring Gd<sup>3+</sup> ligand coordination chemistry and MRI contrast agent development, carotenoid biosignature quantification in halophile astrobiology work, drug loading and release kinetics in MOF mineral carriers, and LMO electrochemical reaction monitoring.</div>
+        <div class="card-tags">
+          <span class="tag">Gd/MRI</span>
+          <span class="tag">Astrobiology</span>
+          <span class="tag">Drug delivery</span>
+          <span class="tag">LMO</span>
+        </div>
+      </div>
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Holographic microscope (DIY build)</div>
+          <span class="badge b-purple">DIY build</span>
+        </div>
+        <div class="cost blue">$10,000</div>
+        <div class="card-desc">Digital holographic microscopy for label-free 3D imaging of cells and mineral interfaces without staining. Particularly valuable for live halophile and biofilm imaging, real-time observation of biomineralization at crystal surfaces, and kidney stone bacterial biofilm characterization.</div>
+        <div class="card-tags">
+          <span class="tag">Halophiles</span>
+          <span class="tag">Biofilm imaging</span>
+          <span class="tag">Biomineralization</span>
+          <span class="tag">Low-cost</span>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Electrochemical workstation / potentiostat</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$40,000</div>
+        <div class="card-desc">Cyclic voltammetry, impedance spectroscopy, and chronoamperometry for direct characterization of LMO Li<sup>+</sup> intercalation cycling, Gd<sup>3+</sup> redox chemistry, and electrochemical brine extraction performance. Critical for moving LMO work from materials characterization into device-level validation.</div>
+        <div class="card-tags">
+          <span class="tag">LMO</span>
+          <span class="tag">Brine extraction</span>
+          <span class="tag">Gd chemistry</span>
+        </div>
+      </div>
+
+      <div class="card wish">
+        <div class="card-top">
+          <div class="card-title">Dynamic light scattering (DLS)</div>
+          <span class="badge b-blue">Wish list</span>
+        </div>
+        <div class="cost blue">$30,000</div>
+        <div class="card-desc">Nanoparticle size distribution and aggregation state in suspension. Essential for characterizing MOF mineral drug delivery particles, monitoring LMO particle stability in brine solutions, and ensuring consistent particle size in pharmaceutical mineral formulations for Huntsman Cancer Institute collaboration.</div>
+        <div class="card-tags">
+          <span class="tag">Drug delivery</span>
+          <span class="tag">MOF minerals</span>
+          <span class="tag">LMO stability</span>
+          <span class="tag">Huntsman / Utah</span>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- TOTAL BOX -->
+  <div class="total-box">
+    <div class="total-item">
+      <div class="total-label">Urgent replacements</div>
+      <div class="total-value" style="color:#A32D2D;">$750,000</div>
+      <div class="total-sub">Single crystal XRD &middot; Raman &middot; PLM</div>
+    </div>
+    <div class="total-item">
+      <div class="total-label">Field + wish list</div>
+      <div class="total-value" style="color:#185FA5;">$435,000</div>
+      <div class="total-sub">5 new instruments / capabilities</div>
+    </div>
+    <div class="total-item">
+      <div class="total-label">Total investment</div>
+      <div class="total-value">$1,185,000</div>
+      <div class="total-sub">Across 8 new or upgraded instruments</div>
+    </div>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote">
+    Operational instruments (PXRD, XRF, LIBS) are current departmental assets. Micro-CT and SEM-EDS are shared NHM facility instruments. NSF single crystal XRD proposal ($490k) currently in review &mdash; named endowment support could bridge the funding gap or accelerate acquisition independent of federal timelines. All cost estimates based on current vendor pricing; configurations may vary.
+  </div>
+
+</div>
+</body>
+</html>
