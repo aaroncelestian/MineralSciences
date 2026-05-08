@@ -16,7 +16,12 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">Research Portfolio</div>
-            <ul class="nav-menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#field">Field</a></li>
                 <li><a href="#research">Research</a></li>
@@ -68,9 +73,15 @@
             </p>
             
             <div class="viz-card">
-                <div class="iframe-container">
-                    <iframe allow="local-network-access; geolocation" title="Research Spots" src="https://lacnhm.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=bd266656bb4b47a2b13f556bb1a9b717&theme=light&scroll=false&center=-66.59003499139092,14.68424297667507&scale=73957190.948944" ></iframe>
-                </div>
+                <arcgis-embedded-map 
+                    style="width:100%; height:600px; border-radius: 12px;" 
+                    item-id="bd266656bb4b47a2b13f556bb1a9b717" 
+                    theme="light" 
+                    time-zone-label-enabled 
+                    center="-3.3822970482519117,0.9483718556109263"
+                    scale="147914381.897889" 
+                    portal-url="https://lacnhm.maps.arcgis.com">
+                </arcgis-embedded-map>
             </div>
         </div>
     </section>
