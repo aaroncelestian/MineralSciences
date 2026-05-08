@@ -624,16 +624,39 @@ footer p {
     
     arcgis-embedded-map {
         height: 400px !important;
-        max-width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block;
     }
     
     .viz-card {
         padding: 0 !important;
         overflow: hidden;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    #field .viz-card {
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .container {
         padding: 0 15px;
+    }
+    
+    /* Hide constellation labels on mobile - stars are clickable */
+    #constellation-container text {
+        display: none;
+    }
+    
+    /* Make constellation stars slightly larger on mobile since no labels */
+    #constellation-container circle[r="11"] {
+        r: 14;
+    }
+    
+    #constellation-container circle[r="13"] {
+        r: 16;
     }
 }
 
