@@ -437,6 +437,8 @@ h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
     margin-bottom: 3rem;
     border-radius: 8px;
     box-shadow: var(--shadow);
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .viz-card h3 {
@@ -543,7 +545,7 @@ footer p {
     }
     
     .hamburger {
-        display: flex;
+        display: flex !important;
     }
     
     .nav-menu {
@@ -554,19 +556,22 @@ footer p {
         background: var(--primary-color);
         flex-direction: column;
         gap: 0;
-        padding: 1rem 0;
+        padding: 0;
         margin-top: 0.6rem;
         box-shadow: 0 10px 25px rgba(2, 6, 23, 0.25);
         border-radius: 12px;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+        visibility: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .nav-menu.active {
         max-height: 500px;
         opacity: 1;
+        visibility: visible;
+        padding: 1rem 0;
     }
     
     .nav-menu li {
@@ -619,6 +624,16 @@ footer p {
     
     arcgis-embedded-map {
         height: 400px !important;
+        max-width: 100%;
+    }
+    
+    .viz-card {
+        padding: 0 !important;
+        overflow: hidden;
+    }
+    
+    .container {
+        padding: 0 15px;
     }
 }
 
