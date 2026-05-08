@@ -106,6 +106,9 @@ function initConstellation() {
     const container = document.getElementById('constellation-container');
     if (!container) return;
 
+    // Detect mobile
+    const isMobile = window.innerWidth <= 768;
+    
     const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
     const height = 580;
     const cx = width / 2;
@@ -404,11 +407,12 @@ function initConstellation() {
         halo.classList.add('node-halo');
         group.appendChild(halo);
 
-        // Node circle
+        // Node circle (larger on mobile)
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('cx', pos.x);
         circle.setAttribute('cy', pos.y);
-        circle.setAttribute('r', node.radius);
+        const mobileRadius = isMobile ? (node.radius === 11 ? 14 : node.radius === 13 ? 16 : node.radius) : node.radius;
+        circle.setAttribute('r', mobileRadius);
         circle.setAttribute('fill', node.color);
         circle.classList.add('node-circle');
         group.appendChild(circle);
@@ -440,20 +444,23 @@ function initConstellation() {
             anchor = 'start';
         }
 
-        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        label.setAttribute('x', labelX);
-        label.setAttribute('y', labelY);
-        label.setAttribute('text-anchor', anchor);
-        label.setAttribute('font-size', '12.5');
-        label.setAttribute('font-weight', '500');
-        label.setAttribute('fill', node.color);
-        label.textContent = node.label;
-        group.appendChild(label);
+        // Only add labels on desktop
+        if (!isMobile) {
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('x', labelX);
+            label.setAttribute('y', labelY);
+            label.setAttribute('text-anchor', anchor);
+            label.setAttribute('font-size', '12.5');
+            label.setAttribute('font-weight', '500');
+            label.setAttribute('fill', node.color);
+            label.textContent = node.label;
+            group.appendChild(label);
+        }
 
         // Interactivity
         group.addEventListener('mouseenter', () => {
             halo.setAttribute('opacity', '1');
-            circle.setAttribute('r', node.radius + 2);
+            circle.setAttribute('r', mobileRadius + 2);
         });
 
         group.addEventListener('mouseleave', () => {
@@ -488,16 +495,18 @@ function initConstellation() {
         svg.appendChild(group);
     });
 
-    // Call-to-action text
-    const ctaText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    ctaText.setAttribute('x', cx);
-    ctaText.setAttribute('y', height - 20);
-    ctaText.setAttribute('text-anchor', 'middle');
-    ctaText.setAttribute('font-size', '13');
-    ctaText.setAttribute('font-weight', '400');
-    ctaText.setAttribute('fill', '#94a3b8');
-    ctaText.textContent = 'click on any star in the constellation to read its story';
-    svg.appendChild(ctaText);
+    // Call-to-action text (desktop only)
+    if (!isMobile) {
+        const ctaText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        ctaText.setAttribute('x', cx);
+        ctaText.setAttribute('y', height - 20);
+        ctaText.setAttribute('text-anchor', 'middle');
+        ctaText.setAttribute('font-size', '13');
+        ctaText.setAttribute('font-weight', '400');
+        ctaText.setAttribute('fill', '#94a3b8');
+        ctaText.textContent = 'click on any star in the constellation to read its story';
+        svg.appendChild(ctaText);
+    }
 
     container.appendChild(svg);
 
