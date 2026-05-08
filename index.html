@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -17,9 +18,9 @@
             <div class="nav-brand">Research Portfolio</div>
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
+                <li><a href="#field">Field</a></li>
                 <li><a href="#research">Research</a></li>
-                <li><a href="#visualizations">Field</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="#minerals">Minerals</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#media">Media</a></li>
                 <li><a href="cv.html">CV</a></li>
@@ -43,125 +44,89 @@
                 <div class="about-text about-wrap">
                     <img src="images/aaron2.jpeg" alt="Aaron Celestian" class="portrait portrait-float">
                     <p>
-                        I am a researcher focused on the ways minerals interact with their environments and living systems, 
-                        and how these interactions can be harnessed to address global challenges such as climate change, 
-                        pollution, and disease. My work lies at the intersection of science, art, and culture, with a 
-                        particular interest in rethinking how we relate to and understand our planet.
+                        Some scientists ask what minerals are. I ask what they do — and to answer that, I go where they form.
                     </p>
                     <p>
-                        As Curator of Mineral Sciences at the Natural History Museum of Los Angeles County, I employ 
-                        advanced analytical techniques including X-ray diffraction, Raman spectroscopy, and high-resolution 
-                        imaging to investigate mineral-environment interactions. My research spans from searching for 
-                        biosignatures in salt crystals to developing sustainable lithium extraction methods.
+                        I am the Curator of Mineral Sciences at the Natural History Museum of Los Angeles County, and my laboratory is everywhere: the hypersaline lake beds of Western Australia where life clings to chemistry that mirrors early Mars; the geothermal brines of California where bacteria pull lithium from ancient seawater; the crystalline interiors of human kidney stones where bacterial biofilms rewrite what we thought we knew about disease. Every sample I collect in the field eventually faces the most sophisticated analytical arsenal in the natural sciences — X-ray diffraction, Raman spectroscopy, high-resolution electron imaging — housed in one of the world's great research museums.
                     </p>
                     <p>
-                        <strong>Research Interests:</strong> Astrobiology • Environmental Solutions • Energy Materials • Cultural Heritage • PharmaMineralogy
+                        The curator's role is a strange and powerful one: to be simultaneously the person who goes out and the person who brings back, who transforms raw field material into permanent scientific knowledge. I have discovered new mineral species, co-developed mineral-based therapeutics now used in hospitals, searched for biosignatures that could confirm life on another planet, and extracted lithium from brines using only bacteria and sunlight. The specimens in my collection are not just beautiful objects. They are evidence.
+                    </p>
+                    <p>
+                        <strong>Research Interests:</strong> Astrobiology • Mineral Discovery • Environmental Remediation • PharmaMineralogy • Energy Materials • Cultural Heritage
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="research" class="section section-alt">
+    <section id="field" class="section section-alt">
         <div class="container">
-            <h2>Research Projects</h2>
+            <h2>Field Exploration</h2>
             <p class="section-intro">
-                Current research focuses on developing mineral-based solutions for energy, health, and environmental challenges.
+                Field work in mineral sciences means going where the chemistry is extreme — environments that test both equipment and researcher. The interactive map below documents active and completed research expeditions spanning six continents. Each site was selected because it represents a boundary condition: the edge of habitability, the limit of a geochemical system, or an analog environment for planetary surfaces we cannot yet visit directly. Click any marker to explore the location, the science, and the conditions on the ground.
             </p>
             
-            <div class="project-card">
-                <h3>Sustainable Lithium Extraction from Brines</h3>
-                <p class="project-meta">Funding: Department of Energy | Status: Ongoing</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/brine.jpeg" alt="Brine lithium extraction research" class="card-image">
-                    </div>
-                    <div class="split-body">
-                        <p>
-                            Developing low-energy lithium extraction methods using lithium manganese oxide (LMO) for geothermal brines, 
-                            oil field wastewater, and desalination streams. This sustainable approach addresses global lithium demand 
-                            without the environmental costs of traditional mining.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Energy Materials</span>
-                            <span class="tag">X-ray Diffraction</span>
-                            <span class="tag">Ion Exchange</span>
-                            <span class="tag">DOE</span>
-                        </div>
-                    </div>
+            <div class="viz-card">
+                <div class="iframe-container">
+                    <iframe allow="local-network-access; geolocation" title="Research Spots" src="https://lacnhm.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=bd266656bb4b47a2b13f556bb1a9b717&theme=light&scroll=false&center=-66.59003499139092,14.68424297667507&scale=73957190.948944" ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <div class="container">
+            <h2>Research</h2>
+            <p class="section-intro">
+                Every research program I pursue follows the same thread: minerals record. A crystal grown in a hypersaline lake records the chemistry of the water that made it — and whether anything was alive in that water. A kidney stone records the bacteria that helped build it. A microporous titanium silicate records a geometry that evolution independently discovered in cell membranes. My work is the act of reading those records — and deciding what to do with what they say.
+            </p>
+            
+            <div id="constellation-container"></div>
+            <div id="constellation-detail-panel"></div>
+        </div>
+    </section>
+
+    <section id="minerals" class="section section-alt">
+        <div class="container">
+            <h2>Mineral Discovery</h2>
+            
+            <p class="section-intro">
+                Finding a new mineral is the beginning, not the end. Each new species is a new arrangement of atoms — and asking what it can do is a far harder problem than finding it.
+            </p>
+
+            <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: var(--radius-lg); padding: 1.25rem; margin: 2rem 0; max-height: 180px; overflow-y: auto; box-shadow: 0 4px 16px rgba(2, 6, 23, 0.06);">
+                <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1rem;">
+                    Each new mineral requires rigorous crystallographic characterization — single-crystal X-ray diffraction, electron microprobe analysis, Raman spectroscopy — before the International Mineralogical Association will approve it as a genuine addition to the geological record. That process is demanding. But it is straightforward compared to what comes next.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1rem;">
+                    The real work is asking what the mineral does. Translating a new crystal geometry into something useful requires mineralogy, chemistry, physics, biology, and computational approaches including DFT calculations. It requires experimental design across multiple disciplines and years of iterative testing. Most mineral discoverers stop at the name. This laboratory doesn't.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 0;">
+                    Rowleyite — discovered here — is currently under investigation as a selective chemotherapy delivery agent. The same structural properties that make it crystallographically distinctive may make it capable of targeting tumor cells with a precision that conventional delivery methods cannot achieve. A mineral named for a mine in the Arizona desert, potentially deployed in an oncology ward. That distance is the distance this research program is designed to travel.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin: 2rem 0 2.5rem 0;">
+                <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--primary-color); font-family: var(--font-display);">17</div>
+                    <div style="font-size: 0.9rem; color: var(--muted-text); margin-top: 0.5rem;">IMA-approved species</div>
+                </div>
+                <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--primary-color); font-family: var(--font-display);">3</div>
+                    <div style="font-size: 0.9rem; color: var(--muted-text); margin-top: 0.5rem;">countries</div>
+                </div>
+                <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--primary-color); font-family: var(--font-display);">6</div>
+                    <div style="font-size: 0.9rem; color: var(--muted-text); margin-top: 0.5rem;">mineral classes</div>
                 </div>
             </div>
 
-            <div class="project-card">
-                <h3>Kidney Stone Formation & Disease</h3>
-                <p class="project-meta">Status: Ongoing</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/cross-section-kidneystone.jpeg" alt="Kidney stone cross-section" class="card-image">
-                    </div>
-                    <div class="split-body">
-                        <p>
-                            Investigating how bacteria contribute to calcium oxalate kidney stone formation using high-resolution imaging. 
-                            Understanding these microbiological factors is crucial for developing prevention strategies and improving 
-                            patient outcomes.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">PharmaMineralogy</span>
-                            <span class="tag">SEM Imaging</span>
-                            <span class="tag">Crystallography</span>
-                            <span class="tag">Medical Research</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="mineral-network-container" style="margin-top: 3rem;"></div>
 
-            <div class="project-card">
-                <h3>Photocatalytic Degradation & Ion Exchange in Mineral Systems</h3>
-                <p class="project-meta">Collaborations: La Brea Tar Pits, Prospering Backyards Project</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/zeolite.jpeg" alt="Zeolite framework research" class="card-image">
-                    </div>
-                    <div class="split-body">
-                        <p>
-                            Characterizing mineral-mediated photocatalytic pathways for degradation of polycyclic aromatic hydrocarbons 
-                            and pharmaceutical compounds. Investigating ion exchange mechanisms in zeolite frameworks for selective metal 
-                            sequestration, including lanthanide and actinide sorption behavior in microporous materials for critical 
-                            element recovery from aqueous waste streams.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Photocatalysis</span>
-                            <span class="tag">Ion Exchange</span>
-                            <span class="tag">Zeolite Chemistry</span>
-                            <span class="tag">Sorption Kinetics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Field Research Across Extreme Environments</h3>
-                <p class="project-meta">Mines, Brines, Planets, Sea | Status: Ongoing</p>
-                <div class="split">
-                    <div class="split-media split-media-wide">
-                        <img src="images/minar.jpg" alt="Field research locations" class="card-image">
-                    </div>
-                    <div class="split-body">
-                        <p>
-                            Conducting field research across diverse environments from mineral mines to hypersaline brines, 
-                            planetary analog sites, and marine ecosystems. This work integrates astrobiology, environmental 
-                            mineralogy, and geochemistry to understand mineral formation and preservation in extreme environments, 
-                            informing both terrestrial applications and extraterrestrial life detection strategies.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Field Research</span>
-                            <span class="tag">Astrobiology</span>
-                            <span class="tag">Geochemistry</span>
-                            <span class="tag">Planetary Analogs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <p style="margin-top: 3rem; font-size: 1.05rem; line-height: 1.8; color: var(--muted-text); font-style: italic; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Each of these minerals existed for millions — sometimes billions — of years before it had a name. Naming them is not just taxonomy. It is the act of bringing something genuinely new into human knowledge — and the first step toward finding out what it can do.
+            </p>
         </div>
     </section>
 
@@ -169,112 +134,83 @@
         <div class="container">
             <h2>Publications</h2>
             
-            <button class="collapsible-btn" onclick="toggleSection('recent-pubs')">
-                <span>Recent Publications</span>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div id="recent-pubs" class="collapsible-content">
-        <div class="publication">
-            <p class="pub-title">Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide</p>
-            <p class="pub-abstract">Celestian, Aaron J, Bourcier, William, Camiré, Christopher L, et al.</p>
-            <p class="pub-venue"><em>Journal of Raman Spectroscopy, 57(1), 131-139, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Intercalated bacterial biofilms are intrinsic internal components of calcium-based kidney stones</p>
-            <p class="pub-abstract">Schmidt, William C, Mousavi, Ava, Li, Jiahui, et al.</p>
-            <p class="pub-venue"><em>Proceedings of the National Academy of Sciences, 123(5), e2517066123, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Mineral Weathering Experiments for Terrestrial Planetary Analogs in a Continuous‐Flow Reactor</p>
-            <p class="pub-abstract">Weber, Jessica M, Martinez, Eduardo, Sheppard, Rachel Y, et al.</p>
-            <p class="pub-venue"><em>Geofluids, 2026(1), 6180315, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Molecular Mechanisms of Magnesium Sulfate Crystallization: Bond Length Inversion and the Role of Hydration in Mineral Formation</p>
-            <p class="pub-abstract">Celestian, Aaron J, Xu, Wenqian, Kubicki, James D, et al.</p>
-            <p class="pub-venue"><em>American Mineralogist, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Nitrogen mineral hosts in subduction zone metamorphosed ultramafic rocks: Implications for deep Forearc (to Subarc) transfer</p>
-            <p class="pub-abstract">Cooperdock, Emily HG, Bonilla, Ailani N, Grabiec, Justine G, et al.</p>
-            <p class="pub-venue"><em>Chemical Geology, 123307, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Perchlorate Anaerobiosis in Haloferax volcanii: A Novel Metabolic Capability for A Model Haloarchaeon</p>
-            <p class="pub-abstract">Robinson, Adam, McQuaig-Ulrich, Shannon, Dondero, Tyler, et al.</p>
-            <p class="pub-venue"><em>2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Cadvanite, a New Cadmium Vanadate from the Burro Mine, San Miguel County, Colorado, USA</p>
-            <p class="pub-abstract">Kampf, Anthony R, Celestian, Aaron J, Ma, Chi, et al.</p>
-            <p class="pub-venue"><em>The Canadian Journal of Mineralogy and Petrology, 64(2), 185-193, 2026</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Evidence for Low Dissolved Silica in mid-Mesozoic Oceans</p>
-            <p class="pub-abstract">Yager, Joyce A, West, A Joshua, Trower, Elizabeth J, et al.</p>
-            <p class="pub-venue"><em>American Journal of Science, 325, Article-1, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Svornostite-(NH4),(NH4) 2Mg (UO2) 2 (SO4) 4 (H2O) 8, a new mineral from the Blue Lizard mine, San Juan County, Utah, USA, and the establishment of the svornostite mineral group</p>
-            <p class="pub-abstract">Kampf, Anthony R, Olds, Travis A, Plášil, Jakub, et al.</p>
-            <p class="pub-venue"><em>Mineralogical Magazine, 89(5), 609-617, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">MP21-12 BIOFILM-FORMING BACTERIA FOUND WITHIN CALCIUM-BASED KIDNEY STONES</p>
-            <p class="pub-abstract">Mousavi, Ava, Schmidt, William C, Li, Jiahui, et al.</p>
-            <p class="pub-venue"><em>The Journal of Urology, 213(5S), e709, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Exploring Mechanisms of Microbialite Texture Formation through mapping in situ CaCO 3 precipitation and Microbial Cell Position</p>
-            <p class="pub-abstract">Cassady, Victoria C, Petryshyn, Victoria A, Bernhard, Joan M, et al.</p>
-            <p class="pub-venue"><em>Goldschmidt 2025 Conference, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Evidence for Acidic Bleaching and Dominant Groundwater Processes in Endmember Hypersaline and Acidic Lakes in Western Australia</p>
-            <p class="pub-abstract">Plattner, TA, Schmidt, BE, Fernandez, N, et al.</p>
-            <p class="pub-venue"><em>LPI Contributions, 3090, 2811, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Machine Learning Strategies to Distinguish Iron Sulfide, Oxide, and (Oxy) hydroxide Minerals Using Raman and LIBS Spectroscopy</p>
-            <p class="pub-abstract">Lamm, SN, Sheppard, RY, Yanchilina, A, et al.</p>
-            <p class="pub-venue"><em>LPI Contributions, 3090, 2702, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">RamanLab: A Comprehensive Cross-Platform Software Suite for Advanced Raman Spectroscopy Analysis</p>
-            <p class="pub-abstract">Celestian, Aaron J</p>
-            <p class="pub-venue"><em>Authorea Preprints, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data</p>
-            <p class="pub-abstract">Grant, Kathleen, Brodrick, Philip Gregory, García-Pando, Carlos Pérez, et al.</p>
-            <p class="pub-venue"><em>Authorea Preprints, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Evaporitic Preservation of Modern Carotenoid Biomarkers and Halophilic Microorganisms in Mars Analog Hypersaline Environments</p>
-            <p class="pub-abstract">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J, et al.</p>
-            <p class="pub-venue"><em>Astrobiology, 25(11), 765-776, 2025</em></p>
-        </div>
-        <div class="publication">
-            <p class="pub-title">Whole rock and mineral separate nitrogen concentration and isotopic data for meta-ultramafic rocks</p>
-            <p class="pub-abstract">Cooperdock, Emily, Bonilla, Ailani, Grabiec, Justine, et al.</p>
-            <p class="pub-venue"><em>Interdisciplinary Earth Data Alliance (IEDA) dataset, 237, 2025</em></p>
-        </div>
+            <div class="publication">
+                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">A single crystal geometry — discovered here — now entombs nuclear waste and saves lives in emergency rooms.</p>
+                <p class="pub-title">The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate</p>
+                <p class="pub-abstract">Celestian AJ, Kubicki JD, Hanson J, Clearfield A, Parise JB</p>
+                <p class="pub-venue"><em>Journal of the American Chemical Society</em>, 130(35), 11689–11694 · 2008</p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">This paper described the double lever mechanism — a coupled two-site ion exchange geometry in crystalline silicotitanate that explains its extraordinary selectivity for cesium ions. The same principle underlies both the remediation of radioactive wastewater from Fukushima Daiichi and Lokelma, an FDA-approved drug for life-threatening hyperkalemia. One mechanism. Two completely different applications. Both saving lives.</p>
             </div>
 
-            <div class="center-cta">
-                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small btn-large">View All Publications on Google Scholar</a>
+            <div class="publication">
+                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">Bacteria don't just sit on kidney stones — they're built into them. This changes everything about how we treat the disease.</p>
+                <p class="pub-title">Intercalated bacterial biofilms are intrinsic internal components of calcium-based kidney stones</p>
+                <p class="pub-abstract">Schmidt WC, Mousavi A, Li J, Yang R, Gonzalez Marin G, Schreiber HL IV, Celestian AJ, et al.</p>
+                <p class="pub-venue"><em>Proceedings of the National Academy of Sciences</em>, 123(5), e2517066123 · 2026</p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Using high-resolution electron imaging and synchrotron XRD, this study demonstrated that bacterial biofilms are structurally woven into the calcium oxalate matrix of kidney stones — not surface contamination but intrinsic architectural components. The finding reframes kidney stone disease as partly microbial in origin, opening direct pathways to antibiotic and microbiome-targeted therapies for a condition affecting 1 in 11 people worldwide.</p>
+            </div>
+
+            <div class="publication">
+                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">The structural foundation — understanding how iron minerals form at the nanoscale, with implications for environmental remediation and planetary chemistry.</p>
+                <p class="pub-title">Similarities in 2- and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</p>
+                <p class="pub-abstract">Michel FM, Ehm L, Liu G, et al. including Celestian AJ</p>
+                <p class="pub-venue"><em>Chemistry of Materials</em>, 19(6), 1489–1496 · 2007</p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Ferrihydrite is one of the most common iron minerals on Earth and Mars — yet its structure was poorly understood. This paper resolved a long-standing debate using total X-ray scattering and pair distribution function analysis, establishing the structural relationship between its two forms. It remains one of the most-cited papers in environmental mineralogy.</p>
+            </div>
+
+            <div class="publication">
+                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">A NASA-commissioned roadmap for detecting life on other worlds — through minerals.</p>
+                <p class="pub-title">The Biology of Biosignature Detection</p>
+                <p class="pub-abstract">Celestian AJ et al. — KISS (Keck Institute for Space Studies) Final Report</p>
+                <p class="pub-venue">Keck Institute for Space Studies, Caltech · <a href="https://www.kiss.caltech.edu/final_reports/The_Biology_of_Biosignature_Detection_Final_Report.pdf" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">Full report PDF</a></p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Commissioned by the Keck Institute for Space Studies at Caltech, this report synthesized the state of biosignature science for planetary exploration — what chemical and mineralogical signatures life leaves behind, how they survive geological time, and how future Mars missions should be designed to detect them. It represents the direct connection between laboratory mineral science and the search for life beyond Earth.</p>
+            </div>
+
+            <div class="center-cta" style="margin-top: 3rem;">
+                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small">View all 100+ publications on Google Scholar</a>
             </div>
         </div>
     </section>
 
     <section id="media" class="section section-alt">
         <div class="container">
-            <h2>Media & Outreach</h2>
+            <h2>Media & Public Science</h2>
             <p class="section-intro">
-                Videos, podcasts, interviews, and media appearances discussing mineral sciences, astrobiology, and research.
+                Science communication is part of the explorer's obligation — to bring the discovery back not just to the museum, but to the public.
             </p>
 
-            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.5rem;">Podcast</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <span style="display: inline-block; background: rgba(0, 120, 160, 0.08); color: rgba(0, 120, 160, 1); padding: 0.25rem 0.65rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid rgba(0, 120, 160, 0.2); margin-bottom: 1rem;">Discovery Channel</span>
+                    <h4>Expedition Unknown</h4>
+                    <p class="project-meta">Season field investigation · 2019</p>
+                    <p class="project-meta" style="font-style: italic; margin-bottom: 1rem;">Self — Mineralogist</p>
+                    <p>Brought in as the field mineralogist for an active investigation — one of the few scientists featured in a working research capacity rather than as a studio commentator. The episode followed a live scientific question into the field, with mineralogical analysis conducted on location.</p>
+                </div>
+
+                <div class="project-card">
+                    <span style="display: inline-block; background: rgba(180, 83, 9, 0.08); color: rgba(180, 83, 9, 1); padding: 0.25rem 0.65rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid rgba(180, 83, 9, 0.2); margin-bottom: 1rem;">History Channel</span>
+                    <h4>The UnXplained</h4>
+                    <p class="project-meta">"Mysterious Stones" · Season 1 · 2020</p>
+                    <p class="project-meta" style="font-style: italic; margin-bottom: 1rem;">Featured Scientist</p>
+                    <p style="margin-bottom: 1rem;">Consulted on the mineralogy and geochemistry behind some of the world's most anomalous mineral formations — providing the scientific framework for phenomena that had resisted straightforward explanation. Returned for two additional episodes in Season 5 (2023): "Curses Unleashed" and "Sacred Rituals."</p>
+                    <p style="font-size: 0.85rem; color: var(--muted-text);">IMDB: <a href="https://www.imdb.com/name/nm10697707/" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">nm10697707</a></p>
+                </div>
+
+                <div class="project-card">
+                    <span style="display: inline-block; background: rgba(42, 125, 107, 0.08); color: rgba(42, 125, 107, 1); padding: 0.25rem 0.65rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid rgba(42, 125, 107, 0.2); margin-bottom: 1rem;">Feature Film</span>
+                    <h4>The Color of Ink</h4>
+                    <p class="project-meta">Documentary feature film</p>
+                    <p class="project-meta" style="font-style: italic; margin-bottom: 1rem;">Consulting Geologist</p>
+                    <p>Geological and mineralogical consulting for a feature documentary — ensuring that the material science depicted on screen was accurate. Science communication that reaches audiences who would never seek out a lecture or a paper.</p>
+                </div>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--muted-text); margin-top: 2rem; text-align: center;">
+                Additional appearances: Spectrum News 1 · Univision · Members Q&A, NHMLAC
+            </p>
+
+            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Podcast</h3>
             
             <div class="project-card">
                 <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
@@ -333,6 +269,17 @@
                     </div>
                     <h4 style="margin-top: 1rem; font-size: 1.1rem;">Marine Minerals Research</h4>
                     <p class="project-meta">Oceanographic Mineralogy</p>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/8IzHo9JlY5E" 
+                                title="Research Video" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen style="border-radius: 8px;"></iframe>
+                    </div>
+                    <h4 style="margin-top: 1rem; font-size: 1.1rem;">Research Video</h4>
+                    <p class="project-meta">Mineral Sciences</p>
                 </div>
             </div>
 
@@ -399,27 +346,6 @@
         </div>
     </section>
 
-    <section id="visualizations" class="section">
-        <div class="container">
-            <h2>Field Work & Research Locations</h2>
-            <p class="section-intro">
-                Interactive map showcasing field work locations and research sites from around the world. 
-                Explore the diverse environments where mineral sciences research takes place.
-            </p>
-            
-            <div class="viz-card">
-                <div class="iframe-container">
-                    <iframe allow="local-network-access; geolocation" title="Research Spots" src="https://lacnhm.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=bd266656bb4b47a2b13f556bb1a9b717&theme=light&scroll=false&center=-66.59003499139092,14.68424297667507&scale=73957190.948944" ></iframe>
-                </div>
-                <p class="viz-caption" style="margin-top: 1rem;">
-                    Interactive Map: Global field work locations spanning multiple research projects including 
-                    astrobiology studies, environmental research sites, and cultural heritage investigations. 
-                    Click on markers to explore each location and learn about the research conducted there.
-                </p>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="section">
         <div class="container">
             <h2>Contact</h2>
@@ -457,5 +383,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="mineral-network.js"></script>
+    <script src="constellation.js"></script>
 </body>
 </html>
