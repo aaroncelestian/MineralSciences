@@ -63,6 +63,7 @@ function initMineralNetwork() {
         btn.textContent = f.label;
         btn.className = 'filter-btn';
         btn.dataset.filter = f.id;
+        btn.style.cssText = 'background: transparent; color: rgba(160,210,255,0.75); border: 1px solid rgba(100,160,255,0.3); border-radius: 999px; padding: 0.3rem 0.9rem; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;';
         btn.onclick = () => setFilter(f.id);
         filterBar.appendChild(btn);
     });
@@ -71,7 +72,7 @@ function initMineralNetwork() {
 
     // Create SVG canvas
     const svgContainer = document.createElement('div');
-    svgContainer.style.cssText = 'background: white; border-radius: 8px; box-shadow: 0 10px 30px rgba(2, 6, 23, 0.10); padding: 2rem; margin-bottom: 2rem;';
+    svgContainer.style.cssText = 'background: #020608; padding: 1.5rem; margin-bottom: 2rem;';
     container.appendChild(svgContainer);
 
     const width = svgContainer.clientWidth || 800;
@@ -86,7 +87,7 @@ function initMineralNetwork() {
     // Create detail panel
     const detailPanel = document.createElement('div');
     detailPanel.id = 'mineral-detail';
-    detailPanel.style.cssText = 'background: white; border-radius: 8px; box-shadow: 0 10px 30px rgba(2, 6, 23, 0.10); padding: 2rem; opacity: 0; transition: opacity 0.3s; display: none;';
+    detailPanel.style.cssText = 'background: rgba(6,12,28,0.92); border: 1px solid rgba(100,160,255,0.15); border-radius: 8px; padding: 2rem; opacity: 0; transition: opacity 0.3s; display: none;';
     container.appendChild(detailPanel);
 
     function setFilter(filterId) {
@@ -96,21 +97,14 @@ function initMineralNetwork() {
         filterBar.querySelectorAll('.filter-btn').forEach(btn => {
             if (btn.dataset.filter === filterId) {
                 btn.classList.add('active');
-                const hub = hubData.find(h => h.group === filterId);
-                if (hub) {
-                    btn.style.backgroundColor = hub.color;
-                    btn.style.color = 'white';
-                    btn.style.borderColor = hub.color;
-                } else {
-                    btn.style.backgroundColor = '#2a7d6b';
-                    btn.style.color = 'white';
-                    btn.style.borderColor = '#2a7d6b';
-                }
+                        btn.style.backgroundColor = 'rgba(100,160,255,0.18)';
+                btn.style.color = 'rgba(210,230,255,0.95)';
+                btn.style.borderColor = 'rgba(100,160,255,0.5)';
             } else {
                 btn.classList.remove('active');
                 btn.style.backgroundColor = 'transparent';
-                btn.style.color = '#0b1020';
-                btn.style.borderColor = '#0b1020';
+                btn.style.color = 'rgba(160,210,255,0.75)';
+                btn.style.borderColor = 'rgba(100,160,255,0.3)';
             }
         });
 
@@ -137,6 +131,23 @@ function initMineralNetwork() {
         // Clear SVG
         svg.selectAll('*').remove();
 
+        // Add gradient defs for diffraction-style spots
+        const defs = svg.append('defs');
+        const coreGrad = defs.append('radialGradient')
+            .attr('id', 'mnSpotCore').attr('cx', '50%').attr('cy', '50%').attr('r', '50%')
+            .attr('gradientUnits', 'objectBoundingBox');
+        coreGrad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(255,255,255,0.95)');
+        coreGrad.append('stop').attr('offset', '50%').attr('stop-color', 'rgba(210,230,255,0.78)');
+        coreGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(140,190,255,0.3)');
+
+        const haloGrad = defs.append('radialGradient')
+            .attr('id', 'mnSpotHalo').attr('cx', '50%').attr('cy', '50%').attr('r', '50%')
+            .attr('gradientUnits', 'objectBoundingBox');
+        haloGrad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(100,160,255,0)');
+        haloGrad.append('stop').attr('offset', '40%').attr('stop-color', 'rgba(100,160,255,0)');
+        haloGrad.append('stop').attr('offset', '65%').attr('stop-color', 'rgba(100,170,255,0.3)');
+        haloGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(50,100,200,0)');
+
         // Create force simulation
         const simulation = d3.forceSimulation(nodes)
             .force('link', d3.forceLink(links).id(d => d.id).distance(80))
@@ -151,9 +162,18 @@ function initMineralNetwork() {
             .selectAll('line')
             .data(links)
             .join('line')
-            .attr('stroke', '#999')
-            .attr('stroke-opacity', 0.5)
+            .attr('stroke', 'rgba(100,160,255,0.2)')
+            .attr('stroke-opacity', 1)
             .attr('stroke-width', 1);
+
+        // Draw halo layer (ambient glow behind nodes)
+        const halo = svg.append('g')
+            .selectAll('circle')
+            .data(nodes)
+            .join('circle')
+            .attr('r', d => (d.label ? 16 : 11) * 2.2)
+            .attr('fill', 'url(#mnSpotHalo)')
+            .style('pointer-events', 'none');
 
         // Draw nodes
         const node = svg.append('g')
@@ -161,9 +181,7 @@ function initMineralNetwork() {
             .data(nodes)
             .join('circle')
             .attr('r', d => d.label ? 16 : 11)
-            .attr('fill', d => d.color)
-            .attr('stroke', '#fff')
-            .attr('stroke-width', 2)
+            .attr('fill', 'url(#mnSpotCore)')
             .style('cursor', 'pointer')
             .on('mouseover', function(event, d) {
                 if (!d.label) {
@@ -198,7 +216,7 @@ function initMineralNetwork() {
             .attr('font-size', 9)
             .attr('text-anchor', 'middle')
             .attr('dy', d => d.label ? 30 : 25)
-            .attr('fill', '#333')
+            .attr('fill', 'rgba(160,210,255,0.8)')
             .style('pointer-events', 'none');
 
         // Update positions on tick
@@ -215,6 +233,10 @@ function initMineralNetwork() {
                 .attr('y1', d => d.source.y)
                 .attr('x2', d => d.target.x)
                 .attr('y2', d => d.target.y);
+
+            halo
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y);
 
             node
                 .attr('cx', d => d.x)
@@ -246,14 +268,14 @@ function initMineralNetwork() {
     function showDetail(mineral) {
         const hub = hubData.find(h => h.group === mineral.group);
         detailPanel.innerHTML = `
-            <h4 style="font-size: 18px; font-weight: 500; margin-bottom: 0.5rem; color: #0b1020;">${mineral.name}</h4>
-            <p style="font-family: monospace; font-size: 12px; color: #666; margin-bottom: 1rem;">${mineral.formula}</p>
+            <h4 style="font-size: 18px; font-weight: 500; margin-bottom: 0.5rem; color: rgba(210,230,255,0.95);">${mineral.name}</h4>
+            <p style="font-family: monospace; font-size: 12px; color: rgba(140,190,255,0.7); margin-bottom: 1rem;">${mineral.formula}</p>
             <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                <span style="background: ${hub.color}22; color: ${hub.color}; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 11px; font-weight: 500;">${mineral.class}</span>
-                <span style="background: ${hub.color}22; color: ${hub.color}; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 11px; font-weight: 500;">${hub.label}</span>
+                <span style="background: rgba(100,160,255,0.1); color: rgba(180,220,255,0.9); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 11px; font-weight: 500; border: 1px solid rgba(100,160,255,0.3);">${mineral.class}</span>
+                <span style="background: rgba(100,160,255,0.1); color: rgba(180,220,255,0.9); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 11px; font-weight: 500; border: 1px solid rgba(100,160,255,0.3);">${hub.label}</span>
             </div>
-            <p style="font-size: 13px; line-height: 1.6; color: #333;">
-                <strong>${mineral.locality}</strong> • ${mineral.ref} (${mineral.year})<br>
+            <p style="font-size: 13px; line-height: 1.6; color: rgba(200,220,255,0.8);">
+                <strong style="color: rgba(210,230,255,0.95);">${mineral.locality}</strong> • ${mineral.ref} (${mineral.year})<br>
                 ${mineral.note}
             </p>
         `;
