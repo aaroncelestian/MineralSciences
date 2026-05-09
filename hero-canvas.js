@@ -81,9 +81,11 @@ function resize(){
   sc = Math.min(W, H) / 860;
 }
 
-function drawSpot(x, y, I){
-  // I is 0-1 normalized - use full range for variation
-  // Power scaling: dim spots much smaller, bright spots large
+function drawSpot(x, y, I, depthNorm = 0){
+  // depthNorm: -1 (furthest back) to +1 (furthest front)
+  // d: 0 (back) to 1 (front) — used for color/alpha interpolation
+  const d = depthNorm * 0.5 + 0.5;
+
   const scaled = Math.pow(I, 0.6);  // sub-linear: preserves variation
 
   const base = 0.5;           // minimum radius in px (tiny dim spots)
@@ -92,20 +94,26 @@ function drawSpot(x, y, I){
 
   const halo = r * 2.0;
 
-  // Outer blue halo ring - transparent inside core, glows outside
+  // Outer halo — identical alpha to original; only color temperature shifts with depth
+  const haloR = Math.round(80  + d * 40);  // 80 (cool) → 120 (warm)
+  const haloG = Math.round(140 + d * 30);  // 140 → 170
   const g0 = ctx.createRadialGradient(x, y, 0, x, y, halo);
-  g0.addColorStop(0.35, 'rgba(100,160,255,0)');
-  g0.addColorStop(0.55, `rgba(100,170,255,${Math.min(0.3, scaled * 0.4).toFixed(3)})`);
+  g0.addColorStop(0.35, `rgba(${haloR},${haloG},255,0)`);
+  g0.addColorStop(0.55, `rgba(${haloR},${haloG},255,${Math.min(0.3, scaled * 0.4).toFixed(3)})`);
   g0.addColorStop(1,    'rgba(50,100,200,0)');
   ctx.fillStyle = g0;
   ctx.beginPath();
   ctx.arc(x, y, halo, 0, 6.283);
   ctx.fill();
 
-  // Spot core - always brightest at center, fades outward
+  // Core center: always pure white — same brightness as original, no depth dimming
+  // Mid stop only shifts color temperature: cool blue (back) → warm white (front)
+  const mR = Math.round(175 + d * 35);   // 175 (cool) → 210 (warm)
+  const mG = Math.round(210 + d * 20);   // 210 → 230
+
   const g1 = ctx.createRadialGradient(x, y, 0, x, y, r * 0.75);
   g1.addColorStop(0,   `rgba(255,255,255,${Math.min(0.95, scaled * 1.6).toFixed(3)})`);
-  g1.addColorStop(0.5, `rgba(210,230,255,${Math.min(0.75, scaled * 1.05).toFixed(3)})`);
+  g1.addColorStop(0.5, `rgba(${mR},${mG},255,${Math.min(0.75, scaled * 1.05).toFixed(3)})`);
   g1.addColorStop(1,   `rgba(150,195,255,${Math.min(0.35, scaled * 0.5).toFixed(3)})`);
   ctx.fillStyle = g1;
   ctx.beginPath();
@@ -177,52 +185,62 @@ function frame(ts){
   // Use normal blending so spots are visible on dark background
   ctx.globalCompositeOperation = 'source-over';
 
-  // Process each reflection
+  // Collect all visible spots with depth info
+  const visibleSpots = [];
   REFLECTIONS.forEach(ref => {
     // Apply 3D rotation
     let [qx, qy, qz] = [ref.qx, ref.qy, ref.qz];
     [qx, qy, qz] = rotateX(qx, qy, qz, rotX);
     [qx, qy, qz] = rotateY(qx, qy, qz, rotY);
     [qx, qy, qz] = rotateZ(qx, qy, qz, rotZ);
-    
-    // Project onto detector plane (perpendicular to beam)
-    // Scale to screen coordinates - larger scale = longer detector distance
-    const screenX = qx * sc * 250;
-    const screenY = qy * sc * 250;
-    
-    // Ewald sphere modulation (optional - can disable for debugging)
+
+    // Mild perspective projection — spots in back converge, front diverge
+    const perspD = 6.0;
+    const perspFactor = perspD / (perspD + qz * 0.4);
+    const screenX = qx * sc * 250 * perspFactor;
+    const screenY = qy * sc * 250 * perspFactor;
+
+    // Ewald sphere modulation
     const distToCenter = Math.sqrt(qx*qx + qy*qy + (qz + ewaldR)*(qz + ewaldR));
     const distFromSphere = Math.abs(distToCenter - ewaldR);
     const ewaldFactor = Math.exp(-distFromSphere * distFromSphere * 6);
-    
+
     // Final intensity with pulse
     const pulse = 0.9 + 0.1 * Math.sin(t * 0.4 + ref.h * 2.1 + ref.k * 3.7);
     const I = ref.I0 * ewaldFactor * pulse * 0.5;
-    
-    // Show spot if it has any intensity
+
     if (I > 0.003) {
-      spotCount++;
-      drawSpot(screenX, screenY, I);
-      
-      // Add Miller indices label for all visible spots
-      if (I > 0.005) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.font = `${8 * sc}px 'IBM Plex Mono', monospace`;
-        ctx.fillStyle = `rgba(140, 200, 255, ${Math.min(0.6, I * 0.8)})`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-        
-        // Format Miller indices with bar notation for negative
-        const hStr = ref.h < 0 ? `${Math.abs(ref.h)}̄` : ref.h.toString();
-        const kStr = ref.k < 0 ? `${Math.abs(ref.k)}̄` : ref.k.toString();
-        const lStr = ref.l < 0 ? `${Math.abs(ref.l)}̄` : ref.l.toString();
-        
-        // Offset label below spot - use actual spot radius for offset
-        const spotR = (0.5 + Math.pow(I, 0.6) * 14.0) * sc * SPOT_SCALE;
-        ctx.fillText(`${hStr}${kStr}${lStr}`, screenX, screenY + spotR * 0.75 + 4 * sc);
-        ctx.restore();
-      }
+      // Normalize qz depth to -1…+1 (reciprocal lattice max ~1.8 Å⁻¹)
+      const depthNorm = Math.max(-1, Math.min(1, qz / 1.8));
+      visibleSpots.push({screenX, screenY, I, depthNorm, ref});
+    }
+  });
+
+  // Painter's algorithm: draw back spots first so front spots render on top
+  visibleSpots.sort((a, b) => a.depthNorm - b.depthNorm);
+  spotCount = visibleSpots.length;
+
+  visibleSpots.forEach(({screenX, screenY, I, depthNorm, ref}) => {
+    drawSpot(screenX, screenY, I, depthNorm);
+
+    // Add Miller indices label for brighter spots
+    if (I > 0.005) {
+      const d = depthNorm * 0.5 + 0.5;
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.font = `${8 * sc}px 'IBM Plex Mono', monospace`;
+      // Labels also fade with depth
+      ctx.fillStyle = `rgba(140, 200, 255, ${(Math.min(0.6, I * 0.8) * (0.45 + d * 0.55)).toFixed(3)})`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+
+      const hStr = ref.h < 0 ? `${Math.abs(ref.h)}\u0304` : ref.h.toString();
+      const kStr = ref.k < 0 ? `${Math.abs(ref.k)}\u0304` : ref.k.toString();
+      const lStr = ref.l < 0 ? `${Math.abs(ref.l)}\u0304` : ref.l.toString();
+
+      const spotR = (0.5 + Math.pow(I, 0.6) * 14.0) * sc * SPOT_SCALE;
+      ctx.fillText(`${hStr}${kStr}${lStr}`, screenX, screenY + spotR * 0.75 + 4 * sc);
+      ctx.restore();
     }
   });
 
