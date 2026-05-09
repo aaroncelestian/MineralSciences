@@ -161,8 +161,8 @@ function initConstellation() {
     const bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     bgRect.setAttribute('width', width);
     bgRect.setAttribute('height', height);
-    bgRect.setAttribute('fill', '#0b1020');
-    bgRect.setAttribute('rx', '16');
+    bgRect.setAttribute('fill', '#020608');
+    bgRect.setAttribute('rx', '0');
     svg.appendChild(bgRect);
 
     // Background constellation art - Orion (bottom-left)
@@ -325,6 +325,43 @@ function initConstellation() {
         svg.appendChild(star);
     }
 
+    // SVG gradient defs for diffraction-style spots
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
+    // Core gradient: white center → pale blue → transparent blue edge
+    const coreGrad = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+    coreGrad.setAttribute('id', 'spotCore');
+    coreGrad.setAttribute('cx', '50%'); coreGrad.setAttribute('cy', '50%'); coreGrad.setAttribute('r', '50%');
+    [['0%','rgba(255,255,255,0.95)'],['50%','rgba(210,230,255,0.75)'],['100%','rgba(140,190,255,0.3)']]
+        .forEach(([offset, color]) => {
+            const s = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            s.setAttribute('offset', offset); s.setAttribute('stop-color', color); coreGrad.appendChild(s);
+        });
+    defs.appendChild(coreGrad);
+
+    // Halo gradient: transparent inside → blue ring → transparent outside
+    const haloGrad = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+    haloGrad.setAttribute('id', 'spotHalo');
+    haloGrad.setAttribute('cx', '50%'); haloGrad.setAttribute('cy', '50%'); haloGrad.setAttribute('r', '50%');
+    [['0%','rgba(100,160,255,0)'],['40%','rgba(100,160,255,0)'],['60%','rgba(100,170,255,0.28)'],['100%','rgba(50,100,200,0)']]
+        .forEach(([offset, color]) => {
+            const s = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            s.setAttribute('offset', offset); s.setAttribute('stop-color', color); haloGrad.appendChild(s);
+        });
+    defs.appendChild(haloGrad);
+
+    // Active/hover halo - brighter
+    const haloActiveGrad = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+    haloActiveGrad.setAttribute('id', 'spotHaloActive');
+    haloActiveGrad.setAttribute('cx', '50%'); haloActiveGrad.setAttribute('cy', '50%'); haloActiveGrad.setAttribute('r', '50%');
+    [['0%','rgba(100,160,255,0)'],['35%','rgba(100,160,255,0)'],['55%','rgba(120,180,255,0.5)'],['100%','rgba(60,120,220,0)']]
+        .forEach(([offset, color]) => {
+            const s = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            s.setAttribute('offset', offset); s.setAttribute('stop-color', color); haloActiveGrad.appendChild(s);
+        });
+    defs.appendChild(haloActiveGrad);
+    svg.appendChild(defs);
+
     // Radial lines from center to all six outer nodes
     researchNodes.forEach(node => {
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -332,9 +369,9 @@ function initConstellation() {
         line.setAttribute('y1', positions.center.y);
         line.setAttribute('x2', positions[node.position].x);
         line.setAttribute('y2', positions[node.position].y);
-        line.setAttribute('stroke', '#334155');
+        line.setAttribute('stroke', 'rgba(100,160,255,0.2)');
         line.setAttribute('stroke-width', '1');
-        line.setAttribute('opacity', '0.6');
+        line.setAttribute('opacity', '0.8');
         svg.appendChild(line);
     });
 
@@ -347,8 +384,8 @@ function initConstellation() {
     const centerHalo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     centerHalo.setAttribute('cx', positions.center.x);
     centerHalo.setAttribute('cy', positions.center.y);
-    centerHalo.setAttribute('r', '21');
-    centerHalo.setAttribute('fill', 'rgba(156, 163, 175, 0.15)');
+    centerHalo.setAttribute('r', '28');
+    centerHalo.setAttribute('fill', 'url(#spotHaloActive)');
     centerHalo.setAttribute('opacity', '0');
     centerHalo.classList.add('center-halo');
     centerGroup.appendChild(centerHalo);
@@ -357,8 +394,7 @@ function initConstellation() {
     centerNode.setAttribute('cx', positions.center.x);
     centerNode.setAttribute('cy', positions.center.y);
     centerNode.setAttribute('r', '6');
-    centerNode.setAttribute('fill', '#9ca3af');
-    centerNode.setAttribute('opacity', '0.4');
+    centerNode.setAttribute('fill', 'url(#spotCore)');
     centerGroup.appendChild(centerNode);
 
     // Center node interactivity
@@ -398,14 +434,24 @@ function initConstellation() {
         group.dataset.nodeId = node.id;
 
         // Glow halo (hidden by default)
+        const haloR = (node.radius + 9) * 2;
         const halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         halo.setAttribute('cx', pos.x);
         halo.setAttribute('cy', pos.y);
-        halo.setAttribute('r', node.radius + 9);
-        halo.setAttribute('fill', node.glow);
+        halo.setAttribute('r', haloR);
+        halo.setAttribute('fill', 'url(#spotHaloActive)');
         halo.setAttribute('opacity', '0');
         halo.classList.add('node-halo');
         group.appendChild(halo);
+
+        // Ambient halo (always faintly visible)
+        const ambientHalo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        ambientHalo.setAttribute('cx', pos.x);
+        ambientHalo.setAttribute('cy', pos.y);
+        ambientHalo.setAttribute('r', haloR);
+        ambientHalo.setAttribute('fill', 'url(#spotHalo)');
+        ambientHalo.setAttribute('opacity', '1');
+        group.appendChild(ambientHalo);
 
         // Node circle (larger on mobile)
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -413,7 +459,7 @@ function initConstellation() {
         circle.setAttribute('cy', pos.y);
         const mobileRadius = isMobile ? (node.radius === 11 ? 14 : node.radius === 13 ? 16 : node.radius) : node.radius;
         circle.setAttribute('r', mobileRadius);
-        circle.setAttribute('fill', node.color);
+        circle.setAttribute('fill', 'url(#spotCore)');
         circle.classList.add('node-circle');
         group.appendChild(circle);
 
@@ -452,7 +498,7 @@ function initConstellation() {
             label.setAttribute('text-anchor', anchor);
             label.setAttribute('font-size', '12.5');
             label.setAttribute('font-weight', '500');
-            label.setAttribute('fill', node.color);
+            label.setAttribute('fill', 'rgba(160,210,255,0.8)');
             label.textContent = node.label;
             group.appendChild(label);
         }
@@ -513,7 +559,11 @@ function initConstellation() {
     // Auto-click nuclear node on load
     setTimeout(() => {
         const nuclearNode = svg.querySelector('g[data-node-id="nuclear"]');
-        if (nuclearNode) nuclearNode.click();
+        if (nuclearNode && nuclearNode.click) {
+            nuclearNode.click();
+        } else if (nuclearNode) {
+            nuclearNode.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        }
     }, 100);
 }
 
@@ -525,17 +575,17 @@ function showDetailPanel(node) {
     
     setTimeout(() => {
         panel.innerHTML = `
-            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--primary-color);">${node.title}</h3>
-            <p style="font-size: 0.95rem; font-style: italic; color: var(--muted-text); margin-bottom: 1rem;">${node.subtitle}</p>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: rgba(210,230,255,0.95);">${node.title}</h3>
+            <p style="font-size: 0.95rem; font-style: italic; color: rgba(140,190,255,0.7); margin-bottom: 1rem;">${node.subtitle}</p>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                 ${node.chips.map(chip => `
-                    <span style="background: ${chip.color}15; color: ${chip.color}; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid ${chip.color}35;">${chip.text}</span>
+                    <span style="background: rgba(100,160,255,0.1); color: rgba(180,220,255,0.9); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(100,160,255,0.3);">${chip.text}</span>
                 `).join('')}
             </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1.5rem;">${node.body}</p>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 1.5rem;">${node.body}</p>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                 ${node.tags.map(tag => `
-                    <span style="background: rgba(42, 125, 107, 0.1); color: #0d5c4a; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.86rem; font-weight: 600; border: 1px solid rgba(42, 125, 107, 0.22);">${tag}</span>
+                    <span style="background: rgba(100,160,255,0.08); color: rgba(160,210,255,0.75); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.86rem; font-weight: 600; border: 1px solid rgba(100,160,255,0.2);">${tag}</span>
                 `).join('')}
             </div>
         `;
@@ -552,12 +602,12 @@ function showCenterPanel() {
     
     setTimeout(() => {
         panel.innerHTML = `
-            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--primary-color);">Minerals remember</h3>
-            <p style="font-size: 0.95rem; font-style: italic; color: var(--muted-text); margin-bottom: 1.5rem;">The thread connecting every research program</p>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: rgba(210,230,255,0.95);">Minerals remember</h3>
+            <p style="font-size: 0.95rem; font-style: italic; color: rgba(140,190,255,0.7); margin-bottom: 1.5rem;">The thread connecting every research program</p>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 1rem;">
                 Every mineral is a record. A crystal grown in a hypersaline lake records the chemistry of the water that made it — and whether anything was alive in that water. A kidney stone records the bacteria that helped build it. A microporous titanium silicate records a molecular geometry that evolution independently discovered in cell membranes. Brine minerals record the lithium that ancient oceans deposited over geological time.
             </p>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 2rem;">
+            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 2rem;">
                 My research is the act of reading those records — and deciding what to do with what they say. The six research programs represented in this constellation are not separate pursuits. They are the same question asked of different minerals, in different environments, at different scales. What did this crystal remember? And what can we learn from it?
             </p>
             <a href="https://aaroncelestian.substack.com/p/we-tortured-salt-water-with-x-rays" target="_blank" class="btn-small" style="display: inline-block; text-decoration: none;">

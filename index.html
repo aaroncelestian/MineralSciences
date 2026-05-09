@@ -6,11 +6,12 @@
     <title>Research Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&family=Cormorant+Garamond:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="hero-canvas.js" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
     <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" defer></script>
 </head>
 <body>
     <nav class="navbar">
@@ -35,10 +36,14 @@
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <h1>Aaron Celestian</h1>
-            <p class="subtitle">Curator, Natural History Museum of Los Angeles County</p>
-            <p class="hero-description">Mineralogy of the Environment, Planets, Biology, and Pharmacology</p>
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-eyebrow">MINERAL SCIENCES · NHMLAC</div>
+            <h1 class="hero-name">Aaron<br>Celestian</h1>
+            <div class="hero-meta">
+                CURATOR OF MINERAL SCIENCES<br>
+                MINERALOGY · ASTROBIOLOGY · PHARMACOLOGY · ENERGY
+            </div>
         </div>
     </header>
 
@@ -47,7 +52,6 @@
             <h2>About</h2>
             <div class="about-content">
                 <div class="about-text about-wrap">
-                    <img src="images/aaron2.jpeg" alt="Aaron Celestian" class="portrait portrait-float">
                     <p>
                         Some scientists ask what minerals are. I ask what they do — and to answer that, I go where they form.
                     </p>

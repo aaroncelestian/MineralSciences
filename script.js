@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    createTimeSeriesPlot();
-    createDistributionPlot();
-    createHeatmapPlot();
+    if (document.getElementById('timeSeriesPlot')) createTimeSeriesPlot();
+    if (document.getElementById('distributionPlot')) createDistributionPlot();
+    if (document.getElementById('heatmapPlot')) createHeatmapPlot();
 });
 
 // Time Series Plot
@@ -397,8 +397,8 @@ function renderPub(pub) {
 // Load publications on page load
 document.addEventListener('DOMContentLoaded', () => {
     // renderPublications(); // Disabled - using manual HTML updates from RIS file
-    createTimeSeriesPlot();
-    createDistributionPlot();
-    createHeatmapPlot();
+    if (document.getElementById('timeSeriesPlot')) createTimeSeriesPlot();
+    if (document.getElementById('distributionPlot')) createDistributionPlot();
+    if (document.getElementById('heatmapPlot')) createHeatmapPlot();
 });
 

@@ -131,38 +131,117 @@ body {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Hero Section */
+/* Hero Section with Canvas Animation */
 .hero {
+    position: relative;
+    min-height: 60vh;
     padding: 4.5rem 0 3rem 0;
     text-align: center;
-    color: var(--primary-color);
-    position: relative;
     overflow: hidden;
+    background: #060810;
 }
 
-.hero::before {
-    content: '';
+#hero-canvas {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(circle at 18% 45%, rgba(255, 255, 255, 0.08) 0%, transparent 52%),
-        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
-        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.05) 0%, transparent 55%);
-    animation: shimmer 18s ease-in-out infinite;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(6,8,16,.85) 100%);
     pointer-events: none;
 }
 
-@keyframes shimmer {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+.hero-left-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(6,8,16,.6) 0%, rgba(6,8,16,.3) 20%, transparent 45%);
+    pointer-events: none;
 }
 
-.hero .container {
-    position: relative;
-    z-index: 1;
+.hero-grain {
+    position: absolute;
+    inset: -80px;
+    opacity: .024;
+    pointer-events: none;
+    will-change: transform;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain .45s steps(1) infinite;
+}
+
+@keyframes grain {
+    0%  { transform: translate(0,0) }
+    20% { transform: translate(-5px,4px) }
+    40% { transform: translate(5px,-3px) }
+    60% { transform: translate(-3px,-5px) }
+    80% { transform: translate(4px,5px) }
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 min(90px, 8vw);
+    pointer-events: none;
+    user-select: none;
+}
+
+.hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-size: clamp(0.52rem, 0.72vw, 0.68rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(100, 168, 255, 0.44);
+    margin-bottom: 1.7em;
+    opacity: 0;
+    animation: rise 1.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.8rem, 5.6vw, 5.6rem);
+    color: rgba(234, 248, 255, 0.93);
+    letter-spacing: 0.06em;
+    line-height: 1.03;
+    margin-bottom: 1.4em;
+    opacity: 0;
+    animation: rise 1.6s 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-rule {
+    width: 38px;
+    height: 1px;
+    background: rgba(90, 155, 255, 0.32);
+    margin-bottom: 1.6em;
+    opacity: 0;
+    animation: rise 1.6s 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-size: clamp(0.52rem, 0.78vw, 0.7rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(140, 200, 255, 0.4);
+    line-height: 2.15;
+    opacity: 0;
+    animation: rise 1.6s 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -175,28 +254,6 @@ h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
 h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
 h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
-
-.hero h1 {
-    margin-bottom: 1rem;
-    text-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
-}
-
-.subtitle {
-    font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-    margin-bottom: 1rem;
-    opacity: 0.92;
-    font-weight: 450;
-    letter-spacing: 0.01em;
-}
-
-.hero-description {
-    font-size: 1.05rem;
-    max-width: 800px;
-    margin: 0 auto;
-    opacity: 0.88;
-    font-weight: 380;
-    letter-spacing: 0.03em;
-}
 
 /* Sections */
 .section {
@@ -1025,17 +1082,19 @@ html {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    background: #020608;
 }
 
 #constellation-detail-panel {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(6, 12, 28, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(100, 160, 255, 0.15);
     border-radius: var(--radius-lg);
     padding: 2rem;
     margin-top: 2rem;
-    box-shadow: 0 8px 32px rgba(2, 6, 23, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    color: rgba(210, 230, 255, 0.9);
     transition: opacity 0.25s ease;
     opacity: 0;
 }
