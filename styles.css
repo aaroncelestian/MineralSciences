@@ -538,40 +538,205 @@ h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
     border-top: 1px solid var(--border-color);
 }
 
-/* Contact Section */
-.contact-content {
-    max-width: 700px;
+/* Story Map link in Field section */
+.story-map-link {
+    margin-top: 1.25rem;
+    font-size: 1rem;
 }
 
-.contact-content p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.contact-content a {
+.story-map-link a {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: 500;
 }
 
-.contact-content a:hover {
+.story-map-link a:hover {
     text-decoration: underline;
 }
 
-.social-links {
-    margin-top: 2rem;
-    font-size: 1.1rem;
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
 }
 
-.social-links a {
+.contact-address p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.contact-profiles {
+    margin-top: 2rem;
+}
+
+.profiles-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-text);
+    margin-bottom: 0.75rem;
+}
+
+.profile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-list a {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 1.05rem;
+    transition: color 0.2s;
 }
 
-.social-links a:hover {
+.profile-list a:hover {
     color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.contact-substack {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-substack a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.contact-substack a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: var(--light-bg);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted-text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-color);
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230f172a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    align-self: flex-start;
+    background: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-submit:hover {
+    background: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+.fs-success {
+    display: none;
+    background: rgba(42, 125, 107, 0.1);
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-sm);
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.fs-success:not(:empty) {
+    display: block;
+}
+
+.fs-error {
+    display: none;
+    background: rgba(180, 50, 50, 0.08);
+    border: 1px solid rgba(180, 50, 50, 0.4);
+    border-radius: var(--radius-sm);
+    color: #b43232;
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.fs-error:not(:empty) {
+    display: block;
+}
+
+.fs-field-error {
+    font-size: 0.82rem;
+    color: #b43232;
+    min-height: 1em;
 }
 
 /* Footer */
@@ -700,6 +865,15 @@ footer p {
     
     .container {
         padding: 0 15px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .contact-form-wrapper {
+        padding: 1.75rem;
     }
     
     /* Hide constellation labels on mobile - stars are clickable */

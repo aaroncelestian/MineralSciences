@@ -76,6 +76,7 @@
             <div class="viz-card" style="padding: 0; overflow: hidden;">
                 <arcgis-embedded-map style="height:600px;width:100%;display:block;" item-id="bd266656bb4b47a2b13f556bb1a9b717" theme="dark" share-enabled time-zone-label-enabled center="-107.40189721747818,26.002702939040507" scale="36978595.474472" portal-url="https://lacnhm.maps.arcgis.com"></arcgis-embedded-map>
             </div>
+            <p class="story-map-link"><a href="https://arcg.is/nerq9" target="_blank">Gems of Southern California — interactive presentation →</a></p>
         </div>
     </section>
 
@@ -358,41 +359,79 @@
     <section id="contact" class="section">
         <div class="container">
             <h2>Contact</h2>
-            <div class="contact-content">
-                <p>
-                    For research collaborations, speaking engagements, and professional inquiries:
-                </p>
-                <p style="margin-top: 1rem;">
-                    <strong>Aaron Celestian, PhD</strong><br>
-                    Curator, Mineral Sciences<br>
-                    Natural History Museum of Los Angeles County<br>
-                    900 Exposition Blvd.<br>
-                    Los Angeles, CA 90007
-                </p>
-                <p style="margin-top: 1.5rem;">
-                    <strong>Professional Profiles:</strong>
-                </p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank">LinkedIn</a> •
-                    <a href="https://www.researchgate.net/profile/Aaron-Celestian" target="_blank">ResearchGate</a> •
-                    <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank">Google Scholar</a>
-                </p>
-                <p style="margin-top: 1rem;">
-                    <strong>Additional Resources:</strong> <a href="https://aaroncelestian.substack.com/" target="_blank">Pocketful of χtals on Substack</a> •
-                    <a href="https://storymaps.arcgis.com/stories/3e16dcb052ab444e87ffc4edc96611b2" target="_blank">Story Map</a>
-                </p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-address">
+                        <p><strong>Aaron Celestian, PhD</strong><br>
+                        Curator, Mineral Sciences<br>
+                        Natural History Museum of Los Angeles County<br>
+                        900 Exposition Blvd.<br>
+                        Los Angeles, CA 90007</p>
+                    </div>
+                    <div class="contact-profiles">
+                        <p class="profiles-label">Academic &amp; Professional Profiles</p>
+                        <ul class="profile-list">
+                            <li><a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://www.researchgate.net/profile/Aaron-Celestian" target="_blank">ResearchGate</a></li>
+                            <li><a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+                            <li><a href="https://orcid.org/YOUR-ORCID-ID" target="_blank">ORCID</a></li>
+                            <li><a href="https://github.com/aaroncelestian" target="_blank">GitHub</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact-substack">
+                        <a href="https://aaroncelestian.substack.com/" target="_blank">Pocketful of χtals on Substack →</a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <div class="fs-success" data-fs-success></div>
+                    <div class="fs-error" data-fs-error></div>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" name="name" required placeholder="Your name" data-fs-field>
+                            <span class="fs-field-error" data-fs-error="name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-affiliation">Affiliation</label>
+                            <input type="text" id="contact-affiliation" name="affiliation" placeholder="Institution or organization" data-fs-field>
+                            <span class="fs-field-error" data-fs-error="affiliation"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <select id="contact-subject" name="subject" required data-fs-field>
+                                <option value="" disabled selected>Select a topic</option>
+                                <option value="Research Collaboration">Research Collaboration</option>
+                                <option value="Speaking Engagement">Speaking Engagement</option>
+                                <option value="Media">Media</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="fs-field-error" data-fs-error="subject"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" required rows="5" placeholder="Your message" data-fs-field></textarea>
+                            <span class="fs-field-error" data-fs-error="message"></span>
+                        </div>
+                        <button type="submit" class="btn-submit" data-fs-submit-btn>Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Aaron Celestian. Last updated: January 2026</p>
+            <p>&copy; 2026 Aaron Celestian. Last updated: May 2026</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script src="mineral-network.js"></script>
     <script src="constellation.js"></script>
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contact-form', formId: 'xrejjbry' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
