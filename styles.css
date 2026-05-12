@@ -135,6 +135,7 @@ body {
 .hero {
     position: relative;
     min-height: 60vh;
+    max-height: 760px;
     padding: 4.5rem 0 3rem 0;
     text-align: center;
     overflow: hidden;
@@ -1257,15 +1258,13 @@ html {
 }
 
 #constellation-detail-panel {
-    background: rgba(6, 12, 28, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(100, 160, 255, 0.15);
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 2rem;
     margin-top: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    color: rgba(210, 230, 255, 0.9);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
     transition: opacity 0.25s ease;
     opacity: 0;
 }

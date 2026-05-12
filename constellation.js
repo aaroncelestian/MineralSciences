@@ -575,17 +575,17 @@ function showDetailPanel(node) {
     
     setTimeout(() => {
         panel.innerHTML = `
-            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: rgba(210,230,255,0.95);">${node.title}</h3>
-            <p style="font-size: 0.95rem; font-style: italic; color: rgba(140,190,255,0.7); margin-bottom: 1rem;">${node.subtitle}</p>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--primary-color);">${node.title}</h3>
+            <p style="font-size: 0.95rem; font-style: italic; color: var(--muted-text); margin-bottom: 1rem;">${node.subtitle}</p>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                 ${node.chips.map(chip => `
-                    <span style="background: rgba(100,160,255,0.1); color: rgba(180,220,255,0.9); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(100,160,255,0.3);">${chip.text}</span>
+                    <span style="background: rgba(42,125,107,0.1); color: #2a7d6b; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(42,125,107,0.3);">${chip.text}</span>
                 `).join('')}
             </div>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 1.5rem;">${node.body}</p>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1.5rem;">${node.body}</p>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                 ${node.tags.map(tag => `
-                    <span style="background: rgba(100,160,255,0.08); color: rgba(160,210,255,0.75); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.86rem; font-weight: 600; border: 1px solid rgba(100,160,255,0.2);">${tag}</span>
+                    <span style="background: rgba(42,125,107,0.08); color: #2a7d6b; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.86rem; font-weight: 600; border: 1px solid rgba(42,125,107,0.2);">${tag}</span>
                 `).join('')}
             </div>
         `;
@@ -602,12 +602,12 @@ function showCenterPanel() {
     
     setTimeout(() => {
         panel.innerHTML = `
-            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: rgba(210,230,255,0.95);">Minerals remember</h3>
-            <p style="font-size: 0.95rem; font-style: italic; color: rgba(140,190,255,0.7); margin-bottom: 1.5rem;">The thread connecting every research program</p>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 1rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--primary-color);">Minerals remember</h3>
+            <p style="font-size: 0.95rem; font-style: italic; color: var(--muted-text); margin-bottom: 1.5rem;">The thread connecting every research program</p>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1rem;">
                 Every mineral is a record. A crystal grown in a hypersaline lake records the chemistry of the water that made it — and whether anything was alive in that water. A kidney stone records the bacteria that helped build it. A microporous titanium silicate records a molecular geometry that evolution independently discovered in cell membranes. Brine minerals record the lithium that ancient oceans deposited over geological time.
             </p>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(200,220,255,0.8); margin-bottom: 2rem;">
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-color); margin-bottom: 2rem;">
                 My research is the act of reading those records — and deciding what to do with what they say. The six research programs represented in this constellation are not separate pursuits. They are the same question asked of different minerals, in different environments, at different scales. What did this crystal remember? And what can we learn from it?
             </p>
             <a href="https://aaroncelestian.substack.com/p/we-tortured-salt-water-with-x-rays" target="_blank" class="btn-small" style="display: inline-block; text-decoration: none;">
