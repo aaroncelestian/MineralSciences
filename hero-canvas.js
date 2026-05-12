@@ -74,8 +74,9 @@ if (REFLECTIONS.length > 0) {
 }
 
 function resize(){
-  W = canvas.width = canvas.parentElement.offsetWidth;
-  H = canvas.height = Math.min(canvas.parentElement.offsetHeight, 760);
+  const rect = canvas.getBoundingClientRect();
+  W = canvas.width  = Math.round(rect.width)  || window.innerWidth;
+  H = canvas.height = Math.round(rect.height) || Math.min(Math.round(window.innerHeight * 0.6), 760);
   cx = W * .545; // slightly right of center — avoids text overlap
   cy = H * .5;
   sc = Math.min(W, H) / 860;
