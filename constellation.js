@@ -109,7 +109,7 @@ function initConstellation() {
     // Detect mobile
     const isMobile = window.innerWidth <= 768;
     
-    const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const width = container.getBoundingClientRect().width || 1100;
     const height = 580;
     const cx = width / 2;
     const cy = 280;
