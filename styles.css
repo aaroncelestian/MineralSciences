@@ -415,6 +415,18 @@ h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
     text-wrap: pretty;
 }
 
+.about-text ul {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+    list-style-type: disc;
+}
+
+.about-text ul li {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
 /* Project Cards */
 .project-grid {
     display: grid;
