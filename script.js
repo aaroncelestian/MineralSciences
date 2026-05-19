@@ -1,5 +1,19 @@
 // Interactive Data Visualizations using Plotly
 
+// Toggle About section expandable content
+function toggleAboutContent() {
+    const expandable = document.getElementById('aboutExpandable');
+    const button = document.getElementById('aboutReadMoreBtn');
+    
+    if (expandable.classList.contains('expanded')) {
+        expandable.classList.remove('expanded');
+        button.textContent = 'Read more';
+    } else {
+        expandable.classList.add('expanded');
+        button.textContent = 'Read less';
+    }
+}
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     // Hamburger menu toggle
