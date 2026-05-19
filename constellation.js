@@ -19,20 +19,20 @@ const researchNodes = [
         tags: ['Astrobiology', 'Halite', 'Mars analogs', 'Biosignatures', 'Evaporites', 'Western Australia', 'NASA/JPL']
     },
     {
-        id: 'remediation',
-        label: 'Environmental remediation',
+        id: 'sequestration',
+        label: 'Environmental sequestration',
         position: 'bottom',
         radius: 11,
         color: '#2a7d6b',
         glow: 'rgba(42,125,107,0.2)',
-        title: 'Minerals as remediation tools',
+        title: 'Minerals as sequestration tools',
         subtitle: 'Zeolites · Lead · PAHs · Fukushima · La Brea',
         chips: [
-            { text: 'Lead remediation — Los Angeles', color: '#6b7280' },
+            { text: 'Lead sequestration — Los Angeles', color: '#6b7280' },
             { text: 'PAH degradation — La Brea', color: '#d97706' }
         ],
         body: 'Microporous minerals are nature\'s own filtration systems. My environmental work spans zeolite amendment of lead-contaminated residential soils in Los Angeles; photocatalytic degradation of polycyclic aromatic hydrocarbons at La Brea Tar Pits; and pharmaceutical compound sequestration from aqueous waste streams. The same crystal chemistry that drives the laboratory drives the field deployments.',
-        tags: ['Zeolites', 'Lead remediation', 'PAH degradation', 'La Brea', 'Ion exchange', 'Photocatalysis', 'Los Angeles']
+        tags: ['Zeolites', 'Lead sequestration', 'PAH degradation', 'La Brea', 'Ion exchange', 'Photocatalysis', 'Los Angeles']
     },
     {
         id: 'nuclear',
@@ -47,8 +47,8 @@ const researchNodes = [
             { text: 'Fukushima Daiichi', color: '#dc2626' },
             { text: 'Radiocesium extraction', color: '#6b7280' }
         ],
-        body: 'The double lever mechanism — a coupled two-site ion exchange geometry I identified in sitinakite — selectively captures cesium and strontium ions with extraordinary efficiency. Structurally analogous to the Nobel Prize-winning potassium ion channel, this geometry makes sitinakite-based materials practically indispensable for nuclear remediation. They are now deployed in the treatment of radioactive wastewater from the Fukushima Daiichi nuclear disaster, selectively extracting radiocesium at scale.',
-        tags: ['Sitinakite', 'Ion exchange', 'Double lever mechanism', 'Fukushima', 'Radiocesium', 'Nuclear remediation', 'Crystal chemistry']
+        body: 'The double lever mechanism — a coupled two-site ion exchange geometry I identified in sitinakite — selectively captures cesium and strontium ions with extraordinary efficiency. Structurally analogous to the Nobel Prize-winning potassium ion channel, this geometry makes sitinakite-based materials practically indispensable for nuclear waste treatment. They are now deployed in the cleanup of radioactive wastewater from the Fukushima Daiichi nuclear disaster, selectively extracting radiocesium at scale.',
+        tags: ['Sitinakite', 'Ion exchange', 'Double lever mechanism', 'Fukushima', 'Radiocesium', 'Nuclear waste treatment', 'Crystal chemistry']
     },
     {
         id: 'pharma',
