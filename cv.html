@@ -3,1433 +3,995 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Aaron Celestian</title>
+    <title>CV — Aaron Celestian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&family=Cormorant+Garamond:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── CV typography — all hierarchy defined here, no inline styles ── */
+
+        .cv-wrap {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 24px 5rem;
+        }
+
+        /* Hero */
+        .cv-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            color: rgba(11, 16, 32, 0.92);
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+        }
+
+        .cv-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.42);
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+        }
+
+        .cv-summary {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: rgba(15, 23, 42, 0.62);
+            max-width: 640px;
+            margin-bottom: 2rem;
+            font-weight: 380;
+        }
+
+        /* Action buttons */
+        .cv-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Internal nav */
+        .cv-subnav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 0.5px solid rgba(15, 23, 42, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .cv-subnav a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cv-subnav a:hover { color: rgba(15, 23, 42, 0.85); }
+
+        /* Section blocks */
+        .cv-block {
+            margin-bottom: 3.5rem;
+        }
+
+        /* Section marker — same as main page */
+        .section-marker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .section-marker-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.28);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .section-marker-rule {
+            flex: 1;
+            height: 0.5px;
+            background: rgba(15, 23, 42, 0.1);
+        }
+
+        /* Sub-labels within sections — Current Positions, Television, etc. */
+        .cv-sublabel {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.58rem;
+            font-weight: 300;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.22);
+            margin: 2rem 0 0.9rem;
+            display: block;
+        }
+
+        /* CV item row */
+        .cv-item {
+            margin-bottom: 1.4rem;
+        }
+
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Role / degree title */
+        .cv-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(15, 23, 42, 0.88);
+            letter-spacing: -0.01em;
+        }
+
+        /* Date */
+        .cv-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 300;
+            color: rgba(15, 23, 42, 0.32);
+            white-space: nowrap;
+            font-style: normal;
+        }
+
+        /* Institution / subtitle */
+        .cv-item p,
+        .cv-inst {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            color: rgba(15, 23, 42, 0.48);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Publication year divider */
+        .pub-year {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.58rem;
+            font-weight: 300;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.22);
+            margin: 2.25rem 0 0.9rem;
+            display: block;
+        }
+
+        /* Publication entry */
+        .pub-entry {
+            margin-bottom: 1.1rem;
+            padding-bottom: 1.1rem;
+            border-bottom: 0.5px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .pub-entry:last-child { border-bottom: none; }
+
+        .pub-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(15, 23, 42, 0.82);
+            line-height: 1.5;
+            margin-bottom: 0.2rem;
+        }
+
+        .pub-authors {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            color: rgba(15, 23, 42, 0.42);
+            line-height: 1.5;
+            margin-bottom: 0.15rem;
+        }
+
+        .pub-venue {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            color: rgba(15, 23, 42, 0.38);
+            font-style: italic;
+        }
+
+        /* Funding entry */
+        .fund-entry {
+            margin-bottom: 1.1rem;
+        }
+
+        .fund-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(15, 23, 42, 0.82);
+            line-height: 1.5;
+        }
+
+        .fund-detail {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            color: rgba(15, 23, 42, 0.48);
+            margin-top: 0.15rem;
+        }
+
+        /* Lists */
+        .cv-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cv-list li {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(15, 23, 42, 0.72);
+            line-height: 1.75;
+            padding: 0.25rem 0;
+            border-bottom: 0.5px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .cv-list li:last-child { border-bottom: none; }
+
+        .cv-list li span.item-label {
+            font-weight: 500;
+            color: rgba(15, 23, 42, 0.82);
+        }
+
+        /* Research interests list */
+        .research-list li {
+            padding: 0.35rem 0;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.58rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.28);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* Contact info */
+        .cv-contact p {
+            font-size: 0.9rem;
+            color: rgba(15, 23, 42, 0.65);
+            line-height: 1.9;
+        }
+
+        .cv-contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Metrics strip — removed, not needed */
+
+        /* CV-specific section marker overrides — must be last */
+        .cv-wrap .section-marker-label {
+            color: rgba(15, 23, 42, 0.60) !important;
+            font-size: 0.68rem !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.22em !important;
+        }
+
+        .cv-wrap .section-marker-rule {
+            background: rgba(15, 23, 42, 0.22) !important;
+        }
+
+        .cv-wrap .cv-sublabel {
+            color: rgba(15, 23, 42, 0.45) !important;
+            font-size: 0.62rem !important;
+            font-weight: 400 !important;
+        }
+
+        @media (max-width: 600px) {
+            .cv-item-header { flex-direction: column; }
+            .cv-subnav { gap: 1.25rem; }
+        }
+
+        @media print {
+            .navbar, footer, .cv-actions, .cv-subnav { display: none !important; }
+
+            body {
+                background: white !important;
+                animation: none !important;
+                font-size: 8.5pt;
+                line-height: 1.35;
+                color: #000;
+            }
+
+            .cv-wrap {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cv-block { margin-bottom: 0.6rem; }
+            .section-marker { margin-bottom: 0.4rem; }
+            .section-marker-label { font-size: 6.5pt; color: #666; }
+            .section-marker-rule { background: #bbb; }
+
+            .cv-item { margin-bottom: 0.4rem; }
+            .cv-role { font-size: 8.5pt; font-weight: 600; color: #000; }
+            .cv-date { font-size: 7.5pt; color: #555; }
+            .cv-item p { font-size: 8pt; color: #333; line-height: 1.3; }
+
+            .cv-sublabel {
+                font-size: 6.5pt;
+                margin: 0.5rem 0 0.2rem;
+                color: #888;
+            }
+
+            /* Publications — this is where the pages come from */
+            .pub-year {
+                font-size: 6.5pt;
+                margin: 0.5rem 0 0.15rem;
+                color: #888;
+                border-top: 0.5px solid #ddd;
+                padding-top: 0.3rem;
+            }
+
+            .pub-entry {
+                margin-bottom: 0.2rem;
+                padding-bottom: 0.2rem;
+                border-bottom: none;
+                page-break-inside: avoid;
+            }
+
+            .pub-title {
+                font-size: 8.5pt;
+                font-weight: 600;
+                color: #000;
+                line-height: 1.3;
+                margin-bottom: 0;
+            }
+
+            .pub-authors {
+                font-size: 7.5pt;
+                color: #444;
+                line-height: 1.25;
+                margin-bottom: 0;
+            }
+
+            .pub-venue {
+                font-size: 7.5pt;
+                color: #555;
+                font-style: italic;
+                line-height: 1.25;
+            }
+
+            .fund-entry { margin-bottom: 0.3rem; }
+            .fund-title { font-size: 8.5pt; font-weight: 600; color: #000; }
+            .fund-detail { font-size: 8pt; color: #444; line-height: 1.3; }
+
+            .cv-list li {
+                font-size: 8.5pt;
+                padding: 0.1rem 0;
+                border-bottom: none;
+                line-height: 1.3;
+                color: #222;
+            }
+
+            .skills-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            .skill-group-label { font-size: 6.5pt; margin-bottom: 0.25rem; }
+
+            @page {
+                margin: 0.55in 0.65in;
+                size: letter;
+            }
+
+            h1, h2, h3 { page-break-after: avoid; }
+            .cv-block { page-break-inside: avoid; }
+        }
+    </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">Aaron Celestian - CV</div>
+            <div class="nav-brand">Aaron Celestian</div>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#field">Field</a></li>
                 <li><a href="index.html#research">Research</a></li>
                 <li><a href="index.html#minerals">Minerals</a></li>
-                <li><a href="index.html#publications">Publications</a></li>
-                <li><a href="index.html#media">Media</a></li>
+                <li><a href="field-map.html">Field Map</a></li>
                 <li><a href="cv.html">CV</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="section" style="padding-top: 3rem;">
-        <div class="container" style="max-width: 900px;">
-            <h1 style="color: var(--primary-color); margin-bottom: 0.5rem;">Aaron Celestian, Ph.D.</h1>
-            <p style="font-size: 1.2rem; color: #666; margin-bottom: 1rem;">
-                Curator of Mineral Sciences<br>
-                Natural History Museum of Los Angeles County
-            </p>
-            
-            <div style="background-color: var(--light-bg); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary-color); margin-bottom: 2rem;">
-                <p style="font-size: 1.05rem; line-height: 1.7; margin: 0;">
-                    Mineral scientist bridging fundamental research with real-world applications in astrobiology, energy materials, 
-                    and environmental science. Recognized expert in ion exchange mechanisms and biosignature detection with extensive 
-                    NASA, DOE, and museum leadership experience. Research spans from searching for life on Mars to developing sustainable 
-                    lithium extraction methods, with a focus on how minerals interact with their environments and living systems to 
-                    address global challenges.
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 2rem 0 2.5rem 0;">
-                <div style="background: linear-gradient(135deg, #2a7d6b 0%, #1a5f52 100%); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center; color: white;">
-                    <div style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-display);">172</div>
-                    <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.95;">Publications</div>
-                </div>
-                <div style="background: linear-gradient(135deg, #1a9e8a 0%, #16857a 100%); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center; color: white;">
-                    <div style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-display);">17</div>
-                    <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.95;">New Minerals</div>
-                </div>
-                <div style="background: linear-gradient(135deg, #3da896 0%, #2a7d6b 100%); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center; color: white;">
-                    <div style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-display);">20+</div>
-                    <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.95;">Years Experience</div>
-                </div>
-                <div style="background: linear-gradient(135deg, #22b8a0 0%, #1a9e8a 100%); padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); text-align: center; color: white;">
-                    <div style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-display);">$5M+</div>
-                    <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.95;">Research Funding</div>
-                </div>
+    <div class="cv-wrap">
+
+        <p class="cv-name">Aaron Celestian, Ph.D.</p>
+        <p class="cv-title">
+            Curator of Mineral Sciences<br>
+            Natural History Museum of Los Angeles County
+        </p>
+
+        <p class="cv-summary">Mineral scientist bridging fundamental research with real-world applications in astrobiology, energy materials, and environmental science. Recognized expert in ion exchange mechanisms and biosignature detection. Research spans from searching for life on Mars to developing sustainable lithium extraction methods, with a focus on how minerals interact with their environments and living systems to address global challenges.</p>
+
+        <div class="cv-actions">
+            <button onclick="window.print()" class="btn-small">Print CV</button>
+            <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small">Google Scholar</a>
+            <a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank" class="btn-small">LinkedIn</a>
+        </div>
+
+        <nav class="cv-subnav">
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#research">Research</a>
+            <a href="#funding">Funding</a>
+            <a href="#publications">Publications</a>
+            <a href="#media">Media</a>
+        </nav>
+
+        <!-- EDUCATION -->
+        <div class="cv-block" id="education">
+            <div class="section-marker">
+                <span class="section-marker-label">Education</span>
+                <div class="section-marker-rule"></div>
             </div>
 
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <button onclick="window.print()" class="btn-small" style="padding: 0.7rem 1.8rem; font-size: 1rem; margin: 0.5rem; cursor: pointer;">
-                    Print CV
-                </button>
-                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small" style="padding: 0.7rem 1.8rem; font-size: 1rem; margin: 0.5rem; background-color: var(--accent-color);">
-                    Google Scholar
-                </a>
-                <a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank" class="btn-small" style="padding: 0.7rem 1.8rem; font-size: 1rem; margin: 0.5rem;">
-                    LinkedIn
-                </a>
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Ph.D. in Geosciences</span>
+                    <span class="cv-date">Stony Brook University, 2006</span>
+                </div>
+                <p>Dissertation: Time-resolved structural characterization of microporous silicotitanates and niobium silicotitanates</p>
             </div>
 
-            <nav style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; position: sticky; top: 80px; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; font-size: 0.9rem;">
-                    <a href="#education" style="color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,120,160,0.1)'" onmouseout="this.style.background='transparent'">Education</a>
-                    <a href="#experience" style="color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,120,160,0.1)'" onmouseout="this.style.background='transparent'">Experience</a>
-                    <a href="#research" style="color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,120,160,0.1)'" onmouseout="this.style.background='transparent'">Research</a>
-                    <a href="#funding" style="color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,120,160,0.1)'" onmouseout="this.style.background='transparent'">Funding</a>
-                    <a href="#publications" style="color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,120,160,0.1)'" onmouseout="this.style.background='transparent'">Publications</a>
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">M.S. in Geosciences</span>
+                    <span class="cv-date">Stony Brook University, 2002</span>
                 </div>
-            </nav>
-
-            <div class="cv-section" id="education">
-                <h2 class="cv-heading">Education</h2>
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Ph.D. in Geosciences</strong>
-                        <span class="cv-date">Stony Brook University, 2006</span>
-                    </div>
-                    <p>Dissertation: Time-resolved structural characterization of microporous silicotitanates and niobium silicotitanates</p>
-                </div>
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>M.S. in Geosciences</strong>
-                        <span class="cv-date">Stony Brook University, 2002</span>
-                    </div>
-                    <p>Thesis: Ion exchange of K₈Al₈Ge₈O₃₂・8H₂O and Na₂₄Al₂₄Ge₂₄O₉₆・40H₂O gismondine</p>
-                </div>
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>B.S. in Geology with Emphasis in Mineralogy</strong>
-                        <span class="cv-date">University of Arizona, 1999</span>
-                    </div>
-                </div>
+                <p>Thesis: Ion exchange of K₈Al₈Ge₈O₃₂·8H₂O and Na₂₄Al₂₄Ge₂₄O₉₆·40H₂O gismondine</p>
             </div>
 
-            <div class="cv-section" id="experience">
-                <h2 class="cv-heading">Professional Experience</h2>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 1rem;">Current Positions</h3>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Curator, Mineral Sciences</strong>
-                        <span class="cv-date">2021 - Present</span>
-                    </div>
-                    <p>Natural History Museum of Los Angeles County</p>
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">B.S. in Geology with Emphasis in Mineralogy</span>
+                    <span class="cv-date">University of Arizona, 1999</span>
                 </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Adjunct Associate Professor</strong>
-                        <span class="cv-date">2016 - Present</span>
-                    </div>
-                    <p>Department of Earth Sciences, University of Southern California</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Adjunct Instructor</strong>
-                        <span class="cv-date">2021 - Present</span>
-                    </div>
-                    <p>West Los Angeles College</p>
-                </div>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.3rem; margin-top: 2rem; margin-bottom: 1rem;">Previous Positions</h3>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Science and Research Affiliate</strong>
-                        <span class="cv-date">2018 - 2025</span>
-                    </div>
-                    <p>NASA Jet Propulsion Laboratory</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Associate Curator, Mineral Sciences</strong>
-                        <span class="cv-date">2016 - 2021</span>
-                    </div>
-                    <p>Natural History Museum of Los Angeles County</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Associate Professor (Tenured)</strong>
-                        <span class="cv-date">2012 - 2015</span>
-                    </div>
-                    <p>Department of Geography and Geology, Western Kentucky University</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Director, Advanced Materials Institute</strong>
-                        <span class="cv-date">2010 - 2015</span>
-                    </div>
-                    <p>Western Kentucky University</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Assistant Professor</strong>
-                        <span class="cv-date">2007 - 2012</span>
-                    </div>
-                    <p>Department of Geography and Geology, Western Kentucky University</p>
-                </div>
-                
-                <div class="cv-item">
-                    <div class="cv-item-header">
-                        <strong>Visiting Assistant Professor</strong>
-                        <span class="cv-date">2006 - 2007</span>
-                    </div>
-                    <p>School of Earth and Environmental Science, City University of New York Queens College</p>
-                </div>
-            </div>
-
-            <div class="cv-section" id="research">
-                <h2 class="cv-heading">Research Interests</h2>
-                <ul class="cv-list">
-                    <li><strong>Astrobiology:</strong> Biosignatures in minerals, life detection on Mars and icy moons</li>
-                    <li><strong>Energy Materials:</strong> Sustainable lithium extraction, ion exchange materials</li>
-                    <li><strong>Environmental Science:</strong> Photocatalytic degradation, metal sequestration in zeolites</li>
-                    <li><strong>PharmaMineralogy:</strong> Kidney stone formation, bacterial-mineral interactions</li>
-                    <li><strong>Cultural Heritage:</strong> Gemstone provenance analysis, art conservation</li>
-                </ul>
-            </div>
-
-            <div class="cv-section" id="funding">
-                <h2 class="cv-heading">Funding & Grants</h2>
-                <div class="cv-item">
-                    <strong>NOAA Sea Grant (2023-2025)</strong> - Plastics Past and Present: Understanding historical trends of microplastic consumption in California marine food webs
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Co-PI with W. Ludt</p>
-                </div>
-                <div class="cv-item">
-                    <strong>Department of Energy Critical Materials (2021-2023)</strong> - Informed design of crystalline ion exchangers: Improved λ-MnO₂ phase for lithium extraction from geologic fluids
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Co-PI with C. Carmire, W. Bourcier</p>
-                </div>
-                <div class="cv-item">
-                    <strong>American Elements (2021-2022)</strong> - Selective Rare Earth Element Ion Exchange in Minerals
-                </div>
-                <div class="cv-item">
-                    <strong>Getty Museum (2020-2022)</strong> - PST 2024 - Realities of the Environmental Disparities that People of Color Face
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Co-PI with M. Garcia, B. H. Jaramillo, M. Muro, L. Higgins</p>
-                </div>
-                <div class="cv-item">
-                    <strong>NASA RT&D (2020/2021-2023)</strong> - Simulating Ocean World Microbiology and Pressure-Relevant Ecological Systems
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Co-PI with S. Perl</p>
-                </div>
-                <div class="cv-item">
-                    <strong>Oak Ridge National Laboratory (2021)</strong> - Neutron Scattering Studies of Microporous Zirconium Silicates
-                </div>
-                <div class="cv-item">
-                    <strong>NASA NSPIRES (2018-2021)</strong> - Investigating a novel role for iron redox cycling in the lithification of microbial mats
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">Co-PI with F. Corsetti, V. Petyrshyn, S. S. Bradley, J. R. Spear, W. Berelson</p>
-                </div>
-                <div class="cv-item">
-                    <strong>NSF EPSCoR (2013-2014)</strong> - Advancing porous nanominerals for basic energy science, environmental security, and materials genomics
-                </div>
-                <div class="cv-item">
-                    <strong>American Chemical Society - Petroleum Research Fund (2011-2013)</strong> - Mechanisms of ion selectivity in porous frameworks
-                </div>
-            </div>
-
-            <div class="cv-section" id="publications">
-                <h2 class="cv-heading">Publications</h2>
-                <div style="background-color: var(--light-bg); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <p style="margin: 0; font-size: 1.05rem;">
-                        <strong>Publication Metrics:</strong> 172 peer-reviewed articles
-                    </p>
-                    <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: #666;">
-                        Complete chronological list of all publications below | 
-                        <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" style="color: var(--primary-color);">View on Google Scholar</a>
-                    </p>
-                </div>
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2026 (7 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Bourcier, William, Camiré, Christopher L, Kumar, Jayanthi, Paranthaman, Mariappan Parans</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of Raman Spectroscopy, 57(1), 131-139</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Intercalated bacterial biofilms are intrinsic internal components of calcium-based kidney stones</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Schmidt, William C, Mousavi, Ava, Li, Jiahui, Yang, Rena, Gonzalez Marin, Gerson, Schreiber IV, Henry L, Hammann, Rachael ES, Obernuefemann, Chloe LP, Bergeron, Karla, Klim, Aleksandra</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Proceedings of the National Academy of Sciences, 123(5), e2517066123</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mineral Weathering Experiments for Terrestrial Planetary Analogs in a Continuous‐Flow Reactor</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Weber, Jessica M, Martinez, Eduardo, Sheppard, Rachel Y, Rodriguez, Laura E, Celestian, Aaron, Teece, Bronwyn L, Barge, Laura M</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geofluids, 2026(1), 6180315</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Molecular Mechanisms of Magnesium Sulfate Crystallization: Bond Length Inversion and the Role of Hydration in Mineral Formation</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Xu, Wenqian, Kubicki, James D, Perl, Scott M</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Nitrogen mineral hosts in subduction zone metamorphosed ultramafic rocks: Implications for deep Forearc (to Subarc) transfer</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cooperdock, Emily HG, Bonilla, Ailani N, Grabiec, Justine G, Bustos-Moreno, Juan Felipe, Celestian, Aaron J, Mallik, Ananya, Bebout, Gray E</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Chemical Geology, 123307</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Perchlorate Anaerobiosis in Haloferax volcanii: A Novel Metabolic Capability for A Model Haloarchaeon</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Robinson, Adam, McQuaig-Ulrich, Shannon, Dondero, Tyler, Celestian, Aaron, Perl, Scott</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Cadvanite, a New Cadmium Vanadate from the Burro Mine, San Miguel County, Colorado, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Celestian, Aaron J, Ma, Chi, Rose, Timothy P, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Canadian Journal of Mineralogy and Petrology, 64(2), 185-193</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2025 (12 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evaporitic Preservation of Modern Carotenoid Biomarkers and Halophilic Microorganisms in Mars Analog Hypersaline Environments</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J, Tasoff, Preston, Seuylemezian, Arman, Vaishampayan, Parag A, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Astrobiology, 25(11), 765-776</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evidence for Low Dissolved Silica in mid-Mesozoic Oceans</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Yager, Joyce A, West, A Joshua, Trower, Elizabeth J, Fischer, Woodward W, Ritterbush, Kathleen, Rosas, Silvia, Bottjer, David J, Celestian, Aaron J, Berelson, William M, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Journal of Science, 325, 1</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Svornostite-(NH4),(NH4) 2Mg (UO2) 2 (SO4) 4 (H2O) 8, a new mineral from the Blue Lizard mine, San Juan County, Utah, USA, and the establishment of the svornostite mineral group</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Olds, Travis A, Plášil, Jakub, Ma, Chi, Celestian, Aaron J, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 89(5), 609-617</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>MP21-12 BIOFILM-FORMING BACTERIA FOUND WITHIN CALCIUM-BASED KIDNEY STONES</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Mousavi, Ava, Schmidt, William C, Li, Jiahui, Yang, Rena, Gonzalez-Marin, Gerson, Wong, Gerard CL, Celestian, Aaron, Scotland, Kymora B</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Journal of Urology, 213(5S), e709</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Exploring Mechanisms of Microbialite Texture Formation through mapping in situ CaCO 3 precipitation and Microbial Cell Position</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cassady, Victoria C, Petryshyn, Victoria A, Bernhard, Joan M, Celestian, Aaron J, Berelson, William M, Bottjer, David J, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Goldschmidt 2025 Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Bourcier, William, Camiré, Christopher L, Kumar, Jayanthi, Paranthaman, Mariappan Parans</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of Raman Spectroscopy</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evidence for Acidic Bleaching and Dominant Groundwater Processes in Endmember Hypersaline and Acidic Lakes in Western Australia</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Plattner, TA, Schmidt, BE, Fernandez, N, Jamison, H, Russo, K, Weber, JM, Celestian, A, Birmingham, MA, Doran, P, Ingall, E</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>LPI Contributions, 3090, 2811</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Machine Learning Strategies to Distinguish Iron Sulfide, Oxide, and (Oxy) hydroxide Minerals Using Raman and LIBS Spectroscopy</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lamm, SN, Sheppard, RY, Yanchilina, A, Marshall, CP, Celestian, AJ, Lacroix, B, Sobron, P, Barge, LM, Rodriguez, LE</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>LPI Contributions, 3090, 2702</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>RamanLab: A Comprehensive Cross-Platform Software Suite for Advanced Raman Spectroscopy Analysis</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Authorea Preprints</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Grant, Kathleen, Brodrick, Philip Gregory, García-Pando, Carlos Pérez, Ageitos, María Gonçalves, Celestian, Aaron, West, A Joshua</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Authorea Preprints</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evaporitic Preservation of Modern Carotenoid Biomarkers and Halophilic Microorganisms in Mars Analog Hypersaline Environments</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J, Tasoff, Preston, Seuylemezian, Arman, Vaishampayan, Parag A, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Astrobiology, 15311074251392173</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Whole rock and mineral separate nitrogen concentration and isotopic data for meta-ultramafic rocks</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cooperdock, Emily, Bonilla, Ailani, Grabiec, Justine, Bustos-Moreno, Juan, Celestian, Aaron, Mallik, Ananya, Bebout, Gray</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Interdisciplinary Earth Data Alliance (IEDA) dataset, 237</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2024 (19 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Signature Specimen: Elbaite from the Cruzeiro Pegmatite Minas Gerais, Brazil: At the Natural History Museum of Los Angeles County</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Francis, Carl A, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Rocks & Minerals, 99(1), 86-88</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Radiocarbon Chronology/Growth Rates of Ooids from Great Salt Lake, Utah.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Paradis, Olivia P, Corsetti, Frank A, Bardsley, Audra, Hammond, Douglas E, Berelson, William, Walker, Jennifer, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Utah Geological Association Publication</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ potassium and hydrogen ion exchange into a cubic zirconium silicate microporous material</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lively, Jason, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Plos one, 19(3), e0298661</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>MP63-13 BACTERIA TRIGGER CALCIUM OXALATE CRYSTAL FORMATION</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Nazarian, Reyhaneh, Lin, Neil, Celestian, Aaron, Gelb, Jeff, O'Toole, George, Wong, Gerard, Scotland, Kymora B</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of Urology, 211(5S), e1036</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>PD63-06 EXPLORING BACTERIAL ROLES IN CALCIUM OXALATE STONE FORMATION THROUGH HIGH-RESOLUTION IMAGING</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Mousavi, Ava, Nazarian, Reyhaneh, Schmidt, William C, Thaker, Karan, Prieto III, Javier, Wong, Gerard CL, Celestian, Aaron, Chen, Qian, Li, Jiahui, Scotland, Kymora B</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of Urology, 211(5S), e1294</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Biology of Biosignature Detection-Year One: Building the Experimental Framework for Extant and Extinct Life Measurements</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Cockell, Charles S, Fischer, Woodward W, Lloyd, Karen G, Karunatillake, Suniti, Foreman, Christine M, Corsetti, Frank A, Freedman, Kevin, Wilhelm, Mary Beth, Bywaters, Kathryn</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2024 Astrobiology Science Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Increasing equitable access to meaningful research experiences through undergraduate mineralogy and earth materials classes</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cooperdock, Emily HG, Grabiec, Justine G, Rojas, Alexia, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2024 Goldschmidt Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Mineralogy of Laboratory Simulated Hydrothermal Vents as Analogs to Saponite-Rich Hydrothermal Environments on Early Earth and Mars</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Carman, Nancy, Hausrath, Elisabeth, Celestian, Aaron J, Chavez, Julia, Hermis, Ninos, LaRowe, Douglas, Fraeman, Abigail, Sheppard, Rachel Y, Adcock, Christopher T, Tschauner, Oliver D</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Astrobiology Science Conference (AbSciCon) 2024(84), 421-084</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Biology of Biosignature Detection: Framework, Experiments, and Science Mission Concepts for Extant and Extinct Life Validation</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Cockell, CS, Fischer, WW, Lloyd, K, Karunatillake, S, Wilhelm, MB, Foreman, C, Corsetti, FA, Freedman, K, Bywaters, K</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>LPI Contributions, 3007, 3526</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Fe/Mg-silicate chemical gardens as analogs to silicate-rich hydrothermal chimneys on early Earth and Mars</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Carman, Nancy A, Hausrath, Elisabeth M, Celestian, Aaron, Chavez, Julia, Hermis, Ninos, LaRowe, Douglas E, Fraeman, Abigail A, Sheppard, Rachel Y, Adcock, Christopher T, Tschauner, Oliver</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ACS Earth and Space Chemistry, 8(10), 1982-1996</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Living to Lithified: Construction and Preservation of Silicified Biomarkers</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Rasmussen, Kalen L, Thieringer, Patrick H, Nevadomski, Sophia, Martinez, Aaron M, Dawson, Katherine S, Corsetti, Frank A, Zheng, Xin‐Yuan, Lv, Yiwen, Chen, Xinyang, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geobiology, 22(5), e12620</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>A Tale of Two Seasons: The Geochemical Evolution of Acidic Hypersaline Lakes in Western Australia</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Plattner, Taylor, Schmidt, Britney, Fernandez, Nicole MM, Jamison, Hunter Thomas, Weber, Jessica, Celestian, Aaron, Birmingham, Margaret, Doran, Peter T, Ingall, Ellery D, Bowman, Jeff Shovlowsky</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2024, EP52A-06</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Insight Into Mineral Fabrics, Biofabrics, and Channel Architecture to Comprehensively Characterize Microbialite Texture</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cassady, Victoria, Petryshyn, Victoria A, Bernhard, Joan M, Hofmann, Florian, Celestian, Aaron, Berelson, Will, Cooperdock, Emily HG, Bottjer, David, Corsetti, Frank</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 56, 405114</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Unveiling Hosts for Nitrogen Transportation and Storage in Meta-Serpentinites</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Bonilla, Ailani, Grabiec, Justine G, Cooperdock, Emily HG, Bustos Moreno, Juan Felipe, Celestian, Aaron, Mallik, Ananya, Bebout, Gray E</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2024(3132), V41B-3132</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Nitrogen in Ultramafic and Sedimentary MÉLANGE Matrices and its Implications for Subduction Zone Nitrogen Budgets</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Grabiec, Justine, Bonilla, Ailani, Cooperdock, Emily HG, Bustos-Moreno, Juan Felipe, Rebaza, Anna M, Mallik, Ananya, Bebout, Gray E, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 56, 403278</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Tracking Composition of Searles Lake Brines and Mineral Fluid Inclusions with Progressive Evaporation via Raman and Laser Induced Breakdown Spectroscopy</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Nguyen, Melonie, Celestian, Aaron, Perl, Scott M, Corsetti, Frank</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 56, 404422</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Beyond the Stones: the Transformative Impact of Mineral Collections at the Natural History Museum of LOS Angeles County</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Leftwich, Kristin, Kampf, Anthony R, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 56, 404729</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Characterization of mineral fabrics, biofabrics, and channel architecture in incipient microbialites may explain texture in ancient equivalents</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cassady, Victoria, Petryshyn, Victoria A, Bernhard, Joan M, Hofmann, Florian, Celestian, Aaron, Berelson, William, Cooperdock, Emily HG, Bottjer, David J, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2024, B53J-08</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Biology of Biosignature Detection: Rationale and Experimental Frameworks for Biological Validation</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott, Cockell, Charles, Fischer, Woodward, Sharma, Sunanda, Drake, Henrik, Lloyd, Karen, Karunatillake, Suniti, Wilhelm, Mary Beth, Foreman, Christine, Corsetti, Frank</p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2023 (10 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Rare Earth: Crystalline Treasures—Exhibition at the Santa Barbara Museum of Natural History</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Rocks & Minerals, 98(2), 148-159</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: Arsenic and Lead</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 108(3), 634-636</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Micro-elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature and Remnant of a Lithification Mechanism</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cassady, Victoria C, Levene, Dylan R, Celestian, Aaron J, Petryshyn, Victoria A, Berelson, William M, Rasmussen, Kalen, Stevenson, Bradley S, Spear, John, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Goldschmidt 2023 Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Microbial Pigment Robustness in Martian and Ocean Worlds Brines and Evaporites</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Celestian, AJ, Cockell, CS, Corsetti, FA, Basu, C, Nisson, DM, Garner, M, Valera, J, Javier, BM</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>54th Lunar and Planetary Science Conference, 2806, 2434</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Detection and Preservation of Extremophile Biosignatures in Lithium-Bearing Evaporites for Life Detection</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Javier, BM, Perl, SM, Basu, C, Fischer, W, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>54th Lunar and Planetary Science Conference, 2806, 2825</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: Heavy metal and minerals from China</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 108(10), 1993-1994</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Rate-Dependent Preservation of Psychrotolerant Halophiles within Cryobrine Systems</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Cockell, CS, Celestian, AJ, Javier, BJ, Basu, C</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Brines Across the Solar System: Ancient and Future Brines, 2689, 2041</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Biosignature Preservation Potential of Li-Containing Hypersaline Environments</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Javier, BM, Perl, SM, Basu, C, Fischer, W, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Brines Across the Solar System: Ancient and Future Brines, 2689, 2018</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Examining Fe-Cycling in Microbial Mats as a Lithification Mechanism</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Petryshyn, Victoria, Berelson, Will, Spear, John, Cassady, Victoria, Levene, Dylan, Stevenson, Bradley, Rasmussen, Kalen L, Yang, Shun-Chung, John, Seth, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 55, 393626</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Micro-Elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature and Remnant of a Lithification Mechanism</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Rasmussen, Kalen, Levene, Dylan R, Celestian, Aaron J, Petryshyn, Victoria A, Berelson, William M, Cassady, Victoria C, Stevenson, Bradley S, Spear, John, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Thirty-third Annual Goldschmidt Conference, 20694</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2022 (14 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Assessing the origin of pisoids within a travertine system in the border of Puna Plateau, Argentina</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Mors, R Agustin, Gomez, Fernando J, Astini, Ricardo A, Celestian, Aaron J, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Sedimentology, 69(3), 1252-1275</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Relianceite-(K), a new phosphate–oxalate mineral related to davidbrownite-(NH4) from the Rowley mine, Arizona, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Ma, Chi, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 86(4), 539-547</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Dendoraite-(NH4), a new phosphate–oxalate mineral related to thebaite-(NH4) from the Rowley mine, Arizona, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Ma, Chi, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 86(4), 531-538</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: Alteration Products</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 107(2), 318-320</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Rapid phase identification of apatite and zircon grains for geochronology using X-ray micro-computed tomography</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cooperdock, Emily HG, Hofmann, Florian, Tibbetts, Ryley MC, Carrera, Anahi, Takase, Aya, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geochronology, 4(2), 501-515</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: High-Pressure and Precious Minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 107(4), 778-780</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Flaggite, Pb4Cu2+ 4Te6+ 2 (SO4) 2O11 (OH) 2 (H2O), a new mineral with stair-step-like HCP layers from Tombstone, Arizona, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Mills, Stuart J, Celestian, Aaron J, Ma, Chi, Yang, Hexiong, Thorne, Brent</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 86(3), 397-404</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Diagenesis and Subsurface Habitable Environments I Online Session</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Sheppard, Rachel, Perl, Scott M, Celestian, Aaron J, Horgan, Briony HN, Potter-McIntyre, Sally L</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2022 Astrobiology Science Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evidence for benthic oxygen production in Neoarchean lacustrine stromatolites</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Wilmeth, Dylan T, Lalonde, Stefan V, Berelson, William M, Petryshyn, Victoria, Celestian, Aaron J, Beukes, Nicolas J, Awramik, Stanley M, Spear, John R, Mahseredjian, Taleen, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geology, 50(8), 907-911</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Geobiological impacts of Earth’s early complex bioturbators during the Ediacaran-Cambrian transition</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cribb, Alison T, van de Velde, Sebastiaan, Celestian, Aaron J, Berelson, William M, Bottjer, David J, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2022 Goldschmidt Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: Hydrous Minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 107(8), 1656-1658</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Rapid phase identification of apatite and zircon grains for geochronology using micro-computed tomography</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cooperdock, Emily HG, Hofmann, Florian, Collins, Ryley M, Carrera, Anahi, Takase, Aya, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2022 Goldschmidt Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Biogenic stromatolites as lacustrine oxygen oases~ 2.7 Ga: synthesizing textural and geochemical data</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Wilmeth, Dylan T, Lalonde, Stefan V, Berelson, William M, Petryshyn, Victoria A, Celestian, Aaron J, Beukes, Nicolas, Awramik, Stanley, Spear, John, Mahseredjian, Taleen, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2022 Goldschmidt Conference</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Biogenic Stromatolites as Lacustrine Oxygen Oases~ 2.7 Ga: Synthesizing Textural and Geochemical Data</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lalonde, Stefan V, Wilmeth, Dylan T, Petryshyn, Victoria A, Berelson, William M, Celestian, Aaron J, Beukes, Nicolas, Awramik, Stanley, Spear, John, Mahseredjian, Taleen, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Thirty-second Annual Goldschmidt Conference, 10982</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2021 (12 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Jasonsmithite, a new phosphate mineral with a complex microporous framework, from the Foote mine, North Carolina, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 106(2), 174-179</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Thebaite-(NH4),(NH4, K) 3Al (C2O4)(PO3OH) 2 (H2O), a new phosphate–oxalate mineral from the Rowley mine, Arizona, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 85(3), 379-386</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Geochemistry of Chromium-Silicate Minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Dall, Jacqueline, Oze, Christopher, Celestian, Aaron, Rossman, George</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Plastic ingestion by freshwater turtles: a review and call to action</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Clause, Adam G, Celestian, Aaron J, Pauly, Gregory B</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Scientific Reports, 11(1), 5672</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Comparison of Microporous Minerals for Potential Contaminant Uptake</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Osorio, Marvin, Oze, Christopher, Celestian, Aaron</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Salty Environments: The importance of evaporites and brine environments as habitats and preservers of biosignatures</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott, Adeli, Solmaz, Basu, Chhandak, Baxter, Bonnie K, Bowman, Jeff, Boyd, Eric, Cable, Morgan, Celestian, Aaron J, Cockell, Charles S, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Bulletin of the American Astronomical Society, 53(4), 240</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Allantoin and natrosulfatourea, two new bat-guano minerals from the Rowley mine, Maricopa County, Arizona, USA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Canadian Mineralogist, 59(3), 603-616</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>A proposed geobiology-driven nomenclature for astrobiological in situ observations and sample analyses</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Celestian, Aaron J, Cockell, Charles S, Corsetti, Frank A, Barge, Laura M, Bottjer, David, Filiberto, Justin, Baxter, Bonnie K, Kanik, Isik, Potter-McIntyre, Sally</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Astrobiology, 21(8), 954-967</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Preservation of Dynamic Biological Processes from Extant Halophilic Life: In-Situ Lessons Learned from Planetary Analogue Brines and Evaporites</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Celestian, AJ, Cockell, CS, Basu, C, Filiberto, J, Potter-McIntyre, S, Olsson-Francis, K, Schwenzer, SP, Crandall, JR, Baxter, BK</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Brines in the Solar System: Modern Brines, 2614, 6048</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New Mineral Names: Diamonds, Dumps, and Fumaroles</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 106(12), 2028-2030</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mineralogy and History of Semi-Precious Gemstones on the Borghese-Windsor Cabinet</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Heginbotham, Arlen, Ehlmann, Bethany, Greenberger, Rebecca N, Morgan, Alyssa</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 53, 368743</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Classification of Iron (oxy) hydroxides and Sulfides Using Mission-Ready Spectroscopic Techniques and Machine Learning</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lamm, Sarah, Rodriguez, Laura E, Rodriguez, Laura E, Shepard, Rachel Y, Shepard, Rachel Y, Perl, Scott M, Perl, Scott M, Celestian, Aaron J, Celestian, Aaron J, Barge, Laura M</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 53, 368733</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2020 (3 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Examining the role of Fe-cycling in microbial mat lithification and stromatolite abundance through Earth history</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Corsetti, Frank A, Berelson, William, Celestian, Aaron J, John, PS, Petryshyn, Victoria A, Rasmussen, Kalen, Spear, John R, Stevenson, Bradley S, Yang, Shun-Chung</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2020, PP013-01</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New emerald locality in Southern California</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>COLORED STONES AND ORGANIC MATERIALS.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Edley, Richard</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Gems & Gemology, 56(4)</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2019 (17 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Neoarchean (2.7 Ga) lacustrine stromatolite deposits in the Hartbeesfontein Basin, Ventersdorp Supergroup, South Africa: implications for oxygen oases</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Wilmeth, DT, Corsetti, FA, Beukes, NJ, Awramik, SM, Petryshyn, Victoria, Spear, JR, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Precambrian Research, 320, 291-302</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ Cs and H exchange into gaidonnayite and proposed mechanisms of ion diffusion</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Lively, Jason, Xu, Wenqian</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic Chemistry, 58(3), 1919-1928</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Aragonite dissolution kinetics and calcite/aragonite ratios in sinking and suspended particles in the North Pacific</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Dong, Sijia, Berelson, William M, Rollins, Nick E, Subhas, Adam V, Naviaux, John D, Celestian, Aaron J, Liu, Xuewu, Turaga, Nitya, Kemnitz, Nathaniel J, Byrne, Robert H</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Earth and Planetary Science Letters, 515, 1-12</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Chemical Biomarker Robustness in Martian Planetary Analogue Evaporite Mineralogy</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Celestian, Aaron J, Baxter, BK, Tasoff, Preston</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>50th Annual Lunar and Planetary Science Conference(2132), 2930</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Camanchacaite, chinchorroite, espadaite, magnesiofluckite, picaite and ríosecoite: six new hydrogen-arsenate minerals from the Torrecillas mine, Iquique Province, Chile</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Nash, Barbara P, Celestian, Aaron J, Dini, Maurizio, Molina Donoso, Arturo A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mineralogical Magazine, 83(5), 655-671</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance Determination</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Heginbotham, Arlen, Greenberger, Rebecca, Ehlmann, Bethany, Samanta, Bibek, Morgan, Alyssa, Mamedov, Sergey, O'Donnell, Bridget</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Phoxite,(NH4) 2Mg2 (C2O4)(PO3OH) 2 (H2O) 4, the first phosphate-oxalate mineral</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 104(7), 973-979</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mineral preservation and photoprotective attributes of halophilic bacteria and archaea in modern and Permian lakebed environments.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Studia Universitatis Babeş-Bolyai, Biologia, 64(1)</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mineral preservation and photoprotective attributes of halophilic organisms in planetary analogue lake bed environments (Screen 2)</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Baxter, Bonnie, Celestian, Aaron J, Cockell, Charles S, Sessions, Alex L, Tasoff, Preston, Crucilla, Sarah Josephine, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Astrobiology Science Conference (AbSciCon) 2019, 333-292</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Uppermost Triassic phosphorites from Williston Lake, Canada: link to fluctuating euxinic-anoxic conditions in northeastern Panthalassa before the end-Triassic mass extinction</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Zonneveld, John-Paul, Celestian, Aaron J, Bailey, Jake V</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Scientific Reports, 9(1), 18790</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Pressure-induced hydration and formation of bilayer ice in nacrite, a kaolin-group clay</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Hwang, Huijeong, Choi, Jinhyuk, Liu, Zhenxian, Kim, Duck-Young, He, Yu, Celestian, Aaron J, Vogt, Thomas, Lee, Yongjae</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ACS Earth and Space Chemistry, 4(2), 183-188</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Hypersaline and Sedimentological Advantages on the Preservation of Extant Biological Activity in Modern Martian Analogue Settings</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Baxter, BK, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Mars Extant Life: What's Next?, 2108, 5031</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Photobiology and Biogenic Preservation Comparisons Between Pleistocene Evaporite Beds and Buried Permian Brines</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, SM, Baxter, BK, Celestian, AJ, Cockell, CS, Sessions, AL, Tasoff, P, Crucilla, SJ, Corsetti, FA</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The First Billion Years: Habitability, 2134, 1034</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Unlocking the Collections: getting comfortable with next-level access to museum minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Authorea Preprints</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Locking away toxic metals into tiny holes</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Authorea Preprints</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Relevance of Hydrothermal Spherules in Astrobiological Exploration of Rocky Planets</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cady, Sherry L, Carrizo, Daniel, Sánchez-García, Laura, Sobron, Pablo, Perl, Scott M, Demergasso, Cecilia, Kendall, Shana L, Celestian, Aaron J, Sarrazin, Philippe, Cabrol, Nathalie A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Astrobiology Science Conference (AbSciCon) 2019, 321-227</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The Record of Environmental Change in Northeastern Panthalassa Directly Preceding the End-Triassic Mass Extinction Event</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Berelson, William M, Zonneveld, John-Paul, Celestian, Aaron J, Bailey, Jake V, West, A Joshua, Yager, Joyce A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 51, 340665</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2018 (10 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Preliminary results from Laguna Minucúa: a potentially annually resolved record of climate and environmental change for the past∼ 5000 years in the Mixteca Alta of Oaxaca, Mexico</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Goman, Michelle, Joyce, Arthur, Lund, Steve, Pearson, Charlotte, Guerra, William, Dale, Darren, Hammond, Douglas E, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Quaternary International, 469, 85-95</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Barwoodite, Mn2+ 6 (Nb5+,□) 2 (SiO4) 2 (O, OH) 6, a New Member of the Welinite Group from Granite Mountain, Arkansas</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Canadian Mineralogist, 56(5), 799-809</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Permian evaporite preservation of chemical biomarkers: Implications for in-situ hydrated mineral and hypersaline brine systems</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott, Vaishampayan, Parag, Cockell, Charles, Seuylemezian, Arman, Celestian, Aaron, Baxter, Bonnie, Corsetti, Frank</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>42nd COSPAR Scientific Assembly, 42, F3-6</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Investigation of Laminae Formation in Eocene Green River Formation Stromatolites Through Combined Micro-X-Ray Fluorescence Spectroscopy and Petrography</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Mahseredjian, Taleen, Frantz, Carie, Celestian, Aaron J, Paradis, Olivia Piazza, Berelson, William, Petryshyn, Victoria A, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2018, PP41E-1900</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In Situ Aragonite Dissolution in North Pacific: Rate and Role in Modern Ocean Carbon Budget</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Dong, Sijia, Rollins, Nick, Subhas, Adam, Naviaux, John, Celestian, Aaron J, Adkins, Jess F, Kemnitz, Nathaniel James, Adkins, Jess F, Berelson, William</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Geophysical Union, Ocean Sciences Meeting(456), OC24B-0456</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Heginbotham, Arlen, Greenberger, Rebecca, Ehlmann, Bethany, Samanta, Bibek, Morgan, Alyssa, Mamedov, Sergey</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Gems & Gemology, 54(3)</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Integrated Optical, Micro-Raman and Compositional Analysis of Rock Samples from Former Talc Mines in the Gouverneur Mining District, New York</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">McNamee, Brittani D, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 50, 322067</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Evidence for Rapid Rates of Oxygenic Photosynthesis Within Neoarchean Stromatolites</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Wilmeth, Dylan T, Corsetti, Frank A, Berelson, William M, Beukes, Nicolas J, Awramik, Stanley M, Petryshyn, Victoria A, Spear, John R, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 50, 318717</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Genesis of Upper Triassic Phosphatic Ooid Beds from Williston Lake, Canada: Microbial or Abiotic Mineralization?</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Celestian, Aaron J, Zonneveld, John-Paul</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 50, 321035</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>A New Study on PIC Dissolution and Sinking Fluxes, Concentrations and Calcite/Aragonite Ratios in the North Pacific</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Dong, Sijia, Celestian, Aaron, Turaga, Nitya, Rollins, Nick, Naviaux, John, Subhas, Adam, Adkins, Jess, Berelson, Will</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Twenty-eighth Annual Goldschmidt Conference, 591</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2017 (3 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Rowleyite,[Na (NH4, K) 9Cl4][V25+, 4+(P, As) O8] 6⋅ n [H2O, Na, NH4, K, Cl], a new mineral with a microporous framework structure</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kampf, Anthony R, Cooper, Mark A, Nash, Barbara P, Cerling, Thure E, Marty, Joe, Hummer, Daniel R, Celestian, Aaron J, Rose, Timothy P, Trebisky, Thomas J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 102(5), 1037-1044</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Geobiological Comparisons of Preservation Potential within Hypersaline Mineral-Microbe Systems</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Perl, Scott M, Celestian, Aaron J, Vaishampayan, Parag, Seuylemezian, Arman, Mahseredjian, Taleen, Baxter, Bonnie, Corsetti, Frank A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2017, P41B-2838</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Raman and FTIR spectroscopy of methane in olivine</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Smith, Annika, Oze, Christopher, Rossman, George R, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2017, V43C-0545</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2016 (6 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Structure determination and time-resolved raman spectroscopy of yttrium ion exchange into microporous titanosilicate ETS-4</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Chappell, Caleb J, Rucks, Melinda J, Norris, Pauline</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic Chemistry, 55(21), 11057-11063</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Potential Evidence for Arsenic Mineralization in Mussel Shells in the Upper Green River Basin, Kentucky</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Turner, Autumn, Groves, Chris, Celestian, Aaron, Meier, Albert</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Mineralogical Crystallography</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Valdez, Nichole</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>66th Annual Meeting</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In Situ Ion Exchange in Nanoporous Zirconium Silicates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lively, Jason, Celestian, Aaron, Yan, Bangbo</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>66th Annual Meeting</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Interlaboratory and cross-instrument comparison of Raman spectra of 96 minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Dyar, MD, Breitenfeld, LB, Carey, CJ, Bartholomew, P, Tague Jr, TJ, Wang, P, Mertzmann, S, Byrne, SA, Crowley, MC, Leight, C</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Lunar Planet. Sci, 46, 2240</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Using Raman Spectroscopy to Analyze Oxygen Isotope Ratios in Calcite Speleothems</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Koostra, Caleb, Polk, Jason, Celestian, Aaron J, Lively, Jason, Ouellette, Gilman Reno</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts, 48, 281303</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2015 (1 publication)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Measurements of light-absorbing particles on the glaciers in the Cordillera Blanca, Peru</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Schmitt, Carl G, All, John D, Schwarz, JP, Arnott, W Patrick, Cole, RJ, Lapham, E, Celestian, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Cryosphere, 9(1), 331-340</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2014 (5 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Self-assembled hybrid solids of luminescent Ru (II) polypyridyl complexes and polyoxometalates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Yan, Bangbo, Li, Yanfen, Calhoun, Steven R, Cottrell, Nicholas G, Lella, Divya Jyothi, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic Chemistry Communications, 43, 23-26</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Linking remote and in-situ detection of black carbon on tropical glaciers</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Schmitt, Carl G, All, John, Cole, Rebecca J, Celestian, Aaron, Arnott, W Pat</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Photogramm Eng Remote Sens, 80(5), 385-390</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Measurements of light absorbing particulates on the glaciers in the Cordillera Blanca, Peru.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Schmitt, CG, All, JD, Schwarz, JP, Arnott, WP, Cole, RJ, Lapham, E, Celestian, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Cryosphere Discussions, 8(5)</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Measurements of Light Absorbing Particles on Tropical South American Glaciers</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Schmitt, Carl G, All, John, Schwarz, Joshua Peter, Arnott, William P, Warthon, Julio, Andrade, Marcos, Celestian, Aaron J, Hoffmann, Dirk, Cole, Rebecca J, Lapham, Ellen</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2014, C24A-06</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Modeling the Crystal Structure and Ion Exchange Mechanisms in Zorite Using Time-Resolved Raman Spectroscopy</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Chappell, Caleb</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Twenty-fourth Annual Goldschmidt Conference, 368</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2013 (5 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ Raman spectroscopic study of transient polyhedral distortions during cesium ion exchange into sitinakite</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Powers, Michael, Rader, Shelby</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 98(7), 1153-1161</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>GEOCHEMICAL AND MINERALOGICAL ANALYSIS OF CAVE DEPOSITS TO RECONSTRUCT CLIMATE CHANGE IN BARBADOS FOR WATER RESOURCE MANAGEMENT</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">NEEPER, Lowell, POLK, Jason, OUELLETTE Jr, Gilman Reno, CELESTIAN, Aaron J, ASMEROM, Yemane, POLYAK, Victor J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2013 GSA Annual Meeting in Denver</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Synthesis and ion exchange studies of porous nano-crystalline materials</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Bulletin of the American Physical Society, 58</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Analysis of Fiber Structure in a Concrete Matrix from EBS Coupled to Raman Spectra</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Andrew, Keith, Palmquest, Shane, Kintzel, Edward, Celestian, Aaron, Arbuckle, Gregory, Palmer, Jahi</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Bulletin of the American Physical Society, 58</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>A Novel Multiproxy Approach to High-resolution Speleothem Paleoclimate Reconstruction in the Caribbean Region During the Late Holocene</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Polk, J, Ouellette, G, Celestian, AJ, Kintzel, E, Cole, J, Asmerom, Y, Polyak, VJ, Durkee, J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2013, PP23D-02</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2012 (7 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>IDENTIFYING TYPES OF ZONING IN MINERALS USING RAMAN MICROSCOPY</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">FLYNN, Elaine D, WULFF, AH, CELESTIAN, Aaron J, RUCKS, Melinda J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts with Programs,, 44(4), 68</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Effects of hydration during strontium exchange into nanoporous hydrogen niobium titanium silicate</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kramer, Samantha, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic chemistry, 51(11), 6251-6258</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Synthesis and characterization of two-and three-dimensional calcium coordination polymers built with benzene-1, 3, 5-tricarboxylate and/or pyrazine-2-carboxylate</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Vakiti, Raj Kishore, Garabato, Brady D, Schieber, Natalie P, Rucks, Melinda J, Cao, Yan, Webb, Cathleen, Maddox, Jeremy B, Celestian, Aaron, Pan, Wei-Ping, Yan, Bangbo</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Crystal growth & design, 12(8), 3937-3943</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>OPTICAL, RAMAN, AND MORPHOLOGICAL CHARACTERIZATION OF ROCK THIN SECTIONS FROM THE ARNOLD PIT FORMER TALC MINE NEAR BALMAT, NEW YORK FOR ASBESTIFORM MINERALS</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">CELESTIAN, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geological Society of America Abstracts with Programs, 44(7), 161</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>New measurements of particulates in glacial snow and ice in the Cordillera Blanca mountains of Peru</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">All, John, Schmitt, Carl, Celestian, Aaron J, Rucks, Melinda, Arnott, William P, Cole, Rebecca</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2012, GC11A-0970</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Using confocal Raman spectroscopy to analyze nitrate structure at and near the air-water interface</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Shockley, Heather C, Nee, Matthew J, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 243</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Heavy Metal Sequestration in Nanoporous Minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron, Powers, Michael, Rader, Shelby</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Twenty-second Annual Goldschmidt Conference, 1554</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2011 (1 publication)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ X-ray diffraction study of cesium exchange in synthetic umbite</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Fewox, Christopher S, Clearfield, Abraham, Celestian, Aaron J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic Chemistry, 50(8), 3596-3604</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2010 (6 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Crystal growth and ion exchange in titanium silicates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Parise, John B, Clearfield, Abraham</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>, 1637-1662</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>IN SITU X-RAY DIFFRACTION STUDY OF CS+ ION EXCHANGE IN UMBITE</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">CELESTIAN, Aaron J, CLEARFIELD, Abraham, FEWOX, Christopher</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2010 GSA Denver Annual Meeting</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Cs sequestration into a microporous gallosilicate framework</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Leftwich, KM, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>GEOCHIMICA ET COSMOCHIMICA ACTA, 74(12), A577-A577</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The mechanisms of Sr ion exchange into partially niobium substituted sitinakite</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kramer, Samantha, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Twentieth Annual Goldschmidt Conference, 538</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Springer Handbook of Crystal Growth</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Parise, JB, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Dhanaraj, G, 1637-1632</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Cesium Sequestration into a Microporous Gallosilicate Framework</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Leftwich, Kristin, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Twentieth Annual Goldschmidt Conference, 577</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2008 (4 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Kubicki, James D, Hanson, Jonathon, Clearfield, Abraham, Parise, John B</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of the American Chemical Society, 130(35), 11689-11694</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Time-resolved structural characterization of microporous silicotitanates and niobium silicotitanates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron Joseph</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Dissertation Abstracts International, 69(10)</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Strontium ion exchange mechanism in synthetic sitinakite from time resolved studies</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Kramer, S, Celestian, AJ</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2008, V13A-2107</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>eld and JB Parise</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Kubicki, JD, Hanson, J, Clear, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>J. Am. Chem. Soc, 130, 11689-11694</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2007 (5 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Similarities in 2-and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Michel, FM, Ehm, L, Liu, G, Han, WQ, Antao, SM, Chupas, PJ, Lee, PL, Knorr, Karsten, Eulert, H, Kim, J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Chemistry of Materials, 19(6), 1489-1496</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Role of the Hydroxyl− Water Hydrogen-Bond Network in Structural Transitions and Selectivity toward Cesium in Cs0. 38 (D1. 08H0. 54) SiTi2O7⊙(D0. 86H0. 14) 2O Crystalline Silicotitanate</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Parise, John B, Smith, Ronald I, Toby, Brian H, Clearfield, Abraham</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic Chemistry, 46(4), 1081-1089</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>The origin of ion exchange selectivity in a porous framework titanium silicate</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Clearfield, Abraham</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of Materials Chemistry, 17(46), 4839-4842</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Dehydration-induced water disordering in a synthetic potassium gallosilicate natrolite</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Lee, Yongjae, Kim, Sun Jin, Bull, Ivor, Celestian, Aaron J, Parise, John B, Kao, Chi-Chang, Vogt, Thomas</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of the American Chemical Society, 129(44), 13744-13748</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Technical Report: Growth of Environmental Science at the NSLS</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Northrup, Paul, Lanzirotti, Antonio, Celestian, Aaron</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Synchrotron Radiation News, 20(3), 6-13</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2006 (5 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Solid-state structural characterization of a rigid framework of lacunary heteropolyniobates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Nyman, May, Celestian, Aaron J, Parise, John B, Holland, Gregory P, Alam, Todd M</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic chemistry, 45(3), 1043-1052</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ type study of hydrothermally prepared titanates and silicotitanates</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Clearfield, A, Tripathi, A, Medvedev, D, Celestian, AJ, Parise, JB</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Journal of materials science, 41(5), 1325-1333</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Influence of hydroxyl-water interaction on structural transformations during Cs+ exchange in microporous H-CST</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Parise, JB, Narayan, J, Kubicki, JD, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Geochimica et Cosmochimica Acta, 70(18), A91</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Temperature stability of a molecular sieve crystalline silicotitanate with the mineral sitinakite topology</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Galloway, Melissa M, Celestian, Aaron J, Parise, John B, Clearfield, Abraham, Perry, Houston P</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Abstracts of Papers of the American Chemical Society, 231</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>GEOC 133-Size and structure of ferrihydrite from PDF analysis</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Michel, F Marc, Antao, Sytle M, Celestian, Aaron J, Schoonen, Martin A, Parise, John B, Liu, Gang, Strongin, Daniel R, Lee, Peter L, Chupas, Peter J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 232</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2005 (7 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>High-pressure neutron diffraction study of superhydrated natrolite</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Colligan, Marek, Lee, Yongjae, Vogt, Thomas, Celestian, Aaron J, Parise, John B, Marshall, William G, Hriljac, Joseph A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>The Journal of Physical Chemistry B, 109(39), 18223-18225</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Optimizing synthesis of Na2Ti2SiO7· 2H2O (Na-CST) and ion exchange pathways for Cs0. 4H1. 6Ti2SiO7· H2O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Medvedev, DG, Tripathi, A, Parise, JB, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms, 238(1-4), 61-69</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Tribasic lead maleate and lead maleate: Synthesis and structural and spectroscopic characterizations</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Bonhomme, François, Alam, Todd M, Celestian, Aaron J, Tallant, David R, Boyle, Timothy J, Cherry, Brian R, Tissot, Ralph G, Rodriguez, Mark A, Parise, John B, Nyman, May</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Inorganic chemistry, 44(21), 7394-7402</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Tribasic lead maleate and lead maleate: synthesis, structural and spectroscopic characterizations.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Rodriguez, Mark Andrew, Celestian, Aaron J, Cherry, Brian Ray, Bonhomme, Francois R, Parise, John B, Alam, Todd Michael, Nyman, May Devan, Tallant, David Robert, Boyle, Timothy J</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ neutron and X-ray scattering studies of Cs+ ion exchange sequestration into the crystalline silicotitanate (CST) molecular sieve</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Parise, JB, Smith, RI, Park, HS, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 230, U1769-U1770</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Optimizing synthesis of Na {sub 2} Ti {sub 2} SiO {sub 7}. 2H {sub 2} O (Na-CST) and ion exchange pathways for Cs {sub 0.4} H {sub 1.6} Ti {sub 2} SiO {sub 7}. H {sub 2} O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Medvedev, DG, Tripathi, A, Parise, JB, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Nuclear Instruments and Methods in Physics Research. Section B, Beam Interactions with Materials and Atoms, 238</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Optimizing synthesis of Na2Ti2SiO7 center dot 2H (2) O (Na-CST) and ion exchange pathways for Cs0. 4H1. 6Ti2SiO7 center dot H2O (Cs-CST) determined from in situ synchrotron X-ray powder diffraction</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, AJ, Medvedev, DG, Tripathi, A, Parise, JB, Clearfield, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Nuclear Instruments & Methods in Physics Research Section B-Beam Interactions with Materials and Atoms, 238(1-4), 61-69</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2004 (5 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Time-Resolved Diffraction Studies of Ion Exchange: K+ and Na+ Exchange into (Al, Ge) Gismondine (GIS) Na24Al24Ge24O96⊙ 40H2O and K8Al8Ge8O32⊙ 8H2O</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Parise, John B, Goodell, Carmen, Tripathi, Akhilesh, Hanson, Jonathan</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Chemistry of materials, 16(11), 2244-2254</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Crystallization of sodium titanium silicate with sitinakite topology: Evolution from the sodium nonatitanate phase</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Medvedev, Dmitri G, Tripathi, Akhilesh, Clearfield, Abraham, Celestian, Aaron J, Parise, John B, Hanson, Jonathan</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Chemistry of materials, 16(19), 3659-3666</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ X-ray diffraction study of Cs ion exchange into H-TS</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, MEDVEDEV, Dmitri G, TRIPATHI, Akhilesh, PARISE, John B, CLEARFIELD, Abraham</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>2004 Denver Annual Meeting</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Synchrotron time resolved X-ray diffraction of Cs exchange into molecular sieve H-CST.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Medvedev, D, Tripathi, A, Parise, JB, Clearfield, A, Hanson, JC</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 227, U1515-U1515</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Time resolved diffraction studies on titanosilicate with mineral sitinakite topology: From crystallization to ion-exchange.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Medvedev, D, Tripathi, A, Clearfield, A, Celestian, AJ, Parise, JB, Hanson, JC</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 227, U1235-U1235</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2003 (3 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Phosphor imaging as a tool for in situ mapping of ppm levels of uranium and thorium in rocks and minerals</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Cole, Jennifer M, Nienstedt, Jessica, Spataro, Glenn, Rasbury, E Troy, Lanzirotti, Antonio, Celestian, Aaron J, Nilsson, Melanie, Hanson, Gilbert N</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Chemical Geology, 193(1-2), 127-136</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>(K4Li4) Al8Ge8O32· 8H2O: an Li^+-exchanged potassium aluminogermanate with the zeolite gismondine (GIS) topology</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron J, Parise, John B, Tripathi, Akhilesh, Kvick, Åke, Vaughan, Gavin MB</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>Crystal Structure Communications, 59(8), i74-i76</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>In situ synchrotron X-ray structural studies of crystal growth and ion exchange in tunnel-type titanosilicates.</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Tripathi, A, Medvedev, D, Clearfield, A, Celestian, AJ, Parise, JB, Nyman, M, Hanson, J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY, 225, U93-U94</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2002 (3 publications)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>A new polymorph of eucryptite (LiAlSiO4), ε-eucryptite, and thermal expansion of α-and ε-eucryptite at high pressure</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Zhang, Jianzhong, Celestian, Aaron, Parise, John B, Xu, Hongwu, Heaney, Peter J</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 87(4), 566-571</em></p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Ion Exchange of (KAlGeO32. 8H2O) and (Na24Al24Ge24O96. 40H2O) Gismondine</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Celestian, Aaron Joseph</p>
-</div>
-
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>INSTABILITY OF BETA-EUCRYPTITE UNDER PRESSURE AND THERMAL EXPANSION OF E-LIALSIO4 AT 1.9 GPA</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Zhang, Jn, CELESTIAN, A, PARISE, J, XU, H, HEANEY, P</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>American Mineralogist, 877(BNL-74038-2005-JA)</em></p>
-</div>
-
-<h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">2001 (1 publication)</h3>
-<div class="cv-item">
-    <p style="margin-bottom: 0.25rem;"><strong>Phase Transformations in the GIS Structure upon Ion Exchange</strong></p>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Parise, J, Goodell, C, Celestian, A, Trpathi, A</p>
-    <p style="font-size: 0.9rem; color: #666;"><em>AGU Fall Meeting Abstracts, 2001, V32A-0956</em></p>
-</div>
-
-
-
-                <h2 class="cv-heading">Media & Outreach</h2>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1rem; margin-bottom: 0.75rem;">Blog & Podcast</h3>
-                <ul class="cv-list">
-                    <li><strong>Pocketful of Xtals</strong> - Host & Creator (Substack, Spotify, Apple Podcasts, iHeart)</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Television</h3>
-                <ul class="cv-list">
-                    <li><strong>The UnXplained</strong> - History Channel (TV Series, 2020–2023, 3 episodes)
-                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                            <li>S1E14 "Mysterious Stones" (2020)</li>
-                            <li>S5E3 "Curses Unleashed" (2023)</li>
-                            <li>S5E7 "Sacred Rituals" (2023)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Expedition Unknown: Legend of the Crystal Skull</strong> - Discovery Channel (2019)</li>
-                    <li><strong>Spectrum News 1</strong> - Lead contamination expert</li>
-                    <li><strong>Univision</strong> - Interview</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Film & Museum Video</h3>
-                <ul class="cv-list">
-                    <li><strong>The Color of Ink</strong> - Consulting Geologist (2022)</li>
-                    <li><strong>Behind the Scenes with Mineral Sciences</strong> - NHMLAC (2017)</li>
-                    <li><strong>Diamonds: Rare Brilliance Exhibition Walkthrough</strong> - NHMLAC, with Elena Manferdini (2017)</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Radio</h3>
-                <ul class="cv-list">
-                    <li><strong>NPR TakeTwo</strong></li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Print Media</h3>
-                <ul class="cv-list">
-                    <li><strong>Eos (AGU Earth and Space Science News)</strong> - Featured scientist analyzing ash samples from 2025 California wildfires</li>
-                    <li><strong>New York Times</strong> - Parenting Section: The Trouble With Amber Teething Necklaces</li>
-                    <li><strong>National Geographic</strong> - Rarest Form of Gold</li>
-                    <li><strong>Reuters</strong> - Mystery black diamonds 'The Enigma' (also featured in BBC, NASDAQ, Livemint, Yahoo, Taipei Times)</li>
-                    <li><strong>LA Times</strong> - Plants section</li>
-                    <li><strong>Prospering Backyards</strong> - Cover Story</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Mineral & Gem Societies</h3>
-                <ul class="cv-list">
-                    <li><strong>Tucson Fine Mineral Gallery</strong> - Tucson Gem & Fine Mineral Show, February 4, 2026: "Beyond the Display Case: How Modern Mineralogy is Fighting Disease"</li>
-                    <li><strong>Tucson Fine Mineral Gallery</strong> - Tucson Gem & Fine Mineral Show, February 2025</li>
-                    <li><strong>Mineral Talks LIVE</strong> - Episode 66, October 2022</li>
-                    <li><strong>Mineralogical Society of Southern California (MSSC)</strong> - Zoom, April 9, 2021: "The Lithium Gold Rush"</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Professional Symposia</h3>
-                <ul class="cv-list">
-                    <li><strong>Mineralogical Society of America (MSA) Centennial Symposium</strong> - "Unlocking the Collections: Making Minerals Accessible in the Next 100 Years" (with Kim Tait, Royal Ontario Museum)</li>
-                    <li><strong>Sinkankas Symposium, GIA</strong> - "Using Gems to Illuminate Art and Science"</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Civic & Community</h3>
-                <ul class="cv-list">
-                    <li><strong>Rotary Club of Beverly Hills</strong> - Beverly Hills Hotel, Monday luncheon, March 23, 2026</li>
-                    <li><strong>Adventurers' Club of Los Angeles</strong> - February 29, 2024: "Searching for Life Deep Underground"</li>
-                    <li><strong>Dahlia Heights Elementary</strong> - Career Day keynote (date TBD)</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Art & Interdisciplinary</h3>
-                <ul class="cv-list">
-                    <li><strong>NAHR (Nature, Art & Habitat Residency)</strong> - Multiple talks, international program based in Taleggio Valley, Italy / Santa Ynez, CA; minerals-themed programming 2025–2026</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">GIA / Industry</h3>
-                <ul class="cv-list">
-                    <li><strong>GIA Los Angeles Chapter</strong> - "A Night Among Gems" (date TBD)</li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Museum Programs (NHMLAC)</h3>
-                <ul class="cv-list">
-                    <li><strong>Meet the Scientist</strong> - Video series</li>
-                    <li><strong>Happy Hour with Dr. Celestian</strong></li>
-                    <li><strong>Members Q&A</strong> - February 11, 2021 (Zoom)</li>
-                    <li><strong>Mineral Talks LIVE</strong></li>
-                </ul>
-                
-                <h3 style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Panels & Invited Talks</h3>
-                <ul class="cv-list">
-                    <li><strong>First Fridays Panel</strong> - Natural History Museum of Los Angeles County: The Search for Life at the Cosmic Scale</li>
-                    <li><strong>Family Office Panel</strong> - Miami Beach: The Future of Regenerative Energy (Invited)</li>
-                </ul>
-            </div>
-
-            <div class="cv-section">
-                <h2 class="cv-heading">Technical Skills</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                    <div>
-                        <strong>Analytical Techniques:</strong>
-                        <ul class="cv-list" style="margin-top: 0.5rem;">
-                            <li>X-ray Diffraction (XRD)</li>
-                            <li>Raman Spectroscopy</li>
-                            <li>SEM/TEM Imaging</li>
-                            <li>Near-Infrared Imaging</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <strong>Software & Programming:</strong>
-                        <ul class="cv-list" style="margin-top: 0.5rem;">
-                            <li>Python (Data Analysis)</li>
-                            <li>RamanLab (Developer)</li>
-                            <li>Crystallography Software</li>
-                            <li>Machine Learning</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cv-section">
-                <h2 class="cv-heading">Professional Affiliations</h2>
-                <ul class="cv-list">
-                    <li>Mineralogical Society of America</li>
-                    <li>American Geophysical Union</li>
-                    <li>NASA Astrobiology Institute</li>
-                </ul>
-            </div>
-
-            <div class="cv-section">
-                <h2 class="cv-heading">Contact Information</h2>
-                <p>
-                    <strong>Institution:</strong> Natural History Museum of Los Angeles County<br>
-                    <strong>Department:</strong> Mineral Sciences and Crystallography<br>
-                    <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank">View Profile</a><br>
-                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank">Connect</a><br>
-                    <strong>Blog:</strong> <a href="https://aaroncelestian.substack.com/" target="_blank">Pocketful of Xtals</a>
-                </p>
             </div>
         </div>
-    </section>
+
+        <!-- EXPERIENCE -->
+        <div class="cv-block" id="experience">
+            <div class="section-marker">
+                <span class="section-marker-label">Professional Experience</span>
+                <div class="section-marker-rule"></div>
+            </div>
+
+            <span class="cv-sublabel">Current Positions</span>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Curator, Mineral Sciences</span>
+                    <span class="cv-date">2021 – Present</span>
+                </div>
+                <p>Natural History Museum of Los Angeles County</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Adjunct Associate Professor</span>
+                    <span class="cv-date">2016 – Present</span>
+                </div>
+                <p>Department of Earth Sciences, University of Southern California</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Adjunct Instructor</span>
+                    <span class="cv-date">2021 – Present</span>
+                </div>
+                <p>West Los Angeles College</p>
+            </div>
+
+            <span class="cv-sublabel">Previous Positions</span>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Science and Research Affiliate</span>
+                    <span class="cv-date">2018 – 2025</span>
+                </div>
+                <p>NASA Jet Propulsion Laboratory</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Associate Curator, Mineral Sciences</span>
+                    <span class="cv-date">2016 – 2021</span>
+                </div>
+                <p>Natural History Museum of Los Angeles County</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Associate Professor (Tenured)</span>
+                    <span class="cv-date">2012 – 2015</span>
+                </div>
+                <p>Department of Geography and Geology, Western Kentucky University</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Director, Advanced Materials Institute</span>
+                    <span class="cv-date">2010 – 2015</span>
+                </div>
+                <p>Western Kentucky University</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Assistant Professor</span>
+                    <span class="cv-date">2007 – 2012</span>
+                </div>
+                <p>Department of Geography and Geology, Western Kentucky University</p>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-role">Visiting Assistant Professor</span>
+                    <span class="cv-date">2006 – 2007</span>
+                </div>
+                <p>School of Earth and Environmental Science, City University of New York Queens College</p>
+            </div>
+        </div>
+
+        <!-- RESEARCH INTERESTS -->
+        <div class="cv-block" id="research">
+            <div class="section-marker">
+                <span class="section-marker-label">Research Interests</span>
+                <div class="section-marker-rule"></div>
+            </div>
+            <ul class="cv-list research-list">
+                <li><span class="item-label">Astrobiology</span> — Biosignatures in minerals, life detection on Mars and icy moons</li>
+                <li><span class="item-label">Energy Materials</span> — Sustainable lithium extraction, ion exchange materials</li>
+                <li><span class="item-label">Environmental Science</span> — Photocatalytic degradation, metal sequestration in zeolites</li>
+                <li><span class="item-label">PharmaMineralogy</span> — Kidney stone formation, bacterial-mineral interactions</li>
+                <li><span class="item-label">Cultural Heritage</span> — Gemstone provenance analysis, art conservation</li>
+            </ul>
+        </div>
+
+        <!-- FUNDING -->
+        <div class="cv-block" id="funding">
+            <div class="section-marker">
+                <span class="section-marker-label">Funding &amp; Grants</span>
+                <div class="section-marker-rule"></div>
+            </div>
+
+            <div class="fund-entry">
+                <p class="fund-title">NOAA Sea Grant (2023–2025)</p>
+                <p class="fund-detail">Plastics Past and Present: Understanding historical trends of microplastic consumption in California marine food webs · Co-PI with W. Ludt</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">Department of Energy Critical Materials (2021–2023)</p>
+                <p class="fund-detail">Informed design of crystalline ion exchangers: Improved λ-MnO₂ phase for lithium extraction from geologic fluids · Co-PI with C. Camiré, W. Bourcier</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">American Elements (2021–2022)</p>
+                <p class="fund-detail">Selective Rare Earth Element Ion Exchange in Minerals</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">Getty Museum (2020–2022)</p>
+                <p class="fund-detail">PST 2024 — Realities of the Environmental Disparities that People of Color Face · Co-PI with M. Garcia, B. H. Jaramillo, M. Muro, L. Higgins</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">NASA RT&amp;D (2020/2021–2023)</p>
+                <p class="fund-detail">Simulating Ocean World Microbiology and Pressure-Relevant Ecological Systems · Co-PI with S. Perl</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">Oak Ridge National Laboratory (2021)</p>
+                <p class="fund-detail">Neutron Scattering Studies of Microporous Zirconium Silicates</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">NASA NSPIRES (2018–2021)</p>
+                <p class="fund-detail">Investigating a novel role for iron redox cycling in the lithification of microbial mats · Co-PI with F. Corsetti, V. Petryshyn, S. S. Bradley, J. R. Spear, W. Berelson</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">NSF EPSCoR (2013–2014)</p>
+                <p class="fund-detail">Advancing porous nanominerals for basic energy science, environmental security, and materials genomics</p>
+            </div>
+            <div class="fund-entry">
+                <p class="fund-title">American Chemical Society — Petroleum Research Fund (2011–2013)</p>
+                <p class="fund-detail">Mechanisms of ion selectivity in porous frameworks</p>
+            </div>
+        </div>
+
+        <!-- PUBLICATIONS -->
+        <div class="cv-block" id="publications">
+            <div class="section-marker">
+                <span class="section-marker-label">Publications</span>
+                <div class="section-marker-rule"></div>
+            </div>
+            <p style="font-size:0.82rem; color:rgba(15,23,42,0.4); margin-bottom:1.5rem;">172 peer-reviewed articles · <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" style="color:var(--secondary-color);">View on Google Scholar</a></p>
+
+            <span class="pub-year">2026 — 7 publications</span>
+            <div class="pub-entry"><p class="pub-title">Mechanism of Lithium Ion Exchange Into Spinel Manganese Oxide</p><p class="pub-authors">Celestian, Aaron J, Bourcier, William, Camiré, Christopher L, Kumar, Jayanthi, Paranthaman, Mariappan Parans</p><p class="pub-venue">Journal of Raman Spectroscopy, 57(1), 131–139</p></div>
+            <div class="pub-entry"><p class="pub-title">Intercalated bacterial biofilms are intrinsic internal components of calcium-based kidney stones</p><p class="pub-authors">Schmidt, William C, Mousavi, Ava, Li, Jiahui, Yang, Rena, et al.</p><p class="pub-venue">Proceedings of the National Academy of Sciences, 123(5), e2517066123</p></div>
+            <div class="pub-entry"><p class="pub-title">Mineral Weathering Experiments for Terrestrial Planetary Analogs in a Continuous-Flow Reactor</p><p class="pub-authors">Weber, Jessica M, Martinez, Eduardo, Sheppard, Rachel Y, Rodriguez, Laura E, Celestian, Aaron, et al.</p><p class="pub-venue">Geofluids, 2026(1), 6180315</p></div>
+            <div class="pub-entry"><p class="pub-title">Molecular Mechanisms of Magnesium Sulfate Crystallization: Bond Length Inversion and the Role of Hydration in Mineral Formation</p><p class="pub-authors">Celestian, Aaron J, Xu, Wenqian, Kubicki, James D, Perl, Scott M</p><p class="pub-venue">American Mineralogist</p></div>
+            <div class="pub-entry"><p class="pub-title">Nitrogen mineral hosts in subduction zone metamorphosed ultramafic rocks</p><p class="pub-authors">Cooperdock, Emily HG, Bonilla, Ailani N, Grabiec, Justine G, Celestian, Aaron J, et al.</p><p class="pub-venue">Chemical Geology, 123307</p></div>
+            <div class="pub-entry"><p class="pub-title">Perchlorate Anaerobiosis in Haloferax volcanii: A Novel Metabolic Capability for A Model Haloarchaeon</p><p class="pub-authors">Robinson, Adam, McQuaig-Ulrich, Shannon, Dondero, Tyler, Celestian, Aaron, Perl, Scott</p></div>
+            <div class="pub-entry"><p class="pub-title">Cadvanite, a New Cadmium Vanadate from the Burro Mine, San Miguel County, Colorado, USA</p><p class="pub-authors">Kampf, Anthony R, Celestian, Aaron J, Ma, Chi, Rose, Timothy P, Marty, Joe</p><p class="pub-venue">The Canadian Journal of Mineralogy and Petrology, 64(2), 185–193</p></div>
+
+            <span class="pub-year">2025 — 12 publications</span>
+            <div class="pub-entry"><p class="pub-title">Evaporitic Preservation of Modern Carotenoid Biomarkers and Halophilic Microorganisms in Mars Analog Hypersaline Environments</p><p class="pub-authors">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J, et al.</p><p class="pub-venue">Astrobiology, 25(11), 765–776</p></div>
+            <div class="pub-entry"><p class="pub-title">Evidence for Low Dissolved Silica in mid-Mesozoic Oceans</p><p class="pub-authors">Yager, Joyce A, West, A Joshua, Trower, Elizabeth J, Fischer, Woodward W, Celestian, Aaron J, et al.</p><p class="pub-venue">American Journal of Science, 325, 1</p></div>
+            <div class="pub-entry"><p class="pub-title">Svornostite-(NH4): a new mineral from the Blue Lizard mine, San Juan County, Utah, USA, and the establishment of the svornostite mineral group</p><p class="pub-authors">Kampf, Anthony R, Olds, Travis A, Plášil, Jakub, Ma, Chi, Celestian, Aaron J, Marty, Joe</p><p class="pub-venue">Mineralogical Magazine, 89(5), 609–617</p></div>
+            <div class="pub-entry"><p class="pub-title">MP21-12 Biofilm-Forming Bacteria Found Within Calcium-Based Kidney Stones</p><p class="pub-authors">Mousavi, Ava, Schmidt, William C, Li, Jiahui, Yang, Rena, Celestian, Aaron, Scotland, Kymora B</p><p class="pub-venue">The Journal of Urology, 213(5S), e709</p></div>
+            <div class="pub-entry"><p class="pub-title">Exploring Mechanisms of Microbialite Texture Formation through mapping in situ CaCO₃ precipitation and Microbial Cell Position</p><p class="pub-authors">Cassady, Victoria C, Petryshyn, Victoria A, Celestian, Aaron J, et al.</p><p class="pub-venue">Goldschmidt 2025 Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">RamanLab: A Comprehensive Cross-Platform Software Suite for Advanced Raman Spectroscopy Analysis</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">Authorea Preprints</p></div>
+            <div class="pub-entry"><p class="pub-title">Mapping quartz and feldspar areal abundance and grain sizes using integrated VTIR data</p><p class="pub-authors">Grant, Kathleen, Brodrick, Philip Gregory, Celestian, Aaron, West, A Joshua, et al.</p><p class="pub-venue">Authorea Preprints</p></div>
+            <div class="pub-entry"><p class="pub-title">Machine Learning Strategies to Distinguish Iron Sulfide, Oxide, and (Oxy)hydroxide Minerals Using Raman and LIBS Spectroscopy</p><p class="pub-authors">Lamm, SN, Sheppard, RY, Celestian, AJ, Barge, LM, et al.</p><p class="pub-venue">LPI Contributions, 3090, 2702</p></div>
+            <div class="pub-entry"><p class="pub-title">Evidence for Acidic Bleaching and Dominant Groundwater Processes in Endmember Hypersaline and Acidic Lakes in Western Australia</p><p class="pub-authors">Plattner, TA, Schmidt, BE, Celestian, A, et al.</p><p class="pub-venue">LPI Contributions, 3090, 2811</p></div>
+            <div class="pub-entry"><p class="pub-title">Whole rock and mineral separate nitrogen concentration and isotopic data for meta-ultramafic rocks</p><p class="pub-authors">Cooperdock, Emily, Bonilla, Ailani, Grabiec, Justine, Celestian, Aaron, et al.</p><p class="pub-venue">Interdisciplinary Earth Data Alliance (IEDA) dataset, 237</p></div>
+
+            <span class="pub-year">2024 — 19 publications</span>
+            <div class="pub-entry"><p class="pub-title">Signature Specimen: Elbaite from the Cruzeiro Pegmatite, Minas Gerais, Brazil</p><p class="pub-authors">Francis, Carl A, Celestian, Aaron</p><p class="pub-venue">Rocks &amp; Minerals, 99(1), 86–88</p></div>
+            <div class="pub-entry"><p class="pub-title">Radiocarbon Chronology/Growth Rates of Ooids from Great Salt Lake, Utah</p><p class="pub-authors">Paradis, Olivia P, Corsetti, Frank A, Celestian, Aaron, et al.</p><p class="pub-venue">Utah Geological Association Publication</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ potassium and hydrogen ion exchange into a cubic zirconium silicate microporous material</p><p class="pub-authors">Lively, Jason, Celestian, Aaron J</p><p class="pub-venue">PLOS ONE, 19(3), e0298661</p></div>
+            <div class="pub-entry"><p class="pub-title">MP63-13 Bacteria Trigger Calcium Oxalate Crystal Formation</p><p class="pub-authors">Nazarian, Reyhaneh, Lin, Neil, Celestian, Aaron, Scotland, Kymora B, et al.</p><p class="pub-venue">Journal of Urology, 211(5S), e1036</p></div>
+            <div class="pub-entry"><p class="pub-title">PD63-06 Exploring Bacterial Roles in Calcium Oxalate Stone Formation Through High-Resolution Imaging</p><p class="pub-authors">Mousavi, Ava, Nazarian, Reyhaneh, Schmidt, William C, Celestian, Aaron, Scotland, Kymora B, et al.</p><p class="pub-venue">Journal of Urology, 211(5S), e1294</p></div>
+            <div class="pub-entry"><p class="pub-title">The Biology of Biosignature Detection — Year One: Building the Experimental Framework for Extant and Extinct Life Measurements</p><p class="pub-authors">Perl, Scott M, Cockell, Charles S, Fischer, Woodward W, Celestian, Aaron, et al.</p><p class="pub-venue">2024 Astrobiology Science Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">Increasing equitable access to meaningful research experiences through undergraduate mineralogy and earth materials classes</p><p class="pub-authors">Cooperdock, Emily HG, Grabiec, Justine G, Rojas, Alexia, Celestian, Aaron J</p><p class="pub-venue">2024 Goldschmidt Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">The Mineralogy of Laboratory Simulated Hydrothermal Vents as Analogs to Saponite-Rich Hydrothermal Environments on Early Earth and Mars</p><p class="pub-authors">Carman, Nancy, Hausrath, Elisabeth, Celestian, Aaron J, et al.</p><p class="pub-venue">AbSciCon 2024, 421-084</p></div>
+            <div class="pub-entry"><p class="pub-title">Fe/Mg-silicate chemical gardens as analogs to silicate-rich hydrothermal chimneys on early Earth and Mars</p><p class="pub-authors">Carman, Nancy A, Hausrath, Elisabeth M, Celestian, Aaron, et al.</p><p class="pub-venue">ACS Earth and Space Chemistry, 8(10), 1982–1996</p></div>
+            <div class="pub-entry"><p class="pub-title">Living to Lithified: Construction and Preservation of Silicified Biomarkers</p><p class="pub-authors">Rasmussen, Kalen L, Celestian, Aaron J, Corsetti, Frank A, et al.</p><p class="pub-venue">Geobiology, 22(5), e12620</p></div>
+            <div class="pub-entry"><p class="pub-title">Insight Into Mineral Fabrics, Biofabrics, and Channel Architecture to Comprehensively Characterize Microbialite Texture</p><p class="pub-authors">Cassady, Victoria, Petryshyn, Victoria A, Celestian, Aaron, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 56, 405114</p></div>
+            <div class="pub-entry"><p class="pub-title">Tracking Composition of Searles Lake Brines and Mineral Fluid Inclusions with Progressive Evaporation via Raman and LIBS</p><p class="pub-authors">Nguyen, Melonie, Celestian, Aaron, Perl, Scott M, Corsetti, Frank</p><p class="pub-venue">Geological Society of America Abstracts, 56, 404422</p></div>
+            <div class="pub-entry"><p class="pub-title">Beyond the Stones: the Transformative Impact of Mineral Collections at the Natural History Museum of Los Angeles County</p><p class="pub-authors">Leftwich, Kristin, Kampf, Anthony R, Celestian, Aaron</p><p class="pub-venue">Geological Society of America Abstracts, 56, 404729</p></div>
+            <div class="pub-entry"><p class="pub-title">A Tale of Two Seasons: The Geochemical Evolution of Acidic Hypersaline Lakes in Western Australia</p><p class="pub-authors">Plattner, Taylor, Schmidt, Britney, Celestian, Aaron, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2024, EP52A-06</p></div>
+            <div class="pub-entry"><p class="pub-title">Unveiling Hosts for Nitrogen Transportation and Storage in Meta-Serpentinites</p><p class="pub-authors">Bonilla, Ailani, Grabiec, Justine G, Cooperdock, Emily HG, Celestian, Aaron, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2024</p></div>
+            <div class="pub-entry"><p class="pub-title">Nitrogen in Ultramafic and Sedimentary Mélange Matrices and its Implications for Subduction Zone Nitrogen Budgets</p><p class="pub-authors">Grabiec, Justine, Bonilla, Ailani, Cooperdock, Emily HG, Celestian, Aaron J, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 56, 403278</p></div>
+            <div class="pub-entry"><p class="pub-title">The Biology of Biosignature Detection: Rationale and Experimental Frameworks for Biological Validation</p><p class="pub-authors">Perl, Scott, Cockell, Charles, Fischer, Woodward, Celestian, Aaron, et al.</p></div>
+            <div class="pub-entry"><p class="pub-title">Characterization of mineral fabrics, biofabrics, and channel architecture in incipient microbialites</p><p class="pub-authors">Cassady, Victoria, Petryshyn, Victoria A, Celestian, Aaron, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2024, B53J-08</p></div>
+            <div class="pub-entry"><p class="pub-title">The Biology of Biosignature Detection: Framework, Experiments, and Science Mission Concepts</p><p class="pub-authors">Perl, SM, Cockell, CS, Fischer, WW, Celestian, AJ, et al.</p><p class="pub-venue">LPI Contributions, 3007, 3526</p></div>
+
+            <span class="pub-year">2023 — 10 publications</span>
+            <div class="pub-entry"><p class="pub-title">Rare Earth: Crystalline Treasures — Exhibition at the Santa Barbara Museum of Natural History</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">Rocks &amp; Minerals, 98(2), 148–159</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: Arsenic and Lead</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 108(3), 634–636</p></div>
+            <div class="pub-entry"><p class="pub-title">Micro-elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature and Remnant of a Lithification Mechanism</p><p class="pub-authors">Cassady, Victoria C, Levene, Dylan R, Celestian, Aaron J, Petryshyn, Victoria A, et al.</p><p class="pub-venue">Goldschmidt 2023 Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">Microbial Pigment Robustness in Martian and Ocean Worlds Brines and Evaporites</p><p class="pub-authors">Perl, SM, Celestian, AJ, Cockell, CS, Corsetti, FA, et al.</p><p class="pub-venue">54th Lunar and Planetary Science Conference, 2806, 2434</p></div>
+            <div class="pub-entry"><p class="pub-title">Detection and Preservation of Extremophile Biosignatures in Lithium-Bearing Evaporites for Life Detection</p><p class="pub-authors">Javier, BM, Perl, SM, Basu, C, Fischer, W, Celestian, AJ</p><p class="pub-venue">54th Lunar and Planetary Science Conference, 2806, 2825</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: Heavy Metal and Minerals from China</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 108(10), 1993–1994</p></div>
+            <div class="pub-entry"><p class="pub-title">Rate-Dependent Preservation of Psychrotolerant Halophiles within Cryobrine Systems</p><p class="pub-authors">Perl, SM, Cockell, CS, Celestian, AJ, Javier, BJ, Basu, C</p><p class="pub-venue">Brines Across the Solar System, 2689, 2041</p></div>
+            <div class="pub-entry"><p class="pub-title">Biosignature Preservation Potential of Li-Containing Hypersaline Environments</p><p class="pub-authors">Javier, BM, Perl, SM, Basu, C, Fischer, W, Celestian, AJ</p><p class="pub-venue">Brines Across the Solar System, 2689, 2018</p></div>
+            <div class="pub-entry"><p class="pub-title">Examining Fe-Cycling in Microbial Mats as a Lithification Mechanism</p><p class="pub-authors">Petryshyn, Victoria, Berelson, Will, Spear, John, Celestian, Aaron, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 55, 393626</p></div>
+            <div class="pub-entry"><p class="pub-title">Micro-Elemental Analysis of Stromatolites Reveal Fe as Potential Biosignature</p><p class="pub-authors">Rasmussen, Kalen, Levene, Dylan R, Celestian, Aaron J, Petryshyn, Victoria A, et al.</p><p class="pub-venue">Thirty-third Annual Goldschmidt Conference, 20694</p></div>
+
+            <span class="pub-year">2022 — 14 publications</span>
+            <div class="pub-entry"><p class="pub-title">Assessing the origin of pisoids within a travertine system in the border of Puna Plateau, Argentina</p><p class="pub-authors">Mors, R Agustin, Gomez, Fernando J, Celestian, Aaron J, Corsetti, Frank A, et al.</p><p class="pub-venue">Sedimentology, 69(3), 1252–1275</p></div>
+            <div class="pub-entry"><p class="pub-title">Relianceite-(K), a new phosphate–oxalate mineral from the Rowley mine, Arizona, USA</p><p class="pub-authors">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Ma, Chi, Marty, Joe</p><p class="pub-venue">Mineralogical Magazine, 86(4), 539–547</p></div>
+            <div class="pub-entry"><p class="pub-title">Dendoraite-(NH4), a new phosphate–oxalate mineral from the Rowley mine, Arizona, USA</p><p class="pub-authors">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Ma, Chi, Marty, Joe</p><p class="pub-venue">Mineralogical Magazine, 86(4), 531–538</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: Alteration Products</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 107(2), 318–320</p></div>
+            <div class="pub-entry"><p class="pub-title">Rapid phase identification of apatite and zircon grains for geochronology using X-ray micro-computed tomography</p><p class="pub-authors">Cooperdock, Emily HG, Hofmann, Florian, Celestian, Aaron J, et al.</p><p class="pub-venue">Geochronology, 4(2), 501–515</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: High-Pressure and Precious Minerals</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 107(4), 778–780</p></div>
+            <div class="pub-entry"><p class="pub-title">Flaggite, a new mineral with stair-step-like HCP layers from Tombstone, Arizona, USA</p><p class="pub-authors">Kampf, Anthony R, Mills, Stuart J, Celestian, Aaron J, Ma, Chi, et al.</p><p class="pub-venue">Mineralogical Magazine, 86(3), 397–404</p></div>
+            <div class="pub-entry"><p class="pub-title">Diagenesis and Subsurface Habitable Environments I Online Session</p><p class="pub-authors">Sheppard, Rachel, Perl, Scott M, Celestian, Aaron J, et al.</p><p class="pub-venue">2022 Astrobiology Science Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">Evidence for benthic oxygen production in Neoarchean lacustrine stromatolites</p><p class="pub-authors">Wilmeth, Dylan T, Lalonde, Stefan V, Celestian, Aaron J, Corsetti, Frank A, et al.</p><p class="pub-venue">Geology, 50(8), 907–911</p></div>
+            <div class="pub-entry"><p class="pub-title">Geobiological impacts of Earth's early complex bioturbators during the Ediacaran-Cambrian transition</p><p class="pub-authors">Cribb, Alison T, Celestian, Aaron J, Berelson, William M, Corsetti, Frank A, et al.</p><p class="pub-venue">2022 Goldschmidt Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: Hydrous Minerals</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 107(8), 1656–1658</p></div>
+            <div class="pub-entry"><p class="pub-title">Rapid phase identification of apatite and zircon grains for geochronology using micro-computed tomography</p><p class="pub-authors">Cooperdock, Emily HG, Hofmann, Florian, Celestian, Aaron J, et al.</p><p class="pub-venue">2022 Goldschmidt Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">Biogenic stromatolites as lacustrine oxygen oases ~2.7 Ga</p><p class="pub-authors">Wilmeth, Dylan T, Lalonde, Stefan V, Petryshyn, Victoria A, Celestian, Aaron J, et al.</p><p class="pub-venue">2022 Goldschmidt Conference</p></div>
+            <div class="pub-entry"><p class="pub-title">Evidence for Rapid Rates of Oxygenic Photosynthesis Within Neoarchean Stromatolites (abstract)</p><p class="pub-authors">Wilmeth, Dylan T, Corsetti, Frank A, Berelson, William M, Celestian, Aaron J, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 50, 318717</p></div>
+
+            <span class="pub-year">2021 — 12 publications</span>
+            <div class="pub-entry"><p class="pub-title">Jasonsmithite, a new phosphate mineral with a complex microporous framework, from the Foote mine, North Carolina, USA</p><p class="pub-authors">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P</p><p class="pub-venue">American Mineralogist, 106(2), 174–179</p></div>
+            <div class="pub-entry"><p class="pub-title">Thebaite-(NH4), a new phosphate–oxalate mineral from the Rowley mine, Arizona, USA</p><p class="pub-authors">Kampf, Anthony R, Cooper, Mark A, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p><p class="pub-venue">Mineralogical Magazine, 85(3), 379–386</p></div>
+            <div class="pub-entry"><p class="pub-title">Plastic ingestion by freshwater turtles: a review and call to action</p><p class="pub-authors">Clause, Adam G, Celestian, Aaron J, Pauly, Gregory B</p><p class="pub-venue">Scientific Reports, 11(1), 5672</p></div>
+            <div class="pub-entry"><p class="pub-title">Allantoin and natrosulfatourea, two new bat-guano minerals from the Rowley mine, Arizona, USA</p><p class="pub-authors">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p><p class="pub-venue">The Canadian Mineralogist, 59(3), 603–616</p></div>
+            <div class="pub-entry"><p class="pub-title">A proposed geobiology-driven nomenclature for astrobiological in situ observations and sample analyses</p><p class="pub-authors">Perl, Scott M, Celestian, Aaron J, Cockell, Charles S, Corsetti, Frank A, et al.</p><p class="pub-venue">Astrobiology, 21(8), 954–967</p></div>
+            <div class="pub-entry"><p class="pub-title">New Mineral Names: Diamonds, Dumps, and Fumaroles</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">American Mineralogist, 106(12), 2028–2030</p></div>
+            <div class="pub-entry"><p class="pub-title">Mineralogy and History of Semi-Precious Gemstones on the Borghese-Windsor Cabinet</p><p class="pub-authors">Celestian, Aaron, Heginbotham, Arlen, Ehlmann, Bethany, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 53, 368743</p></div>
+            <div class="pub-entry"><p class="pub-title">Salty Environments: The importance of evaporites and brine environments as habitats and preservers of biosignatures</p><p class="pub-authors">Perl, Scott, Celestian, Aaron J, Cockell, Charles S, Corsetti, Frank A, et al.</p><p class="pub-venue">Bulletin of the American Astronomical Society, 53(4), 240</p></div>
+            <div class="pub-entry"><p class="pub-title">Classification of Iron (oxy)hydroxides and Sulfides Using Mission-Ready Spectroscopic Techniques and Machine Learning</p><p class="pub-authors">Lamm, Sarah, Rodriguez, Laura E, Perl, Scott M, Celestian, Aaron J, Barge, Laura M</p><p class="pub-venue">Geological Society of America Abstracts, 53, 368733</p></div>
+            <div class="pub-entry"><p class="pub-title">Preservation of Dynamic Biological Processes from Extant Halophilic Life</p><p class="pub-authors">Perl, SM, Celestian, AJ, Cockell, CS, Basu, C, et al.</p><p class="pub-venue">Brines in the Solar System: Modern Brines, 2614, 6048</p></div>
+            <div class="pub-entry"><p class="pub-title">Comparison of Microporous Minerals for Potential Contaminant Uptake</p><p class="pub-authors">Osorio, Marvin, Oze, Christopher, Celestian, Aaron</p></div>
+            <div class="pub-entry"><p class="pub-title">Geochemistry of Chromium-Silicate Minerals</p><p class="pub-authors">Dall, Jacqueline, Oze, Christopher, Celestian, Aaron, Rossman, George</p></div>
+
+            <span class="pub-year">2020 — 3 publications</span>
+            <div class="pub-entry"><p class="pub-title">Examining the role of Fe-cycling in microbial mat lithification and stromatolite abundance through Earth history</p><p class="pub-authors">Corsetti, Frank A, Berelson, William, Celestian, Aaron J, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2020, PP013-01</p></div>
+            <div class="pub-entry"><p class="pub-title">New emerald locality in Southern California</p><p class="pub-authors">Celestian, Aaron J</p></div>
+            <div class="pub-entry"><p class="pub-title">Colored Stones and Organic Materials</p><p class="pub-authors">Celestian, Aaron J, Edley, Richard</p><p class="pub-venue">Gems &amp; Gemology, 56(4)</p></div>
+
+            <span class="pub-year">2019 — 17 publications</span>
+            <div class="pub-entry"><p class="pub-title">Neoarchean (2.7 Ga) lacustrine stromatolite deposits in the Hartbeesfontein Basin, South Africa</p><p class="pub-authors">Wilmeth, DT, Corsetti, FA, Beukes, NJ, Celestian, AJ, et al.</p><p class="pub-venue">Precambrian Research, 320, 291–302</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ Cs and H exchange into gaidonnayite and proposed mechanisms of ion diffusion</p><p class="pub-authors">Celestian, Aaron J, Lively, Jason, Xu, Wenqian</p><p class="pub-venue">Inorganic Chemistry, 58(3), 1919–1928</p></div>
+            <div class="pub-entry"><p class="pub-title">Aragonite dissolution kinetics and calcite/aragonite ratios in sinking and suspended particles in the North Pacific</p><p class="pub-authors">Dong, Sijia, Berelson, William M, Celestian, Aaron J, et al.</p><p class="pub-venue">Earth and Planetary Science Letters, 515, 1–12</p></div>
+            <div class="pub-entry"><p class="pub-title">Camanchacaite, chinchorroite, espadaite, and three additional new minerals from the Torrecillas mine, Chile</p><p class="pub-authors">Kampf, Anthony R, Nash, Barbara P, Celestian, Aaron J, Dini, Maurizio, Molina Donoso, Arturo A</p><p class="pub-venue">Mineralogical Magazine, 83(5), 655–671</p></div>
+            <div class="pub-entry"><p class="pub-title">Phoxite, the first phosphate-oxalate mineral</p><p class="pub-authors">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P, Marty, Joe</p><p class="pub-venue">American Mineralogist, 104(7), 973–979</p></div>
+            <div class="pub-entry"><p class="pub-title">Uppermost Triassic phosphorites from Williston Lake, Canada: link to fluctuating euxinic-anoxic conditions before the end-Triassic mass extinction</p><p class="pub-authors">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Celestian, Aaron J, et al.</p><p class="pub-venue">Scientific Reports, 9(1), 18790</p></div>
+            <div class="pub-entry"><p class="pub-title">Pressure-induced hydration and formation of bilayer ice in nacrite, a kaolin-group clay</p><p class="pub-authors">Hwang, Huijeong, Choi, Jinhyuk, Celestian, Aaron J, Vogt, Thomas, Lee, Yongjae, et al.</p><p class="pub-venue">ACS Earth and Space Chemistry, 4(2), 183–188</p></div>
+            <div class="pub-entry"><p class="pub-title">Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance Determination</p><p class="pub-authors">Celestian, Aaron, Heginbotham, Arlen, Greenberger, Rebecca, Ehlmann, Bethany, et al.</p></div>
+            <div class="pub-entry"><p class="pub-title">Mineral preservation and photoprotective attributes of halophilic bacteria and archaea in modern and Permian lakebed environments</p><p class="pub-authors">Perl, Scott M, Baxter, Bonnie K, Celestian, Aaron J</p><p class="pub-venue">Studia Universitatis Babeș-Bolyai, Biologia, 64(1)</p></div>
+            <div class="pub-entry"><p class="pub-title">The Relevance of Hydrothermal Spherules in Astrobiological Exploration of Rocky Planets</p><p class="pub-authors">Cady, Sherry L, Perl, Scott M, Celestian, Aaron J, et al.</p><p class="pub-venue">AbSciCon 2019, 321-227</p></div>
+            <div class="pub-entry"><p class="pub-title">Chemical Biomarker Robustness in Martian Planetary Analogue Evaporite Mineralogy</p><p class="pub-authors">Perl, Scott M, Celestian, Aaron J, Baxter, BK, Tasoff, Preston</p><p class="pub-venue">50th Annual Lunar and Planetary Science Conference, 2132, 2930</p></div>
+            <div class="pub-entry"><p class="pub-title">Hypersaline and Sedimentological Advantages on the Preservation of Extant Biological Activity in Modern Martian Analogue Settings</p><p class="pub-authors">Perl, SM, Baxter, BK, Celestian, AJ</p><p class="pub-venue">Mars Extant Life: What's Next?, 2108, 5031</p></div>
+            <div class="pub-entry"><p class="pub-title">Photobiology and Biogenic Preservation Comparisons Between Pleistocene Evaporite Beds and Buried Permian Brines</p><p class="pub-authors">Perl, SM, Baxter, BK, Celestian, AJ, Cockell, CS, et al.</p><p class="pub-venue">The First Billion Years: Habitability, 2134, 1034</p></div>
+            <div class="pub-entry"><p class="pub-title">Unlocking the Collections: getting comfortable with next-level access to museum minerals</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">Authorea Preprints</p></div>
+            <div class="pub-entry"><p class="pub-title">Locking away toxic metals into tiny holes</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">Authorea Preprints</p></div>
+            <div class="pub-entry"><p class="pub-title">The Record of Environmental Change in Northeastern Panthalassa Directly Preceding the End-Triassic Mass Extinction Event</p><p class="pub-authors">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Celestian, Aaron J, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 51, 340665</p></div>
+            <div class="pub-entry"><p class="pub-title">Mineral preservation and photoprotective attributes of halophilic organisms in planetary analogue lake bed environments</p><p class="pub-authors">Perl, Scott M, Baxter, Bonnie, Celestian, Aaron J, Cockell, Charles S, et al.</p><p class="pub-venue">AbSciCon 2019, 333-292</p></div>
+
+            <span class="pub-year">2018 — 10 publications</span>
+            <div class="pub-entry"><p class="pub-title">Preliminary results from Laguna Minucúa: a potentially annually resolved record of climate and environmental change, Oaxaca, Mexico</p><p class="pub-authors">Goman, Michelle, Joyce, Arthur, Celestian, Aaron J, et al.</p><p class="pub-venue">Quaternary International, 469, 85–95</p></div>
+            <div class="pub-entry"><p class="pub-title">Barwoodite, a New Member of the Welinite Group from Granite Mountain, Arkansas</p><p class="pub-authors">Kampf, Anthony R, Celestian, Aaron J, Nash, Barbara P</p><p class="pub-venue">The Canadian Mineralogist, 56(5), 799–809</p></div>
+            <div class="pub-entry"><p class="pub-title">Permian evaporite preservation of chemical biomarkers: Implications for in-situ hydrated mineral and hypersaline brine systems</p><p class="pub-authors">Perl, Scott, Vaishampayan, Parag, Celestian, Aaron, Baxter, Bonnie, Corsetti, Frank, et al.</p><p class="pub-venue">42nd COSPAR Scientific Assembly, 42, F3-6</p></div>
+            <div class="pub-entry"><p class="pub-title">Agate Analysis by Raman, XRF, and Hyperspectral Imaging Spectroscopy for Provenance</p><p class="pub-authors">Celestian, Aaron, Heginbotham, Arlen, Greenberger, Rebecca, Ehlmann, Bethany, et al.</p><p class="pub-venue">Gems &amp; Gemology, 54(3)</p></div>
+            <div class="pub-entry"><p class="pub-title">Investigation of Laminae Formation in Eocene Green River Formation Stromatolites</p><p class="pub-authors">Mahseredjian, Taleen, Frantz, Carie, Celestian, Aaron J, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2018, PP41E-1900</p></div>
+            <div class="pub-entry"><p class="pub-title">In Situ Aragonite Dissolution in North Pacific: Rate and Role in Modern Ocean Carbon Budget</p><p class="pub-authors">Dong, Sijia, Rollins, Nick, Celestian, Aaron J, Adkins, Jess F, Berelson, William, et al.</p><p class="pub-venue">AGU Ocean Sciences Meeting, OC24B-0456</p></div>
+            <div class="pub-entry"><p class="pub-title">Integrated Optical, Micro-Raman and Compositional Analysis of Rock Samples from Former Talc Mines, Gouverneur Mining District, New York</p><p class="pub-authors">McNamee, Brittani D, Celestian, Aaron J</p><p class="pub-venue">Geological Society of America Abstracts, 50, 322067</p></div>
+            <div class="pub-entry"><p class="pub-title">Genesis of Upper Triassic Phosphatic Ooid Beds from Williston Lake, Canada</p><p class="pub-authors">Larina, Ekaterina, Bottjer, David J, Corsetti, Frank A, Celestian, Aaron J, Zonneveld, John-Paul</p><p class="pub-venue">Geological Society of America Abstracts, 50, 321035</p></div>
+            <div class="pub-entry"><p class="pub-title">A New Study on PIC Dissolution and Sinking Fluxes, Concentrations and Calcite/Aragonite Ratios in the North Pacific</p><p class="pub-authors">Dong, Sijia, Celestian, Aaron, Turaga, Nitya, et al.</p><p class="pub-venue">Twenty-eighth Annual Goldschmidt Conference, 591</p></div>
+            <div class="pub-entry"><p class="pub-title">Evidence for Rapid Rates of Oxygenic Photosynthesis Within Neoarchean Stromatolites</p><p class="pub-authors">Wilmeth, Dylan T, Corsetti, Frank A, Berelson, William M, Celestian, Aaron J, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 50, 318717</p></div>
+
+            <span class="pub-year">2017 — 3 publications</span>
+            <div class="pub-entry"><p class="pub-title">Rowleyite, a new mineral with a microporous framework structure</p><p class="pub-authors">Kampf, Anthony R, Cooper, Mark A, Nash, Barbara P, Cerling, Thure E, Marty, Joe, Celestian, Aaron J, et al.</p><p class="pub-venue">American Mineralogist, 102(5), 1037–1044</p></div>
+            <div class="pub-entry"><p class="pub-title">Geobiological Comparisons of Preservation Potential within Hypersaline Mineral-Microbe Systems</p><p class="pub-authors">Perl, Scott M, Celestian, Aaron J, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2017, P41B-2838</p></div>
+            <div class="pub-entry"><p class="pub-title">Raman and FTIR spectroscopy of methane in olivine</p><p class="pub-authors">Smith, Annika, Oze, Christopher, Rossman, George R, Celestian, Aaron J</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2017, V43C-0545</p></div>
+
+            <span class="pub-year">2016 — 6 publications</span>
+            <div class="pub-entry"><p class="pub-title">Structure determination and time-resolved Raman spectroscopy of yttrium ion exchange into microporous titanosilicate ETS-4</p><p class="pub-authors">Celestian, Aaron J, Chappell, Caleb J, Rucks, Melinda J, Norris, Pauline</p><p class="pub-venue">Inorganic Chemistry, 55(21), 11057–11063</p></div>
+            <div class="pub-entry"><p class="pub-title">Interlaboratory and cross-instrument comparison of Raman spectra of 96 minerals</p><p class="pub-authors">Dyar, MD, Breitenfeld, LB, Carey, CJ, Celestian, Aaron J, et al.</p><p class="pub-venue">Lunar Planet. Sci., 46, 2240</p></div>
+            <div class="pub-entry"><p class="pub-title">In Situ Ion Exchange in Nanoporous Zirconium Silicates</p><p class="pub-authors">Lively, Jason, Celestian, Aaron, Yan, Bangbo</p><p class="pub-venue">66th Annual Meeting, MSA</p></div>
+            <div class="pub-entry"><p class="pub-title">Potential Evidence for Arsenic Mineralization in Mussel Shells in the Upper Green River Basin, Kentucky</p><p class="pub-authors">Turner, Autumn, Groves, Chris, Celestian, Aaron, Meier, Albert</p></div>
+            <div class="pub-entry"><p class="pub-title">Mineralogical Crystallography</p><p class="pub-authors">Celestian, Aaron, Valdez, Nichole</p><p class="pub-venue">66th Annual Meeting, MSA</p></div>
+            <div class="pub-entry"><p class="pub-title">Using Raman Spectroscopy to Analyze Oxygen Isotope Ratios in Calcite Speleothems</p><p class="pub-authors">Koostra, Caleb, Polk, Jason, Celestian, Aaron J, Lively, Jason, et al.</p><p class="pub-venue">Geological Society of America Abstracts, 48, 281303</p></div>
+
+            <span class="pub-year">2015 — 1 publication</span>
+            <div class="pub-entry"><p class="pub-title">Measurements of light-absorbing particles on the glaciers in the Cordillera Blanca, Peru</p><p class="pub-authors">Schmitt, Carl G, All, John D, Celestian, A, et al.</p><p class="pub-venue">The Cryosphere, 9(1), 331–340</p></div>
+
+            <span class="pub-year">2014 — 5 publications</span>
+            <div class="pub-entry"><p class="pub-title">Self-assembled hybrid solids of luminescent Ru(II) polypyridyl complexes and polyoxometalates</p><p class="pub-authors">Yan, Bangbo, Li, Yanfen, Calhoun, Steven R, Celestian, Aaron J, et al.</p><p class="pub-venue">Inorganic Chemistry Communications, 43, 23–26</p></div>
+            <div class="pub-entry"><p class="pub-title">Linking remote and in-situ detection of black carbon on tropical glaciers</p><p class="pub-authors">Schmitt, Carl G, All, John, Cole, Rebecca J, Celestian, Aaron, et al.</p><p class="pub-venue">Photogramm Eng Remote Sens, 80(5), 385–390</p></div>
+            <div class="pub-entry"><p class="pub-title">Measurements of light absorbing particulates on the glaciers in the Cordillera Blanca, Peru</p><p class="pub-authors">Schmitt, CG, All, JD, Schwarz, JP, Celestian, A, et al.</p><p class="pub-venue">Cryosphere Discussions, 8(5)</p></div>
+            <div class="pub-entry"><p class="pub-title">Measurements of Light Absorbing Particles on Tropical South American Glaciers</p><p class="pub-authors">Schmitt, Carl G, All, John, Celestian, Aaron J, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2014, C24A-06</p></div>
+            <div class="pub-entry"><p class="pub-title">Modeling the Crystal Structure and Ion Exchange Mechanisms in Zorite Using Time-Resolved Raman Spectroscopy</p><p class="pub-authors">Celestian, Aaron, Chappell, Caleb</p><p class="pub-venue">Twenty-fourth Annual Goldschmidt Conference, 368</p></div>
+
+            <span class="pub-year">2013 — 5 publications</span>
+            <div class="pub-entry"><p class="pub-title">In situ Raman spectroscopic study of transient polyhedral distortions during cesium ion exchange into sitinakite</p><p class="pub-authors">Celestian, Aaron J, Powers, Michael, Rader, Shelby</p><p class="pub-venue">American Mineralogist, 98(7), 1153–1161</p></div>
+            <div class="pub-entry"><p class="pub-title">Geochemical and Mineralogical Analysis of Cave Deposits to Reconstruct Climate Change in Barbados</p><p class="pub-authors">Neeper, Lowell, Polk, Jason, Celestian, Aaron J, et al.</p><p class="pub-venue">2013 GSA Annual Meeting in Denver</p></div>
+            <div class="pub-entry"><p class="pub-title">Synthesis and ion exchange studies of porous nano-crystalline materials</p><p class="pub-authors">Celestian, Aaron</p><p class="pub-venue">Bulletin of the American Physical Society, 58</p></div>
+            <div class="pub-entry"><p class="pub-title">Analysis of Fiber Structure in a Concrete Matrix from EBS Coupled to Raman Spectra</p><p class="pub-authors">Andrew, Keith, Palmquest, Shane, Celestian, Aaron, et al.</p><p class="pub-venue">Bulletin of the American Physical Society, 58</p></div>
+            <div class="pub-entry"><p class="pub-title">A Novel Multiproxy Approach to High-resolution Speleothem Paleoclimate Reconstruction in the Caribbean Region</p><p class="pub-authors">Polk, J, Ouellette, G, Celestian, AJ, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2013, PP23D-02</p></div>
+
+            <span class="pub-year">2012 — 7 publications</span>
+            <div class="pub-entry"><p class="pub-title">Effects of hydration during strontium exchange into nanoporous hydrogen niobium titanium silicate</p><p class="pub-authors">Kramer, Samantha, Celestian, Aaron J</p><p class="pub-venue">Inorganic Chemistry, 51(11), 6251–6258</p></div>
+            <div class="pub-entry"><p class="pub-title">Synthesis and characterization of two- and three-dimensional calcium coordination polymers</p><p class="pub-authors">Vakiti, Raj Kishore, Garabato, Brady D, Celestian, Aaron, Yan, Bangbo, et al.</p><p class="pub-venue">Crystal Growth &amp; Design, 12(8), 3937–3943</p></div>
+            <div class="pub-entry"><p class="pub-title">Identifying Types of Zoning in Minerals Using Raman Microscopy</p><p class="pub-authors">Flynn, Elaine D, Wulff, AH, Celestian, Aaron J, Rucks, Melinda J</p><p class="pub-venue">Geological Society of America Abstracts, 44(4), 68</p></div>
+            <div class="pub-entry"><p class="pub-title">Optical, Raman, and Morphological Characterization of Rock Thin Sections from the Arnold Pit Former Talc Mine</p><p class="pub-authors">Celestian, Aaron J</p><p class="pub-venue">Geological Society of America Abstracts, 44(7), 161</p></div>
+            <div class="pub-entry"><p class="pub-title">New measurements of particulates in glacial snow and ice in the Cordillera Blanca mountains of Peru</p><p class="pub-authors">All, John, Schmitt, Carl, Celestian, Aaron J, et al.</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2012, GC11A-0970</p></div>
+            <div class="pub-entry"><p class="pub-title">Using confocal Raman spectroscopy to analyze nitrate structure at and near the air-water interface</p><p class="pub-authors">Shockley, Heather C, Nee, Matthew J, Celestian, Aaron</p><p class="pub-venue">Abstracts of Papers, American Chemical Society, 243</p></div>
+            <div class="pub-entry"><p class="pub-title">Heavy Metal Sequestration in Nanoporous Minerals</p><p class="pub-authors">Celestian, Aaron, Powers, Michael, Rader, Shelby</p><p class="pub-venue">Twenty-second Annual Goldschmidt Conference, 1554</p></div>
+
+            <span class="pub-year">2011 — 1 publication</span>
+            <div class="pub-entry"><p class="pub-title">In situ X-ray diffraction study of cesium exchange in synthetic umbite</p><p class="pub-authors">Fewox, Christopher S, Clearfield, Abraham, Celestian, Aaron J</p><p class="pub-venue">Inorganic Chemistry, 50(8), 3596–3604</p></div>
+
+            <span class="pub-year">2010 — 6 publications</span>
+            <div class="pub-entry"><p class="pub-title">Crystal growth and ion exchange in titanium silicates</p><p class="pub-authors">Celestian, Aaron J, Parise, John B, Clearfield, Abraham</p><p class="pub-venue">Springer Handbook of Crystal Growth, 1637–1662</p></div>
+            <div class="pub-entry"><p class="pub-title">In Situ X-Ray Diffraction Study of Cs+ Ion Exchange in Umbite</p><p class="pub-authors">Celestian, Aaron J, Clearfield, Abraham, Fewox, Christopher</p><p class="pub-venue">2010 GSA Denver Annual Meeting</p></div>
+            <div class="pub-entry"><p class="pub-title">Cs sequestration into a microporous gallosilicate framework</p><p class="pub-authors">Leftwich, KM, Celestian, AJ</p><p class="pub-venue">Geochimica et Cosmochimica Acta, 74(12), A577</p></div>
+            <div class="pub-entry"><p class="pub-title">The mechanisms of Sr ion exchange into partially niobium substituted sitinakite</p><p class="pub-authors">Kramer, Samantha, Celestian, Aaron</p><p class="pub-venue">Twentieth Annual Goldschmidt Conference, 538</p></div>
+            <div class="pub-entry"><p class="pub-title">Cesium Sequestration into a Microporous Gallosilicate Framework</p><p class="pub-authors">Leftwich, Kristin, Celestian, Aaron</p><p class="pub-venue">Twentieth Annual Goldschmidt Conference, 577</p></div>
+
+            <span class="pub-year">2008 — 3 publications</span>
+            <div class="pub-entry"><p class="pub-title">The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate</p><p class="pub-authors">Celestian, Aaron J, Kubicki, James D, Hanson, Jonathon, Clearfield, Abraham, Parise, John B</p><p class="pub-venue">Journal of the American Chemical Society, 130(35), 11689–11694</p></div>
+            <div class="pub-entry"><p class="pub-title">Time-resolved structural characterization of microporous silicotitanates and niobium silicotitanates</p><p class="pub-authors">Celestian, Aaron Joseph</p><p class="pub-venue">Dissertation Abstracts International, 69(10)</p></div>
+            <div class="pub-entry"><p class="pub-title">Strontium ion exchange mechanism in synthetic sitinakite from time resolved studies</p><p class="pub-authors">Kramer, S, Celestian, AJ</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2008, V13A-2107</p></div>
+
+            <span class="pub-year">2007 — 5 publications</span>
+            <div class="pub-entry"><p class="pub-title">Similarities in 2- and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</p><p class="pub-authors">Michel, FM, Ehm, L, Liu, G, Han, WQ, Celestian, Aaron J, et al.</p><p class="pub-venue">Chemistry of Materials, 19(6), 1489–1496</p></div>
+            <div class="pub-entry"><p class="pub-title">Role of the Hydroxyl-Water Hydrogen-Bond Network in Structural Transitions and Selectivity toward Cesium in Crystalline Silicotitanate</p><p class="pub-authors">Celestian, Aaron J, Parise, John B, Smith, Ronald I, Toby, Brian H, Clearfield, Abraham</p><p class="pub-venue">Inorganic Chemistry, 46(4), 1081–1089</p></div>
+            <div class="pub-entry"><p class="pub-title">The origin of ion exchange selectivity in a porous framework titanium silicate</p><p class="pub-authors">Celestian, Aaron J, Clearfield, Abraham</p><p class="pub-venue">Journal of Materials Chemistry, 17(46), 4839–4842</p></div>
+            <div class="pub-entry"><p class="pub-title">Dehydration-induced water disordering in a synthetic potassium gallosilicate natrolite</p><p class="pub-authors">Lee, Yongjae, Kim, Sun Jin, Bull, Ivor, Celestian, Aaron J, Parise, John B, et al.</p><p class="pub-venue">Journal of the American Chemical Society, 129(44), 13744–13748</p></div>
+            <div class="pub-entry"><p class="pub-title">Technical Report: Growth of Environmental Science at the NSLS</p><p class="pub-authors">Northrup, Paul, Lanzirotti, Antonio, Celestian, Aaron</p><p class="pub-venue">Synchrotron Radiation News, 20(3), 6–13</p></div>
+
+            <span class="pub-year">2006 — 5 publications</span>
+            <div class="pub-entry"><p class="pub-title">Solid-state structural characterization of a rigid framework of lacunary heteropolyniobates</p><p class="pub-authors">Nyman, May, Celestian, Aaron J, Parise, John B, Holland, Gregory P, Alam, Todd M</p><p class="pub-venue">Inorganic Chemistry, 45(3), 1043–1052</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ type study of hydrothermally prepared titanates and silicotitanates</p><p class="pub-authors">Clearfield, A, Tripathi, A, Medvedev, D, Celestian, AJ, Parise, JB</p><p class="pub-venue">Journal of Materials Science, 41(5), 1325–1333</p></div>
+            <div class="pub-entry"><p class="pub-title">Temperature stability of a molecular sieve crystalline silicotitanate with the mineral sitinakite topology</p><p class="pub-authors">Galloway, Melissa M, Celestian, Aaron J, Parise, John B, Clearfield, Abraham, Perry, Houston P</p><p class="pub-venue">Abstracts of Papers, American Chemical Society, 231</p></div>
+            <div class="pub-entry"><p class="pub-title">Influence of hydroxyl-water interaction on structural transformations during Cs+ exchange in microporous H-CST</p><p class="pub-authors">Celestian, AJ, Parise, JB, Narayan, J, Kubicki, JD, Clearfield, A</p><p class="pub-venue">Geochimica et Cosmochimica Acta, 70(18), A91</p></div>
+            <div class="pub-entry"><p class="pub-title">GEOC 133 — Size and structure of ferrihydrite from PDF analysis</p><p class="pub-authors">Michel, F Marc, Antao, Sytle M, Celestian, Aaron J, Schoonen, Martin A, et al.</p><p class="pub-venue">Abstracts of Papers, American Chemical Society, 232</p></div>
+
+            <span class="pub-year">2005 — 7 publications</span>
+            <div class="pub-entry"><p class="pub-title">High-pressure neutron diffraction study of superhydrated natrolite</p><p class="pub-authors">Colligan, Marek, Lee, Yongjae, Vogt, Thomas, Celestian, Aaron J, Parise, John B, et al.</p><p class="pub-venue">The Journal of Physical Chemistry B, 109(39), 18223–18225</p></div>
+            <div class="pub-entry"><p class="pub-title">Optimizing synthesis of Na₂Ti₂SiO₇·2H₂O and ion exchange pathways for Cs-CST determined from in situ synchrotron X-ray powder diffraction</p><p class="pub-authors">Celestian, AJ, Medvedev, DG, Tripathi, A, Parise, JB, Clearfield, A</p><p class="pub-venue">Nuclear Instruments and Methods in Physics Research B, 238(1–4), 61–69</p></div>
+            <div class="pub-entry"><p class="pub-title">Tribasic lead maleate and lead maleate: Synthesis and structural and spectroscopic characterizations</p><p class="pub-authors">Bonhomme, François, Alam, Todd M, Celestian, Aaron J, Tallant, David R, Nyman, May, et al.</p><p class="pub-venue">Inorganic Chemistry, 44(21), 7394–7402</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ neutron and X-ray scattering studies of Cs+ ion exchange sequestration into the crystalline silicotitanate (CST) molecular sieve</p><p class="pub-authors">Celestian, AJ, Parise, JB, Smith, RI, Park, HS, Clearfield, A</p><p class="pub-venue">Abstracts of Papers, American Chemical Society, 230</p></div>
+
+            <span class="pub-year">2004 — 5 publications</span>
+            <div class="pub-entry"><p class="pub-title">Time-Resolved Diffraction Studies of Ion Exchange: K+ and Na+ Exchange into (Al, Ge) Gismondine</p><p class="pub-authors">Celestian, Aaron J, Parise, John B, Goodell, Carmen, Tripathi, Akhilesh, Hanson, Jonathan</p><p class="pub-venue">Chemistry of Materials, 16(11), 2244–2254</p></div>
+            <div class="pub-entry"><p class="pub-title">Crystallization of sodium titanium silicate with sitinakite topology: Evolution from the sodium nonatitanate phase</p><p class="pub-authors">Medvedev, Dmitri G, Tripathi, Akhilesh, Clearfield, Abraham, Celestian, Aaron J, Parise, John B, Hanson, Jonathan</p><p class="pub-venue">Chemistry of Materials, 16(19), 3659–3666</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ X-ray diffraction study of Cs ion exchange into H-TS</p><p class="pub-authors">Celestian, Aaron J, Medvedev, Dmitri G, Tripathi, Akhilesh, Parise, John B, Clearfield, Abraham</p><p class="pub-venue">2004 Denver Annual Meeting, GSA</p></div>
+
+            <span class="pub-year">2003 — 3 publications</span>
+            <div class="pub-entry"><p class="pub-title">Phosphor imaging as a tool for in situ mapping of ppm levels of uranium and thorium in rocks and minerals</p><p class="pub-authors">Cole, Jennifer M, Nienstedt, Jessica, Spataro, Glenn, Celestian, Aaron J, et al.</p><p class="pub-venue">Chemical Geology, 193(1–2), 127–136</p></div>
+            <div class="pub-entry"><p class="pub-title">(K4Li4)Al8Ge8O32·8H2O: an Li+-exchanged potassium aluminogermanate with the zeolite gismondine (GIS) topology</p><p class="pub-authors">Celestian, Aaron J, Parise, John B, Tripathi, Akhilesh, Kvick, Åke, Vaughan, Gavin MB</p><p class="pub-venue">Crystal Structure Communications, 59(8), i74–i76</p></div>
+            <div class="pub-entry"><p class="pub-title">In situ synchrotron X-ray structural studies of crystal growth and ion exchange in tunnel-type titanosilicates</p><p class="pub-authors">Tripathi, A, Medvedev, D, Clearfield, A, Celestian, AJ, Parise, JB, Nyman, M, Hanson, J</p><p class="pub-venue">Abstracts of Papers, American Chemical Society, 225</p></div>
+
+            <span class="pub-year">2002 — 3 publications</span>
+            <div class="pub-entry"><p class="pub-title">A new polymorph of eucryptite (LiAlSiO4), ε-eucryptite, and thermal expansion of α- and ε-eucryptite at high pressure</p><p class="pub-authors">Zhang, Jianzhong, Celestian, Aaron, Parise, John B, Xu, Hongwu, Heaney, Peter J</p><p class="pub-venue">American Mineralogist, 87(4), 566–571</p></div>
+            <div class="pub-entry"><p class="pub-title">Ion Exchange of Gismondine</p><p class="pub-authors">Celestian, Aaron Joseph</p><p class="pub-venue">M.S. Thesis, Stony Brook University</p></div>
+            <div class="pub-entry"><p class="pub-title">Instability of Beta-Eucryptite under Pressure and Thermal Expansion of ε-LiAlSiO4 at 1.9 GPa</p><p class="pub-authors">Zhang, JN, Celestian, A, Parise, J, Xu, H, Heaney, P</p><p class="pub-venue">American Mineralogist, 877 (BNL-74038-2005-JA)</p></div>
+
+            <span class="pub-year">2001 — 1 publication</span>
+            <div class="pub-entry"><p class="pub-title">Phase Transformations in the GIS Structure upon Ion Exchange</p><p class="pub-authors">Parise, J, Goodell, C, Celestian, A, Tripathi, A</p><p class="pub-venue">AGU Fall Meeting Abstracts, 2001, V32A-0956</p></div>
+        </div>
+
+        <!-- MEDIA & OUTREACH -->
+        <div class="cv-block" id="media">
+            <div class="section-marker">
+                <span class="section-marker-label">Media &amp; Outreach</span>
+                <div class="section-marker-rule"></div>
+            </div>
+
+            <span class="cv-sublabel">Blog &amp; Podcast</span>
+            <ul class="cv-list">
+                <li><span class="item-label">Pocketful of Xtals</span> — Host &amp; Creator (Substack, Spotify, Apple Podcasts, iHeart)</li>
+            </ul>
+
+            <span class="cv-sublabel">Television</span>
+            <ul class="cv-list">
+                <li><span class="item-label">The UnXplained</span> — History Channel (TV Series, 2020–2023, 3 episodes: S1E14 "Mysterious Stones," S5E3 "Curses Unleashed," S5E7 "Sacred Rituals")</li>
+                <li><span class="item-label">Expedition Unknown: Legend of the Crystal Skull</span> — Discovery Channel (2019)</li>
+                <li><span class="item-label">Spectrum News 1</span> — Lead contamination expert</li>
+                <li><span class="item-label">Univision</span> — Interview</li>
+            </ul>
+
+            <span class="cv-sublabel">Film &amp; Museum Video</span>
+            <ul class="cv-list">
+                <li><span class="item-label">The Color of Ink</span> — Consulting Geologist (2022)</li>
+                <li><span class="item-label">Behind the Scenes with Mineral Sciences</span> — NHMLAC (2017)</li>
+                <li><span class="item-label">Diamonds: Rare Brilliance Exhibition Walkthrough</span> — NHMLAC, with Elena Manferdini (2017)</li>
+            </ul>
+
+            <span class="cv-sublabel">Radio</span>
+            <ul class="cv-list">
+                <li><span class="item-label">NPR TakeTwo</span></li>
+            </ul>
+
+            <span class="cv-sublabel">Print Media</span>
+            <ul class="cv-list">
+                <li><span class="item-label">Eos (AGU Earth and Space Science News)</span> — Featured scientist analyzing ash samples from 2025 California wildfires</li>
+                <li><span class="item-label">New York Times</span> — Parenting Section: The Trouble With Amber Teething Necklaces</li>
+                <li><span class="item-label">National Geographic</span> — Rarest Form of Gold</li>
+                <li><span class="item-label">Reuters</span> — Mystery black diamonds 'The Enigma' (also BBC, NASDAQ, Livemint, Yahoo, Taipei Times)</li>
+                <li><span class="item-label">LA Times</span> — Plants section</li>
+                <li><span class="item-label">Prospering Backyards</span> — Cover Story</li>
+            </ul>
+
+            <span class="cv-sublabel">Mineral &amp; Gem Societies</span>
+            <ul class="cv-list">
+                <li><span class="item-label">Tucson Fine Mineral Gallery</span> — Tucson Gem &amp; Fine Mineral Show, February 4, 2026: "Beyond the Display Case: How Modern Mineralogy is Fighting Disease"</li>
+                <li><span class="item-label">Tucson Fine Mineral Gallery</span> — Tucson Gem &amp; Fine Mineral Show, February 2025</li>
+                <li><span class="item-label">Mineral Talks LIVE</span> — Episode 66, October 2022</li>
+                <li><span class="item-label">MSSC</span> — Zoom, April 9, 2021: "The Lithium Gold Rush"</li>
+            </ul>
+
+            <span class="cv-sublabel">Professional Symposia</span>
+            <ul class="cv-list">
+                <li><span class="item-label">Mineralogical Society of America Centennial Symposium</span> — "Unlocking the Collections: Making Minerals Accessible in the Next 100 Years" (with Kim Tait, Royal Ontario Museum)</li>
+                <li><span class="item-label">Sinkankas Symposium, GIA</span> — "Using Gems to Illuminate Art and Science"</li>
+            </ul>
+
+            <span class="cv-sublabel">Civic &amp; Community</span>
+            <ul class="cv-list">
+                <li><span class="item-label">Rotary Club of Beverly Hills</span> — Beverly Hills Hotel, March 23, 2026</li>
+                <li><span class="item-label">Adventurers' Club of Los Angeles</span> — February 29, 2024: "Searching for Life Deep Underground"</li>
+                <li><span class="item-label">Dahlia Heights Elementary</span> — Career Day keynote</li>
+            </ul>
+
+            <span class="cv-sublabel">Art &amp; Interdisciplinary</span>
+            <ul class="cv-list">
+                <li><span class="item-label">NAHR (Nature, Art &amp; Habitat Residency)</span> — Multiple talks, Taleggio Valley, Italy / Santa Ynez, CA; minerals-themed programming 2025–2026</li>
+            </ul>
+
+            <span class="cv-sublabel">Museum Programs (NHMLAC)</span>
+            <ul class="cv-list">
+                <li>Meet the Scientist — Video series</li>
+                <li>Happy Hour with Dr. Celestian</li>
+                <li>Members Q&amp;A — February 11, 2021 (Zoom)</li>
+                <li>Mineral Talks LIVE</li>
+            </ul>
+
+            <span class="cv-sublabel">Panels &amp; Invited Talks</span>
+            <ul class="cv-list">
+                <li><span class="item-label">First Fridays Panel</span> — NHMLAC: The Search for Life at the Cosmic Scale</li>
+                <li><span class="item-label">Family Office Panel</span> — Miami Beach: The Future of Regenerative Energy (Invited)</li>
+                <li><span class="item-label">SMMP Panel</span> — "The Future of Mineralogy Education," February 12, 2026</li>
+            </ul>
+        </div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="cv-block">
+            <div class="section-marker">
+                <span class="section-marker-label">Technical Skills</span>
+                <div class="section-marker-rule"></div>
+            </div>
+            <div class="skills-grid">
+                <div>
+                    <span class="skill-group-label">Analytical Techniques</span>
+                    <ul class="cv-list">
+                        <li>X-ray Diffraction (XRD)</li>
+                        <li>Raman Spectroscopy</li>
+                        <li>SEM/TEM Imaging</li>
+                        <li>Near-Infrared Imaging</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="skill-group-label">Software &amp; Programming</span>
+                    <ul class="cv-list">
+                        <li>Python — Data Analysis</li>
+                        <li>RamanLab — Developer</li>
+                        <li>Crystallography Software</li>
+                        <li>Machine Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- AFFILIATIONS -->
+        <div class="cv-block">
+            <div class="section-marker">
+                <span class="section-marker-label">Professional Affiliations</span>
+                <div class="section-marker-rule"></div>
+            </div>
+            <ul class="cv-list">
+                <li>Mineralogical Society of America</li>
+                <li>American Geophysical Union</li>
+                <li>NASA Astrobiology Institute</li>
+            </ul>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="cv-block cv-contact">
+            <div class="section-marker">
+                <span class="section-marker-label">Contact</span>
+                <div class="section-marker-rule"></div>
+            </div>
+            <p>
+                Natural History Museum of Los Angeles County<br>
+                Department of Mineral Sciences<br>
+                900 Exposition Blvd., Los Angeles, CA 90007<br>
+                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank">Google Scholar</a> ·
+                <a href="https://www.linkedin.com/in/aaroncelestian/" target="_blank">LinkedIn</a> ·
+                <a href="https://aaroncelestian.substack.com/" target="_blank">Pocketful of Xtals</a>
+            </p>
+        </div>
+
+    </div>
 
     <footer>
         <div class="container">
@@ -1439,42 +1001,13 @@
 
     <script src="script.js"></script>
     <script>
-        // Smooth scroll for internal CV navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 100;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Highlight active section in sticky nav
-        const sections = document.querySelectorAll('.cv-section[id]');
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.fontWeight = '400';
-                link.style.background = 'transparent';
-                if (link.getAttribute('href') === '#' + current) {
-                    link.style.fontWeight = '600';
-                    link.style.background = 'rgba(0,120,160,0.1)';
+                    const offset = 80;
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
                 }
             });
         });

@@ -29,11 +29,7 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     color: var(--text-color);
-    background:
-        radial-gradient(900px 500px at 10% 5%, rgba(42, 125, 107, 0.07), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(26, 158, 138, 0.05), transparent 55%),
-        linear-gradient(180deg, #ffffff 0%, #fbfffe 35%, #f6faf8 100%);
-    background-size: 100% 100%, 100% 100%, 100% 100%;
+    background: #ffffff;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1512,4 +1508,404 @@ html {
 
 .closing-statement a:hover {
     text-decoration: underline;
+}
+
+/* ═══════════════════════════════════════════
+   CV TYPOGRAPHY OVERRIDE
+   Paste at the very end of styles.css
+   These rules override all existing CV styles
+════════════════════════════════════════════ */
+
+/* CV section markers — more visible than main page */
+.section-marker-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.55);
+}
+
+.section-marker-rule {
+    background: rgba(15, 23, 42, 0.18);
+}
+
+.cv-block {
+    padding-top: 0.5rem;
+}
+
+/* Section headings — Education, Experience, Funding, etc. */
+.cv-heading {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.32);
+    border-bottom: 0.5px solid rgba(15, 23, 42, 0.1);
+    border-top: none;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.75rem;
+    margin-top: 3rem;
+    display: block;
+    font-size: 0.62rem;
+}
+
+/* Sub-headings inside sections — Current Positions, Previous Positions */
+.cv-section h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.25);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-variant: normal;
+}
+
+/* Job/degree titles — Ph.D., Curator, etc. */
+.cv-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(15, 23, 42, 0.88);
+    letter-spacing: -0.01em;
+}
+
+.cv-item-header strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(15, 23, 42, 0.88);
+    letter-spacing: -0.01em;
+}
+
+/* Dates */
+.cv-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(15, 23, 42, 0.35);
+    font-style: normal;
+    letter-spacing: 0.02em;
+}
+
+/* Institution / subtitle lines */
+.cv-item > p,
+.cv-item .cv-institution {
+    font-size: 0.88rem;
+    color: rgba(15, 23, 42, 0.52);
+    line-height: 1.6;
+    margin-top: 0.2rem;
+}
+
+/* Section dividers — lighter */
+.cv-section {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Publication entries */
+.cv-section .pub-title,
+.cv-section h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(15, 23, 42, 0.85);
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    margin-bottom: 0.2rem;
+}
+
+/* Publication venue / journal */
+.cv-section .pub-venue,
+.cv-section em {
+    font-size: 0.82rem;
+    color: rgba(15, 23, 42, 0.45);
+    font-style: italic;
+}
+
+/* Year sub-headings in publications — 2026, 2025, etc. */
+.cv-section h4.pub-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.22);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-variant: normal;
+    font-style: normal;
+}
+
+/* CV hero summary block — remove the green left border box */
+.cv-summary,
+.cv-section blockquote {
+    border-left: none;
+    background: none;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(15, 23, 42, 0.65);
+    max-width: 640px;
+    margin-bottom: 2rem;
+}
+
+/* Internal nav tabs — Education / Experience / etc. */
+.cv-nav,
+.cv-tabs {
+    border: none;
+    background: none;
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    border-bottom: 0.5px solid rgba(15, 23, 42, 0.1);
+}
+
+.cv-nav a,
+.cv-tabs a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.38);
+    text-decoration: none;
+    padding: 0 0 0.5rem;
+}
+
+.cv-nav a:hover,
+.cv-tabs a:hover {
+    color: rgba(15, 23, 42, 0.72);
+}
+
+/* CV action buttons — match page typography */
+.cv-actions .btn-small {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.55);
+    background: none;
+    border: 0.5px solid rgba(15, 23, 42, 0.2);
+    border-radius: 3px;
+    padding: 0.5rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cv-actions .btn-small:hover {
+    color: rgba(15, 23, 42, 0.85);
+    border-color: rgba(15, 23, 42, 0.45);
+    background: none;
+}
+
+@media print {
+    /* Hide everything that isn't content */
+    .navbar, footer, .cv-actions, .cv-subnav {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        animation: none !important;
+        font-size: 7pt;
+        line-height: 1.15;
+        color: #000;
+        word-spacing: -0.5pt;
+    }
+
+    .cv-wrap {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Hero - very compact */
+    .cv-name {
+        font-size: 13pt;
+        margin-bottom: 1pt;
+        line-height: 1.1;
+    }
+
+    .cv-title {
+        font-size: 6.5pt;
+        margin-bottom: 6pt;
+        line-height: 1.2;
+        word-spacing: normal;
+    }
+
+    .cv-summary {
+        font-size: 7pt;
+        line-height: 1.2;
+        margin-bottom: 8pt;
+        word-spacing: -0.3pt;
+    }
+
+    /* Section markers — minimal */
+    .section-marker {
+        margin-bottom: 3pt;
+    }
+
+    .section-marker-label {
+        font-size: 6pt;
+        letter-spacing: 0.12em;
+        color: #666;
+    }
+
+    .section-marker-rule {
+        background: #ccc;
+    }
+
+    /* Compress vertical rhythm aggressively */
+    .cv-block {
+        margin-bottom: 6pt;
+        padding-top: 0;
+    }
+
+    .cv-item {
+        margin-bottom: 2pt;
+    }
+
+    .cv-sublabel {
+        margin: 4pt 0 1.5pt;
+        font-size: 6pt;
+        color: #888;
+        letter-spacing: 0.1em;
+    }
+
+    /* Role and date */
+    .cv-item-header {
+        margin-bottom: 0.5pt;
+    }
+
+    .cv-role {
+        font-size: 7pt;
+        font-weight: 600;
+        color: #000;
+    }
+
+    .cv-date {
+        font-size: 6.5pt;
+        color: #666;
+    }
+
+    .cv-item p, .cv-inst {
+        font-size: 6.5pt;
+        color: #333;
+        line-height: 1.15;
+        margin: 0;
+        word-spacing: -0.3pt;
+    }
+
+    /* Publications — ultra compressed */
+    .pub-year {
+        font-size: 6pt;
+        margin: 4pt 0 1.5pt;
+        color: #888;
+        letter-spacing: 0.1em;
+    }
+
+    .pub-entry {
+        margin-bottom: 1.5pt;
+        padding-bottom: 1.5pt;
+        border-bottom: none;
+        page-break-inside: auto;
+    }
+
+    .pub-title {
+        font-size: 6.5pt;
+        font-weight: 600;
+        color: #000;
+        line-height: 1.15;
+        margin-bottom: 0.5pt;
+        word-spacing: -0.3pt;
+    }
+
+    .pub-authors {
+        font-size: 6pt;
+        color: #555;
+        line-height: 1.15;
+        margin-bottom: 0;
+        word-spacing: -0.3pt;
+    }
+
+    .pub-venue {
+        font-size: 6pt;
+        color: #666;
+        line-height: 1.15;
+        word-spacing: -0.3pt;
+    }
+
+    /* Lists */
+    .cv-list {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cv-list li {
+        font-size: 6.5pt;
+        padding: 0.5pt 0;
+        border-bottom: none;
+        line-height: 1.2;
+        color: #222;
+        word-spacing: -0.3pt;
+    }
+
+    .research-list li {
+        padding: 1pt 0;
+    }
+
+    /* Fund entries */
+    .fund-entry {
+        margin-bottom: 2pt;
+    }
+
+    .fund-title {
+        font-size: 6.5pt;
+        font-weight: 600;
+        color: #000;
+        line-height: 1.15;
+        word-spacing: -0.3pt;
+    }
+
+    .fund-detail {
+        font-size: 6pt;
+        color: #444;
+        line-height: 1.15;
+        margin-top: 0.5pt;
+        word-spacing: -0.3pt;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+        gap: 6pt;
+    }
+
+    .skill-group-label {
+        font-size: 6pt;
+        margin-bottom: 2pt;
+    }
+
+    /* Contact */
+    .cv-contact p {
+        font-size: 6.5pt;
+        line-height: 1.3;
+    }
+
+    /* Page setup - tighter margins */
+    @page {
+        margin: 0.45in 0.55in;
+        size: letter;
+    }
+
+    /* Allow page breaks */
+    h1, h2, h3 { page-break-after: auto; }
+    .cv-block { page-break-inside: auto; }
 }
