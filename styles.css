@@ -219,8 +219,8 @@ body {
 .hero-name {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(2.8rem, 5.6vw, 5.6rem);
-    color: rgba(234, 248, 255, 0.93);
+    font-size: clamp(2.4rem, 4.8vw, 4.8rem);
+    color: rgba(234, 248, 255, 0.72);
     letter-spacing: 0.06em;
     line-height: 1.03;
     margin-bottom: 1.4em;

@@ -1,48 +1,5 @@
 // Interactive Data Visualizations using Plotly
 
-// Cycling typewriter effect for hero section
-function initCyclingTypewriter() {
-    const strings = [
-        "Minerals cured a disease. I found the mechanism.",
-        "I work in deep time. The questions reach all the way to tomorrow.",
-        "One geometry. Fukushima. Emergency medicine. Same crystal.",
-        "Life leaves its signature in stone. My job is to read it.",
-        "I have named 17 things that never had a name.",
-        "A natural history museum is the longest laboratory on Earth.",
-        "The mineral that cleans Fukushima's water also lives in your pharmacy."
-    ];
-    
-    let si = 0, ci = 0, deleting = false;
-    const el = document.getElementById('heroTypewriter');
-    
-    if (!el) return;
-    
-    function type() {
-        const s = strings[si];
-        if (!deleting) {
-            ci++;
-            el.textContent = s.slice(0, ci);
-            if (ci === s.length) {
-                deleting = true;
-                setTimeout(type, 2400);
-                return;
-            }
-            setTimeout(type, 40);
-        } else {
-            ci--;
-            el.textContent = s.slice(0, ci);
-            if (ci === 0) {
-                deleting = false;
-                si = (si + 1) % strings.length;
-                setTimeout(type, 380);
-                return;
-            }
-            setTimeout(type, 20);
-        }
-    }
-    setTimeout(type, 900);
-}
-
 // Toggle About section expandable content
 function toggleAboutContent() {
     const expandable = document.getElementById('aboutExpandable');
@@ -59,9 +16,6 @@ function toggleAboutContent() {
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cycling typewriter effect for hero section
-    initCyclingTypewriter();
-    
     // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');

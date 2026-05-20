@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Portfolio</title>
+    <title>Aaron Celestian — Mineral Sciences</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&family=Cormorant+Garamond:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -12,23 +12,340 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
     <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" defer></script>
+    <style>
+        /* ── Article layout overrides ── */
+
+        /* Narrow the prose column for readability */
+        .article-container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Remove alternating section backgrounds — one continuous scroll */
+        .section, .section-alt {
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        /* Each narrative block */
+        .narrative-block {
+            padding: 3.5rem 0 1rem;
+        }
+
+        /* Subdued section marker — replaces heavy h2 */
+        .section-marker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .section-marker-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.32);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .section-marker-rule {
+            flex: 1;
+            height: 0.5px;
+            background: rgba(15, 23, 42, 0.12);
+        }
+
+        /* Hide the old h2 inside sections */
+        .section h2,
+        .section-alt h2 {
+            display: none;
+        }
+
+        /* Body paragraphs */
+        .section-intro, .about-text p {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 1.0rem;
+            font-weight: 380;
+            line-height: 1.9;
+            color: rgba(15, 23, 42, 0.82);
+            margin-bottom: 1.3rem;
+            max-width: 680px;
+        }
+
+        /* Opening graf — larger, display serif */
+        .opening-graf {
+            font-family: 'Fraunces', ui-serif, Georgia, serif;
+            font-size: 1.28rem;
+            font-weight: 500;
+            line-height: 1.65;
+            color: rgba(11, 16, 32, 0.95);
+            margin-bottom: 1.4rem;
+            max-width: 680px;
+        }
+
+        /* Pull quotes */
+        .pull-quote {
+            font-family: 'Fraunces', ui-serif, Georgia, serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.55;
+            border-left: 2px solid #2d6a4f;
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            margin: 2rem 0;
+            color: rgba(11, 16, 32, 0.88);
+            max-width: 600px;
+        }
+
+        /* Remove about-wrap constraint */
+        .about-wrap { max-width: none; }
+
+        /* Field map */
+        .viz-card {
+            margin: 2rem 0 0.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(2, 6, 23, 0.14);
+        }
+
+        /* Expand button */
+        .expand-btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
+            border: 0.5px solid rgba(15, 23, 42, 0.2);
+            background: transparent;
+            color: rgba(15, 23, 42, 0.55);
+            cursor: pointer;
+            margin: 0.5rem 0 1.5rem;
+            transition: all 0.25s ease;
+            box-shadow: none;
+        }
+
+        .expand-btn:hover {
+            background: rgba(45, 106, 79, 0.06);
+            border-color: #2d6a4f;
+            color: #2d6a4f;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Publications — keep existing style but tighten spacing */
+        .publication {
+            padding: 1.75rem 0;
+            border-bottom: 0.5px solid rgba(15, 23, 42, 0.1);
+        }
+
+        .publication:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Video items — full width stacked */
+        .video-item {
+            margin: 0 0 2.5rem;
+        }
+
+        .video-item iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .video-item p {
+            font-size: 0.85rem;
+            color: rgba(15, 23, 42, 0.45);
+            margin-top: 0.6rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        /* Media credits inline */
+        .media-credits {
+            margin: 1rem 0 2rem;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        .media-credits p {
+            font-size: 0.92rem;
+            color: rgba(15, 23, 42, 0.6);
+            line-height: 1.8;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Sub-section labels inside Media (Videos, Press) */
+        .sub-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.28);
+            margin: 2.5rem 0 1.25rem;
+            display: block;
+        }
+
+        /* PoX card — lighter */
+        .pox-block {
+            display: flex;
+            gap: 1.75rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 1rem 0 2rem;
+        }
+
+        .pox-block img {
+            width: 120px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .pox-block-text h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .pox-block-text .project-meta {
+            font-size: 0.8rem;
+            color: rgba(15,23,42,0.45);
+            margin-bottom: 0.6rem;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        .pox-block-text p {
+            font-size: 0.95rem;
+            color: rgba(15,23,42,0.72);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Press cards — lighter, no box shadow */
+        .project-card {
+            border: none;
+            border-top: 0.5px solid rgba(15,23,42,0.1);
+            border-radius: 0;
+            padding: 1.5rem 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .project-card h4 {
+            font-size: 1.0rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .project-card .project-meta {
+            font-size: 0.78rem;
+            color: rgba(15,23,42,0.42);
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: rgba(15,23,42,0.65);
+            line-height: 1.75;
+        }
+
+        /* Closing statement */
+        .closing-statement {
+            max-width: 680px;
+            margin: 3rem auto 4rem;
+            padding: 2rem 0 0;
+            border-top: 0.5px solid rgba(15,23,42,0.1);
+            background: none;
+            backdrop-filter: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .closing-statement p {
+            font-size: 1.0rem;
+            line-height: 1.85;
+            color: rgba(15,23,42,0.7);
+        }
+
+        /* Google Scholar button — center it */
+        .center-cta {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        /* Story map link */
+        .story-map-link {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact section */
+        #contact.section {
+            padding: 3.5rem 0;
+        }
+
+        #contact h2 {
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.32);
+            margin-bottom: 2rem;
+        }
+
+        /* Publications section heading */
+        #publications h2 {
+            display: block;
+        }
+
+        /* Fieldwork map caption */
+        .map-caption {
+            font-size: 0.82rem;
+            color: rgba(15,23,42,0.42);
+            font-style: italic;
+            margin-top: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+    </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">Aaron Celestian</div>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#field">Field</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#minerals">Minerals</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#media">Media</a></li>
                 <li><a href="cv.html">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -50,329 +367,207 @@
         </div>
     </header>
 
-    <section id="about" class="section visible">
-        <div class="container">
-            <h2>About</h2>
-            <div class="about-content">
-                <div class="about-text about-wrap">
-                    <p>
-                        I didn't fall in love with minerals because they're beautiful. I fell in love with them because they remember.
-                    </p>
-                    <p>
-                        Every crystal that has ever grown — in a volcanic vent three kilometers beneath the ocean floor, in the hypersaline pools of a California desert, inside the body of a person who never knew it was forming — carries a chemical record of the conditions that made it. Temperature. Pressure. What was dissolved in the water. Whether anything alive was nearby. Minerals are the planet's oldest archivists, and most of us walk past them every day without knowing what they're holding.
-                    </p>
-                    <p>
-                        My job is to read those records. And then — this is the part that keeps me here — to ask what we can do with what they say.
-                    </p>
-                    
-                    <blockquote class="pull-quote">
-                        "this is the part that keeps me here — to ask what we can do with what they say."
-                    </blockquote>
-                    
-                    <p>
-                        I'm the Curator of Mineral Sciences at the Natural History Museum of Los Angeles County — steward of one of the finest mineral collections in the world: more than 150,000 specimens, some of them billions of years old, gathered from every geologically significant corner of the planet. Most people think of a museum collection as a display case. It isn't. It's a research instrument — a library where every book was written by the Earth itself, and where the newest chapters are still being written in geothermal brines, in the bones of marine organisms, in the walls of craters on Mars.
-                    </p>
-                    <p>
-                        Curating that collection is not a passive act. Every specimen has a provenance, a field context, a set of geochemical relationships that make it scientifically useful. Remove a crystal from its host rock without documenting where and how it grew, and you've destroyed most of what makes it interesting. The collection is only as powerful as the science that feeds it — and the science is only as powerful as the collection that grounds it.
-                    </p>
-                    <p>
-                        That comparative depth — 150,000 specimens, six continents, 4.5 billion years of Earth history — changes what questions you can ask. When I pull a halite crystal from a California salt lake and find something unexpected in its fluid inclusions, I can set it against material from a dozen other hypersaline systems in the collection. That's a question a university laboratory with no collection simply cannot ask.
-                    </p>
-                    
-                    <blockquote class="pull-quote">
-                        "A natural history museum is not where science goes to be preserved. It's where science goes to be done."
-                    </blockquote>
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ════════════════════════════════════════ -->
+    <section id="about" class="section">
+        <div class="article-container">
+            <div class="narrative-block">
+
+                <div class="section-marker">
+                    <span class="section-marker-label">About</span>
+                    <div class="section-marker-rule"></div>
                 </div>
+
+                <p class="opening-graf">I didn't fall in love with minerals because they're beautiful. I fell in love with them because they <em>remember</em>.</p>
+
+                <p class="section-intro">Every crystal that has ever grown — in a volcanic vent three kilometers beneath the ocean floor, in the hypersaline pools of a California desert, inside the body of a person who never knew it was forming — carries a chemical record of the conditions that made it. Temperature. Pressure. What was dissolved in the water. Whether anything alive was nearby. Minerals are the planet's oldest archivists, and most of us walk past them every day without knowing what they're holding.</p>
+
+                <p class="section-intro">My job is to read those records. And then — this is the part that keeps me here — to ask what we can do with what they say.</p>
+
+                <blockquote class="pull-quote">"this is the part that keeps me here — to ask what we can do with what they say."</blockquote>
+
+                <p class="section-intro">I'm the Curator of Mineral Sciences at the Natural History Museum of Los Angeles County — steward of one of the finest mineral collections in the world: more than 150,000 specimens, some of them billions of years old, gathered from every geologically significant corner of the planet. Most people think of a museum collection as a display case. It isn't. It's a research instrument — a library where every book was written by the Earth itself, and where the newest chapters are still being written in geothermal brines, in the bones of marine organisms, in the walls of craters on Mars.</p>
+
+                <p class="section-intro">Curating that collection is not a passive act. Every specimen has a provenance, a field context, a set of geochemical relationships that make it scientifically useful. Remove a crystal from its host rock without documenting where and how it grew, and you've destroyed most of what makes it interesting. The collection is only as powerful as the science that feeds it — and the science is only as powerful as the collection that grounds it.</p>
+
+                <p class="section-intro">That comparative depth — 150,000 specimens, six continents, 4.5 billion years of Earth history — changes what questions you can ask. When I pull a halite crystal from a California salt lake and find something unexpected in its fluid inclusions, I can set it against material from a dozen other hypersaline systems in the collection. That's a question a university laboratory with no collection simply cannot ask.</p>
+
+                <blockquote class="pull-quote">"A natural history museum is not where science goes to be preserved. It's where science goes to be done."</blockquote>
+
             </div>
         </div>
     </section>
 
-    <section id="field" class="section section-alt">
-        <div class="container">
-            <h2>Field Research</h2>
-            <p class="section-intro">
-                Field work is not incidental to mineral sciences research — it is where the questions get set. The ground tells you things the textbook didn't anticipate.
-            </p>
-            <p class="section-intro">
-                I've worked at the margins — geochemically speaking. Salt lakes where the water is more chemistry than water. Desert playas where a billion years of continental runoff has been concentrated into a crust you can crack with your boot. Hydrothermal systems where the temperature gradient from vent to seafloor compresses the entire history of mineral formation into a few vertical meters. These aren't exotic destinations for their own sake. They're the places where Earth's processes run fast enough, and concentrate their signatures strongly enough, that you can actually see what's happening.
-            </p>
-            <p class="section-intro">
-                What comes back from those places — specimens, fluid samples, drill core, field measurements — feeds directly into the museum's research infrastructure: X-ray diffraction, Raman spectroscopy, high-resolution electron imaging, synchrotron access at national facilities. The field generates the questions. The laboratory reads the answers. The collection holds the evidence for the next person who needs to ask something we haven't thought of yet.
-            </p>
-            
-            <div class="viz-card" style="padding: 0; overflow: hidden;">
-                <arcgis-embedded-map style="height:600px;width:100%;display:block;" item-id="bd266656bb4b47a2b13f556bb1a9b717" theme="dark" share-enabled time-zone-label-enabled center="-107.40189721747818,26.002702939040507" scale="36978595.474472" portal-url="https://lacnhm.maps.arcgis.com"></arcgis-embedded-map>
+    <!-- ═══════════════════════════════════════
+         FIELD RESEARCH
+    ════════════════════════════════════════ -->
+    <section id="field" class="section">
+        <div class="article-container">
+            <div class="narrative-block">
+
+                <div class="section-marker">
+                    <span class="section-marker-label">Field Research</span>
+                    <div class="section-marker-rule"></div>
+                </div>
+
+                <p class="opening-graf">The questions don't start in the laboratory. They start in the field, where the ground tells you something the textbook didn't anticipate.</p>
+
+                <p class="section-intro">I've worked at the margins — geochemically speaking. Salt lakes where the water is more chemistry than water. Desert playas where a billion years of continental runoff has been concentrated into a crust you can crack with your boot. Hydrothermal systems where the temperature gradient from vent to seafloor compresses the entire history of mineral formation into a few vertical meters. These aren't exotic destinations for their own sake. They're the places where Earth's processes run fast enough, and concentrate their signatures strongly enough, that you can actually see what's happening.</p>
+
+                <!-- Black Sand & Gold — earned by the field paragraph above -->
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/cZNgRjP-93U"
+                            title="Black Sand & Gold | The Placer Geology of the Missouri River"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <p>Black Sand &amp; Gold — The Placer Geology of the Missouri River</p>
+                </div>
+
+                <p class="section-intro">What comes back from those places — specimens, fluid samples, drill core, field measurements — feeds directly into the museum's research infrastructure: X-ray diffraction, Raman spectroscopy, high-resolution electron imaging, synchrotron access at national facilities. The field generates the questions. The laboratory reads the answers. The collection holds the evidence for the next person who needs to ask something we haven't thought of yet.</p>
+
+                <div class="viz-card" style="padding: 0; overflow: hidden;">
+                    <arcgis-embedded-map style="height:520px;width:100%;display:block;" item-id="bd266656bb4b47a2b13f556bb1a9b717" theme="dark" share-enabled time-zone-label-enabled center="-107.40189721747818,26.002702939040507" scale="36978595.474472" portal-url="https://lacnhm.maps.arcgis.com"></arcgis-embedded-map>
+                </div>
+                <p class="map-caption">Active research sites across six continents — direct field campaigns and ongoing collaborations. Click any marker for location details, associated science, and outcomes.</p>
+                <p class="story-map-link"><a href="https://arcg.is/nerq9" target="_blank">Gems of Southern California — interactive presentation →</a></p>
+
             </div>
-            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--muted-text); font-style: italic;">
-                The map above documents active research sites across six continents, spanning direct field campaigns and ongoing collaborations. Click any marker for location details, associated science, and outcomes.
-            </p>
-            <p class="story-map-link"><a href="https://arcg.is/nerq9" target="_blank">Gems of Southern California — interactive presentation →</a></p>
         </div>
     </section>
 
+    <!-- ═══════════════════════════════════════
+         RESEARCH
+    ════════════════════════════════════════ -->
     <section id="research" class="section">
-        <div class="container">
-            <h2>Research</h2>
-            <p class="section-intro">
-                Every research program I run follows the same logic: find the record, read the record, ask what the record means for something alive.
-            </p>
-            
-            <p class="section-intro">
-                Sometimes that means examining halite crystals from Searles Lake under a Raman spectrometer, looking for the chemical signatures of microbial life preserved inside fluid inclusions — tiny pockets of ancient water, sealed inside a crystal, sitting in the dark for tens of thousands of years. The water is still there. The chemistry is still there. If something was living in that water when the crystal formed, the evidence may still be there too. We are learning to read it. And what we learn here has a direct bearing on how we design the next generation of Mars rovers — because the evaporite sequences at Searles Lake are among the best geological analogs for the sedimentary environments Mars orbiters keep finding evidence of. We are practicing the method on Earth so we know what to look for there.
-            </p>
-            
-            <p class="section-intro">
-                Sometimes it means recognizing that nature solved an engineering problem millions of years before we did — and that the solution is sitting in the crystal structure of a mineral we already had in the collection. The titanium silicate framework of sitinakite has a cage geometry that selects for potassium ions with extraordinary precision. That same geometry, it turns out, is what biological potassium ion channels use to regulate electrochemical gradients across cell membranes. Evolution and mineralogy arrived at the same solution independently, for the same reason: the geometry works. Understanding that mechanism — characterizing exactly why this arrangement of atoms selects for cesium and potassium so precisely — led directly to two applications nobody planned: the emergency cleanup of radioactive wastewater at Fukushima Daiichi, and Lokelma, an FDA-approved drug that pulls excess potassium from the bloodstream of patients in cardiac crisis. Same crystal. Same mechanism. I didn't design either application. I described the mechanism that made both of them possible. That is what basic science does when you let it run long enough.
-            </p>
-            
-            <blockquote class="pull-quote">
-                "Same crystal geometry. Same mechanism. One saves a contaminated bay. One saves a life in an emergency room."
-            </blockquote>
-            
-            <p class="section-intro">
-                It turns out that minerals and living systems have been collaborating on structural problems far longer than we have. Stromatolites — the layered mineral structures built by microbial mats in shallow seas — are the oldest macroscopic evidence of life on Earth, some of them 3.5 billion years old. They are not fossils in the conventional sense. They are architecture: the physical record of bacteria directing mineral precipitation to build structures that served biological purposes. Minerals and microbes, co-constructing something neither could build alone.
-            </p>
-            
-            <p class="section-intro">
-                That same logic appears in one of the most medically significant findings this laboratory has produced. When we imaged kidney stones at synchrotron resolution, we found bacterial biofilm woven into the calcium oxalate matrix itself — not sitting on the surface, not contamination introduced during handling, but structurally integrated into the crystal architecture, as if the stone grew around the bacteria deliberately. Published in PNAS in 2026, this finding means kidney stone disease may be partly microbial in origin — opening a direct path to antibiotic and microbiome-targeted therapies for a condition affecting one in eleven people worldwide. From stromatolites to oncology: the mineral didn't just record the biology. The mineral is the biology.
-            </p>
-            
-            <blockquote class="pull-quote">
-                "The mineral didn't just record the biology. The mineral is the biology."
-            </blockquote>
-            
-            <button class="expand-btn" onclick="toggleSection('salton-sea', this)">Continue — lithium and the Salton Sea ›</button>
-            <div id="salton-sea" class="expandable-section">
-                <p class="section-intro">
-                    The fourth thread asks whether the geothermal brine beneath the Salton Sea — hot, metal-rich, biologically active — might be a lithium source that doesn't require open-pit mining, because salt-tolerant bacteria are already doing the concentration work at the mineral-fluid interface. That question sits at the intersection of microbiology, economic geology, and energy policy. It belongs in a museum because a museum is the only institution with the deep-time collection, the analytical infrastructure, and the public mandate to work across all three at once.
-                </p>
+        <div class="article-container">
+            <div class="narrative-block">
+
+                <div class="section-marker">
+                    <span class="section-marker-label">Research</span>
+                    <div class="section-marker-rule"></div>
+                </div>
+
+                <p class="opening-graf">Every research program I run follows the same logic: find the record, read the record, ask what the record means for something alive.</p>
+
+                <p class="section-intro">Sometimes that means examining halite crystals from Searles Lake under a Raman spectrometer, looking for the chemical signatures of microbial life preserved inside fluid inclusions — tiny pockets of ancient water, sealed inside a crystal, sitting in the dark for tens of thousands of years. The water is still there. The chemistry is still there. If something was living in that water when the crystal formed, the evidence may still be there too. We are learning to read it. And what we learn here has a direct bearing on how we design the next generation of Mars rovers — because the evaporite sequences at Searles Lake are among the best geological analogs for the sedimentary environments Mars orbiters keep finding evidence of. We are practicing the method on Earth so we know what to look for there.</p>
+
+                <!-- Searles Lake video — earned by the fluid inclusions paragraph -->
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/44BXfaC_6R8?start=114"
+                            title="Countyology: Searching for Life in Salt Crystals"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <p>Searching for Life in Salt Crystals — Astrobiology &amp; Halite Biosignatures</p>
+                </div>
+
+                <p class="section-intro">Sometimes it means recognizing that nature solved an engineering problem millions of years before we did — and that the solution is sitting in the crystal structure of a mineral we already had in the collection. The titanium silicate framework of sitinakite has a cage geometry that selects for potassium ions with extraordinary precision. That same geometry, it turns out, is what biological potassium ion channels use to regulate electrochemical gradients across cell membranes. Evolution and mineralogy arrived at the same solution independently, for the same reason: the geometry works. Understanding that mechanism — characterizing exactly why this arrangement of atoms selects for cesium and potassium so precisely — led directly to two applications nobody planned: the emergency cleanup of radioactive wastewater at Fukushima Daiichi, and Lokelma, an FDA-approved drug that pulls excess potassium from the bloodstream of patients in cardiac crisis. Same crystal. Same mechanism. I didn't design either application. I described the mechanism that made both of them possible. That is what basic science does when you let it run long enough.</p>
+
+                <blockquote class="pull-quote">"Same crystal geometry. Same mechanism. One saves a contaminated bay. One saves a life in an emergency room."</blockquote>
+
+                <p class="section-intro">It turns out that minerals and living systems have been collaborating on structural problems far longer than we have. Stromatolites — the layered mineral structures built by microbial mats in shallow seas — are the oldest macroscopic evidence of life on Earth, some of them 3.5 billion years old. They are not fossils in the conventional sense. They are architecture: the physical record of bacteria directing mineral precipitation to build structures that served biological purposes. Minerals and microbes, co-constructing something neither could build alone.</p>
+
+                <p class="section-intro">That same logic appears in one of the most medically significant findings this laboratory has produced. When we imaged kidney stones at synchrotron resolution, we found bacterial biofilm woven into the calcium oxalate matrix itself — not sitting on the surface, not contamination introduced during handling, but structurally integrated into the crystal architecture, as if the stone grew around the bacteria deliberately. Published in PNAS in 2026, this finding means kidney stone disease may be partly microbial in origin — opening a direct path to antibiotic and microbiome-targeted therapies for a condition affecting one in eleven people worldwide. From stromatolites to oncology: the mineral didn't just record the biology. The mineral is the biology.</p>
+
+                <blockquote class="pull-quote">"The mineral didn't just record the biology. The mineral is the biology."</blockquote>
+
+                <button class="expand-btn" onclick="toggleSection('salton-sea', this)">Continue — lithium and the Salton Sea ›</button>
+                <div id="salton-sea" class="expandable-section">
+                    <p class="section-intro">The fourth thread asks whether the geothermal brine beneath the Salton Sea — hot, metal-rich, biologically active — might be a lithium source that doesn't require open-pit mining, because salt-tolerant bacteria are already doing the concentration work at the mineral-fluid interface. That question sits at the intersection of microbiology, economic geology, and energy policy. It belongs in a museum because a museum is the only institution with the deep-time collection, the analytical infrastructure, and the public mandate to work across all three at once.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="minerals" class="section section-alt">
-        <div class="container">
-            <h2>Mineral Discovery</h2>
-            
-            <p class="section-intro">
-                When the International Mineralogical Association approves a new mineral species, it means something very specific: a unique atomic arrangement, found in nature, that has never been formally characterized. A new combination of elements, locked into a geometry the universe invented on its own, that now has a name.
-            </p>
-            
-            <p class="section-intro">
-                I have named seventeen of them. People sometimes assume that mineral discovery is a collector's pursuit — a trophy, a postage stamp in a catalogue. But every new mineral is a new material. And new materials are where new science begins.
-            </p>
-            
-            <p class="section-intro">
-                Take rowleyite. Found at a mine in the Arizona desert, it's structurally unlike anything in the existing database. That distinction isn't merely academic. The same cage-like framework geometry that makes rowleyite crystallographically unique may make it capable of something extraordinary: carrying a drug molecule through the bloodstream and releasing it only when it reaches a tumor. We are investigating that possibility now. A mineral no one had ever heard of, potentially deployed in an oncology ward.
-            </p>
-            
-            <p class="section-intro">
-                Most mineral discoverers stop at the name. The discovery earns a place in the catalogue and the work moves on. This laboratory doesn't stop there — because the catalogue is not the point. The point is what comes next: asking what this new arrangement of atoms can do, and whether anyone, anywhere, has a problem that this geometry might solve. Basic science advancing applied science — not the other way around.
-            </p>
-            
-            <blockquote class="pull-quote">
-                "Seventeen species. Each one a door that didn't exist before we opened it."
-            </blockquote>
-        </div>
-    </section>
+    <!-- ═══════════════════════════════════════
+         MINERAL DISCOVERY
+    ════════════════════════════════════════ -->
+    <section id="minerals" class="section">
+        <div class="article-container">
+            <div class="narrative-block">
 
-    <section id="publications" class="section visible">
-        <div class="container">
-            <h2>Publications</h2>
-            
-            <div class="publication">
-                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">A single crystal geometry — discovered here — now entombs nuclear waste and saves lives in emergency rooms.</p>
-                <p class="pub-title"><a href="https://doi.org/10.1021/ja801134a" target="_blank" style="color: inherit; text-decoration: none;"></a>The mechanism responsible for extraordinary Cs ion selectivity in crystalline silicotitanate</a></p>
-                <p class="pub-venue"><em>Journal of the American Chemical Society</em>, 130(35), 11689–11694 · 2008 · <a href="https://doi.org/10.1021/ja801134a" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">doi.org/10.1021/ja801134a</a></p>
-                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">This paper described the double lever mechanism — a coupled two-site ion exchange geometry in crystalline silicotitanate that explains its extraordinary selectivity for cesium ions. The same principle underlies both the cleanup of radioactive wastewater from Fukushima Daiichi and Lokelma, an FDA-approved drug for life-threatening hyperkalemia. One mechanism. Two completely different applications. Both saving lives.</p>
-            </div>
+                <div class="section-marker">
+                    <span class="section-marker-label">New Mineral Species</span>
+                    <div class="section-marker-rule"></div>
+                </div>
 
-            <div class="publication">
-                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">Bacteria don't just sit on kidney stones — they're built into them. This changes everything about how we treat the disease.</p>
-                <p class="pub-title"><a href="https://doi.org/10.1073/pnas.2517066123" target="_blank" style="color: inherit; text-decoration: none;">Intercalated bacterial biofilms are intrinsic internal components of calcium-based kidney stones</a></p>
-                <p class="pub-venue"><em>Proceedings of the National Academy of Sciences</em>, 123(5), e2517066123 · 2026 · <a href="https://doi.org/10.1073/pnas.2517066123" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">doi.org/10.1073/pnas.2517066123</a></p>
-                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Using high-resolution electron imaging and synchrotron XRD, this study demonstrated that bacterial biofilms are structurally woven into the calcium oxalate matrix of kidney stones — not surface contamination but intrinsic architectural components. The finding reframes kidney stone disease as partly microbial in origin, opening direct pathways to antibiotic and microbiome-targeted therapies for a condition affecting 1 in 11 people worldwide.</p>
-            </div>
+                <p class="opening-graf">When the International Mineralogical Association approves a new mineral species, it means something very specific: a unique atomic arrangement, found in nature, that has never been formally characterized. A new combination of elements, locked into a geometry the universe invented on its own, that now has a name.</p>
 
-            <div class="publication">
-                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">The structural foundation — understanding how iron minerals form at the nanoscale, with implications for environmental chemistry and planetary processes.</p>
-                <p class="pub-title"><a href="https://doi.org/10.1021/cm062585n" target="_blank" style="color: inherit; text-decoration: none;">Similarities in 2- and 6-line ferrihydrite based on pair distribution function analysis of X-ray total scattering</a></p>
-                <p class="pub-venue"><em>Chemistry of Materials</em>, 19(6), 1489–1496 · 2007 · <a href="https://doi.org/10.1021/cm062585n" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">doi.org/10.1021/cm062585n</a></p>
-                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Ferrihydrite is one of the most common iron minerals on Earth and Mars — yet its structure was poorly understood. This paper resolved a long-standing debate using total X-ray scattering and pair distribution function analysis, establishing the structural relationship between its two forms. It remains one of the most-cited papers in environmental mineralogy.</p>
-            </div>
+                <p class="section-intro">I have named seventeen of them. People sometimes assume that mineral discovery is a collector's pursuit — a trophy, a postage stamp in a catalogue. But every new mineral is a new material. And new materials are where new science begins.</p>
 
-            <div class="publication">
-                <p style="font-size: 1.05rem; font-weight: 500; color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.5;">A NASA-commissioned roadmap for detecting life on other worlds — through minerals.</p>
-                <p class="pub-title"><a href="https://www.kiss.caltech.edu/final_reports/The_Biology_of_Biosignature_Detection_Final_Report.pdf" target="_blank" style="color: inherit; text-decoration: none;">The Biology of Biosignature Detection</a></p>
-                <p class="pub-venue">Keck Institute for Space Studies, Caltech · 2024 · <a href="https://www.kiss.caltech.edu/final_reports/The_Biology_of_Biosignature_Detection_Final_Report.pdf" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">Full report PDF</a></p>
-                <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-color);">Commissioned by the Keck Institute for Space Studies at Caltech, this report synthesized the state of biosignature science for planetary exploration — what chemical and mineralogical signatures life leaves behind, how they survive geological time, and how future Mars missions should be designed to detect them. It represents the direct connection between laboratory mineral science and the search for life beyond Earth.</p>
-            </div>
+                <p class="section-intro">Take rowleyite. Found at a mine in the Arizona desert, it's structurally unlike anything in the existing database. That distinction isn't merely academic. The same cage-like framework geometry that makes rowleyite crystallographically unique may make it capable of something extraordinary: carrying a drug molecule through the bloodstream and releasing it only when it reaches a tumor. We are investigating that possibility now. A mineral no one had ever heard of, potentially deployed in an oncology ward.</p>
 
-            <div class="center-cta" style="margin-top: 3rem;">
-                <a href="https://scholar.google.com/citations?user=Yp2uw-0AAAAJ&hl=en" target="_blank" class="btn-small">View all 100+ publications on Google Scholar</a>
+                <p class="section-intro">Most mineral discoverers stop at the name. The discovery earns a place in the catalogue and the work moves on. This laboratory doesn't stop there — because the catalogue is not the point. The point is what comes next: asking what this new arrangement of atoms can do, and whether anyone, anywhere, has a problem that this geometry might solve. Basic science advancing applied science — not the other way around.</p>
+
+                <blockquote class="pull-quote">"Seventeen species. Each one a door that didn't exist before we opened it."</blockquote>
+
             </div>
         </div>
     </section>
 
-    <section id="media" class="section section-alt">
-        <div class="container">
-            <h2>Media & Public Science</h2>
-            <p class="section-intro">
-                Discovery carries an obligation. When you find something — when you read a record no one has read before, or name a material no one has named — you owe it a translation. The work has to travel back from the laboratory to the people it ultimately belongs to.
-            </p>
-            <p class="section-intro">
-                That's what the museum floor is for. It's what Pocketful of χtals is for — a writing and podcast project that treats mineralogy the way it deserves to be treated: as one of the most consequential and under-told stories in science. Each piece starts from a single mineral and follows it wherever it leads — into nuclear physics, into medicine, into the history of pigments, into the search for life on other planets.
-            </p>
-            <p class="section-intro">
-                The Unearthed: Raw Beauty exhibition at NHMLAC, running through 2027, presents some of the largest and rarest uncut mineral specimens ever displayed — not as decoration, but as argument: this is what the Earth has been building for four billion years, and we are only beginning to understand what it means.
-            </p>
+    <!-- ═══════════════════════════════════════
+         MEDIA & PUBLIC SCIENCE
+    ════════════════════════════════════════ -->
+    <section id="media" class="section">
+        <div class="article-container">
+            <div class="narrative-block">
 
-            <div class="media-credits">
-                <p>Television: <em>Expedition Unknown</em> (Discovery Channel, 2019) · 
-                <em>The UnXplained</em> (History Channel, Seasons 1 &amp; 5) · 
-                Consulting Geologist, <em>The Color of Ink</em> (documentary feature)</p>
-                <p>Additional appearances: Spectrum News 1 · Univision · Members Q&amp;A, NHMLAC · 
-                IMDB: <a href="https://www.imdb.com/name/nm10697707/">nm10697707</a></p>
-            </div>
+                <div class="section-marker">
+                    <span class="section-marker-label">Media &amp; Public Science</span>
+                    <div class="section-marker-rule"></div>
+                </div>
 
-            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Blog & Podcast</h3>
-            
-            <div class="project-card">
-                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
-                    <div style="flex: 0 0 200px;">
-                        <img src="images/pox.jpeg" alt="Pocketful of χtals Podcast Cover" 
-                             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    </div>
-                    <div style="flex: 1; min-width: 300px;">
+                <p class="opening-graf">Discovery carries an obligation. When you find something — when you read a record no one has read before, or name a material no one has named — you owe it a translation. The work has to travel back from the laboratory to the people it ultimately belongs to.</p>
+
+                <p class="section-intro">That's what the museum floor is for. It's what <em>Pocketful of χtals</em> is for — a writing and podcast project that treats mineralogy the way it deserves to be treated: as one of the most consequential and under-told stories in science. Each piece starts from a single mineral and follows it wherever it leads — into nuclear physics, into medicine, into the history of pigments, into the search for life on other planets.</p>
+
+                <p class="section-intro">The <em>Unearthed: Raw Beauty</em> exhibition at NHMLAC, running through 2027, presents some of the largest and rarest uncut mineral specimens ever displayed — not as decoration, but as argument: this is what the Earth has been building for four billion years, and we are only beginning to understand what it means.</p>
+
+                <div class="media-credits">
+                    <p>Television: <em>Expedition Unknown</em> (Discovery Channel, 2019) · <em>The UnXplained</em> (History Channel, Seasons 1 &amp; 5) · Consulting Geologist, <em>The Color of Ink</em> (documentary feature)</p>
+                    <p>Additional appearances: Spectrum News 1 · Univision · Members Q&amp;A, NHMLAC · IMDB: <a href="https://www.imdb.com/name/nm10697707/" target="_blank">nm10697707</a></p>
+                </div>
+
+                <div class="pox-block">
+                    <img src="images/pox.jpeg" alt="Pocketful of χtals">
+                    <div class="pox-block-text">
                         <h4>Pocketful of χtals</h4>
-                        <p class="project-meta">Host & Creator · Blog & Podcast on Substack</p>
-                        <p>
-                            Exploring the interaction of art, science, and culture and how we can think differently about our planet. 
-                            Each episode delves into fascinating topics like radioactive waste cleanup, mineral detective work, and the 
-                            intersection of mineralogy with everyday life.
-                        </p>
-                        <div class="pub-links" style="margin-top: 1rem;">
-                            <a href="https://aaroncelestian.substack.com" target="_blank" class="btn-small">Read & Listen on Substack</a>
-                        </div>
+                        <p class="project-meta">Host &amp; Creator · Blog &amp; Podcast on Substack</p>
+                        <p>Exploring the interaction of art, science, and culture and how we can think differently about our planet. Each episode delves into topics like radioactive waste cleanup, mineral detective work, and the intersection of mineralogy with everyday life.</p>
+                        <a href="https://aaroncelestian.substack.com" target="_blank" class="btn-small">Read &amp; Listen on Substack</a>
                     </div>
                 </div>
-            </div>
 
-            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Videos</h3>
-            
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/cZNgRjP-93U" 
-                        title="Black Sand & Gold | The Placer Geology of the Missouri River" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Black Sand & Gold — The Placer Geology of the Missouri River</p>
-            </div>
-
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/44BXfaC_6R8" 
-                        title="Countyology: Searching for Life in Salt Crystals" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Countyology: Searching for Life in Salt Crystals — Astrobiology & Halite Biosignatures</p>
-            </div>
-
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/0IV9etG1jcQ" 
-                        title="Museum Exhibit Feature" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Museum Exhibit Feature — Behind the Scenes at NHM</p>
-            </div>
-
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/t-wZ2SBcFIw" 
-                        title="Marine Minerals Research" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Marine Minerals Research — Deep Sea Mineral Formation</p>
-            </div>
-
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/8IzHo9JlY5E" 
-                        title="Unearthed Exhibition at NHMLAC" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Unearthed Exhibition at NHMLAC — Raw Beauty Mineral Exhibition</p>
-            </div>
-
-            <h3 style="color: var(--primary-color); font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1.5rem;">Press &amp; Features</h3>
-            <div id="articles">
-            
-            <div class="project-card">
-                <h4>Unearthed: Raw Beauty Exhibition</h4>
-                <p class="project-meta">Natural History Museum of Los Angeles County | December 2025 - April 2027</p>
-                <p>
-                    A groundbreaking exhibition featuring some of the largest and rarest mineral specimens ever displayed in their natural, 
-                    uncut form. The exhibition showcases minerals as both natural art and scientific discovery, revealing billions of years 
-                    of Earth's chemical evolution. Includes California's mineral treasures and specimens from the museum's collection alongside 
-                    rare minerals from around the world.
-                </p>
-                <div class="pub-links" style="margin-top: 1rem;">
-                    <a href="https://nhm.org/unearthed-rare-mineral-exhibition" target="_blank" class="btn-small">Exhibition Page</a>
-                    <a href="https://nhmlac.org/press/natural-history-museum-presents-unearthed-raw-beauty-exhibition-some-rarest-and-most" target="_blank" class="btn-small">Press Release</a>
-                    <a href="https://lamag.com/style/worlds-most-magnificent-gems-land-in-l-a/" target="_blank" class="btn-small">LA Magazine</a>
-                    <a href="https://roskingemnewsreport.com/unearthed-raw-beauty-natural-history-museum-los-angeles-california/" target="_blank" class="btn-small">Roskin Gem News</a>
-                    <a href="https://www.latimes.com/travel/newsletter/2025-12-18/la-the-wild-rocks-gems-san-gabriel-mountains-unearthed-raw-beauty-natural-history-museum" target="_blank" class="btn-small">LA Times</a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <h4>Pocketful of χtals: Real-World Impact</h4>
-                <p class="project-meta">The Giving List LA Interview</p>
-                <p>
-                    How L.A.'s Natural History Museum turns mineral science into clean soil, public health, and sustainable energy. 
-                    An in-depth interview discussing sophisticated analytical applications of mineral research for environmental solutions and community impact.
-                </p>
-                <div class="pub-links" style="margin-top: 1rem;">
-                    <a href="https://www.givinglistlosangeles.com/2025/11/17/dr-aaron-celestian-pocketful-of-xtals-real-world-impact-how-l-a-s-natural-history-museum-turns-mineral-science-into-clean-soil-public-health-and-sustainable-energy/" target="_blank" class="btn-small">Read Interview</a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <h4>Aaron Celestian Talks Life on Mars</h4>
-                <p class="project-meta">Natural History Museum Feature</p>
-                <p>
-                    One scientist working on this quest is NHMLAC's own Curator of Mineral Sciences, Dr. Aaron Celestian, who is also 
-                    an affiliate research scientist at NASA's Jet Propulsion Laboratory (JPL). Depending on the outcome of his experiments 
-                    on Mars, Dr. Celestian and his team would be among the first people to discover life on another planet.
-                </p>
-                <div class="pub-links" style="margin-top: 1rem;">
-                    <a href="https://nhm.org/stories/aaron-celestian-talks-life-mars" target="_blank" class="btn-small">Read Article</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h4>Members Q&A with Dr. Aaron Celestian</h4>
-                <p class="project-meta">Natural History Museum of Los Angeles County</p>
-                <p>
-                    Interactive Q&A session covering mineral science research, crystal growth, and current projects at the museum.
-                </p>
-                <div class="pub-links" style="margin-top: 1rem;">
-                    <a href="https://nhmlac.org/members-qa-dr-aaron-celestian" target="_blank" class="btn-small">View Q&A</a>
-                </div>
-            </div>
             </div>
         </div>
     </section>
 
-    <div class="closing-statement">
-        <p>The papers, the patents, the software tools, the mineral species — they are the evidence log of a research program built on one conviction: that the most important things minerals do are the things we haven't asked them about yet.</p>
-        
-        <p>The full record: 
-            <a href="publications.html">Publications</a> · 
-            <a href="cv.html">Curriculum Vitae</a> · 
-            <a href="https://aaroncelestian.substack.com">Pocketful of χtals</a>
-        </p>
+    <!-- ═══════════════════════════════════════
+         CLOSING
+    ════════════════════════════════════════ -->
+    <div class="article-container">
+        <div class="closing-statement">
+            <p>The papers, the patents, the software tools, the mineral species — they are the evidence log of a research program built on one conviction: that the most important things minerals do are the things we haven't asked them about yet.</p>
+            <p style="margin-top:1rem; font-size:0.9rem; color:rgba(15,23,42,0.5);">
+                <a href="publications.html" style="color: var(--secondary-color);">Publications</a> ·
+                <a href="cv.html" style="color: var(--secondary-color);">Curriculum Vitae</a> ·
+                <a href="https://aaroncelestian.substack.com" style="color: var(--secondary-color);">Pocketful of χtals</a>
+            </p>
+        </div>
     </div>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
+    <!-- ═══════════════════════════════════════
+         CONTACT
+    ════════════════════════════════════════ -->
+    <section id="contact" class="section" style="padding: 3.5rem 0;">
+        <div class="article-container">
+
+            <div class="section-marker" style="margin-bottom:2rem;">
+                <span class="section-marker-label">Contact</span>
+                <div class="section-marker-rule"></div>
+            </div>
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-address">
@@ -441,8 +636,46 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="mineral-network.js"></script>
-    <script src="constellation.js"></script>
+    <script>
+        // Typewriter — cycles through strings, types and deletes
+        const strings = [
+            "Minerals cured a disease. I found the mechanism.",
+            "I work in deep time. The questions reach all the way to tomorrow.",
+            "One geometry. Fukushima. Emergency medicine. Same crystal.",
+            "Life leaves its signature in stone. My job is to read it.",
+            "I have named 17 things that never had a name.",
+            "A natural history museum is the longest laboratory on Earth.",
+            "The mineral that cleans Fukushima's water also lives in your pharmacy."
+        ];
+
+        let si = 0, ci = 0, deleting = false;
+        const el = document.getElementById('heroTypewriter');
+
+        function type() {
+            if (!el) return;
+            const s = strings[si];
+            if (!deleting) {
+                ci++;
+                el.textContent = s.slice(0, ci);
+                if (ci === s.length) { deleting = true; setTimeout(type, 2400); return; }
+                setTimeout(type, 42);
+            } else {
+                ci--;
+                el.textContent = s.slice(0, ci);
+                if (ci === 0) { deleting = false; si = (si + 1) % strings.length; setTimeout(type, 380); return; }
+                setTimeout(type, 20);
+            }
+        }
+        setTimeout(type, 1400);
+
+        // Expand/collapse for Salton Sea section
+        function toggleSection(id, btn) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const open = el.classList.toggle('open');
+            btn.textContent = open ? 'Collapse ‹' : 'Continue — lithium and the Salton Sea ›';
+        }
+    </script>
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#contact-form', formId: 'xrejjbry' });
