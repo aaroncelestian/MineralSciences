@@ -1,23 +1,46 @@
 // Interactive Data Visualizations using Plotly
 
-// Typewriter effect for hero section
-function typewriterEffect(element, text, speed = 30) {
-    let i = 0;
-    element.textContent = '';
+// Cycling typewriter effect for hero section
+function initCyclingTypewriter() {
+    const strings = [
+        "Minerals cured a disease. I found the mechanism.",
+        "I work in deep time. The questions reach all the way to tomorrow.",
+        "One geometry. Fukushima. Emergency medicine. Same crystal.",
+        "Life leaves its signature in stone. My job is to read it.",
+        "I have named 17 things that never had a name.",
+        "A natural history museum is the longest laboratory on Earth.",
+        "The mineral that cleans Fukushima's water also lives in your pharmacy."
+    ];
+    
+    let si = 0, ci = 0, deleting = false;
+    const el = document.getElementById('heroTypewriter');
+    
+    if (!el) return;
     
     function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
+        const s = strings[si];
+        if (!deleting) {
+            ci++;
+            el.textContent = s.slice(0, ci);
+            if (ci === s.length) {
+                deleting = true;
+                setTimeout(type, 2400);
+                return;
+            }
+            setTimeout(type, 40);
         } else {
-            // Remove cursor after typing is complete
-            element.classList.add('typing-complete');
+            ci--;
+            el.textContent = s.slice(0, ci);
+            if (ci === 0) {
+                deleting = false;
+                si = (si + 1) % strings.length;
+                setTimeout(type, 380);
+                return;
+            }
+            setTimeout(type, 20);
         }
     }
-    
-    // Start typing after a delay to let the fade-in animation complete
-    setTimeout(type, 1500);
+    setTimeout(type, 900);
 }
 
 // Toggle About section expandable content
@@ -36,12 +59,8 @@ function toggleAboutContent() {
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize typewriter effect for hero section
-    const typewriterElement = document.getElementById('heroTypewriter');
-    if (typewriterElement) {
-        const text = "The central question driving my research is not compositional — what minerals are — but functional: what they do, and when that behavior becomes consequential for living systems, planetary processes, or both.";
-        typewriterEffect(typewriterElement, text, 30);
-    }
+    // Initialize cycling typewriter effect for hero section
+    initCyclingTypewriter();
     
     // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
@@ -367,19 +386,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Toggle collapsible sections
-function toggleSection(sectionId) {
+function toggleSection(sectionId, button) {
     const content = document.getElementById(sectionId);
-    const button = event.currentTarget;
-    const icon = button.querySelector('.toggle-icon');
     
-    if (content.style.display === 'none' || content.style.display === '') {
-        content.style.display = 'block';
-        icon.textContent = '−';
-        button.classList.add('active');
+    if (!content) return;
+    
+    const isOpen = content.classList.contains('open');
+    
+    if (isOpen) {
+        content.classList.remove('open');
+        button.textContent = 'Continue — lithium and the Salton Sea ›';
     } else {
-        content.style.display = 'none';
-        icon.textContent = '+';
-        button.classList.remove('active');
+        content.classList.add('open');
+        button.textContent = 'Collapse ‹';
     }
 }
 
