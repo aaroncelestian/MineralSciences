@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Research Map — Aaron Celestian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&family=Cormorant+Garamond:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+    <style>
+        .map-page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 24px;
+        }
+
+        .map-page-header {
+            margin-bottom: 2rem;
+        }
+
+        .map-page-header h1 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.32);
+            margin-bottom: 1rem;
+        }
+
+        .map-page-intro {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 1.0rem;
+            font-weight: 380;
+            line-height: 1.9;
+            color: rgba(15, 23, 42, 0.82);
+            max-width: 740px;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(2, 6, 23, 0.14);
+            margin-bottom: 1rem;
+        }
+
+        .map-caption {
+            font-size: 0.82rem;
+            color: rgba(15,23,42,0.42);
+            font-style: italic;
+            margin-top: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            max-width: 740px;
+        }
+
+        .story-map-link {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            max-width: 740px;
+        }
+
+        .story-map-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .story-map-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Aaron Celestian</div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#field">Field</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#minerals">Minerals</a></li>
+                <li><a href="field-map.html">Field Map</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="map-page-container">
+        <div class="map-page-header">
+            <h1>Field Research Map</h1>
+            <p class="map-page-intro">
+                Active research sites across six continents, spanning direct field campaigns and ongoing collaborations. Each location represents a geochemical environment where Earth's processes concentrate their signatures strongly enough to read — salt lakes, hydrothermal systems, desert playas, and mineral deposits that hold records of deep time.
+            </p>
+        </div>
+
+        <div class="map-container">
+            <arcgis-embedded-map style="height:720px;width:100%;display:block;" item-id="bd266656bb4b47a2b13f556bb1a9b717" theme="dark" share-enabled time-zone-label-enabled center="-107.40189721747818,26.002702939040507" scale="36978595.474472" portal-url="https://lacnhm.maps.arcgis.com"></arcgis-embedded-map>
+        </div>
+        <p class="map-caption">Click any marker for location details, associated science, and outcomes.</p>
+        <p class="story-map-link"><a href="https://arcg.is/nerq9" target="_blank">Gems of Southern California — interactive presentation →</a></p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Aaron Celestian. Last updated: May 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
