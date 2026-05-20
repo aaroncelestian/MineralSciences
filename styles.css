@@ -1073,65 +1073,52 @@ footer p {
     }
 }
 
-/* Video Grid */
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+/* Media Credits */
+.media-credits {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-md);
 }
 
-.video-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    box-shadow: 0 8px 32px rgba(2, 6, 23, 0.08);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.media-credits p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
 }
 
-.video-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 48px rgba(2, 6, 23, 0.14), 0 0 0 1px rgba(42, 125, 107, 0.25);
-    background: rgba(255, 255, 255, 0.95);
+.media-credits p:last-child {
+    margin-bottom: 0;
 }
 
-.video-wrapper {
-    position: relative;
+.media-credits a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.media-credits a:hover {
+    text-decoration: underline;
+}
+
+/* Video Items - Full Width Stacked */
+.video-item {
+    margin-bottom: 2.5rem;
+}
+
+.video-item iframe {
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
+    aspect-ratio: 16/9;
+    border: none;
+    display: block;
+    border-radius: var(--radius-md);
 }
 
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px 8px 0 0;
-}
-
-.video-card h4 {
-    padding: 0 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-}
-
-.video-card .project-meta {
-    padding: 0 1rem 1rem 1rem;
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .video-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+.video-item p {
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* Collapsible Sections */
