@@ -1,5 +1,25 @@
 // Interactive Data Visualizations using Plotly
 
+// Typewriter effect for hero section
+function typewriterEffect(element, text, speed = 30) {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            // Remove cursor after typing is complete
+            element.classList.add('typing-complete');
+        }
+    }
+    
+    // Start typing after a delay to let the fade-in animation complete
+    setTimeout(type, 1500);
+}
+
 // Toggle About section expandable content
 function toggleAboutContent() {
     const expandable = document.getElementById('aboutExpandable');
@@ -16,6 +36,13 @@ function toggleAboutContent() {
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize typewriter effect for hero section
+    const typewriterElement = document.getElementById('heroTypewriter');
+    if (typewriterElement) {
+        const text = "The central question driving my research is not compositional — what minerals are — but functional: what they do, and when that behavior becomes consequential for living systems, planetary processes, or both.";
+        typewriterEffect(typewriterElement, text, 30);
+    }
+    
     // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
