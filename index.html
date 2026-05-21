@@ -197,27 +197,29 @@
             display: block;
         }
 
-        /* PoX Substack button — match CV page ghost style */
+        /* PoX Substack button — match expand-btn style */
         .pox-block-text .btn-small {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.62rem;
+            font-size: 0.72rem;
             font-weight: 300;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(15, 23, 42, 0.55);
-            background: none;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
             border: 0.5px solid rgba(15, 23, 42, 0.2);
-            border-radius: 3px;
-            padding: 0.5rem 1.1rem;
-            text-decoration: none;
+            background: transparent;
+            color: rgba(15, 23, 42, 0.55);
             cursor: pointer;
-            transition: color 0.2s, border-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.25s ease;
+            box-shadow: none;
         }
 
         .pox-block-text .btn-small:hover {
-            color: rgba(15, 23, 42, 0.85);
-            border-color: rgba(15, 23, 42, 0.45);
-            background: none;
+            background: rgba(45, 106, 79, 0.06);
+            border-color: #2d6a4f;
+            color: #2d6a4f;
             transform: none;
             box-shadow: none;
         }
