@@ -246,6 +246,7 @@ body {
     text-transform: uppercase;
     color: rgba(130, 188, 255, 0.57);
     line-height: 2.15;
+    min-height: 4.4em; /* reserves 2 lines — prevents reflow on wrap */
     max-width: 900px;
     margin-top: 2rem;
     opacity: 0;
