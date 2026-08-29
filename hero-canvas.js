@@ -1,7 +1,8 @@
 // Hero Canvas Animation - 3D Quartz Diffraction with Ewald Sphere
 // α-Quartz: P3₂21, a=4.913Å, c=5.405Å
 
-const canvas = document.getElementById('hero-canvas');
+export function startQuartzHero(canvas) {
+if (!canvas) throw new Error('hero-canvas element missing');
 const ctx = canvas.getContext('2d');
 
 let W, H, cx, cy, sc;
@@ -259,3 +260,4 @@ function frame(ts){
 window.addEventListener('resize', resize);
 resize();
 requestAnimationFrame(frame);
+}
