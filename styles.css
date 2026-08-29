@@ -540,7 +540,7 @@ h1.nav-brand {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.62rem;
     letter-spacing: 0.04em;
-    text-transform: uppercase;
+    text-transform: none;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
@@ -800,14 +800,37 @@ h1.nav-brand {
     color: rgba(230, 235, 245, 0.92);
 }
 
-.hero-xrd-label {
+.hero-meta-hud {
+    position: absolute;
+    top: 4.6rem;
+    left: 1rem;
+    z-index: 18;
+    pointer-events: none;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 300;
-    letter-spacing: 0.08em;
-    color: rgba(120, 180, 255, 0.28);
-    transition: color 0.3s ease;
-    user-select: none;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 8px rgba(6, 8, 16, 0.85);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.hero-meta-hud[hidden] {
+    display: none !important;
+}
+
+.hero-meta-hud-line {
+    color: rgba(160, 200, 255, 0.72);
+    margin: 0 0 0.15rem;
+}
+
+.hero-meta-hud-line--strong {
+    color: rgba(210, 235, 255, 0.92);
+}
+
+.hero-meta-hud-line--accent {
+    color: rgba(255, 170, 210, 0.78);
 }
 
 .hero-xrd-badge:hover .hero-xrd-label {
@@ -1523,6 +1546,12 @@ footer p {
 
     .hero-typewriter-box {
         padding: 2rem 0.85rem 0.95rem;
+    }
+
+    .hero-meta-hud {
+        top: 3.8rem;
+        left: 0.75rem;
+        font-size: 0.58rem;
     }
 
     .hero-axes {

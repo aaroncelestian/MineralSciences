@@ -24,6 +24,15 @@ const HEROES = [
       url: "https://aaroncelestian.substack.com/p/borghese-windsor-cabinet-396",
       linkLabel: "Read the Borghese–Windsor essay →",
     },
+    hud: [
+      { text: "α-SiO₂   P3₂21  (#154)", tone: "strong" },
+      { text: "a = 4.913 Å    c = 5.405 Å" },
+      { text: "Cu Kα   λ = 1.5418 Å" },
+      { text: "|k| = 1/λ   (Ewald)" },
+      { text: "2 d sinθ = n λ" },
+      { text: "00ℓ: ℓ = 3n   (screw)", tone: "accent" },
+      { text: "q = h a* + k b* + ℓ c*" },
+    ],
   },
   {
     id: "slab",
@@ -84,7 +93,7 @@ const HEROES = [
     id: "halite",
     kind: "halite",
     pauseable: true,
-    theatreUrl: "hero/halite-theatre.json?v=9",
+    theatreUrl: "hero/halite-theatre.json?v=11",
     badge: "Halite",
     tooltip:
       "❚❚ pause · ✥ pan · drag to rotate/pan · scroll to zoom · focus bar while paused",
@@ -131,6 +140,25 @@ function applyHeroMeta(hero) {
   if (attr) attr.textContent = hero.attribution;
   document.documentElement.dataset.hero = hero.id;
   applyHeroInfo(hero);
+
+  const hud = document.getElementById("heroMetaHud");
+  if (hud) {
+    const rows = hero.hud || [];
+    if (rows.length) {
+      hud.hidden = false;
+      hud.innerHTML = rows
+        .map((row) => {
+          const text = typeof row === "string" ? row : row.text;
+          const tone = typeof row === "string" ? "" : row.tone || "";
+          const cls = tone ? ` hero-meta-hud-line--${tone}` : "";
+          return `<div class="hero-meta-hud-line${cls}">${text}</div>`;
+        })
+        .join("");
+    } else {
+      hud.hidden = true;
+      hud.innerHTML = "";
+    }
+  }
 }
 
 async function loadNarration(hero) {
@@ -164,10 +192,10 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=18");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=22");
+      const { startHaliteHero } = await import("./hero-halite.js?v=34");
       await startHaliteHero(canvas, hero);
     } else {
-      const { startQuartzHero } = await import("./hero-canvas.js?v=18");
+      const { startQuartzHero } = await import("./hero-canvas.js?v=21");
       startQuartzHero(canvas);
     }
   } catch (err) {
@@ -175,7 +203,7 @@ async function boot() {
     applyHeroMeta(HEROES[0]);
     const fresh = canvas.cloneNode(false);
     canvas.replaceWith(fresh);
-    const { startQuartzHero } = await import("./hero-canvas.js?v=18");
+    const { startQuartzHero } = await import("./hero-canvas.js?v=21");
     startQuartzHero(fresh);
   }
 }

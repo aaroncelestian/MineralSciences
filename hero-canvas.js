@@ -8,7 +8,7 @@ export function startQuartzHero(canvas) {
   const ctx = canvas.getContext("2d");
   const axesCtx = mountHeroAxes(canvas.closest(".hero-stage"));
 
-  let W, H, cx, cy, pxPerQ, hudTop = 84;
+  let W, H, cx, cy, pxPerQ;
   let t = 0;
   let dragging = false;
   let lastX = 0;
@@ -109,7 +109,6 @@ export function startQuartzHero(canvas) {
     cx = W * 0.5;
     cy = padTop + (H - padTop - padBottom) * 0.5;
     pxPerQ = (0.32 * Math.min(W, H - padTop - padBottom)) / ewaldR;
-    hudTop = padTop + 6;
   }
 
   function xform(x, y, z) {
@@ -332,29 +331,8 @@ export function startQuartzHero(canvas) {
   }
 
   function drawHUD() {
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.font = "12px 'IBM Plex Mono', monospace";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    const rows = [
-      ["α-SiO₂   P3₂21  (#154)", "rgba(210,235,255,0.9)"],
-      ["a = 4.913 Å    c = 5.405 Å", "rgba(160,200,255,0.7)"],
-      ["Cu Kα   λ = 1.5418 Å", "rgba(160,200,255,0.7)"],
-      ["|k| = 1/λ   (Ewald)", "rgba(160,200,255,0.65)"],
-      ["2 d sinθ = n λ", "rgba(160,200,255,0.65)"],
-      ["00ℓ: ℓ = 3n   (screw)", "rgba(255,170,210,0.7)"],
-      ["q = h a* + k b* + ℓ c*", "rgba(160,200,255,0.65)"],
-    ];
-    rows.forEach((row, i) => {
-      ctx.fillStyle = row[1];
-      ctx.fillText(row[0], 16, hudTop + i * 16);
-    });
-    ctx.textAlign = "right";
-    ctx.fillStyle = "rgba(140,180,230,0.55)";
-    ctx.fillText("drag to rotate · reciprocal space · Ewald construction", W - 16, H - 36);
-    ctx.restore();
-
+    // Quartz metadata lives in the DOM (#heroMetaHud) so it stays visible
+    // even when canvas frames drop or overlays composite over the canvas.
     drawHeroAxes(axesCtx, (x, y, z) => xform(x, y, z));
   }
 

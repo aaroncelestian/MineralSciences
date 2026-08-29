@@ -61,7 +61,7 @@ function generateInclusions(rng) {
   const hx = sx * 0.46;
   const hy = sy * 0.42;
   const hz = sz * 0.38;
-  const count = DENSITY === "dense" ? 550 : 355; // ~15% fewer than prior for smoother zoom
+  const count = DENSITY === "dense" ? 468 : 302; // −15% for frame pacing
   const boxes = [];
 
   for (let i = 0; i < count * 14 && boxes.length < count; i++) {
@@ -293,17 +293,17 @@ export async function startHaliteHero(canvas, meta = {}) {
   // DOF at 1× pixel ratio — biggest win during zoom
   const DOF_PR = 1;
 
-  scene.add(new THREE.AmbientLight(0xc8d0dc, 0.55));
-  const key = new THREE.DirectionalLight(0xf2f4f8, 1.05);
+  scene.add(new THREE.AmbientLight(0xd8dee8, 0.9));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4);
   key.position.set(60, 90, 80);
   scene.add(key);
-  const fill = new THREE.DirectionalLight(0xa8b4c8, 0.4);
+  const fill = new THREE.DirectionalLight(0xc0c8d8, 0.7);
   fill.position.set(-80, -30, -60);
   scene.add(fill);
-  const rim = new THREE.PointLight(0xd0d8e8, 0.45, 350);
+  const rim = new THREE.PointLight(0xe8eef8, 0.7, 400);
   rim.position.set(-50, 35, 70);
   scene.add(rim);
-  scene.add(new THREE.HemisphereLight(0xe8eef4, 0x1a1c22, 0.35));
+  scene.add(new THREE.HemisphereLight(0xf2f6fc, 0x1a1c22, 0.55));
 
   const root = new THREE.Group();
   scene.add(root);
@@ -311,40 +311,39 @@ export async function startHaliteHero(canvas, meta = {}) {
   const hostGeo = new THREE.BoxGeometry(CRYSTAL.sx, CRYSTAL.sy, CRYSTAL.sz);
   // Cool, nearly colorless host — pink faces were tinting the whole frame under DOF blur
   const hostMat = new THREE.MeshStandardMaterial({
-    color: 0xd8dce6,
+    color: 0xe4e8f0,
     roughness: 0.35,
     metalness: 0.02,
     transparent: true,
-    opacity: 0.05,
+    opacity: 0.16,
     side: THREE.FrontSide,
     depthWrite: false,
   });
-  root.add(new THREE.Mesh(hostGeo, hostMat));
-  root.add(
-    new THREE.LineSegments(
-      new THREE.EdgesGeometry(hostGeo, 20),
-      new THREE.LineBasicMaterial({
-        color: 0xc8d0dc,
-        transparent: true,
-        opacity: 0.28,
-      })
-    )
+  const hostMesh = new THREE.Mesh(hostGeo, hostMat);
+  const hostEdges = new THREE.LineSegments(
+    new THREE.EdgesGeometry(hostGeo, 20),
+    new THREE.LineBasicMaterial({
+      color: 0xe8eef8,
+      transparent: true,
+      opacity: 0.78,
+      depthWrite: false,
+      depthTest: false,
+    })
   );
+  root.add(hostMesh);
+  root.add(hostEdges);
 
   const rng = mulberry32(0x5ea15e);
   const inclusions = generateInclusions(rng);
 
-  // Faint cool fill; rim color carries the pink so blur doesn't go muddy-red
-  const cavityMat = new THREE.MeshStandardMaterial({
-    color: 0xe8d0dc,
-    roughness: 0.5,
-    metalness: 0,
+  // Constant pink (MeshBasic) — Standard+emissive shifts muddy-red under DOF blur
+  const cavityMat = new THREE.MeshBasicMaterial({
+    color: 0xffc4dc,
     transparent: true,
-    opacity: 0.04,
-    emissive: 0x000000,
-    emissiveIntensity: 0,
-    side: THREE.FrontSide,
+    opacity: 0.16,
     depthWrite: false,
+    depthTest: true,
+    toneMapped: false,
   });
   const cavityMesh = new THREE.InstancedMesh(
     new THREE.BoxGeometry(1, 1, 1),
@@ -373,26 +372,27 @@ export async function startHaliteHero(canvas, meta = {}) {
     "position",
     new THREE.Float32BufferAttribute(rimPositions, 3)
   );
-  // Unlit bright pink — stays pink when bokeh averages against black
-  root.add(
-    new THREE.LineSegments(
-      rimGeo,
-      new THREE.LineBasicMaterial({
-        color: 0xff9ec0,
-        transparent: true,
-        opacity: 0.92,
-        depthWrite: false,
-      })
-    )
+  // Unlit pink rims — stable color at all zoom / DOF levels
+  const rimLines = new THREE.LineSegments(
+    rimGeo,
+    new THREE.LineBasicMaterial({
+      color: 0xff9ec8,
+      transparent: true,
+      opacity: 0.7,
+      depthWrite: false,
+      depthTest: true,
+      toneMapped: false,
+    })
   );
+  root.add(rimLines);
 
   const bacteria = spawnMicrobes(inclusions, rng);
   const bugMat = new THREE.MeshStandardMaterial({
-    color: 0x8fd4a0,
-    roughness: 0.35,
-    metalness: 0.05,
-    emissive: 0x3d8a55,
-    emissiveIntensity: 0.85,
+    color: 0x7ecf9a,
+    roughness: 0.4,
+    metalness: 0.02,
+    emissive: 0x2a6b45,
+    emissiveIntensity: 0.7,
     transparent: false,
     depthTest: true,
     depthWrite: true,
@@ -419,7 +419,24 @@ export async function startHaliteHero(canvas, meta = {}) {
     `[halite] ${inclusions.length} inclusions (instanced), ${bacteria.length} microbes (1 µm)`
   );
 
-  const project = getProject("Halite Hero v8", { state: theatreState });
+  // Depth pass: hide host + solid cavity fills. Solid cavity fronts make every
+  // box stacked along a ray share the nearest depth → “behind stays sharp”.
+  // Microbes + rim lines keep real per-object depths (planar focus).
+  const _bokehRender = bokehPass.render.bind(bokehPass);
+  bokehPass.render = (renderer, writeBuffer, readBuffer, deltaTime, maskActive) => {
+    hostMesh.visible = false;
+    hostEdges.visible = false;
+    cavityMesh.visible = false;
+    try {
+      _bokehRender(renderer, writeBuffer, readBuffer, deltaTime, maskActive);
+    } finally {
+      hostMesh.visible = true;
+      hostEdges.visible = true;
+      cavityMesh.visible = true;
+    }
+  };
+
+  const project = getProject("Halite Hero v13", { state: theatreState });
   const sheet = project.sheet("Zoom");
   const camObj = sheet.object("Camera", {
     position: { x: 48, y: 30, z: 195 },
@@ -436,17 +453,23 @@ export async function startHaliteHero(canvas, meta = {}) {
     theatreCam = v;
   });
   await project.ready;
+
   const playOpts = {
     iterationCount: Infinity,
     direction: "alternate",
-    rate: 0.95,
+    rate: 0.92,
   };
-  sheet.sequence.play(playOpts);
+  function playStory() {
+    return sheet.sequence.play(playOpts).catch(() => {
+      // Paused / interrupted
+    });
+  }
+  playStory();
 
   // Microscope focus-hunt windows (match theatre hold beats)
   const FOCUS_HOLDS = [
     { start: 3.2, end: 6.0 }, // pattern (~2 mm) — one focus hunt
-    { start: 8.2, end: 15.5 }, // deep — find microbes
+    { start: 10.5, end: 17.5 }, // deep — find microbes
   ];
   const FIELD_MM_MAX = 5; // only hunt when FOV ≤ 5 mm
 
@@ -527,6 +550,7 @@ export async function startHaliteHero(canvas, meta = {}) {
   const _panDelta = new THREE.Vector3();
   const _viewRight = new THREE.Vector3();
   const _viewUp = new THREE.Vector3();
+  const _worldUp = new THREE.Vector3(0, 1, 0);
   const _look = new THREE.Vector3();
   const _camPos = new THREE.Vector3();
   const _offset = new THREE.Vector3();
@@ -534,16 +558,15 @@ export async function startHaliteHero(canvas, meta = {}) {
   const BLEND_RATE = 2.4;
   const MIN_DIST = 1.2;
   const MAX_DIST = 320;
-  // Local-space offsets from HABITAT — transformed by root so the cavity stays FOV-centered
-  // at any crystal rotation (camera orbits with the crystal; lookAt = habitat world).
-  const DEEP_OFFSET_ARRIVE = new THREE.Vector3(1.15, 0.4, 2.55);
-  const DEEP_OFFSET_CLOSE = new THREE.Vector3(0.5, 0.18, 1.55);
-  const DEEP_SEQ_START = 8.2;
-  const DEEP_SEQ_END = 15.5;
-  const DEEP_DIVE_START = 6.0; // begin easing lock during dive into deep
-  const _theatrePos = new THREE.Vector3();
-  const _theatreLook = new THREE.Vector3();
+  const DEEP_OFFSET_ARRIVE = new THREE.Vector3(1.4, 0.25, 2.5); // matches Theatre @ 10.5
+  const DEEP_OFFSET_CLOSE = new THREE.Vector3(0.9, 0.15, 1.55); // matches Theatre @ 17.5
+  const DEEP_SEQ_START = 10.5;
+  const DEEP_SEQ_END = 17.5;
+  const DEEP_BLEND_IN = 6.0;
   const _habCam = new THREE.Vector3();
+  const _habLook = new THREE.Vector3();
+  const _blendCam = new THREE.Vector3();
+  const _blendLook = new THREE.Vector3();
 
   function trackSequenceDirection(seqPos) {
     if (seqPos >= _prevSeqPos) _seqGoingForward = true;
@@ -559,35 +582,35 @@ export async function startHaliteHero(canvas, meta = {}) {
   }
 
   function deepCloseness(seqPos) {
-    // 0 at dive start → 1 at end of deep hold (handles reverse alternate)
     const raw = (seqPos - DEEP_SEQ_START) / (DEEP_SEQ_END - DEEP_SEQ_START);
-    const u = THREE.MathUtils.clamp(raw, 0, 1);
-    return _seqGoingForward ? u : 1 - u;
+    return THREE.MathUtils.clamp(raw, 0, 1);
   }
 
   function isDeepBeat(seqPos) {
-    return seqPos >= DEEP_SEQ_START - 0.35 && seqPos <= DEEP_SEQ_END + 0.05;
+    return seqPos >= DEEP_SEQ_START && seqPos <= DEEP_SEQ_END;
   }
 
-  /** 0 = free theatre framing, 1 = hard lock on featured inclusion. */
-  function habitatLockAmount(seqPos) {
+  /** 0→1 ease into deep framing during the dive (smoothstep; works on reverse too). */
+  function deepBlend(seqPos) {
     if (seqPos >= DEEP_SEQ_START && seqPos <= DEEP_SEQ_END) return 1;
-    if (seqPos > DEEP_DIVE_START && seqPos < DEEP_SEQ_START) {
-      return (seqPos - DEEP_DIVE_START) / (DEEP_SEQ_START - DEEP_DIVE_START);
+    if (seqPos > DEEP_BLEND_IN && seqPos < DEEP_SEQ_START) {
+      const u = (seqPos - DEEP_BLEND_IN) / (DEEP_SEQ_START - DEEP_BLEND_IN);
+      return u * u * (3 - 2 * u);
     }
     return 0;
   }
 
-  function storyLookAt(target = _look) {
-    const seqPos = sheet.sequence.position;
-    if (habitatLockAmount(seqPos) > 0.5 || theatreCam.position.z < 18) {
-      return habitatWorld(target);
-    }
-    return target.set(
-      theatreCam.lookAt.x,
-      theatreCam.lookAt.y,
-      theatreCam.lookAt.z
+  /** Theatre poses are authored in crystal-local space — always transform by root. */
+  function theatrePoseWorld(outCam, outLook) {
+    outCam.set(
+      theatreCam.position.x,
+      theatreCam.position.y,
+      theatreCam.position.z
     );
+    outLook.set(theatreCam.lookAt.x, theatreCam.lookAt.y, theatreCam.lookAt.z);
+    root.updateMatrixWorld(true);
+    root.localToWorld(outCam);
+    root.localToWorld(outLook);
   }
 
   function habitatCameraLocal(closeness, outCam, outLook) {
@@ -604,31 +627,17 @@ export async function startHaliteHero(canvas, meta = {}) {
     root.localToWorld(outLook);
   }
 
-  function applyHabitatCenteredCamera(closeness, fov, lock = 1) {
+  function storyLookAt(target = _look) {
+    theatrePoseWorld(_habCam, target);
+    return target;
+  }
+
+  function applyHabitatCenteredCamera(closeness, fov) {
     habitatCameraLocal(closeness, _habCam, _look);
-    const t = THREE.MathUtils.clamp(lock, 0, 1);
-    if (t >= 1) {
-      camera.position.copy(_habCam);
-      camera.lookAt(_look);
-    } else {
-      _theatrePos.set(
-        theatreCam.position.x,
-        theatreCam.position.y,
-        theatreCam.position.z
-      );
-      _theatreLook.set(
-        theatreCam.lookAt.x,
-        theatreCam.lookAt.y,
-        theatreCam.lookAt.z
-      );
-      camera.position.lerpVectors(_theatrePos, _habCam, t);
-      _look.lerpVectors(_theatreLook, _look, t);
-      camera.lookAt(_look);
-    }
-    const targetFov =
-      fov != null ? fov : THREE.MathUtils.lerp(theatreCam.fov, 22, t);
-    if (Math.abs(camera.fov - targetFov) > 0.01) {
-      camera.fov = targetFov;
+    camera.position.copy(_habCam);
+    camera.lookAt(_look);
+    if (fov != null && Math.abs(camera.fov - fov) > 0.01) {
+      camera.fov = fov;
       camera.updateProjectionMatrix();
     }
   }
@@ -636,23 +645,11 @@ export async function startHaliteHero(canvas, meta = {}) {
   function applyStoryCamera() {
     const seqPos = sheet.sequence.position;
     trackSequenceDirection(seqPos);
-    const lock = habitatLockAmount(seqPos);
-    if (lock > 0) {
-      // Featured inclusion dead-center in FOV at any root.rotation
-      const fov = THREE.MathUtils.lerp(
-        theatreCam.fov,
-        THREE.MathUtils.lerp(28, 22, deepCloseness(seqPos)),
-        lock
-      );
-      applyHabitatCenteredCamera(deepCloseness(seqPos), fov, lock);
-      return;
-    }
-    camera.position.set(
-      theatreCam.position.x,
-      theatreCam.position.y,
-      theatreCam.position.z
-    );
-    camera.lookAt(theatreCam.lookAt.x, theatreCam.lookAt.y, theatreCam.lookAt.z);
+    // Follow Theatre only (local→world). Deep offsets match keyframes so there is
+    // no hard cut when entering the inclusion; alternate reverse zooms back out.
+    theatrePoseWorld(_camPos, _look);
+    camera.position.copy(_camPos);
+    camera.lookAt(_look);
     if (Math.abs(camera.fov - theatreCam.fov) > 0.01) {
       camera.fov = theatreCam.fov;
       camera.updateProjectionMatrix();
@@ -669,8 +666,6 @@ export async function startHaliteHero(canvas, meta = {}) {
       sheet.sequence.pause();
       userSpin = false;
       clearTimeout(resumeTimer);
-      // Detach from story drive — keep current camera pose for free look/zoom/pan
-      applyStoryCamera();
       storyLookAt(exploreTarget);
       const dist = camera.position.distanceTo(exploreTarget);
       userFocusRack = rackFromFocus(dofFocus, dist);
@@ -678,7 +673,6 @@ export async function startHaliteHero(canvas, meta = {}) {
     } else {
       setPanMode(false);
       setFocusRackInteractive(false);
-      // Ease back toward the frozen story beat, then continue the sequence
       blending = true;
     }
   }
@@ -809,10 +803,20 @@ export async function startHaliteHero(canvas, meta = {}) {
   }
 
   function orbitByPointer(dx, dy) {
+    // Turntable: yaw around fixed world +Y, pitch around screen-right.
+    // (Camera-view tumble + Euler auto-spin was fighting and felt like loose XYZ.)
+    root.rotateOnWorldAxis(_worldUp, dx * 0.005);
     _viewRight.setFromMatrixColumn(camera.matrixWorld, 0).normalize();
-    _viewUp.setFromMatrixColumn(camera.matrixWorld, 1).normalize();
-    root.rotateOnWorldAxis(_viewUp, dx * 0.005);
-    root.rotateOnWorldAxis(_viewRight, dy * 0.004);
+    // Keep pitch axis horizontal so we don't accumulate roll
+    _viewRight.addScaledVector(_worldUp, -_viewRight.dot(_worldUp));
+    if (_viewRight.lengthSq() > 1e-8) {
+      _viewRight.normalize();
+      root.rotateOnWorldAxis(_viewRight, dy * 0.004);
+    }
+  }
+
+  function spinRoot(angle) {
+    root.rotateOnWorldAxis(_worldUp, angle);
   }
 
   function panByPointer(dx, dy) {
@@ -921,40 +925,9 @@ export async function startHaliteHero(canvas, meta = {}) {
 
   function blendTowardStory(dt) {
     const alpha = 1 - Math.exp(-BLEND_RATE * dt);
-    const seqPos = sheet.sequence.position;
-    trackSequenceDirection(seqPos);
-    let targetFov = theatreCam.fov;
-    const lock = habitatLockAmount(seqPos);
-    if (lock > 0) {
-      const c = deepCloseness(seqPos);
-      habitatCameraLocal(c, _camPos, _look);
-      targetFov = THREE.MathUtils.lerp(
-        theatreCam.fov,
-        THREE.MathUtils.lerp(28, 22, c),
-        lock
-      );
-      if (lock < 1) {
-        _theatrePos.set(
-          theatreCam.position.x,
-          theatreCam.position.y,
-          theatreCam.position.z
-        );
-        _theatreLook.set(
-          theatreCam.lookAt.x,
-          theatreCam.lookAt.y,
-          theatreCam.lookAt.z
-        );
-        _camPos.lerpVectors(_theatrePos, _camPos, lock);
-        _look.lerpVectors(_theatreLook, _look, lock);
-      }
-    } else {
-      _camPos.set(
-        theatreCam.position.x,
-        theatreCam.position.y,
-        theatreCam.position.z
-      );
-      storyLookAt(_look);
-    }
+    trackSequenceDirection(sheet.sequence.position);
+    theatrePoseWorld(_camPos, _look);
+    const targetFov = theatreCam.fov;
     camera.position.lerp(_camPos, alpha);
     camera.fov += (targetFov - camera.fov) * alpha;
     camera.updateProjectionMatrix();
@@ -965,7 +938,7 @@ export async function startHaliteHero(canvas, meta = {}) {
     if (posErr < 0.35 && fovErr < 0.35) {
       applyStoryCamera();
       blending = false;
-      sheet.sequence.play(playOpts);
+      playStory();
       userSpin = true;
     }
   }
@@ -1062,6 +1035,11 @@ export async function startHaliteHero(canvas, meta = {}) {
   function tick() {
     const dt = Math.min(0.05, clock.getDelta());
 
+    // Safety: never leave DOF depth-pass hides stuck off after an error
+    hostMesh.visible = true;
+    hostEdges.visible = true;
+    cavityMesh.visible = true;
+
     if (paused) {
       camera.lookAt(exploreTarget);
     } else if (blending) {
@@ -1069,58 +1047,62 @@ export async function startHaliteHero(canvas, meta = {}) {
     } else {
       applyStoryCamera();
       const seqPos = sheet.sequence.position;
-      const locked = habitatLockAmount(seqPos) > 0.15;
-      // Keep current crystal rotation — camera orbits to the habitat in local space
-      if (!locked && userSpin && !dragging) {
-        root.rotation.y += rotPerFrame;
+      // Keep a little spin except while fully locked on the inclusion
+      if (deepBlend(seqPos) < 0.85 && userSpin && !dragging) {
+        spinRoot(rotPerFrame);
       }
     }
 
     if (paused) _look.copy(exploreTarget);
     else storyLookAt(_look);
     const focusDist = camera.position.distanceTo(_look);
+    // Bokeh uses view-space Z (planar focus), not Euclidean distance — match it
+    _offset.copy(_look).sub(camera.position);
+    camera.getWorldDirection(_viewUp);
+    const focusViewZ = -_offset.dot(_viewUp); // positive distance along view axis
     camSpeed = camera.position.distanceTo(_prevCam) / Math.max(dt, 1e-4);
     _prevCam.copy(camera.position);
 
     const movingFast = camSpeed > 12 || blending;
-    // Keep DOF through beat transitions — never snap to infinite focus mid-move
-    const wantDof =
-      paused ||
-      focusDist < 160 ||
-      fieldWidthMm(focusDist) <= FIELD_MM_MAX + 1;
     const fieldMm = fieldWidthMm(focusDist);
+    // Mild DOF from ~1.5 mm FOV; strong only at deep inclusion scales
+    const dofAmt = 1 - THREE.MathUtils.smoothstep(fieldMm, 0.04, 1.5);
+    const wantDof = dofAmt > 0.08;
     const seqPos = sheet.sequence.position;
     const hold = !paused && fieldMm <= FIELD_MM_MAX ? activeFocusHold(seqPos) : null;
     bokehPass.enabled = wantDof;
 
     tickBugs(dt, focusDist, movingFast && !hold ? Math.ceil(bacteria.length / 6) : undefined);
 
-    bugMat.emissiveIntensity = focusDist < 20 ? 1.05 : 0.65;
+    bugMat.emissiveIntensity = focusDist < 20 ? 0.95 : 0.65;
 
-    let rackTargetFocus = focusDist;
+    let rackTargetFocus = focusViewZ;
     if (bokehPass.enabled) {
-      const close = THREE.MathUtils.smoothstep(focusDist, 3, 90);
-      let targetFocus = focusDist;
-      let targetAperture = THREE.MathUtils.lerp(0.00032, 0.00007, close);
-      let targetMaxblur = THREE.MathUtils.lerp(0.01, 0.004, close);
+      const dofCurve = dofAmt * dofAmt;
+      let targetFocus = focusViewZ;
+      let targetAperture = THREE.MathUtils.lerp(0.00006, 0.00085, dofCurve);
+      let targetMaxblur = THREE.MathUtils.lerp(0.004, 0.028, dofCurve);
 
       if (paused) {
-        // Manual rack: drive focus plane from the focus bar
-        targetFocus = focusFromRack(userFocusRack, focusDist);
-        targetAperture = THREE.MathUtils.lerp(0.00038, 0.00009, close);
-        targetMaxblur = THREE.MathUtils.lerp(0.012, 0.005, close);
+        // Rack still authored in Euclidean space — convert offset along view axis
+        const eucl = focusFromRack(userFocusRack, focusDist);
+        targetFocus = eucl * (focusViewZ / Math.max(focusDist, 1e-4));
+        targetAperture *= 1.05;
+        targetMaxblur *= 1.05;
       } else if (hold) {
         const progress = microscopeHoldProgress(seqPos, hold);
-        targetFocus = microscopeFocus(focusDist, progress);
+        const eucl = microscopeFocus(focusDist, progress);
+        targetFocus = eucl * (focusViewZ / Math.max(focusDist, 1e-4));
         targetAperture = microscopeAperture(targetAperture, progress);
-        targetMaxblur = THREE.MathUtils.lerp(0.012, targetMaxblur, Math.min(1, progress / 0.55));
+        if (isDeepBeat(seqPos)) {
+          targetMaxblur = Math.max(targetMaxblur, 0.024 * dofAmt);
+          targetAperture = Math.max(targetAperture, 0.00065 * dofAmt);
+        }
       } else if (movingFast) {
-        // Transit: track the look-at plane, slightly gentler blur for cost — still not infinite DOF
-        targetMaxblur *= 0.75;
+        targetMaxblur *= 0.8;
       }
       rackTargetFocus = targetFocus;
 
-      // Ease DOF params so hunt ↔ transit doesn't pop (snap while dragging focus)
       const ease = 1 - Math.exp(-(focusDragging ? 28 : movingFast ? 6 : 10) * dt);
       dofFocus += (targetFocus - dofFocus) * ease;
       dofAperture += (targetAperture - dofAperture) * ease;
@@ -1133,13 +1115,16 @@ export async function startHaliteHero(canvas, meta = {}) {
       bokehPass.uniforms.farClip.value = camera.far;
       composer.render();
     } else {
-      // Ease blur down before cutting the pass on the next frames if we ever disable
-      dofMaxblur *= Math.exp(-8 * dt);
+      dofFocus = focusViewZ;
+      dofAperture = 0;
+      dofMaxblur = 0;
+      bokehPass.uniforms.aperture.value = 0;
+      bokehPass.uniforms.maxblur.value = 0;
       renderer.render(scene, camera);
     }
 
     updateScaleBar();
-    updateFocusRack(!!hold, focusDist, rackTargetFocus);
+    updateFocusRack(!!hold || (paused && wantDof), focusDist, focusDist);
     requestAnimationFrame(tick);
   }
   tick();
