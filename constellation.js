@@ -61,10 +61,10 @@ const researchNodes = [
         subtitle: 'Lokelma · Hyperkalemia · FDA-approved · Sitinakite',
         chips: [
             { text: 'FDA-approved drug', color: '#0369a1' },
-            { text: 'Hyperkalemia rescue treatment', color: '#059669' },
+            { text: 'Hyperkalemia treatment', color: '#059669' },
             { text: 'Long-term therapeutic', color: '#7c3aed' }
         ],
-        body: 'The same double lever mechanism that captures nuclear waste also saves lives in emergency rooms. The ion selectivity principle I described in sitinakite underlies Lokelma (sodium zirconium cyclosilicate), an FDA-approved drug used as both an emergency rescue treatment for life-threatening hyperkalemia and as a long-term therapeutic for chronic kidney disease patients. A Nobel-recognized mechanism. A mineral. A hospital drug.',
+        body: 'The same double lever mechanism that captures nuclear waste also keeps lethal potassium from stopping a heart. The ion selectivity principle I described in sitinakite underlies Lokelma (sodium zirconium cyclosilicate), an FDA-approved drug that treats hyperkalemia in people whose kidneys can no longer regulate potassium — including patients with chronic kidney disease. A Nobel-recognized mechanism. A mineral. A hospital drug.',
         tags: ['PharmaMineralogy', 'Lokelma', 'Hyperkalemia', 'FDA', 'Ion selectivity', 'Sitinakite', 'Crystal chemistry']
     },
     {

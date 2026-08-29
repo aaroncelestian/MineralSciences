@@ -4,7 +4,7 @@
  * distance clouds, color by d(P), DNA/oxalate/water on, side view, slow auto-rotate.
  */
 import * as THREE from "https://unpkg.com/three@0.170.0/build/three.module.js";
-import { OrbitControls } from "https://unpkg.com/three@0.170.0/examples/jsm/controls/OrbitControls.js";
+import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=10";
 
 const DNA_PINK = {
   backbone: 0xf5b0d0,
@@ -118,15 +118,13 @@ export async function startCaOxHero(canvas, meta) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x060810);
   const camera = new THREE.PerspectiveCamera(42, 1, 0.5, 800);
-  const controls = new OrbitControls(camera, canvas);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
-  controls.enablePan = false;
-  controls.enableZoom = false;
-  controls.enableRotate = false;
-  controls.autoRotate = display.autoRotate !== false;
-  controls.autoRotateSpeed = display.autoRotateSpeed ?? 0.45;
-  controls.target.set(0, 0, 0);
+  const autoRotate = display.autoRotate !== false;
+  const rotPerFrame = ((2 * Math.PI) / 60 / 60) * (display.autoRotateSpeed ?? 0.45);
+  let userSpin = true;
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+  let resumeTimer = 0;
 
   scene.add(new THREE.AmbientLight(0x9aa4b2, 0.55));
   const key = new THREE.DirectionalLight(0xfff4e5, 1.15);
@@ -379,8 +377,7 @@ export async function startCaOxHero(canvas, meta) {
     );
     const r = span + 20;
     camera.position.set(18, 8, r * 1.15);
-    controls.target.set(0, 0, 0);
-    controls.update();
+    camera.lookAt(0, 0, 0);
   }
 
   function resize() {
@@ -394,13 +391,71 @@ export async function startCaOxHero(canvas, meta) {
     renderer.setSize(w, h, false);
   }
 
+  const axesCtx = mountHeroAxes(canvas.closest(".hero-stage"));
+  const _ax = new THREE.Vector3();
+  const _worldUp = new THREE.Vector3(0, 1, 0);
+  const _viewRight = new THREE.Vector3();
+  const _viewUp = new THREE.Vector3();
+
+  function orbitByPointer(dx, dy) {
+    // View-relative orbit: drag follows screen axes, not fixed model X/Y Euler
+    _viewRight.setFromMatrixColumn(camera.matrixWorld, 0).normalize();
+    _viewUp.setFromMatrixColumn(camera.matrixWorld, 1).normalize();
+    root.rotateOnWorldAxis(_viewUp, dx * 0.005);
+    root.rotateOnWorldAxis(_viewRight, dy * 0.004);
+  }
+
+  function onPointerDown(e) {
+    e.preventDefault();
+    dragging = true;
+    userSpin = false;
+    clearTimeout(resumeTimer);
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.classList.add("is-dragging");
+    canvas.setPointerCapture?.(e.pointerId);
+  }
+
+  function onPointerMove(e) {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    orbitByPointer(dx, dy);
+  }
+
+  function onPointerUp(e) {
+    if (!dragging) return;
+    dragging = false;
+    canvas.classList.remove("is-dragging");
+    try {
+      canvas.releasePointerCapture?.(e.pointerId);
+    } catch (_) {}
+    resumeTimer = setTimeout(() => {
+      userSpin = true;
+    }, 2200);
+  }
+
+  canvas.addEventListener("pointerdown", onPointerDown);
+  canvas.addEventListener("pointermove", onPointerMove);
+  canvas.addEventListener("pointerup", onPointerUp);
+  canvas.addEventListener("pointercancel", onPointerUp);
+  canvas.addEventListener("lostpointercapture", onPointerUp);
+
   setSideView();
   resize();
   window.addEventListener("resize", resize);
 
   function tick() {
-    controls.update();
+    if (autoRotate && userSpin && !dragging) {
+      root.rotateOnWorldAxis(_worldUp, rotPerFrame);
+    }
     renderer.render(scene, camera);
+    drawHeroAxes(axesCtx, (x, y, z) => {
+      _ax.set(x, y, z).applyQuaternion(root.quaternion);
+      return [_ax.x, _ax.y, _ax.z];
+    });
     requestAnimationFrame(tick);
   }
   tick();

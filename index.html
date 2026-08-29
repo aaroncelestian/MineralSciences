@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@300..800&family=Cormorant+Garamond:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script type="module" src="hero-boot.js"></script>
+    <script type="module" src="hero-boot.js?v=10"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
     <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" defer></script>
@@ -381,17 +381,20 @@
     </nav>
 
     <header class="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-vignette"></div>
-        <div class="hero-left-fade"></div>
-        <div class="hero-xrd-badge">
-            <span class="hero-xrd-label">[001]</span>
-            <span class="hero-xrd-tooltip">Rotating X-ray diffraction pattern · α-Quartz · Cu Kα radiation</span>
+        <div class="hero-stage">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-vignette"></div>
+            <div class="hero-xrd-badge">
+                <span class="hero-xrd-label">[001]</span>
+                <span class="hero-xrd-tooltip">Drag to rotate · α-Quartz · Cu Kα · reciprocal space</span>
+            </div>
         </div>
-        <div class="hero-content">
-            <div class="hero-eyebrow">CURATOR OF MINERAL SCIENCES<br>NATURAL HISTORY MUSEUM OF LOS ANGELES COUNTY</div>
-            <h1 class="hero-name">Aaron<br>Celestian</h1>
-            <div class="hero-typewriter" id="heroTypewriter"></div>
+        <div class="hero-identity">
+            <div class="hero-identity-inner">
+                <div class="hero-eyebrow">Curator of Mineral Sciences · Natural History Museum of Los Angeles County</div>
+                <h1 class="hero-name">Aaron Celestian</h1>
+                <div class="hero-typewriter" id="heroTypewriter"></div>
+            </div>
         </div>
     </header>
 
@@ -409,7 +412,7 @@
 
                 <p class="opening-graf">I didn't fall in love with minerals because they're beautiful. I fell in love with them because they <em>remember</em>. And because what they remember turns out to matter — sometimes enormously, for people who have never thought about a mineral in their lives.</p>
 
-                <p class="section-intro">Two minerals. Two emergencies. One underlying principle. A microporous titanium silicate framework is now the cleanup material for radioactive cesium contamination at Fukushima Daiichi. A zirconium silicate, geometrically related but structurally distinct, is the active ingredient in Lokelma — an FDA-approved drug that pulls lethal excess potassium from the bloodstream of patients in cardiac crisis. We characterized the ion-selectivity mechanism that makes microporous frameworks capable of this kind of precision — and described it before anyone knew what it was going to be used for. That is what basic science does when you give it enough time.</p>
+                <p class="section-intro">Two minerals. Two problems nobody planned to solve. One underlying principle. A microporous titanium silicate framework is now the cleanup material for radioactive cesium contamination at Fukushima Daiichi. A zirconium silicate, geometrically related but structurally distinct, is the active ingredient in Lokelma — an FDA-approved drug that pulls lethal excess potassium from the bloodstream of people whose kidneys can no longer do it. We characterized the ion-selectivity mechanism that makes microporous frameworks capable of this kind of precision — and described it before anyone knew what it was going to be used for. That is what basic science does when you give it enough time.</p>
 
                 <blockquote class="pull-quote">"Minerals are the planet's oldest archivists. Most of us walk past them without knowing what they're holding."</blockquote>
 
@@ -483,9 +486,9 @@
                     <p>Searching for Life in Salt Crystals — Astrobiology &amp; Halite Biosignatures</p>
                 </div>
 
-                <p class="section-intro">Sometimes it means recognizing that nature solved an engineering problem millions of years before we did — and that the solution is sitting in the crystal structure of a mineral we already had in the collection. The titanium silicate framework of sitinakite has a cage geometry that selects for potassium ions with extraordinary precision. That same geometry, it turns out, is what biological potassium ion channels use to regulate electrochemical gradients across cell membranes. Evolution and mineralogy arrived at the same solution independently, for the same reason: the geometry works. Understanding that mechanism — characterizing exactly why this arrangement of atoms selects for cesium and potassium so precisely — led directly to two applications nobody planned: the emergency cleanup of radioactive wastewater at Fukushima Daiichi, and Lokelma, an FDA-approved drug that pulls excess potassium from the bloodstream of patients in cardiac crisis. Same crystal. Same mechanism. I described the mechanism that made both possible. That is what basic science does when you let it run long enough.</p>
+                <p class="section-intro">Sometimes it means recognizing that nature solved an engineering problem millions of years before we did — and that the solution is sitting in the crystal structure of a mineral we already had in the collection. The titanium silicate framework of sitinakite has a cage geometry that selects for potassium ions with extraordinary precision. That same geometry, it turns out, is what biological potassium ion channels use to regulate electrochemical gradients across cell membranes. Evolution and mineralogy arrived at the same solution independently, for the same reason: the geometry works. Understanding that mechanism — characterizing exactly why this arrangement of atoms selects for cesium and potassium so precisely — led directly to two applications nobody planned: the emergency cleanup of radioactive wastewater at Fukushima Daiichi, and Lokelma, an FDA-approved drug that pulls excess potassium from the bloodstream of people whose kidneys can no longer do it. Same crystal. Same mechanism. I described the mechanism that made both possible. That is what basic science does when you let it run long enough.</p>
 
-                <blockquote class="pull-quote">"Same crystal geometry. Same mechanism. One saves a contaminated bay. One saves a life in an emergency room."</blockquote>
+                <blockquote class="pull-quote">"Same crystal geometry. Same mechanism. One saves a contaminated bay. One keeps a heart from stopping."</blockquote>
 
                 <p class="section-intro">It turns out that minerals and living systems have been collaborating on structural problems far longer than we have. Stromatolites — the layered mineral structures built by microbial mats in shallow seas — are the oldest macroscopic evidence of life on Earth, some of them 3.5 billion years old. They are not fossils in the conventional sense. They are architecture: the physical record of bacteria directing mineral precipitation to build structures that served biological purposes. Minerals and microbes, co-constructing something neither could build alone.</p>
 
@@ -657,7 +660,7 @@
         const strings = [
             "Minerals cured a disease. I found the mechanism.",
             "I work in deep time. The questions reach all the way to tomorrow.",
-            "One geometry. Fukushima. Emergency medicine. Same crystal family.",
+            "One geometry. Fukushima. Medicine. Same crystal family.",
             "Life leaves its signature in stone. My job is to read it.",
             "A natural history museum is the longest laboratory on Earth.",
             "Bacteria didn't just inhabit kidney stones. They built them.",

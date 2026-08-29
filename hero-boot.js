@@ -3,17 +3,16 @@
  *   - quartz XRD (existing 2D canvas)
  *   - DNA–CaOx cylinder/slab (distance clouds)
  *   - DNA–CaOx gel + 15 Å shell
- *
- * CaOx display defaults match the DNA_CaOx viewer setCoatView().
+ *   - Lokelma / ZS-9 zirconium silicate (Dallas 2026)
  */
 
 const HEROES = [
   {
     id: "quartz",
     badge: "[001]",
-    tooltip: "Rotating X-ray diffraction pattern · α-Quartz · Cu Kα radiation",
+    tooltip: "Drag to rotate · α-quartz reciprocal space · P3₂21 · Ewald · Cu Kα",
     attribution:
-      "Hero animation: rotating X-ray diffraction pattern, α-quartz (SiO₂), Cu Kα radiation (λ = 1.5418 Å)",
+      "Hero animation: α-quartz reciprocal space — P3₂21, Ewald sphere, Cu Kα (λ = 1.5418 Å)",
   },
   {
     id: "slab",
@@ -21,7 +20,7 @@ const HEROES = [
     dataUrl: "hero/slab.json",
     badge: "CaOx",
     tooltip:
-      "DNA-length CaOx coating · cylinder/slab cut · distance clouds colored by d(P)",
+      "Drag to rotate · DNA-length CaOx coating · cylinder/slab · d(P) clouds",
     attribution:
       "Hero model: DNA–CaOx cylinder/slab coating (30 Å DNA-length cut), Ca distance clouds colored by phosphate distance",
   },
@@ -31,9 +30,19 @@ const HEROES = [
     dataUrl: "hero/shell15.json",
     badge: "Gel",
     tooltip:
-      "Gel + 15 Å shell (FIRE/OMM) · distance clouds colored by d(P)",
+      "Drag to rotate · Gel + 15 Å shell (FIRE/OMM) · d(P) clouds",
     attribution:
       "Hero model: DNA–CaOx gel + 15 Å shell (FIRE/OpenMM), Ca distance clouds colored by phosphate distance",
+  },
+  {
+    id: "lokelma",
+    kind: "lokelma",
+    dataUrl: "hero/lokelma.json",
+    badge: "ZS-9",
+    tooltip:
+      "Drag to rotate · Sodium zirconium cyclosilicate (Lokelma) · K⁺ / H exchange",
+    attribution:
+      "Hero model: sodium zirconium cyclosilicate (ZS-9 / Lokelma) — Pa-3, K⁺ in 7-ring channels (Dallas 2026 talk)",
   },
 ];
 
@@ -64,17 +73,22 @@ async function boot() {
   applyHeroMeta(hero);
   try {
     if (hero.kind === "caox") {
-      const { startCaOxHero } = await import("./hero-caox.js");
+      const { startCaOxHero } = await import("./hero-caox.js?v=10");
       await startCaOxHero(canvas, hero);
+    } else if (hero.kind === "lokelma") {
+      const { startLokelmaHero } = await import("./hero-lokelma.js?v=10");
+      await startLokelmaHero(canvas, hero);
     } else {
-      const { startQuartzHero } = await import("./hero-canvas.js");
+      const { startQuartzHero } = await import("./hero-canvas.js?v=10");
       startQuartzHero(canvas);
     }
   } catch (err) {
     console.error("Hero failed; falling back to quartz", err);
     applyHeroMeta(HEROES[0]);
-    const { startQuartzHero } = await import("./hero-canvas.js");
-    startQuartzHero(canvas);
+    const fresh = canvas.cloneNode(false);
+    canvas.replaceWith(fresh);
+    const { startQuartzHero } = await import("./hero-canvas.js?v=10");
+    startQuartzHero(fresh);
   }
 }
 
