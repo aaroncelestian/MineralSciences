@@ -1,14 +1,14 @@
 // Hero — α-quartz reciprocal space / Ewald construction
 // Space group P3₂21 · a=4.913 Å · c=5.405 Å · Cu Kα λ=1.5418 Å
 
-import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=10";
+import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=14";
 
 export function startQuartzHero(canvas) {
   if (!canvas) throw new Error("hero-canvas element missing");
   const ctx = canvas.getContext("2d");
   const axesCtx = mountHeroAxes(canvas.closest(".hero-stage"));
 
-  let W, H, cx, cy, pxPerQ;
+  let W, H, cx, cy, pxPerQ, hudTop = 84;
   let t = 0;
   let dragging = false;
   let lastX = 0;
@@ -103,10 +103,13 @@ export function startQuartzHero(canvas) {
       1,
       Math.round(rect.height) || Math.min(Math.round(window.innerHeight * 0.55), 620)
     );
-    cx = W * 0.52;
-    cy = H * 0.5;
-    // Map Ewald radius to ~42% of the shorter canvas side
-    pxPerQ = (0.42 * Math.min(W, H)) / ewaldR;
+    // Center in the clear band between nav (top) and typewriter (bottom)
+    const padTop = Math.max(64, Math.round(H * 0.09));
+    const padBottom = Math.max(120, Math.round(H * 0.2));
+    cx = W * 0.5;
+    cy = padTop + (H - padTop - padBottom) * 0.5;
+    pxPerQ = (0.32 * Math.min(W, H - padTop - padBottom)) / ewaldR;
+    hudTop = padTop + 6;
   }
 
   function xform(x, y, z) {
@@ -345,11 +348,11 @@ export function startQuartzHero(canvas) {
     ];
     rows.forEach((row, i) => {
       ctx.fillStyle = row[1];
-      ctx.fillText(row[0], 16, 14 + i * 16);
+      ctx.fillText(row[0], 16, hudTop + i * 16);
     });
     ctx.textAlign = "right";
     ctx.fillStyle = "rgba(140,180,230,0.55)";
-    ctx.fillText("drag to rotate · reciprocal space · Ewald construction", W - 16, H - 22);
+    ctx.fillText("drag to rotate · reciprocal space · Ewald construction", W - 16, H - 36);
     ctx.restore();
 
     drawHeroAxes(axesCtx, (x, y, z) => xform(x, y, z));

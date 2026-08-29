@@ -43,6 +43,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Homepage: solidify blended nav once past the hero
+    const navbar = document.querySelector('.navbar');
+    const hero = document.querySelector('.hero');
+    if (navbar && hero) {
+        const syncNav = () => {
+            const threshold = Math.max(80, hero.offsetHeight * 0.55);
+            navbar.classList.toggle('is-solid', window.scrollY > threshold);
+        };
+        syncNav();
+        window.addEventListener('scroll', syncNav, { passive: true });
+    }
     
     if (document.getElementById('timeSeriesPlot')) createTimeSeriesPlot();
     if (document.getElementById('distributionPlot')) createDistributionPlot();

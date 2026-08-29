@@ -3,7 +3,8 @@
  * Ball-and-stick framework + K⁺ channels, with a looping H/K exchange beat.
  */
 import * as THREE from "https://unpkg.com/three@0.170.0/build/three.module.js";
-import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=10";
+import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=14";
+import { setNarrationBeat } from "./hero-info.js?v=17";
 import {
   buildExchangeSites,
   buildPoreWindows,
@@ -14,7 +15,7 @@ import {
   flashAt,
   REST,
   LOCKED,
-} from "./hero/lokelma-exchange.js?v=10";
+} from "./hero/lokelma-exchange.js?v=13";
 
 const SCALE = 0.4;
 const K_COLOR = 0xf0c878;
@@ -23,12 +24,14 @@ const PORE_COLOR = 0xf3cc7a;
 const PORE_FREE = 1.5;
 
 const PHASES = [
-  { id: "k", dur: 4.2 },
-  { id: "pore", dur: 2.4 },
-  { id: "h-point", dur: 2.2 },
-  { id: "exchange", dur: 5.4 },
-  { id: "locked", dur: 3.5 },
+  { id: "k", dur: 7.0, beat: "gut" },
+  { id: "pore", dur: 5.2, beat: "pore" },
+  { id: "h-point", dur: 4.8, beat: "protons" },
+  { id: "exchange", dur: 8.2, beat: "lock" },
+  { id: "locked", dur: 6.0, beat: "patients" },
 ];
+const PORE_FADE_IN = 0.55;
+const PORE_FADE_OUT = 1.15;
 
 function makeBondMesh(a, b) {
   const A = new THREE.Vector3(...a);
@@ -154,8 +157,9 @@ export async function startLokelmaHero(canvas, meta = {}) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x060810);
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-  camera.position.set(3.2, 1.6, 9.2);
-  camera.lookAt(0, 0, 0);
+  // Aim slightly below the cell so the structure sits mid-stage above the typewriter
+  camera.position.set(3.4, 1.45, 12.2);
+  camera.lookAt(0, -0.55, 0);
 
   scene.add(new THREE.AmbientLight(0x9aa4b2, 0.55));
   const key = new THREE.DirectionalLight(0xfff4e5, 1.15);
@@ -353,6 +357,26 @@ export async function startLokelmaHero(canvas, meta = {}) {
   let phaseT = 0;
   let kStart = 1;
   let anim = REST;
+  let poreDisplay = 0;
+
+  function applyPoreVisuals(op) {
+    poreGroup.visible = op > 0.01;
+    const pulse = 0.82 + 0.18 * Math.sin(performance.now() * 0.0021);
+    const poreOp = op * pulse;
+    poreGroup.traverse((obj) => {
+      if (!obj.material || !("opacity" in obj.material)) return;
+      if (obj.isLine) {
+        obj.material.opacity = (obj.userData.baseOp ?? 0.7) * poreOp;
+      } else if (obj.geometry?.type === "CircleGeometry") {
+        obj.material.opacity = 0.16 * poreOp;
+      } else if (obj.geometry?.type === "SphereGeometry") {
+        obj.material.opacity = 0.95 * poreOp;
+        if (obj.material.emissiveIntensity != null) {
+          obj.material.emissiveIntensity = 1.15 * poreOp;
+        }
+      }
+    });
+  }
 
   function setAnim(next) {
     anim = next;
@@ -368,23 +392,6 @@ export async function startLokelmaHero(canvas, meta = {}) {
       mesh.material.opacity = anim.kOp;
       mesh.material.emissiveIntensity = (0.55 + anim.kLock * 0.45) * anim.kOp;
       mesh.scale.setScalar(mesh.userData.radius * (1 + anim.kLock * 0.08));
-    });
-
-    poreGroup.visible = anim.poreOp > 0.02;
-    const pulse = 0.82 + 0.18 * Math.sin(performance.now() * 0.0021);
-    const poreOp = anim.poreOp * pulse;
-    poreGroup.traverse((obj) => {
-      if (!obj.material || !("opacity" in obj.material)) return;
-      if (obj.isLine) {
-        obj.material.opacity = (obj.userData.baseOp ?? 0.7) * poreOp;
-      } else if (obj.geometry?.type === "CircleGeometry") {
-        obj.material.opacity = 0.16 * poreOp;
-      } else if (obj.geometry?.type === "SphereGeometry") {
-        obj.material.opacity = 0.95 * poreOp;
-        if (obj.material.emissiveIntensity != null) {
-          obj.material.emissiveIntensity = 1.15 * poreOp;
-        }
-      }
     });
 
     hGroup.visible = anim.hOp > 0.02;
@@ -497,6 +504,7 @@ export async function startLokelmaHero(canvas, meta = {}) {
 
     const phase = PHASES[phaseIdx];
     phaseT += dt;
+    setNarrationBeat(phase.beat);
     const live =
       phase.id === "pore" || phase.id === "h-point" || phase.id === "exchange";
     const progress = live ? Math.min(1, phaseT / (phase.dur * 0.85)) : 1;
@@ -510,6 +518,16 @@ export async function startLokelmaHero(canvas, meta = {}) {
     } else {
       setAnim(applyPhase(phase.id, progress, kStart));
     }
+
+    // Smooth pore ring opacity (especially fade-out when leaving the pore beat)
+    const poreTarget = anim.poreOp;
+    if (poreTarget > poreDisplay) {
+      poreDisplay = Math.min(poreTarget, poreDisplay + dt / PORE_FADE_IN);
+    } else if (poreTarget < poreDisplay) {
+      poreDisplay = Math.max(poreTarget, poreDisplay - dt / PORE_FADE_OUT);
+    }
+    applyPoreVisuals(poreDisplay);
+
     // hold at end of phase briefly then advance
     if (phaseT >= phase.dur) {
       phaseT = 0;

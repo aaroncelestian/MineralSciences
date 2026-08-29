@@ -303,7 +303,7 @@ export const REST = {
   hMix: 0,
   hOp: 0,
   kOp: 1,
-  kLock: 0,
+  kLock: 1,
   cellScale: 1,
   cellGlow: 0,
   poreOp: 0,

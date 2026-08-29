@@ -4,7 +4,7 @@
  * distance clouds, color by d(P), DNA/oxalate/water on, side view, slow auto-rotate.
  */
 import * as THREE from "https://unpkg.com/three@0.170.0/build/three.module.js";
-import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=10";
+import { mountHeroAxes, drawHeroAxes } from "./hero-axes.js?v=14";
 
 const DNA_PINK = {
   backbone: 0xf5b0d0,
@@ -376,8 +376,9 @@ export async function startCaOxHero(canvas, meta) {
       MODEL.seedRadius || 30
     );
     const r = span + 20;
-    camera.position.set(18, 8, r * 1.15);
-    camera.lookAt(0, 0, 0);
+    // Frame above the typewriter band so the model is vertically centered on stage
+    camera.position.set(18, 7.5, r * 1.48);
+    camera.lookAt(0, -span * 0.1, 0);
   }
 
   function resize() {
