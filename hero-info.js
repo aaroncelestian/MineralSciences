@@ -26,7 +26,7 @@ export function mountHeroInfo(host = document.querySelector(".hero")) {
       <p class="hero-panel-kicker"></p>
       <h3 class="hero-panel-title"></h3>
       <p class="hero-panel-body"></p>
-      <a class="hero-panel-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <div class="hero-panel-links"></div>
     </div>
     <div class="hero-panel hero-panel-narration" data-panel="narration" hidden>
       <button type="button" class="hero-panel-close" aria-label="Close">×</button>
@@ -190,14 +190,23 @@ export function applyHeroInfo(hero, root = document.querySelector(".hero-info-ro
   root.querySelector('[data-panel="info"] .hero-panel-title').textContent =
     info.title || hero.id;
   root.querySelector(".hero-panel-body").textContent = info.blurb || "";
-  const link = root.querySelector(".hero-panel-link");
-  if (info.url) {
-    link.hidden = false;
-    link.href = info.url;
-    link.textContent = info.linkLabel || "Read more →";
+  const linksEl = root.querySelector(".hero-panel-links");
+  const links = Array.isArray(info.links) && info.links.length
+    ? info.links
+    : info.url
+      ? [{ url: info.url, label: info.linkLabel || "Read more →" }]
+      : [];
+  if (links.length) {
+    linksEl.hidden = false;
+    linksEl.innerHTML = links
+      .map(
+        (l) =>
+          `<a class="hero-panel-link" href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label || "Read more →")}</a>`
+      )
+      .join("");
   } else {
-    link.hidden = true;
-    link.removeAttribute("href");
+    linksEl.hidden = true;
+    linksEl.innerHTML = "";
   }
 
   const narrBtn = root.querySelector('[data-action="narration"]');

@@ -6,7 +6,7 @@
  *   - Halite fluid inclusions (astrobiology / iron-cross)
  */
 
-import { mountHeroInfo, applyHeroInfo } from "./hero-info.js?v=21";
+import { mountHeroInfo, applyHeroInfo } from "./hero-info.js?v=22";
 
 const HEROES = [
   {
@@ -85,8 +85,16 @@ const HEROES = [
       title: "Life finds haven inside crystals",
       blurb:
         "Primary fluid inclusions in evaporite halite seal ancient brine — and sometimes the microbes that lived in it. Clear diagonals and filled axis arms form the iron-cross growth pattern. What we learn in Searles Lake–style Mars analogs shapes how we look for biosignatures on Mars.",
-      url: "https://www.youtube.com/watch?v=44BXfaC_6R8&t=114s",
-      linkLabel: "Watch: Searching for Life in Salt Crystals →",
+      links: [
+        {
+          url: "https://doi.org/10.1029/2026JE009730",
+          label: "Read the JGR Planets paper →",
+        },
+        {
+          url: "https://doi.org/10.1177/15311074261464716",
+          label: "Read the Astrobiology paper →",
+        },
+      ],
     },
   },
 ];
@@ -173,7 +181,7 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=19");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=55");
+      const { startHaliteHero } = await import("./hero-halite.js?v=56");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=21");

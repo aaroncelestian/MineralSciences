@@ -8,7 +8,7 @@ import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
 import theatre from "./vendor/theatre-core.esm.js";
-import { setPauseButtonState, setPanButtonState } from "./hero-info.js?v=21";
+import { setPauseButtonState, setPanButtonState } from "./hero-info.js?v=22";
 
 const { getProject, types } = theatre;
 
