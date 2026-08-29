@@ -22,7 +22,7 @@ const DENSITY = "sparse";
 /** Cap microbes — densest around the deep-zoom habitat, sparse elsewhere. */
 const MAX_MICROBES = 150;
 /** Inclusions farther than this from HABITAT get no microbes. */
-const MICROBE_HOT_RADIUS = 10;
+const MICROBE_HOT_RADIUS = 40;
 
 /** Featured cubic inclusion for deep-zoom (the “main” cavity in frame). ~14 µm. */
 const HABITAT = { x: 30.8, y: 0.9, z: 0.3, sx: 0.72, sy: 0.78, sz: 0.68 };
@@ -134,7 +134,7 @@ function microbeCountFor(inc) {
     return Math.min(4, 2 + Math.floor(vol * 0.5));
   }
   // Outer hot ring: at most one microbe for a hint of life
-  return vol > 0.35 ? 1 : 0;
+  return vol > 0.02 ? 1 : 0;
 }
 
 function boxEdges(sx, sy, sz) {

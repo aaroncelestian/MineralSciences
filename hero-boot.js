@@ -60,7 +60,7 @@ const HEROES = [
       "Drag to rotate · Sodium zirconium cyclosilicate (Lokelma) · K⁺ / H exchange",
     attribution:
       "Hero model: sodium zirconium cyclosilicate (ZS-9 / Lokelma) — Pa-3, K⁺ in 7-ring channels (Dallas 2026 talk)",
-    narrationUrl: "hero/lokelma-narration.json",
+    narrationUrl: "hero/lokelma-narration.json?v=2",
     info: {
       kicker: "ZS-9 · Lokelma",
       title: "Zirconium silicate ion exchange",
@@ -181,7 +181,7 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=19");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=56");
+      const { startHaliteHero } = await import("./hero-halite.js?v=57");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=21");
