@@ -499,9 +499,23 @@ export async function startHaliteHero(canvas, meta = {}) {
     return worldWUm / 1000;
   }
 
-  /** Rack-focus hunt: one soft sweep → lock (no double-pump at the 2 mm hold). */
-  function microscopeFocus(baseFocus, holdProgress) {
+  /** Rack-focus hunt: slide the focal plane, then lock. */
+  function microscopeFocus(baseFocus, holdProgress, deep = false) {
     const u = THREE.MathUtils.clamp(holdProgress, 0, 1);
+    if (deep) {
+      // High-DOF: one clear near→far slide through the stack, then settle on subject
+      if (u < 0.78) {
+        const h = u / 0.78;
+        const ease = h * h * (3 - 2 * h);
+        const near = baseFocus * 0.48;
+        const far = baseFocus * 1.42;
+        return Math.max(0.12, THREE.MathUtils.lerp(near, far, ease));
+      }
+      const s = (u - 0.78) / 0.22;
+      const ease = s * s * (3 - 2 * s);
+      return Math.max(0.12, THREE.MathUtils.lerp(baseFocus * 1.18, baseFocus, ease));
+    }
+    // Pattern (~2 mm): gentler single sweep
     if (u >= 0.55) {
       const s = (u - 0.55) / 0.45;
       const ease = s * s * (3 - 2 * s);
@@ -509,13 +523,18 @@ export async function startHaliteHero(canvas, meta = {}) {
     }
     const h = u / 0.55;
     const amp = baseFocus * (0.2 * (1 - h * 0.45) + 0.05);
-    // Single half-cycle rack — was sin(2.4π) which felt like a repeat
     const wave = Math.sin(h * Math.PI) * Math.exp(-h * 0.4);
     return Math.max(0.15, baseFocus + wave * amp);
   }
 
-  function microscopeAperture(baseAperture, holdProgress) {
+  function microscopeAperture(baseAperture, holdProgress, deep = false) {
     const u = THREE.MathUtils.clamp(holdProgress, 0, 1);
+    if (deep) {
+      // Keep aperture open while sliding so the rack is obvious
+      if (u < 0.78) return baseAperture * 1.35;
+      const s = (u - 0.78) / 0.22;
+      return THREE.MathUtils.lerp(baseAperture * 1.35, baseAperture, s * s * (3 - 2 * s));
+    }
     if (u >= 0.55) {
       const s = (u - 0.55) / 0.45;
       return THREE.MathUtils.lerp(baseAperture * 1.2, baseAperture, s * s * (3 - 2 * s));
@@ -691,8 +710,8 @@ export async function startHaliteHero(canvas, meta = {}) {
   }
 
   function focusSpan(focusDist) {
-    // Wider travel when paused so racking focus is obvious
-    return Math.max(0.5, focusDist * (paused ? 0.48 : 0.28));
+    // Wider travel when paused or deep-DOF sliding so the rack reads clearly
+    return Math.max(0.5, focusDist * (paused ? 0.55 : 0.42));
   }
 
   function rackFromFocus(focus, focusDist) {
@@ -945,14 +964,13 @@ export async function startHaliteHero(canvas, meta = {}) {
 
   function updateFocusRack(hunting, focusDist, targetFocus) {
     if (!focusRackEl || !focusMarker) return;
-    const show = hunting || paused;
-    focusRackEl.classList.toggle("is-active", show);
+    focusRackEl.classList.toggle("is-active", hunting);
     if (paused) {
       focusMarker.style.setProperty("--rack", userFocusRack.toFixed(3));
       return;
     }
     // Map focus plane vs subject distance → marker travel (0 = near/top, 1 = far/bottom)
-    const rack = rackFromFocus(targetFocus ?? dofFocus, focusDist);
+    const rack = rackFromFocus(targetFocus ?? focusDist, focusDist);
     focusMarker.style.setProperty("--rack", rack.toFixed(3));
   }
 
@@ -1076,34 +1094,39 @@ export async function startHaliteHero(canvas, meta = {}) {
 
     bugMat.emissiveIntensity = focusDist < 20 ? 0.95 : 0.65;
 
-    let rackTargetFocus = focusViewZ;
+    let rackEucl = focusDist;
+    let slidingFocus = false;
     if (bokehPass.enabled) {
       const dofCurve = dofAmt * dofAmt;
       let targetFocus = focusViewZ;
       let targetAperture = THREE.MathUtils.lerp(0.00006, 0.00085, dofCurve);
       let targetMaxblur = THREE.MathUtils.lerp(0.004, 0.028, dofCurve);
+      const deep = isDeepBeat(seqPos) || dofAmt > 0.55;
 
       if (paused) {
-        // Rack still authored in Euclidean space — convert offset along view axis
         const eucl = focusFromRack(userFocusRack, focusDist);
+        rackEucl = eucl;
         targetFocus = eucl * (focusViewZ / Math.max(focusDist, 1e-4));
         targetAperture *= 1.05;
         targetMaxblur *= 1.05;
-      } else if (hold) {
-        const progress = microscopeHoldProgress(seqPos, hold);
-        const eucl = microscopeFocus(focusDist, progress);
+      } else if (hold || (deep && wantDof)) {
+        // Slide focus through the stack whenever DOF is strong
+        const slideHold = hold || { start: DEEP_SEQ_START, end: DEEP_SEQ_END };
+        const progress = microscopeHoldProgress(seqPos, slideHold);
+        const eucl = microscopeFocus(focusDist, progress, deep);
+        rackEucl = eucl;
         targetFocus = eucl * (focusViewZ / Math.max(focusDist, 1e-4));
-        targetAperture = microscopeAperture(targetAperture, progress);
-        if (isDeepBeat(seqPos)) {
-          targetMaxblur = Math.max(targetMaxblur, 0.024 * dofAmt);
-          targetAperture = Math.max(targetAperture, 0.00065 * dofAmt);
+        targetAperture = microscopeAperture(targetAperture, progress, deep);
+        slidingFocus = progress < 0.78;
+        if (deep) {
+          targetMaxblur = Math.max(targetMaxblur, 0.026 * Math.max(dofAmt, 0.5));
+          targetAperture = Math.max(targetAperture, 0.0007 * Math.max(dofAmt, 0.5));
         }
       } else if (movingFast) {
         targetMaxblur *= 0.8;
       }
-      rackTargetFocus = targetFocus;
 
-      const ease = 1 - Math.exp(-(focusDragging ? 28 : movingFast ? 6 : 10) * dt);
+      const ease = 1 - Math.exp(-(focusDragging ? 28 : slidingFocus ? 16 : movingFast ? 6 : 10) * dt);
       dofFocus += (targetFocus - dofFocus) * ease;
       dofAperture += (targetAperture - dofAperture) * ease;
       dofMaxblur += (targetMaxblur - dofMaxblur) * ease;
@@ -1124,7 +1147,11 @@ export async function startHaliteHero(canvas, meta = {}) {
     }
 
     updateScaleBar();
-    updateFocusRack(!!hold || (paused && wantDof), focusDist, focusDist);
+    updateFocusRack(
+      !!hold || slidingFocus || (paused && wantDof) || (wantDof && isDeepBeat(seqPos)),
+      focusDist,
+      rackEucl
+    );
     requestAnimationFrame(tick);
   }
   tick();

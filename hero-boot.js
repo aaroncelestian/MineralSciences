@@ -192,7 +192,7 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=18");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=34");
+      const { startHaliteHero } = await import("./hero-halite.js?v=35");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=21");
