@@ -6,7 +6,7 @@
       },
       "sequence": {
         "type": "PositionalSequence",
-        "length": 17.5,
+        "length": 23.5,
         "subUnitsPerUnit": 30,
         "tracksByObject": {
           "Camera": {
@@ -16,7 +16,7 @@
                 "__debugName": "Camera:[\"position\",\"x\"]",
                 "keyframes": [
                   {
-                    "id": "01216e61e1db2806",
+                    "id": "883bca66bb5ea7ae",
                     "position": 0,
                     "value": 48,
                     "connectedRight": true,
@@ -28,7 +28,7 @@
                     ]
                   },
                   {
-                    "id": "f43c160c7a626429",
+                    "id": "3195a2046e9a83ba",
                     "position": 1.2,
                     "value": 46,
                     "connectedRight": true,
@@ -40,7 +40,7 @@
                     ]
                   },
                   {
-                    "id": "2ae9333d53fc7e89",
+                    "id": "90b7189a5afa24c0",
                     "position": 3.2,
                     "value": 42,
                     "connectedRight": true,
@@ -52,8 +52,8 @@
                     ]
                   },
                   {
-                    "id": "f9cb67140dab08db",
-                    "position": 6,
+                    "id": "5b505654b9cc16f5",
+                    "position": 5.4,
                     "value": 42,
                     "connectedRight": true,
                     "handles": [
@@ -64,21 +64,21 @@
                     ]
                   },
                   {
-                    "id": "0cb5474a2b3e1d15",
-                    "position": 10.5,
-                    "value": 32.2,
+                    "id": "1a88cd4455e94442",
+                    "position": 21.5,
+                    "value": 48,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "042d8027c819486c",
-                    "position": 17.5,
-                    "value": 31.7,
+                    "id": "e4c1c723eb33abb7",
+                    "position": 23.5,
+                    "value": 48,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -94,7 +94,7 @@
                 "__debugName": "Camera:[\"position\",\"y\"]",
                 "keyframes": [
                   {
-                    "id": "047fb1a304743942",
+                    "id": "a91eb0fbcec5cdbb",
                     "position": 0,
                     "value": 30,
                     "connectedRight": true,
@@ -106,7 +106,7 @@
                     ]
                   },
                   {
-                    "id": "24d74d1af4f7afa8",
+                    "id": "15094e24bf4dec96",
                     "position": 1.2,
                     "value": 28,
                     "connectedRight": true,
@@ -118,7 +118,7 @@
                     ]
                   },
                   {
-                    "id": "f5dec76049955e62",
+                    "id": "9ed954b590ac2286",
                     "position": 3.2,
                     "value": 14,
                     "connectedRight": true,
@@ -130,8 +130,8 @@
                     ]
                   },
                   {
-                    "id": "50526fd7e68a1eaf",
-                    "position": 6,
+                    "id": "809028c491b9dea3",
+                    "position": 5.4,
                     "value": 14,
                     "connectedRight": true,
                     "handles": [
@@ -142,21 +142,21 @@
                     ]
                   },
                   {
-                    "id": "3be272b547e076e1",
-                    "position": 10.5,
-                    "value": 1.15,
+                    "id": "29ed02922bd9045f",
+                    "position": 21.5,
+                    "value": 30,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "185a0f515ecffafb",
-                    "position": 17.5,
-                    "value": 1.05,
+                    "id": "f528b98899bbbf9d",
+                    "position": 23.5,
+                    "value": 30,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -172,7 +172,7 @@
                 "__debugName": "Camera:[\"position\",\"z\"]",
                 "keyframes": [
                   {
-                    "id": "7bcbd247964bccd6",
+                    "id": "039e1c6ff7a326de",
                     "position": 0,
                     "value": 195,
                     "connectedRight": true,
@@ -184,7 +184,7 @@
                     ]
                   },
                   {
-                    "id": "15e4e36277fa815b",
+                    "id": "e1c9d9459a2b92fc",
                     "position": 1.2,
                     "value": 185,
                     "connectedRight": true,
@@ -196,7 +196,7 @@
                     ]
                   },
                   {
-                    "id": "9eff03b744bae227",
+                    "id": "66203042a64cf76a",
                     "position": 3.2,
                     "value": 55,
                     "connectedRight": true,
@@ -208,8 +208,8 @@
                     ]
                   },
                   {
-                    "id": "107846e259c76a93",
-                    "position": 6,
+                    "id": "5c2769c9f91aa5f5",
+                    "position": 5.4,
                     "value": 55,
                     "connectedRight": true,
                     "handles": [
@@ -220,21 +220,21 @@
                     ]
                   },
                   {
-                    "id": "a6716d74bb514642",
-                    "position": 10.5,
-                    "value": 2.8,
+                    "id": "f6518e86916900d2",
+                    "position": 21.5,
+                    "value": 195,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "a137de65e2424492",
-                    "position": 17.5,
-                    "value": 1.85,
+                    "id": "81299d26c71d676c",
+                    "position": 23.5,
+                    "value": 195,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -250,7 +250,7 @@
                 "__debugName": "Camera:[\"lookAt\",\"x\"]",
                 "keyframes": [
                   {
-                    "id": "d6505eb422da861d",
+                    "id": "a1f89660b262fcaa",
                     "position": 0,
                     "value": 0,
                     "connectedRight": true,
@@ -262,7 +262,7 @@
                     ]
                   },
                   {
-                    "id": "91ae5903d428ae94",
+                    "id": "922ee4a7f17c13ae",
                     "position": 1.2,
                     "value": 0,
                     "connectedRight": true,
@@ -274,7 +274,7 @@
                     ]
                   },
                   {
-                    "id": "6b9b06e821ab47e6",
+                    "id": "e8c2b3d21f0d0925",
                     "position": 3.2,
                     "value": 22,
                     "connectedRight": true,
@@ -286,8 +286,8 @@
                     ]
                   },
                   {
-                    "id": "784760d8e69190ff",
-                    "position": 6,
+                    "id": "acb4aa54f5107759",
+                    "position": 5.4,
                     "value": 22,
                     "connectedRight": true,
                     "handles": [
@@ -298,21 +298,21 @@
                     ]
                   },
                   {
-                    "id": "587d92f5505c1ab1",
-                    "position": 10.5,
-                    "value": 30.8,
+                    "id": "2098f25eed9be7a0",
+                    "position": 21.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "7aa39e7c919494c4",
-                    "position": 17.5,
-                    "value": 30.8,
+                    "id": "7c358dac1822fc2a",
+                    "position": 23.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -328,7 +328,7 @@
                 "__debugName": "Camera:[\"lookAt\",\"y\"]",
                 "keyframes": [
                   {
-                    "id": "58e2a86658bfd4c5",
+                    "id": "d7b9bfe2425d0de4",
                     "position": 0,
                     "value": 0,
                     "connectedRight": true,
@@ -340,7 +340,7 @@
                     ]
                   },
                   {
-                    "id": "25112461ca228d15",
+                    "id": "c48e128b984f2b4c",
                     "position": 1.2,
                     "value": 0,
                     "connectedRight": true,
@@ -352,7 +352,7 @@
                     ]
                   },
                   {
-                    "id": "a155b0f269ee4aeb",
+                    "id": "2c8ec190bdccb285",
                     "position": 3.2,
                     "value": 0.4,
                     "connectedRight": true,
@@ -364,8 +364,8 @@
                     ]
                   },
                   {
-                    "id": "6c61ad46931a3355",
-                    "position": 6,
+                    "id": "9c02cc5c0b25526a",
+                    "position": 5.4,
                     "value": 0.4,
                     "connectedRight": true,
                     "handles": [
@@ -376,21 +376,21 @@
                     ]
                   },
                   {
-                    "id": "44e6ec9c125a195a",
-                    "position": 10.5,
-                    "value": 0.9,
+                    "id": "fc6ed3e43d2ffaef",
+                    "position": 21.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "9d9dc1a9ae4eaf19",
-                    "position": 17.5,
-                    "value": 0.9,
+                    "id": "68acc97a240f3745",
+                    "position": 23.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -406,7 +406,7 @@
                 "__debugName": "Camera:[\"lookAt\",\"z\"]",
                 "keyframes": [
                   {
-                    "id": "4d9f743e04ec2c84",
+                    "id": "2619ebf021cdd1d4",
                     "position": 0,
                     "value": 0,
                     "connectedRight": true,
@@ -418,7 +418,7 @@
                     ]
                   },
                   {
-                    "id": "4ea5300ded403ccc",
+                    "id": "6595524f021922f7",
                     "position": 1.2,
                     "value": 0,
                     "connectedRight": true,
@@ -430,7 +430,7 @@
                     ]
                   },
                   {
-                    "id": "6d5bfc0fb13397cf",
+                    "id": "4c515ca883224001",
                     "position": 3.2,
                     "value": 0.2,
                     "connectedRight": true,
@@ -442,8 +442,8 @@
                     ]
                   },
                   {
-                    "id": "455ad892931cf368",
-                    "position": 6,
+                    "id": "1da8276c52d6bc4e",
+                    "position": 5.4,
                     "value": 0.2,
                     "connectedRight": true,
                     "handles": [
@@ -454,21 +454,21 @@
                     ]
                   },
                   {
-                    "id": "f1f782a3c64494b3",
-                    "position": 10.5,
-                    "value": 0.3,
+                    "id": "6e2dd82773ef6d47",
+                    "position": 21.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "6302ccafe9c6be26",
-                    "position": 17.5,
-                    "value": 0.3,
+                    "id": "406bf26c94a2ea36",
+                    "position": 23.5,
+                    "value": 0,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -484,7 +484,7 @@
                 "__debugName": "Camera:[\"fov\"]",
                 "keyframes": [
                   {
-                    "id": "23febbf432d86f81",
+                    "id": "4c7983563ea68415",
                     "position": 0,
                     "value": 38,
                     "connectedRight": true,
@@ -496,7 +496,7 @@
                     ]
                   },
                   {
-                    "id": "b7db7d6ab4be3b62",
+                    "id": "0cdb80256d45938e",
                     "position": 1.2,
                     "value": 38,
                     "connectedRight": true,
@@ -508,7 +508,7 @@
                     ]
                   },
                   {
-                    "id": "aa1c325e096ce76b",
+                    "id": "c46436af82cbe499",
                     "position": 3.2,
                     "value": 32,
                     "connectedRight": true,
@@ -520,8 +520,8 @@
                     ]
                   },
                   {
-                    "id": "859033d1a27b1176",
-                    "position": 6,
+                    "id": "1ed2eeaacec8c1c5",
+                    "position": 5.4,
                     "value": 32,
                     "connectedRight": true,
                     "handles": [
@@ -532,21 +532,21 @@
                     ]
                   },
                   {
-                    "id": "8b24788dc9defbea",
-                    "position": 10.5,
-                    "value": 28,
+                    "id": "11131a3914fa8929",
+                    "position": 21.5,
+                    "value": 38,
                     "connectedRight": true,
                     "handles": [
                       0.5,
-                      0,
+                      1,
                       0.5,
                       0
                     ]
                   },
                   {
-                    "id": "f0100cad44fcdd4d",
-                    "position": 17.5,
-                    "value": 24,
+                    "id": "6ccee7e30ee4a6f7",
+                    "position": 23.5,
+                    "value": 38,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -574,6 +574,6 @@
   },
   "definitionVersion": "0.4.0",
   "revisionHistory": [
-    "smooth-dive-1a04be607f4"
+    "dive-orbit3s-3ce1561416"
   ]
 }
