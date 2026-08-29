@@ -93,7 +93,7 @@ const HEROES = [
     id: "halite",
     kind: "halite",
     pauseable: true,
-    theatreUrl: "hero/halite-theatre.json?v=17",
+    theatreUrl: "hero/halite-theatre.json?v=19",
     badge: "Halite",
     tooltip:
       "❚❚ pause · ✥ pan · drag to rotate/pan · scroll to zoom · focus bar while paused",
@@ -192,7 +192,7 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=18");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=52");
+      const { startHaliteHero } = await import("./hero-halite.js?v=54");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=21");

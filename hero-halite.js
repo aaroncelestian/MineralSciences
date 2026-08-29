@@ -502,7 +502,7 @@ export async function startHaliteHero(canvas, meta = {}) {
     }
   };
 
-  const project = getProject("Halite Hero v19", { state: theatreState });
+  const project = getProject("Halite Hero v21", { state: theatreState });
   const sheet = project.sheet("Zoom");
   const camObj = sheet.object("Camera", {
     position: { x: 48, y: 30, z: 195 },
@@ -520,11 +520,12 @@ export async function startHaliteHero(canvas, meta = {}) {
   });
   await project.ready;
 
+  const PLAY_RATE = 0.9;
   // Continuous loop: pattern → ease-in + CCW orbit → pull out → overview
   const playOpts = {
     iterationCount: Infinity,
     direction: "normal",
-    rate: 0.9,
+    rate: PLAY_RATE,
   };
   function playStory() {
     return sheet.sequence.play(playOpts).catch((err) => {
@@ -645,12 +646,13 @@ export async function startHaliteHero(canvas, meta = {}) {
   const BLEND_RATE = 2.4;
   const MIN_DIST = 1.2;
   const MAX_DIST = 320;
-  // Dive: ease into inclusion (with CCW orbit-pan) → 3s slow CCW orbit → zoom out.
+  // Dive: ease into inclusion (with CCW orbit-pan) → 6s slow CCW orbit → zoom out.
   // Driven in code so arrival/orbit never hitch on Theatre keyframes.
   const APPROACH_T0 = 5.4;
   const APPROACH_T1 = 11.6; // gentle ease-in (~6.2s)
-  const ORBIT_T1 = 14.6; // +3.0s slow CW at the inclusion
-  const PULL_T1 = 21.5; // ease back to overview
+  const ORBIT_WALL_S = 6; // real-time seconds for the CCW orbit (same arc, slower)
+  const ORBIT_T1 = APPROACH_T1 + ORBIT_WALL_S / PLAY_RATE;
+  const PULL_T1 = ORBIT_T1 + 6.9; // ease back to overview
   const SPIRAL_PATTERN = { x: 42, y: 14, z: 55 };
   const _spiralStartOff = new THREE.Vector3(
     SPIRAL_PATTERN.x - HABITAT.x,
@@ -665,7 +667,7 @@ export async function startHaliteHero(canvas, meta = {}) {
   const FOV_CLOSE = 28;
   // CCW = increasing angle with (sin θ, cos θ) offset in Y-up
   const APPROACH_ARC = 0.7; // ~40° of orbit-pan while zooming in
-  const ORBIT_ARC = 0.95; // ~54° slow CCW over the 3s hold
+  const ORBIT_ARC = 0.7; // ~40° over the full 6s (slow, readable)
   const SPIRAL_LOOK0 = new THREE.Vector3(22, 0.4, 0.2);
   const OVERVIEW_CAM = new THREE.Vector3(48, 30, 195);
   const OVERVIEW_LOOK = new THREE.Vector3(0, 0, 0);
@@ -746,8 +748,17 @@ export async function startHaliteHero(canvas, meta = {}) {
     );
   }
 
+  /** Spread orbit motion across the full 6s; only brake gently at the end. */
+  function orbitSpinProgress(u) {
+    const x = THREE.MathUtils.clamp(u, 0, 1);
+    const brakeAt = 0.72;
+    if (x <= brakeAt) return (x / brakeAt) * 0.9;
+    const t = (x - brakeAt) / (1 - brakeAt);
+    return 0.9 + 0.1 * easeOutCubic(t);
+  }
+
   /**
-   * Approach → CCW orbit (eases to a stop) → pull out (slow start, then accelerate).
+   * Approach → CCW orbit (full 6s, then ease to a stop) → pull out (slow start, then accelerate).
    */
   function diveLocalPose(seqPos, outCam, outLook) {
     const arriveAngle = SPIRAL_A0 + APPROACH_ARC;
@@ -779,8 +790,7 @@ export async function startHaliteHero(canvas, meta = {}) {
         0,
         1
       );
-      // Ease-out so angular speed → 0 at the end of the orbit
-      const spin = easeOutQuint(u);
+      const spin = orbitSpinProgress(u);
       const angle = arriveAngle + ORBIT_ARC * spin;
       setCamOnHabitatOrbit(angle, R_CLOSE, Y_CLOSE, outCam);
       outLook.set(HABITAT.x, HABITAT.y, HABITAT.z);
