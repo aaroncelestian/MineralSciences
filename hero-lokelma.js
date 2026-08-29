@@ -28,7 +28,7 @@ const PHASES = [
   { id: "pore", dur: 5.2, beat: "pore" },
   { id: "h-point", dur: 4.8, beat: "protons" },
   { id: "exchange", dur: 8.2, beat: "lock" },
-  { id: "locked", dur: 6.0, beat: "patients" },
+  { id: "locked", dur: 3.0, beat: "patients" },
 ];
 const PORE_FADE_IN = 0.55;
 const PORE_FADE_OUT = 1.15;

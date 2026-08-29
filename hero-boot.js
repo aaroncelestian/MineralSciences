@@ -1,7 +1,6 @@
 /**
  * Pick a homepage hero at random:
  *   - quartz XRD (blog link: Borghese–Windsor)
- *   - DNA–CaOx cylinder/slab
  *   - DNA–CaOx gel + 15 Å shell
  *   - Lokelma / ZS-9 zirconium silicate (Dallas 2026 + paper + narration)
  *   - Halite fluid inclusions (astrobiology / iron-cross)
@@ -33,24 +32,6 @@ const HEROES = [
       { text: "00ℓ: ℓ = 3n   (screw)", tone: "accent" },
       { text: "q = h a* + k b* + ℓ c*" },
     ],
-  },
-  {
-    id: "slab",
-    kind: "caox",
-    dataUrl: "hero/slab.json",
-    badge: "CaOx",
-    tooltip:
-      "Drag to rotate · organic–mineral interface · d(P) clouds",
-    attribution:
-      "Hero model: organic–mineral interface visualization, Ca distance clouds colored by phosphate distance",
-    info: {
-      kicker: "Life · mineral interfaces",
-      title: "Where biology and mineralogy meet",
-      blurb:
-        "Life and minerals don't only interact in landscapes you can walk across — they also meet at the molecular scale, where organic structure and inorganic growth shape each other. The published thread here is kidney stone pathogenesis: bacterial biofilms are intrinsic internal components of calcium-based stones, not surface contamination.",
-      url: "https://doi.org/10.1073/pnas.2517066123",
-      linkLabel: "Read the PNAS paper →",
-    },
   },
   {
     id: "shell15",
@@ -189,10 +170,10 @@ async function boot() {
       const { startCaOxHero } = await import("./hero-caox.js?v=18");
       await startCaOxHero(canvas, hero);
     } else if (hero.kind === "lokelma") {
-      const { startLokelmaHero } = await import("./hero-lokelma.js?v=18");
+      const { startLokelmaHero } = await import("./hero-lokelma.js?v=19");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=54");
+      const { startHaliteHero } = await import("./hero-halite.js?v=55");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=21");

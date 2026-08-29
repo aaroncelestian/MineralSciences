@@ -20,7 +20,7 @@ const BACTERIA_R = BACTERIA_DIAM_UM / 2 / UM_PER_UNIT; // 0.025 units
 const ARMS = "x";
 const DENSITY = "sparse";
 /** Cap microbes — densest around the deep-zoom habitat, sparse elsewhere. */
-const MAX_MICROBES = 56;
+const MAX_MICROBES = 150;
 /** Inclusions farther than this from HABITAT get no microbes. */
 const MICROBE_HOT_RADIUS = 10;
 
