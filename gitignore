@@ -20,6 +20,9 @@ Desktop.ini
 *.bak
 *.log
 
+# Dependencies
+node_modules/
+
 # Personal notes (keep these local)
 notes.txt
 TODO.md

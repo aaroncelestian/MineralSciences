@@ -7,7 +7,7 @@
  *   - Halite fluid inclusions (astrobiology / iron-cross)
  */
 
-import { mountHeroInfo, applyHeroInfo } from "./hero-info.js?v=18";
+import { mountHeroInfo, applyHeroInfo } from "./hero-info.js?v=21";
 
 const HEROES = [
   {
@@ -18,9 +18,9 @@ const HEROES = [
       "Hero animation: α-quartz reciprocal space — decorative XRD motif; essay: Borghese–Windsor Cabinet (Pocketful of χtals)",
     info: {
       kicker: "α-Quartz · reciprocal space",
-      title: "Provenance. Material Records. Rewrite History.",
+      title: "Provenance. Material Records. Discovery. New History.",
       blurb:
-        "Diffraction is how we read what a crystal remembers — where it formed, what passed through it, what story the archive still holds. This Ewald construction is that language in motion. For the museum side of provenance and material record, start with the Borghese–Windsor Cabinet essay.",
+        "Not everything that happened was written down. Empires, workshops, voyages, quiet exchanges — whole chapters never made it onto paper. Minerals keep a different archive: chemistry, structure, wear, inclusion. Diffraction is one way we read that record. It cannot be erased. For the museum side of provenance and material memory, start with the Borghese–Windsor Cabinet essay.",
       url: "https://aaroncelestian.substack.com/p/borghese-windsor-cabinet-396",
       linkLabel: "Read the Borghese–Windsor essay →",
     },
@@ -31,14 +31,14 @@ const HEROES = [
     dataUrl: "hero/slab.json",
     badge: "CaOx",
     tooltip:
-      "Drag to rotate · DNA-length CaOx coating · cylinder/slab · d(P) clouds",
+      "Drag to rotate · organic–mineral interface · d(P) clouds",
     attribution:
-      "Hero model: DNA–CaOx cylinder/slab coating (30 Å DNA-length cut), Ca distance clouds colored by phosphate distance",
+      "Hero model: organic–mineral interface visualization, Ca distance clouds colored by phosphate distance",
     info: {
-      kicker: "DNA–CaOx · kidney stones",
-      title: "Biofilm and calcium oxalate",
+      kicker: "Life · mineral interfaces",
+      title: "Where biology and mineralogy meet",
       blurb:
-        "Bacterial biofilms are intrinsic internal components of calcium-based kidney stones — not surface contamination. DNA and mineral grow together. This hero shows a DNA-length CaOx coating model from that research thread.",
+        "Life and minerals don't only interact in landscapes you can walk across — they also meet at the molecular scale, where organic structure and inorganic growth shape each other. The published thread here is kidney stone pathogenesis: bacterial biofilms are intrinsic internal components of calcium-based stones, not surface contamination.",
       url: "https://doi.org/10.1073/pnas.2517066123",
       linkLabel: "Read the PNAS paper →",
     },
@@ -49,14 +49,14 @@ const HEROES = [
     dataUrl: "hero/shell15.json",
     badge: "Gel",
     tooltip:
-      "Drag to rotate · Gel + 15 Å shell (FIRE/OMM) · d(P) clouds",
+      "Drag to rotate · organic–mineral interface · d(P) clouds",
     attribution:
-      "Hero model: DNA–CaOx gel + 15 Å shell (FIRE/OpenMM), Ca distance clouds colored by phosphate distance",
+      "Hero model: organic–mineral interface visualization, Ca distance clouds colored by phosphate distance",
     info: {
-      kicker: "DNA–CaOx · gel shell",
-      title: "Nucleation around DNA",
+      kicker: "Life · mineral interfaces",
+      title: "Macroscopic to molecular",
       blurb:
-        "A gel + 15 Å CaOx shell around DNA — the same organic–inorganic story as the stone work: extracellular DNA as a template that concentrates nucleation. Linked to the PNAS biofilm–mineral study.",
+        "From stromatolites to stone disease, life and minerals co-construct records you can see — and mechanisms that only resolve at the scale of molecules. This scene is a window onto that continuum. For the published biofilm–mineral story in calcium-based kidney stones, see the PNAS paper.",
       url: "https://doi.org/10.1073/pnas.2517066123",
       linkLabel: "Read the PNAS paper →",
     },
@@ -83,10 +83,11 @@ const HEROES = [
   {
     id: "halite",
     kind: "halite",
-    theatreUrl: "hero/halite-theatre.json",
+    pauseable: true,
+    theatreUrl: "hero/halite-theatre.json?v=9",
     badge: "Halite",
     tooltip:
-      "Drag to rotate · Halite fluid inclusions · iron-cross · life inside crystals",
+      "❚❚ pause · ✥ pan · drag to rotate/pan · scroll to zoom · focus bar while paused",
     attribution:
       "Hero model: procedural halite fluid inclusions (iron-cross pattern); bacteria in brine cavities — Theatre.js zoom 01→03",
     info: {
@@ -108,6 +109,17 @@ function pickHero() {
     if (match) return match;
   }
   return HEROES[Math.floor(Math.random() * HEROES.length)];
+}
+
+function goToHero(id) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("hero", id);
+  window.location.assign(url.toString());
+}
+
+function nextHeroId(currentId) {
+  const i = Math.max(0, HEROES.findIndex((h) => h.id === currentId));
+  return HEROES[(i + 1) % HEROES.length].id;
 }
 
 function applyHeroMeta(hero) {
@@ -136,7 +148,11 @@ async function loadNarration(hero) {
 async function boot() {
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
-  mountHeroInfo(canvas.closest(".hero") || document.querySelector(".hero"));
+  const host = canvas.closest(".hero") || document.querySelector(".hero");
+  mountHeroInfo(host);
+  host?.addEventListener("hero:next", () => {
+    goToHero(nextHeroId(document.documentElement.dataset.hero));
+  });
   let hero = pickHero();
   hero = await loadNarration(hero);
   applyHeroMeta(hero);
@@ -148,7 +164,7 @@ async function boot() {
       const { startLokelmaHero } = await import("./hero-lokelma.js?v=18");
       await startLokelmaHero(canvas, hero);
     } else if (hero.kind === "halite") {
-      const { startHaliteHero } = await import("./hero-halite.js?v=1");
+      const { startHaliteHero } = await import("./hero-halite.js?v=22");
       await startHaliteHero(canvas, hero);
     } else {
       const { startQuartzHero } = await import("./hero-canvas.js?v=18");
